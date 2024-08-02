@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "type": "module",
   "scripts": {
     "dev": "node index.js"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
     "fs": "^0.0.1-security",
-    "pa11y": "^8.0.0"
+    "pa11y": "^8.0.0",
+    "puppeteer": "^22.15.0"
   }
 }
