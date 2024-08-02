@@ -1,0 +1,14 @@
+{
+  "name": "pnld-validation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "pa11y": "^8.0.0"
+  }
+}

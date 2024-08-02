@@ -1,0 +1,10 @@
+node_modules
+*.rdb
+zip
+temp
+css_pnld
+.env
+.DS_Store.DS_Store
+.github
+.vscode
+teste
