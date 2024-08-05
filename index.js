@@ -27,7 +27,7 @@ const pa11yOptions = (filename) => {
 			},
 			level: 'error',
 			chromeLaunchConfig: {
-				headless: false,
+				headless: true,
 				devtools: true,
 			}
 		}
@@ -53,7 +53,7 @@ const runApp = () => {
 				throw err
 			})
 
-			console.log(JSON.stringify(results, null, 2))
+			// console.log(JSON.stringify(results, null, 2))
 		})
 	} catch (error) {
 		console.log(error)

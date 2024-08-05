@@ -8,12 +8,6 @@ runner.scripts = [];
 
 runner.run = (options, pa11y) => {
 
-	const issueTypeMap = {
-		1: 'error',
-		2: 'warning',
-		3: 'notice'
-	};
-
 	function runCode() {
 
 		// expect.js
@@ -47,8 +41,8 @@ runner.run = (options, pa11y) => {
 							if ("function" == typeof Assertion.prototype[s]) {
 								var c = this[s];
 								for (var a in this[s] = function () {
-										return c.apply(i, arguments)
-									}, Assertion.prototype) Assertion.prototype.hasOwnProperty(a) && a != s && (this[s][a] = bind(f[a], f))
+									return c.apply(i, arguments)
+								}, Assertion.prototype) Assertion.prototype.hasOwnProperty(a) && a != s && (this[s][a] = bind(f[a], f))
 							} else this[s] = f
 						}
 				}
@@ -220,8 +214,8 @@ runner.run = (options, pa11y) => {
 				var r = keys(this.obj),
 					o = t.length;
 				if (n = every(t, function (t) {
-						return ~indexOf(r, t)
-					}), !this.flags.not && this.flags.only && (n = n && t.length == r.length), o > 1) {
+					return ~indexOf(r, t)
+				}), !this.flags.not && this.flags.only && (n = n && t.length == r.length), o > 1) {
 					var u = (t = map(t, function (t) {
 						return i(t)
 					})).pop();
@@ -239,12 +233,12 @@ runner.run = (options, pa11y) => {
 				return this.assert(!1, e, e), this
 			};
 			var getOuterHTML = function (t) {
-					if ("outerHTML" in t) return t.outerHTML;
-					var e, n = "http://www.w3.org/1999/xhtml",
-						r = document.createElementNS(n, "_"),
-						o = new XMLSerializer;
-					return document.xmlVersion ? o.serializeToString(t) : (r.appendChild(t.cloneNode(!1)), e = r.innerHTML.replace("><", ">" + t.innerHTML + "<"), r.innerHTML = "", e)
-				},
+				if ("outerHTML" in t) return t.outerHTML;
+				var e, n = "http://www.w3.org/1999/xhtml",
+					r = document.createElementNS(n, "_"),
+					o = new XMLSerializer;
+				return document.xmlVersion ? o.serializeToString(t) : (r.appendChild(t.cloneNode(!1)), e = r.innerHTML.replace("><", ">" + t.innerHTML + "<"), r.innerHTML = "", e)
+			},
 				isDOMElement = function (t) {
 					return "object" == typeof HTMLElement ? t instanceof HTMLElement : t && "object" == typeof t && 1 === t.nodeType && "string" == typeof t.nodeName
 				};
@@ -286,10 +280,10 @@ runner.run = (options, pa11y) => {
 					var l = map(p, function (e) {
 						var u, f;
 						if (t.__lookupGetter__ && (t.__lookupGetter__(e) ? f = t.__lookupSetter__(e) ? o("[Getter/Setter]", "special") : o("[Getter]", "special") : t.__lookupSetter__(e) && (f = o("[Setter]", "special"))), 0 > indexOf(a, e) && (u = "[" + e + "]"), !f && (0 > indexOf(r, t[e]) ? (f = null === n ? i(t[e]) : i(t[e], n - 1)).indexOf("\n") > -1 && (f = isArray(t) ? map(f.split("\n"), function (t) {
-								return "  " + t
-							}).join("\n").substr(2) : "\n" + map(f.split("\n"), function (t) {
-								return "   " + t
-							}).join("\n")) : f = o("[Circular]", "special")), void 0 === u) {
+							return "  " + t
+						}).join("\n").substr(2) : "\n" + map(f.split("\n"), function (t) {
+							return "   " + t
+						}).join("\n")) : f = o("[Circular]", "special")), void 0 === u) {
 							if ("Array" === s && e.match(/^\d+$/)) return f;
 							u = (u = json.stringify("" + e)).match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/) ? o(u = u.substr(1, u.length - 2), "name") : o(u = u.replace(/'/g, "\\'").replace(/\\"/g, '"').replace(/(^"|"$)/g, "'"), "string")
 						}
@@ -342,7 +336,7 @@ runner.run = (options, pa11y) => {
 				var r = 0;
 				if (arguments.length >= 2) var o = arguments[1];
 				else
-					for (;;) {
+					for (; ;) {
 						if (r in this) {
 							o = this[r++];
 							break
@@ -471,8 +465,8 @@ runner.run = (options, pa11y) => {
 						return reviver.call(t, e, o)
 					}
 					if (text = String(text), cx.lastIndex = 0, cx.test(text) && (text = text.replace(cx, function (t) {
-							return "\\u" + ("0000" + t.charCodeAt(0).toString(16)).slice(-4)
-						})), /^[\],:{}\s]*$/.test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, "@").replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, "]").replace(/(?:^|:|,)(?:\s*\[)+/g, ""))) return j = eval("(" + text + ")"), "function" == typeof reviver ? walk({
+						return "\\u" + ("0000" + t.charCodeAt(0).toString(16)).slice(-4)
+					})), /^[\],:{}\s]*$/.test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, "@").replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, "]").replace(/(?:^|:|,)(?:\s*\[)+/g, ""))) return j = eval("(" + text + ")"), "function" == typeof reviver ? walk({
 						"": j
 					}, "") : j;
 					throw SyntaxError("JSON.parse")
@@ -516,22 +510,22 @@ runner.run = (options, pa11y) => {
 				return !t || !r && !A(n) && !c(n) ? [] : !r && Ht.test(t) ? n.getElementsByClassName(t.slice(1).replace(/\\/g, "")) : !r && jt.test(t) ? n.getElementsByTagName(t) : n.querySelectorAll(t)
 			}
 			var dt = function () {
-					function t(n, r) {
-						if (n) {
-							if (Y(n)) return n;
-							var i = n;
-							if (g(n)) {
-								var e = r || C;
-								if (i = Pt.test(n) && A(e) ? e.getElementById(n.slice(1).replace(/\\/g, "")) : $t.test(n) ? yt(n) : Y(e) ? e.find(n) : g(e) ? o(e).find(n) : J(n, e), !i) return
-							} else if (O(n)) return this.ready(n);
-							(i.nodeType || i === D) && (i = [i]), this.length = i.length;
-							for (var s = 0, f = this.length; s < f; s++) this[s] = i[s]
-						}
+				function t(n, r) {
+					if (n) {
+						if (Y(n)) return n;
+						var i = n;
+						if (g(n)) {
+							var e = r || C;
+							if (i = Pt.test(n) && A(e) ? e.getElementById(n.slice(1).replace(/\\/g, "")) : $t.test(n) ? yt(n) : Y(e) ? e.find(n) : g(e) ? o(e).find(n) : J(n, e), !i) return
+						} else if (O(n)) return this.ready(n);
+						(i.nodeType || i === D) && (i = [i]), this.length = i.length;
+						for (var s = 0, f = this.length; s < f; s++) this[s] = i[s]
 					}
-					return t.prototype.init = function (n, r) {
-						return new t(n, r)
-					}, t
-				}(),
+				}
+				return t.prototype.init = function (n, r) {
+					return new t(n, r)
+				}, t
+			}(),
 				u = dt.prototype,
 				o = u.init;
 			o.fn = o.prototype = u, u.length = 0, u.splice = _t, typeof Symbol == "function" && (u[Symbol.iterator] = S[Symbol.iterator]);
@@ -600,8 +594,8 @@ runner.run = (options, pa11y) => {
 						var f = e[i];
 						if (n.call(t[f], f, t[f]) === !1) return t
 					} else
-						for (var i = 0, s = t.length; i < s; i++)
-							if (n.call(t[i], i, t[i]) === !1) return t;
+					for (var i = 0, s = t.length; i < s; i++)
+						if (n.call(t[i], i, t[i]) === !1) return t;
 				return t
 			}
 			o.each = d, u.each = function (t) {
@@ -1333,10 +1327,10 @@ runner.run = (options, pa11y) => {
 		let results = []
 
 		/** 
-		 * Executa um teste e registra ele na array results 
-		 * @param {string} testDescription - 
-		 * @param {function} testFunction - 
-		 * */
+			* Executa um teste e registra ele na array results 
+			* @param {string} testDescription - 
+			* @param {function} testFunction - 
+			* */
 		function testar(testDescription, testFunction) {
 			let status;
 			let errorMessage = null;
@@ -1360,32 +1354,14 @@ runner.run = (options, pa11y) => {
 			});
 		}
 
-
-		testar('Todas as imagens têm atributo alt', () => {
-			const images = $('img');
-			images.each(function () {
-				expect($(this).attr('alt')).to.be.ok();
-			});
-		});
-
-
-		testar('Todas as imagens têm id', () => {
-			const images = $('img');
-			images.each(function () {
-				expect($(this).attr('id')).to.have.ok();
-			});
-		});
-
-
-
 		/*
-		 *	Teste: Todos os assets carregaram corretamente
-		 *	Descrição: Checa se imagens, scripts, arquivos CSS e outros assets foram carregados
-		 *  Tentei usar o page.on, mas esse é o contexto errado pra isso. Esse método run 
-		 *  é rodado dentro do browser e o page pertence ao puppeteer.
-		 *  A solução é, ou desenvolver um código que faz essa checagem no browser ou
-		 *  levar esse teste para o contexto do puppeteer
-		 */
+			*	Teste: Todos os assets carregaram corretamente
+			*	Descrição: Checa se imagens, scripts, arquivos CSS e outros assets foram carregados
+			*  Tentei usar o page.on, mas esse é o contexto errado pra isso. Esse método run 
+			*  é rodado dentro do browser e o page pertence ao puppeteer.
+			*  A solução é, ou desenvolver um código que faz essa checagem no browser ou
+			*  levar esse teste para o contexto do puppeteer
+			*/
 		// let assetsWithErrors = []
 		// Escuta os eventos de request falha e response recebida
 		// page.on('requestfailed', request => {
@@ -1398,20 +1374,14 @@ runner.run = (options, pa11y) => {
 		// 	expect(assetsWithErrors).to.be.empty
 		// })
 
-		/*
-		 * Teste: Tag meta charset presente e com valor UTF-8
-		 *
-		 */
-		testar('Tag meta charset presente e com valor UTF-8', () => {
-			const metaCharset = $('head>meta[charset]');
-			expect(metaCharset.length).to.equal(1);
-			expect(metaCharset.attr('charset')).to.equal("UTF-8");
+		// - Todas as imagens tem o atributo alt
+		testar('Todas as imagens têm atributo alt', () => {
+			const images = $('img');
+			images.each(function () {
+				expect($(this).attr('alt')).to.be.ok();
+			});
 		});
 
-		testar('A tag HTML tem o atributo lang', () => {
-			const htmlTag = $('html');
-			expect(htmlTag.attr('lang')).to.be.ok();
-		});
 
 		function verificarIdsDuplicados() {
 			const ids = new Set();
@@ -1449,11 +1419,19 @@ runner.run = (options, pa11y) => {
 		// 	expect(externalResources).to.be.empty;
 		// });
 
-		// Ideias para mais testes
-		// – tag HTML possui atributo xml:lang 
-		// – atributo xml:lang da tag HTML é igual a pt-BR (ou espanhol ou inglês???)
+		// – tag HTML possui atributo lang 
+		testar('tag HTML possui atributo lang', () => {
+			const htmlTag = $('html');
+			expect(htmlTag.attr('lang')).to.be.ok();
+		});
+
 		// – atributo lang da tag HTML é igual a pt-BR (ou espanhol ou inglês???)
-		// – atributo lang da tag BODY é igual a pt-BR (ou espanhol ou inglês???)
+		testar('A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)', () => {
+			const htmlTag = $('html');
+			const valoresPermitidos = ['pt-br', 'es', 'en']
+			expect(valoresPermitidos.includes(htmlTag.attr('lang').toLowerCase())).to.equal(true);
+		});
+
 		// – tag meta viewport existe e está configurada de forma acessível
 		// – Todos os assets são locais
 		// – Não tem nenhum link <a href> apontando para fora do livro
@@ -1461,28 +1439,111 @@ runner.run = (options, pa11y) => {
 		// – Glossários tem a formatação correta (dt, dl, dd)
 		// – Não tem IDs duplicados
 		// – lista de um item
+
 		// – salto hierárquico
+		testar('O documento não contém salto hierárquico', () => {
+			function checkHeadingHierarchy() {
+				const errors = [];
+				const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+				let lastLevel = 0;
+
+				headings.forEach(heading => {
+					const currentLevel = parseInt(heading.tagName.substring(1));
+
+					if (currentLevel > lastLevel + 1) {
+						errors.push({
+							element: heading,
+							expectedLevel: lastLevel + 1,
+							currentLevel: currentLevel
+						});
+					}
+
+					lastLevel = currentLevel;
+				});
+
+				return errors;
+			}
+
+			const errors = checkHeadingHierarchy();
+
+			expect(errors.length).to.equal(0);
+		});
+
 		// – Separador de página (n sei bem como testar ele pq o edital não exige uma markup muito específica)
 		//      Tem que ler a spec do PNLD, entender como deve ser a section
 		// 
 		// - Aquele monte de tag de metadados que o edital pede no index.html
-		// - 
+		// testar('Tags ', () => {
+		// 	const bodyTag = $('body');
+		// 	expect(bodyTag.attr('xml:lang').toLowerCase()).to.equal("pt-BR" || "es" || "en");
+		// });
 
+
+		// 5.8 Criação da página principal 
+
+		// 		5.8.1 Doctype
+		// Todo arquivo HTML deverá iniciar com a tag DOCTYPE de acordo com a tecnologia escolhida, o HTML5, conforme exemplificado no item 4.1.
+		testar('tag DOCTYPE de acordo com a tecnologia escolhida', () => {
+			var hasDoctype = document.doctype !== null;
+			if (hasDoctype) {
+				var doctypeString = '<!DOCTYPE ' + document.doctype.name + '>';
+				expect(doctypeString).to.equal('<!DOCTYPE html>');
+			} else {
+				expect(hasDoctype).to.equal('<!DOCTYPE html>');
+			}
+		});
+
+		// 		5.8.2 Head
+		// Na página inicial é obrigatório a inclusão da tag <head> com alguns metadados.
+		testar('Tag Head incluida na página', () => {
+			const tagHead = $('head');
+			expect(tagHead.length).to.equal(1);
+		});
+		// - Definir o charset de todos os arquivos para "UTF-8"
+		testar('Tag meta charset presente e com valor UTF-8', () => {
+			const metaCharset = $('head>meta[charset]');
+			expect(metaCharset.length).to.equal(1);
+			expect(metaCharset.attr('charset')).to.equal("UTF-8");
+		});
+		// - Definir o titulo da obra
+		testar('Titulo da obra presente e com valor', () => {
+			const tituloObra = $('head>title');
+			expect(tituloObra.length).to.equal(1);
+			expect(tituloObra.text()).to.be.ok();
+		});
+		// - Incluir um metadado para a descrição da obra
+		testar('Metadado com a descrição da obra e com valor', () => {
+			const metaDescription = $('head>meta[name=description]');
+			expect(metaDescription.length).to.equal(1);
+			expect(metaDescription.attr('content')).to.be.ok();
+		});
+		// - Incluir metadado autor
+		// - Incluir metadados para desabilitar a indexação do conteúdo da obra por motores de busca.
+
+		// 		5.8.3 Body
+		// No corpo da página principal é obrigatório a inclusão da tag <body> adicionando as suas propriedades o idioma apresentado.
+		testar('tag BODY possui atributo lang', () => {
+			const bodyTag = $('body');
+			expect(bodyTag.attr('lang')).to.be.ok();
+		});
+		testar('A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)', () => {
+			const bodyTag = $('body');
+			const valoresPermitidos = ['pt-br', 'es', 'en']
+			expect(valoresPermitidos.includes(bodyTag.attr('lang').toLowerCase())).to.equal(true);
+		});
+		// Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.
+		// testar('Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.', () => {
+		// 	const bodyTag = $('body');
+		// 	expect(bodyTag.attr('lang')).to.be.ok();
+		// });
 
 		return results
 	}
 
-	function processIssue(issue) {
-		return {
-			code: issue.code,
-			message: issue.msg,
-			type: issueTypeMap[issue.type] || 'unknown',
-			element: issue.element
-		};
-	}
-
 	// temos que enviar um array de issue, se não quebra
 	const results = runCode();
+
 	return results;
 
 };
