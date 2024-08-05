@@ -47,6 +47,12 @@ const runApp = () => {
 
 			const results = await Promise.all(urlList);
 
+			fs.writeFile('teste.json', JSON.stringify(results), {
+				encoding: 'utf-8'
+			}, (err) => {
+				throw err
+			})
+
 			console.log(JSON.stringify(results, null, 2))
 		})
 	} catch (error) {
