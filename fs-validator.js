@@ -50,23 +50,29 @@ function checkDirectoryAndSubDirs(basePath, subDirs, files) {
     }
 }
 
-const filesToCheck = ['index.html', 'toc.npx', 'content.opf', 'cover.jpg'];
+const filesToCheck = ['index.html', 'toc.npx', 'content.opf', 'cover.jpeg'];
 const dirsToCheck = ['resources', 'content', 'resources/images', 'resources/scripts', 'resources/styles', 'resources/videos', 'resources/audios', 'resources/extras'];
 
 checkDirectoryAndSubDirs(folderPath, [], filesToCheck);
 checkDirectoryAndSubDirs(folderPath, dirsToCheck, [])
 
 // 5.2 Nomenclatura
-// 5.2.1 Nomenclatura de pastas
+// 5.2.1 Nomenclatura de pastas / arquivo
 // Todas as pastas adicionadas ao projeto deverão ser nomeadas utilizando caracteres
 // minúsculos, sem caracteres especiais e/ou acentos e separados por linha baixa "_" (underline),
 // não sendo permitido iniciar o nome com números.
+
+const nomenclatura_erro = `5.2 Nomenclatura 5.2.1 Nomenclatura de pastas Todas as pastas adicionadas ao projeto deverão ser nomeadas utilizando caracteres minúsculos, sem caracteres especiais e/ou acentos e separados por linha baixa "_" (underline), não sendo permitido iniciar o nome com números`
+
 const invalidNameRegex = /[^a-z0-9_]|^[0-9]/;
 
 function checkNamingConventions(basePath) {
     function checkName(name, fullPath) {
         if (invalidNameRegex.test(name)) {
-            errors.push(`Nome inválido encontrado: ${name} em ${fullPath}`);
+            errors.push({
+                erro: `Nome inválido encontrado: ${name} em ${fullPath}`,
+                detalhe: nomenclatura_erro
+            });
         }
     }
 
@@ -80,8 +86,9 @@ function checkNamingConventions(basePath) {
             checkName(item, itemPath);
 
             if (stats.isDirectory()) {
-                traverseDirectory(itemPath);
+                traverseDirectory(itemPath); // Verifica recursivamente subdiretórios
             }
+            // Arquivos também são validados com checkName
         });
     }
 
@@ -92,11 +99,8 @@ function checkNamingConventions(basePath) {
         errors.push(error.message);
     }
 
-    if (errors.length > 0) {
-        console.error(`Foram encontrados os seguintes erros:\n${errors.join('\n')}`);
-        `Foram encontrados os seguintes erros:\n${errors.join('\n')}`;
-    } else {
-        console.log('Todos os nomes estão em conformidade.');
+    if (errors.length > 0) {} else {
+        console.log('Todos os nomes de arquivos e diretórios estão em conformidade.');
     }
 }
 
