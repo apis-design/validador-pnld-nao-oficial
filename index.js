@@ -6,6 +6,8 @@ let folder = 'teste'
 const pa11yOptions = (filename) => {
 	try {
 		return {
+			includeNotices: true,
+			includeWarnings: true,
 			headers: {
 				"Access-Control-Allow-Origin": "*",
 				"Access-Control-Allow-Headers": "Content-Type"
@@ -22,6 +24,11 @@ const pa11yOptions = (filename) => {
 				debug: console.log,
 				error: console.error,
 				info: console.info
+			},
+			level: 'error',
+			chromeLaunchConfig: {
+				headless: false,
+				devtools: true,
 			}
 		}
 	} catch (error) {
@@ -34,9 +41,13 @@ const runApp = () => {
 		fs.readdir('./teste', {
 			encoding: 'utf-8'
 		}, async (error, files) => {
-			const urlList = files.map((file) => pa11y(`./${folder}/${file}`, pa11yOptions(file.split('.')[0])))
+			const urlList = files
+				.filter(file => file.endsWith('.htm') || file.endsWith('.html'))
+				.map((file) => pa11y(`./${folder}/${file}`, pa11yOptions(file.split('.')[0])))
+
 			const results = await Promise.all(urlList);
-			console.log(results[0].issues)
+
+			console.log(JSON.stringify(results, null, 2))
 		})
 	} catch (error) {
 		console.log(error)
