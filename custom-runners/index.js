@@ -1368,10 +1368,11 @@ runner.run = (options, pa11y) => {
 			});
 		});
 
-		testar('Todas as imagens têm atributo alt', () => {
+
+		testar('Todas as imagens têm id', () => {
 			const images = $('img');
 			images.each(function () {
-				expect($(this).attr('alt')).to.be.ok();
+				expect($(this).attr('id')).to.have.ok();
 			});
 		});
 
@@ -1411,6 +1412,28 @@ runner.run = (options, pa11y) => {
 			const htmlTag = $('html');
 			expect(htmlTag.attr('lang')).to.be.ok();
 		});
+
+		function verificarIdsDuplicados() {
+			const ids = new Set();
+			const idsDuplicados = [];
+			const elementosComIds = $('[id]');
+
+			elementosComIds.each((index, element) => {
+				const id = $(element).attr('id');
+				if (ids.has(id)) {
+					idsDuplicados.push(id);
+				} else {
+					ids.add(id);
+				}
+			});
+			expect(idsDuplicados).to.be.empty;
+		}
+		testar('Verificação de IDs', () => {
+			verificarIdsDuplicados();
+		});
+
+
+
 
 		// Não funciona porque estamos no contexto errado. 
 		//

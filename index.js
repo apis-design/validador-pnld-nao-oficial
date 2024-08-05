@@ -1,5 +1,5 @@
-const fs = require("fs")
-const pa11y = require("pa11y")
+import fs from 'fs'
+import pa11y from 'pa11y'
 
 let folder = 'teste'
 
@@ -38,7 +38,7 @@ const pa11yOptions = (filename) => {
 
 const runApp = () => {
 	try {
-		fs.readdir('./teste', {
+		fs.readdir(`./${folder}`, {
 			encoding: 'utf-8'
 		}, async (error, files) => {
 			const urlList = files
@@ -47,7 +47,7 @@ const runApp = () => {
 
 			const results = await Promise.all(urlList);
 
-			fs.writeFile('teste.json', JSON.stringify(results), {
+			fs.writeFile(`${folder}.json`, JSON.stringify(results), {
 				encoding: 'utf-8'
 			}, (err) => {
 				throw err
