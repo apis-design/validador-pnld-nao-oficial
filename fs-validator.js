@@ -41,43 +41,6 @@ function testar(testDescription, testFunction) {
     });
 }
 
-testar('Verifica se o diretório base existe', () => {
-    expect(basePath).to.be.a.directory(`Não possui o diretório ${basePath}`);
-});
-
-// 5.1 Estrutura
-testar('Verifica se o diretório resources existe', () => {
-    expect(path.join(basePath, 'resources')).to.be.a.directory(`Não possui o diretório ${path.join(basePath, 'resources')}.  Veja: 5.1 Estrutura`);
-});
-
-testar('Verifica se o diretório content existe', () => {
-    expect(path.join(basePath, 'content')).to.be.a.directory(`Não possui o diretório ${path.join(basePath, 'content')}  Veja: 5.1 Estrutura`);
-});
-
-testar('Verifica se o diretório resources/images existe', () => {
-    expect(path.join(basePath, 'resources/images')).to.be.a.directory(`Não possui o diretório ${path.join(basePath, 'resources/images')}.  Veja: 5.1 Estrutura`);
-});
-
-testar('Verifica se o diretório resources/scripts existe', () => {
-    expect(path.join(basePath, 'resources/scripts')).to.be.a.directory(`Não possui o diretório ${path.join(basePath, 'resources/scripts')}.  Veja: 5.1 Estrutura`);
-});
-
-testar('Verifica se o diretório resources/styles existe', () => {
-    expect(path.join(basePath, 'resources/styles')).to.be.a.directory(`Não possui o diretório ${path.join(basePath, 'resources/styles')}.  Veja: 5.1 Estrutura`);
-});
-
-testar('Verifica se o diretório resources/videos existe', () => {
-    expect(path.join(basePath, 'resources/videos')).to.be.a.directory(`Não possui o diretório ${path.join(basePath, 'resources/videos')}.  Veja: 5.1 Estrutura`);
-});
-
-testar('Verifica se o diretório resources/audios existe', () => {
-    expect(path.join(basePath, 'resources/audios')).to.be.a.directory(`Não possui o diretório ${path.join(basePath, 'resources/audios')}.  Veja: 5.1 Estrutura`);
-});
-
-testar('Verifica se o diretório resources/extras existe', () => {
-    expect(path.join(basePath, 'resources/extras')).to.be.a.directory(`Não possui o diretório ${path.join(basePath, 'resources/extras')}.  Veja: 5.1 Estrutura`);
-});
-
 // 5.4 Pasta de recursos
 testar('Verifica se o arquivo index.html existe', () => {
     expect(path.join(basePath, 'index.html')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'index.html')}. 5.4 Pasta de recursos`);
@@ -93,6 +56,17 @@ testar('Verifica se o arquivo content.opf existe', () => {
 
 testar('Verifica se o arquivo cover.jpeg existe', () => {
     expect(path.join(basePath, 'cover.jpeg')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'cover.jpeg')}. 5.4 Pasta de recursos`);
+});
+
+const allowedDirectories = ['resources', 'content', 'images', 'scripts', 'styles', 'videos', 'audios', 'extras'];
+testar('Verifica se as pastas na raiz são permitidas', () => {
+    const rootItems = fs.readdirSync(basePath);
+    rootItems.forEach(item => {
+        const itemPath = path.join(basePath, item);
+        if (fs.lstatSync(itemPath).isDirectory() && !allowedDirectories.includes(item)) {
+            throw new Error(`Diretório não permitido encontrado na raiz: ${item}. Permitidos: ${allowedDirectories.join(', ')}`);
+        }
+    });
 });
 
 // 5.2 Nomenclatura
