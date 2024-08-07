@@ -42,23 +42,47 @@ function testar(testDescription, testFunction) {
     });
 }
 
+// 5.1 Estrutura
+const allowedDirectoriesInRoot = ['resources', 'content'];
+testar('Verifica se as pastas na raiz são permitidas', () => {
+    const rootItems = fs.readdirSync(basePath);
+    rootItems.forEach(item => {
+        const itemPath = path.join(basePath, item);
+        if (fs.lstatSync(itemPath).isDirectory() && !allowedDirectoriesInRoot.includes(item)) {
+            throw new Error(`Diretório não permitido encontrado na raiz: ${item}. Permitidos: ${allowedDirectoriesInRoot.join(', ')}. 5.1 Estrutura`);
+        }
+    });
+});
 
-// 5.2 Nomenclatura
+const allowedFilesInRoot = ['index.html', 'cover.jpeg', 'toc.ncx', 'content.opf'];
+testar('Verifica se os arquivos na raiz são permitidos', () => {
+    const rootItems = fs.readdirSync(basePath);
+    rootItems.forEach(item => {
+        const itemPath = path.join(basePath, item);
+        if (fs.lstatSync(itemPath).isFile() && !allowedFilesInRoot.includes(item)) {
+            throw new Error(`Arquivo não permitido encontrado na raiz: ${item}. Permitidos: ${allowedFilesInRoot.join(', ')}. 5.1 Estrutura`);
+        }
+    });
+});
+
+
 function checkNamingConventions(basePath) {
+    // 5.2 Nomenclatura
     function checkName(name, fullPath) {
         const invalidNameRegex = /[^a-zA-Z0-9._-]|^[0-9]/;
 
         if (invalidNameRegex.test(name)) {
-            throw new Error(`Nome inválido encontrado: ${name} em ${fullPath}. Veja: 5.2 Nomenclatura`);
+            throw new Error(`Nome inválido encontrado: ${name} em ${fullPath}. 5.2 Nomenclatura: Todas as pastas adicionadas ao projeto deverão ser nomeadas utilizando caracteres minúsculos, sem caracteres especiais e/ou acentos e separados por linha baixa "_" (underline), não sendo permitido iniciar o nome com números.`);
         }
     }
 
+    // 5.3 Pasta de conteúdo || 5.4 Pasta de recursos
     function checkFileLocation(itemPath) {
         const extName = path.extname(itemPath).toLowerCase();
         const relPath = path.relative(basePath, itemPath);
         const parts = relPath.split(path.sep);
-        const fileName = parts.pop(); // Remove the file name from the parts
-        const parentDirs = parts; // Get all parent directories
+        const fileName = parts.pop();
+        const parentDirs = parts;
 
         // Exceção para cover.jpeg na raiz
         if (fileName === 'cover.jpeg' && parentDirs.length === 0) {
@@ -70,7 +94,6 @@ function checkNamingConventions(basePath) {
             return;
         }
 
-        // Definindo diretórios baseados em tipos MIME
         const mimeType = mime.lookup(extName);
         let expectedDir;
 
@@ -90,11 +113,11 @@ function checkNamingConventions(basePath) {
                     break;
                 case 'text':
                 case 'application':
-                    if (extName === '.css' || extName === '.scss' || extName === '.sass' || extName === '.less' || extName === '.styl') {
+                    if (['.css', '.scss', '.sass', '.less', '.styl'].includes(extName)) {
                         expectedDir = 'resources/styles';
                     } else if (extName === '.js') {
                         expectedDir = 'resources/scripts';
-                    } else if (extName === '.html') {
+                    } else if (['.html', '.htm', '.xhtml', '.phtml'].includes(extName)) {
                         expectedDir = 'resources/content';
                     }
                     break;
@@ -106,9 +129,16 @@ function checkNamingConventions(basePath) {
             expectedDir = null;
         }
 
-        // Verificando se o arquivo está diretamente no diretório correto
-        if (expectedDir && !parentDirs.includes(expectedDir.split('/').pop())) {
-            throw new Error(`${itemPath} deve estar diretamente dentro de ${expectedDir}: encontrado em '${path.join('resources', ...parentDirs)}'`);
+        if (['.html', '.htm', '.xhtml', '.phtml'].includes(extName)) {
+            // 5.3 Pasta de conteúdo
+            if (expectedDir && !parentDirs.includes(expectedDir.split('/').pop())) {
+                throw new Error(`${itemPath} deve estar diretamente dentro de ${expectedDir}: encontrado em '${path.join('resources', ...parentDirs)}'. 5.3 Pasta de conteúdo. Na pasta de conteúdo deverá ter apenas as páginas em HTML que representam o conteúdo da obra.`);
+            }
+        } else {
+            // 5.4 Pasta de recursos
+            if (expectedDir && !parentDirs.includes(expectedDir.split('/').pop())) {
+                throw new Error(`${itemPath} deve estar diretamente dentro de ${expectedDir}: encontrado em '${path.join('resources', ...parentDirs)}'. 5.4 Pasta de recursos. A estrutura principal de recursos deverá ser mantida de acordo com a necessidade do projeto, sendo que todos os recursos devem ser alocados dentro de suas respectivas pastas.`);
+            }
         }
     }
 
@@ -135,18 +165,6 @@ function checkNamingConventions(basePath) {
 
     traverseDirectory(basePath);
 }
-
-// 5.4 Pasta de recursos
-const allowedDirectoriesInRoot = ['resources', 'content'];
-testar('Verifica se as pastas na raiz são permitidas', () => {
-    const rootItems = fs.readdirSync(basePath);
-    rootItems.forEach(item => {
-        const itemPath = path.join(basePath, item);
-        if (fs.lstatSync(itemPath).isDirectory() && !allowedDirectoriesInRoot.includes(item)) {
-            throw new Error(`Diretório não permitido encontrado na raiz: ${item}. Permitidos: ${allowedDirectoriesInRoot.join(', ')}. 5.4 Pasta de recursos`);
-        }
-    });
-});
 
 // 5.5 Criação do arquivo de Capa
 testar('Verifica se o arquivo cover.jpeg existe', () => {
