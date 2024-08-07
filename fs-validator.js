@@ -12,6 +12,7 @@ import {
 import path from "path"
 
 import fs from "fs"
+import mime from "mime-types"
 
 use(chaiFs);
 
@@ -41,45 +42,6 @@ function testar(testDescription, testFunction) {
     });
 }
 
-// 5.4 Pasta de recursos
-testar('Verifica se o arquivo index.html existe', () => {
-    expect(path.join(basePath, 'index.html')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'index.html')}. 5.4 Pasta de recursos`);
-});
-
-testar('Verifica se o arquivo toc.ncx existe', () => {
-    expect(path.join(basePath, 'toc.ncx')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'toc.npx')}. 5.4 Pasta de recursos`);
-});
-
-testar('Verifica se o arquivo content.opf existe', () => {
-    expect(path.join(basePath, 'content.opf')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'content.opf')}. 5.4 Pasta de recursos`);
-});
-
-testar('Verifica se o arquivo cover.jpeg existe', () => {
-    expect(path.join(basePath, 'cover.jpeg')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'cover.jpeg')}. 5.4 Pasta de recursos`);
-});
-
-const allowedDirectoriesInRoot = ['resources', 'content'];
-testar('Verifica se as pastas na raiz são permitidas', () => {
-    const rootItems = fs.readdirSync(basePath);
-    rootItems.forEach(item => {
-        const itemPath = path.join(basePath, item);
-        if (fs.lstatSync(itemPath).isDirectory() && !allowedDirectoriesInRoot.includes(item)) {
-            throw new Error(`Diretório não permitido encontrado na raiz: ${item}. Permitidos: ${allowedDirectoriesInRoot.join(', ')}. 5.4 Pasta de recursos`);
-        }
-    });
-});
-
-const allowedDirectoriesInResources = ['images', 'scripts', 'styles', 'videos', 'audios', 'fonts', 'extras']
-testar('Verifica se as pastas no resources são permitidas', () => {
-    const resourcesPath = path.join(basePath, 'resources');
-    const rootItems = fs.readdirSync(resourcesPath);
-    rootItems.forEach(item => {
-        const itemPath = path.join(resourcesPath, item);
-        if (fs.lstatSync(itemPath).isDirectory() && !allowedDirectoriesInResources.includes(item)) {
-            throw new Error(`Diretório não permitido encontrado em resources: ${item}. Permitidos: ${allowedDirectoriesInResources.join(', ')}. 5.4 Pasta de recursos`);
-        }
-    });
-});
 
 // 5.2 Nomenclatura
 function checkNamingConventions(basePath) {
@@ -95,53 +57,57 @@ function checkNamingConventions(basePath) {
         const extName = path.extname(itemPath).toLowerCase();
         const relPath = path.relative(basePath, itemPath);
         const parts = relPath.split(path.sep);
-        const fileName = parts.pop();
-        const parentDirs = parts;
+        const fileName = parts.pop(); // Remove the file name from the parts
+        const parentDirs = parts; // Get all parent directories
 
+        // Exceção para cover.jpeg na raiz
         if (fileName === 'cover.jpeg' && parentDirs.length === 0) {
             return;
         }
 
-        const validDirectories = {
-            '.js': 'scripts',
-            '.css': 'styles',
-            '.scss': 'styles',
-            '.sass': 'styles',
-            '.less': 'styles',
-            '.styl': 'styles',
-            '.ttf': 'fonts',
-            '.otf': 'fonts',
-            '.woff': 'fonts',
-            '.woff2': 'fonts',
-            '.eot': 'fonts',
-            '.png': 'images',
-            '.jpg': 'images',
-            '.jpeg': 'images',
-            '.gif': 'images',
-            '.bmp': 'images',
-            '.tiff': 'images',
-            '.webp': 'images',
-            '.svg': 'images',
-            '.mp4': 'videos',
-            '.avi': 'videos',
-            '.mov': 'videos',
-            '.wmv': 'videos',
-            '.mkv': 'videos',
-            '.flv': 'videos',
-            '.webm': 'videos',
-            '.mpeg': 'videos',
-            '.mpg': 'videos',
-            '.mp3': 'audios',
-            '.wav': 'audios',
-            '.aac': 'audios',
-            '.flac': 'audios',
-            '.ogg': 'audios',
-            '.wma': 'audios'
-        };
+        // Exceção para index.html na raiz
+        if (fileName === 'index.html' && parentDirs.length === 0) {
+            return;
+        }
 
+        // Definindo diretórios baseados em tipos MIME
+        const mimeType = mime.lookup(extName);
+        let expectedDir;
 
-        const expectedDir = `resources/${validDirectories[extName]}`;
-        if (validDirectories[extName] && !parentDirs.includes(validDirectories[extName])) {
+        if (mimeType) {
+            switch (mimeType.split('/')[0]) {
+                case 'image':
+                    expectedDir = 'resources/images';
+                    break;
+                case 'video':
+                    expectedDir = 'resources/videos';
+                    break;
+                case 'audio':
+                    expectedDir = 'resources/audios';
+                    break;
+                case 'font':
+                    expectedDir = 'resources/fonts';
+                    break;
+                case 'text':
+                case 'application':
+                    if (extName === '.css' || extName === '.scss' || extName === '.sass' || extName === '.less' || extName === '.styl') {
+                        expectedDir = 'resources/styles';
+                    } else if (extName === '.js') {
+                        expectedDir = 'resources/scripts';
+                    } else if (extName === '.html') {
+                        expectedDir = 'resources/content';
+                    }
+                    break;
+                default:
+                    expectedDir = null;
+                    break;
+            }
+        } else {
+            expectedDir = null;
+        }
+
+        // Verificando se o arquivo está diretamente no diretório correto
+        if (expectedDir && !parentDirs.includes(expectedDir.split('/').pop())) {
             throw new Error(`${itemPath} deve estar diretamente dentro de ${expectedDir}: encontrado em '${path.join('resources', ...parentDirs)}'`);
         }
     }
@@ -169,6 +135,50 @@ function checkNamingConventions(basePath) {
 
     traverseDirectory(basePath);
 }
+
+// 5.4 Pasta de recursos
+const allowedDirectoriesInRoot = ['resources', 'content'];
+testar('Verifica se as pastas na raiz são permitidas', () => {
+    const rootItems = fs.readdirSync(basePath);
+    rootItems.forEach(item => {
+        const itemPath = path.join(basePath, item);
+        if (fs.lstatSync(itemPath).isDirectory() && !allowedDirectoriesInRoot.includes(item)) {
+            throw new Error(`Diretório não permitido encontrado na raiz: ${item}. Permitidos: ${allowedDirectoriesInRoot.join(', ')}. 5.4 Pasta de recursos`);
+        }
+    });
+});
+
+// 5.5 Criação do arquivo de Capa
+testar('Verifica se o arquivo cover.jpeg existe', () => {
+    expect(path.join(basePath, 'cover.jpeg')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'cover.jpeg')}. 5.5 Criação do arquivo de capa`);
+});
+
+// 5.6 Criação do arquivo de navegação
+testar('Verifica se o arquivo toc.ncx existe', () => {
+    expect(path.join(basePath, 'toc.ncx')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'toc.npx')}. 5.6 Criação do arquivo de navegação`);
+});
+
+// 5.7 Criação do arquivo de conteúdo
+testar('Verifica se o arquivo content.opf existe', () => {
+    expect(path.join(basePath, 'content.opf')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'content.opf')}. 5.7 Criação do arquivo de conteúdo`);
+});
+
+// 5.8 Criação da página principal
+testar('Verifica se o arquivo index.html existe', () => {
+    expect(path.join(basePath, 'index.html')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'index.html')}. 5.8 Criação da página principal`);
+});
+
+const allowedDirectoriesInResources = ['images', 'scripts', 'styles', 'videos', 'audios', 'fonts', 'extras']
+testar('Verifica se as pastas no resources são permitidas', () => {
+    const resourcesPath = path.join(basePath, 'resources');
+    const rootItems = fs.readdirSync(resourcesPath);
+    rootItems.forEach(item => {
+        const itemPath = path.join(resourcesPath, item);
+        if (fs.lstatSync(itemPath).isDirectory() && !allowedDirectoriesInResources.includes(item)) {
+            throw new Error(`Diretório não permitido encontrado em resources: ${item}. Permitidos: ${allowedDirectoriesInResources.join(', ')}. 5.4 Pasta de recursos`);
+        }
+    });
+});
 
 
 
