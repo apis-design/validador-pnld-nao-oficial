@@ -15,7 +15,7 @@ const pa11yOptions = (filename) => {
 			reporter: "json",
 			runners: [
 				// 'htmlcs',
-				'../../../custom-runners'
+				'../../../custom-runners/index.cjs'
 			],
 			actions: [
 				//`screen capture ${folder}/${filename}.png`
@@ -47,10 +47,12 @@ const runApp = () => {
 
 			const results = await Promise.all(urlList);
 
-			fs.writeFile(`${folder}.json`, JSON.stringify(results), {
-				encoding: 'utf-8'
-			}, (err) => {
-				throw err
+			fs.writeFile(`${folder}.json`, JSON.stringify(results), err => {
+				if (err) {
+					console.error(err);
+				} else {
+					// file written successfully
+				}
 			})
 
 			// console.log(JSON.stringify(results, null, 2))

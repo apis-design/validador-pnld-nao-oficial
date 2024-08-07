@@ -1383,28 +1383,6 @@ runner.run = (options, pa11y) => {
 		});
 
 
-		function verificarIdsDuplicados() {
-			const ids = new Set();
-			const idsDuplicados = [];
-			const elementosComIds = $('[id]');
-
-			elementosComIds.each((index, element) => {
-				const id = $(element).attr('id');
-				if (ids.has(id)) {
-					idsDuplicados.push(id);
-				} else {
-					ids.add(id);
-				}
-			});
-			expect(idsDuplicados).to.be.empty;
-		}
-		testar('Verificação de IDs', () => {
-			verificarIdsDuplicados();
-		});
-
-
-
-
 		// Não funciona porque estamos no contexto errado. 
 		//
 		// let externalResources = [];
@@ -1433,12 +1411,175 @@ runner.run = (options, pa11y) => {
 		});
 
 		// – tag meta viewport existe e está configurada de forma acessível
+		testar('tag meta viewport existe e está configurada de forma acessível', () => {
+			const metaViewport = $('head>meta[name=viewport]');
+			expect(metaViewport.length).to.equal(1);
+			expect(metaViewport.attr('content')).to.equal("width=device-width, initial-scale=1.0");
+		})
+
 		// – Todos os assets são locais
+
 		// – Não tem nenhum link <a href> apontando para fora do livro
+		testar('Não tem nenhum link <a href> apontando para fora do livro', () => {
+			function listarLinksExternos() {
+				let linksExternos = [];
+				$('a').each(function () {
+					let href = $(this).attr('href');
+					if (href && (href.startsWith('http://') || href.startsWith('https://'))) {
+						linksExternos.push(href);
+					}
+				});
+				return linksExternos
+			}
+
+			const result = listarLinksExternos();
+			expect(result.length).to.equal(0);
+		})
+
 		// – Glossários tem link de ida e de volta
+		testar('Glossários tem link de ida e de volta válidos', () => {
+			function verificarIdsInternos() {
+				var resultado = true;
+
+                // Coleta todos os IDs de links de ida
+                var idsDeIda = [];
+                $('a[href^="#"]').each(function() {
+                    var id = $(this).attr('href').substring(1); // Remove o "#"
+                    if (id && idsDeIda.indexOf(id) === -1) {
+                        idsDeIda.push(id);
+                    }
+                });
+
+                // Verifica se cada ID é um ID de um termo no glossário
+                idsDeIda.forEach(function(id) {
+                    if ($('#' + id).length === 0) {
+                        console.log('O ID de ida "#' + id + '" não corresponde a um termo no glossário.');
+                        resultado = false;
+                    }
+                });
+
+                return resultado;
+			}
+
+			function verificarLinksDeIdaEVoltaGlossario() {
+				var idsInternosOk = verificarIdsInternos();
+				var resultado = true;
+
+				if (!idsInternosOk) {
+					console.log('Há problemas com alguns IDs internos.');
+					return;
+				}
+
+				// Itera sobre cada link na página principal
+				$('a[href^="#"]').each(function () {
+					var linkIda = $(this).attr('href');
+					var linkIdaId = $(this).attr('id');
+					var termoId = linkIda.substring(1); // Remove o "#"
+					var termo = $('#' + termoId);
+
+					// Verifica se o termo existe no glossário
+					if (termo.length === 0) {
+						console.log('O link de ida "' + linkIda + '" não leva a um termo existente.');
+						resultado = false;
+						return; // Encerra a iteração atual
+					}
+
+					// Verifica se o link de volta dentro do termo é correto
+					var linkVolta = termo.next('dd').find('a');
+					var linkVoltaId = linkVolta.attr('href');
+
+					if (linkVoltaId === linkIdaId) {
+						console.log('O link de volta dentro do termo "' + termoId + '" está correto.');
+						resultado = true;
+					}
+				});
+
+				return resultado
+			}
+
+			const result = verificarLinksDeIdaEVoltaGlossario();
+			expect(result).to.equal(true);
+		})
+
 		// – Glossários tem a formatação correta (dt, dl, dd)
+		testar('Glossários tem a formatação correta (dt, dl, dd)', () => {
+			function verificarGlossario() {
+				let valido = true;
+
+				$('dl').each(function () {
+					let $dl = $(this);
+					let termos = $dl.find('dt');
+					let definicoes = $dl.find('dd');
+
+					if (termos.length === 0 || definicoes.length === 0) {
+						console.log('Erro: O elemento <dl> está vazio ou não contém <dt> e <dd>.');
+						valido = false;
+						return;
+					}
+
+					if (termos.length !== definicoes.length) {
+						console.log('Erro: O número de <dt> não corresponde ao número de <dd>.');
+						valido = false;
+					}
+
+					termos.each(function (index) {
+						let $dt = $(this);
+						let $dd = definicoes.eq(index);
+
+						if (!$dd.length || $dd.prev().get(0) !== $dt.get(0)) {
+							console.log('Erro: O elemento <dt> não tem uma <dd> correspondente imediatamente após.');
+							valido = false;
+							return false; // Interrompe o loop se houver um erro
+						}
+					});
+				});
+
+				return valido
+			}
+
+			const result = verificarGlossario();
+			expect(result).to.equal(true);
+
+		})
+
 		// – Não tem IDs duplicados
+		testar('Verificação de IDs', () => {
+			function verificarIdsDuplicados() {
+				var ids = [];
+				var duplicates = [];
+
+				$('[id]').each(function () {
+					var id = $(this).attr('id');
+					if (ids.indexOf(id) === -1) {
+						ids.push(id);
+					} else if (duplicates.indexOf(id) === -1) {
+						duplicates.push(id);
+					}
+				});
+				return duplicates
+			}
+			const result = verificarIdsDuplicados();
+			expect(result.length).to.equal(0);
+		});
+
 		// – lista de um item
+		testar('lista com somente um item', () => {
+			function verificarListaComUmItem() {
+				let listaDeUmItem = []
+				$('ul, ol').each(function () {
+					const $list = $(this);
+					if ($list.children().length === 1) {
+						listaDeUmItem.push($list)
+					} else {
+						listaDeUmItem = []
+					}
+				});
+				return listaDeUmItem
+			}
+
+			const result = verificarListaComUmItem();
+			expect(result.length).to.equal(0);
+		})
 
 		// – salto hierárquico
 		testar('O documento não contém salto hierárquico', () => {
@@ -1465,23 +1606,17 @@ runner.run = (options, pa11y) => {
 				return errors;
 			}
 
-			const errors = checkHeadingHierarchy();
+			const result = checkHeadingHierarchy();
 
-			expect(errors.length).to.equal(0);
+			expect(result.length).to.equal(0);
 		});
 
 		// – Separador de página (n sei bem como testar ele pq o edital não exige uma markup muito específica)
 		//      Tem que ler a spec do PNLD, entender como deve ser a section
 		// 
-		// - Aquele monte de tag de metadados que o edital pede no index.html
-		// testar('Tags ', () => {
-		// 	const bodyTag = $('body');
-		// 	expect(bodyTag.attr('xml:lang').toLowerCase()).to.equal("pt-BR" || "es" || "en");
-		// });
 
-
+		// Esses testes tem que ocorrer no index.html
 		// 5.8 Criação da página principal 
-
 		// 		5.8.1 Doctype
 		// Todo arquivo HTML deverá iniciar com a tag DOCTYPE de acordo com a tecnologia escolhida, o HTML5, conforme exemplificado no item 4.1.
 		testar('tag DOCTYPE de acordo com a tecnologia escolhida', () => {
@@ -1493,7 +1628,6 @@ runner.run = (options, pa11y) => {
 				expect(hasDoctype).to.equal('<!DOCTYPE html>');
 			}
 		});
-
 		// 		5.8.2 Head
 		// Na página inicial é obrigatório a inclusão da tag <head> com alguns metadados.
 		testar('Tag Head incluida na página', () => {
@@ -1519,7 +1653,17 @@ runner.run = (options, pa11y) => {
 			expect(metaDescription.attr('content')).to.be.ok();
 		});
 		// - Incluir metadado autor
+		testar('Metadado com nome do autor', () => {
+			const metaAuthor = $('head>meta[name=author]');
+			expect(metaAuthor.length).to.equal(1);
+			expect(metaAuthor.attr('content')).to.be.ok();
+		});
 		// - Incluir metadados para desabilitar a indexação do conteúdo da obra por motores de busca.
+		testar('Metadado que desabilita indexação do conteúdo da obra por motores de busca.', () => {
+			const metaRobots = $('head>meta[name=robots]');
+			expect(metaRobots.length).to.equal(1);
+			expect(metaRobots.attr('content')).to.be.ok();
+		});
 
 		// 		5.8.3 Body
 		// No corpo da página principal é obrigatório a inclusão da tag <body> adicionando as suas propriedades o idioma apresentado.
