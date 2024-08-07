@@ -46,8 +46,8 @@ testar('Verifica se o arquivo index.html existe', () => {
     expect(path.join(basePath, 'index.html')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'index.html')}. 5.4 Pasta de recursos`);
 });
 
-testar('Verifica se o arquivo toc.npx existe', () => {
-    expect(path.join(basePath, 'toc.npx')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'toc.npx')}. 5.4 Pasta de recursos`);
+testar('Verifica se o arquivo toc.ncx existe', () => {
+    expect(path.join(basePath, 'toc.ncx')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'toc.npx')}. 5.4 Pasta de recursos`);
 });
 
 testar('Verifica se o arquivo content.opf existe', () => {
@@ -69,7 +69,7 @@ testar('Verifica se as pastas na raiz são permitidas', () => {
     });
 });
 
-const allowedDirectoriesInResources = ['images', 'scripts', 'styles', 'videos', 'audios', 'extras']
+const allowedDirectoriesInResources = ['images', 'scripts', 'styles', 'videos', 'audios', 'fonts', 'extras']
 testar('Verifica se as pastas no resources são permitidas', () => {
     const resourcesPath = path.join(basePath, 'resources');
     const rootItems = fs.readdirSync(resourcesPath);
@@ -92,64 +92,57 @@ function checkNamingConventions(basePath) {
     }
 
     function checkFileLocation(itemPath) {
+        const extName = path.extname(itemPath).toLowerCase();
         const relPath = path.relative(basePath, itemPath);
-        const extName = path.extname(itemPath);
-        const dirName = path.dirname(relPath);
+        const parts = relPath.split(path.sep);
+        const fileName = parts.pop();
+        const parentDirs = parts;
 
-        const exceptions = ['resources/extras'];
-        if (exceptions.some(exc => dirName.startsWith(exc))) {
+        if (fileName === 'cover.jpeg' && parentDirs.length === 0) {
             return;
         }
 
-        switch (extName) {
-            case '.js':
-                expect(dirName).to.be.oneOf(['resources/scripts'], `${itemPath} deve estar dentro de resources/scripts`);
-                break;
-            case '.css':
-            case '.scss':
-            case '.sass':
-            case '.less':
-            case '.styl':
-                expect(dirName).to.be.oneOf(['resources/styles'], `${itemPath} deve estar dentro de resources/styles`);
-                break;
-            case '.ttf':
-            case '.otf':
-            case '.woff':
-            case '.woff2':
-            case '.eot':
-                expect(dirName).to.be.oneOf(['resources/fontes'], `${itemPath} deve estar dentro de resources/fontes`);
-                break;
-            case '.png':
-            case '.jpg':
-            case '.jpeg':
-            case '.gif':
-            case '.bmp':
-            case '.tiff':
-            case '.webp':
-            case '.svg':
-                expect(dirName).to.be.oneOf(['resources/images'], `${itemPath} deve estar dentro de resources/images`);
-                break;
-            case '.mp4':
-            case '.avi':
-            case '.mov':
-            case '.wmv':
-            case '.mkv':
-            case '.flv':
-            case '.webm':
-            case '.mpeg':
-            case '.mpg':
-                expect(dirName).to.be.oneOf(['resources/videos'], `${itemPath} deve estar dentro de resources/videos`);
-                break;
-            case '.mp3':
-            case '.wav':
-            case '.aac':
-            case '.flac':
-            case '.ogg':
-            case '.wma':
-                expect(dirName).to.be.oneOf(['resources/audios'], `${itemPath} deve estar dentro de resources/audios`);
-                break;
-            default:
-                break;
+        const validDirectories = {
+            '.js': 'scripts',
+            '.css': 'styles',
+            '.scss': 'styles',
+            '.sass': 'styles',
+            '.less': 'styles',
+            '.styl': 'styles',
+            '.ttf': 'fonts',
+            '.otf': 'fonts',
+            '.woff': 'fonts',
+            '.woff2': 'fonts',
+            '.eot': 'fonts',
+            '.png': 'images',
+            '.jpg': 'images',
+            '.jpeg': 'images',
+            '.gif': 'images',
+            '.bmp': 'images',
+            '.tiff': 'images',
+            '.webp': 'images',
+            '.svg': 'images',
+            '.mp4': 'videos',
+            '.avi': 'videos',
+            '.mov': 'videos',
+            '.wmv': 'videos',
+            '.mkv': 'videos',
+            '.flv': 'videos',
+            '.webm': 'videos',
+            '.mpeg': 'videos',
+            '.mpg': 'videos',
+            '.mp3': 'audios',
+            '.wav': 'audios',
+            '.aac': 'audios',
+            '.flac': 'audios',
+            '.ogg': 'audios',
+            '.wma': 'audios'
+        };
+
+
+        const expectedDir = `resources/${validDirectories[extName]}`;
+        if (validDirectories[extName] && !parentDirs.includes(validDirectories[extName])) {
+            throw new Error(`${itemPath} deve estar diretamente dentro de ${expectedDir}: encontrado em '${path.join('resources', ...parentDirs)}'`);
         }
     }
 
