@@ -204,6 +204,10 @@ checkNamingConventions(basePath);
 
 const noPassedList = results.filter((i) => i.runnerExtras.status == 'not passed')
 
-fs.writeFile('erros.json', JSON.stringify(noPassedList), {
-    encoding: 'utf-8'
-}, (error) => {})
+fs.writeFile('error.json', JSON.stringify(noPassedList, null, 2), 'utf-8', (err) => {
+    if (err) {
+        console.error(`Erro ao criar o arquivo error.json: ${err.message}`);
+    } else {
+        console.log(`Arquivo error.json criado com sucesso.`);
+    }
+});

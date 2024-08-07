@@ -1,0 +1,11 @@
+[
+  {
+    "code": "Verifica nomenclatura de image_assets_o84x64zwr_img001_f_a1pmt_u04_pra%CC%81tica_integradora_g25.png",
+    "message": "Verifica nomenclatura de image_assets_o84x64zwr_img001_f_a1pmt_u04_pra%CC%81tica_integradora_g25.png",
+    "type": "notice",
+    "runnerExtras": {
+      "status": "not passed",
+      "errorMessage": "Nome inválido encontrado: image_assets_o84x64zwr_img001_f_a1pmt_u04_pra%CC%81tica_integradora_g25.png em teste/resources/images/image_assets_o84x64zwr_img001_f_a1pmt_u04_pra%CC%81tica_integradora_g25.png. 5.2 Nomenclatura: Todas as pastas adicionadas ao projeto deverão ser nomeadas utilizando caracteres minúsculos, sem caracteres especiais e/ou acentos e separados por linha baixa \"_\" (underline), não sendo permitido iniciar o nome com números."
+    }
+  }
+]
