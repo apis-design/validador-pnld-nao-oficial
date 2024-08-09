@@ -1,15 +1,15 @@
 'use strict';
 
 const path = require('path');
-const utilsPath = path.resolve('custom-runners/utils');
+const scriptsPath = path.resolve('custom-runners/scripts');
 
 const runner = module.exports = {};
 
 runner.supports = '^8.0.0 || ^8.0.0-alpha || ^8.0.0-beta';
 
 runner.scripts = [
-	`${utilsPath}/jquery-3.7.1.slim.min.js`,
-	`${utilsPath}/chai-5.1.1.js`
+	`${scriptsPath}/jquery-3.7.1.slim.min.js`,
+	`${scriptsPath}/chai-5.1.1.js`
 ];
 
 runner.run = (options, pa11y) => {
