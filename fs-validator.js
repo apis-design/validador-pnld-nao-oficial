@@ -66,7 +66,7 @@ testar('Verifica se os arquivos na raiz são permitidos', () => {
 });
 
 
-function checkNamingConventions(basePath) {
+function handleFolderAndFileError(basePath) {
     // 5.2 Nomenclatura
     function checkName(name, fullPath) {
         const invalidNameRegex = /[^a-zA-Z0-9._-]|^[0-9]/;
@@ -200,7 +200,7 @@ testar('Verifica se as pastas no resources são permitidas', () => {
 
 
 
-checkNamingConventions(basePath);
+handleFolderAndFileError(basePath);
 
 const noPassedList = results.filter((i) => i.runnerExtras.status == 'not passed')
 
