@@ -6,7 +6,6 @@ import handleFsError from './helpers/fs-validator.js'
 
 let folderPath = `teste`
 
-
 const errosFsResult = handleFsError(folderPath)
 
 const pa11yOptions = (filename) => {
@@ -44,25 +43,28 @@ const pa11yOptions = (filename) => {
 }
 
 const getAllFiles = (dirPath, arrayOfFiles) => {
-  const files = fs.readdirSync(dirPath)
+	try {
+		const files = fs.readdirSync(dirPath)
 
-  arrayOfFiles = arrayOfFiles || []
+		arrayOfFiles = arrayOfFiles || []
 
-  files.forEach((file) => {
-    if (fs.statSync(path.join(dirPath, file)).isDirectory()) {
-      arrayOfFiles = getAllFiles(path.join(dirPath, file), arrayOfFiles)
-    } else {
-      arrayOfFiles.push(path.join(dirPath, file))
-    }
-  })
+		files.forEach((file) => {
+			if (fs.statSync(path.join(dirPath, file)).isDirectory()) {
+				arrayOfFiles = getAllFiles(path.join(dirPath, file), arrayOfFiles)
+			} else {
+				arrayOfFiles.push(path.join(dirPath, file))
+			}
+		})
 
-  return arrayOfFiles
+		return arrayOfFiles
+	} catch (error) {
+		console.log(error)
+	}
 }
 
-let browser = await puppeteer.launch();
-
-const runApp = () => {
+const runApp = async () => {
 	try {
+		let browser = await puppeteer.launch();
 		const allFiles = getAllFiles(folderPath)
 		const urlList = allFiles
 			.filter(file => file.endsWith('.htm') || file.endsWith('.html'))
@@ -71,7 +73,7 @@ const runApp = () => {
 		let results = Promise.all(urlList);
 
 		results.then((results) => {
-	
+
 			fs.writeFile(`results.json`, JSON.stringify([errosFsResult, ...results], null, 2), err => {
 				if (err) {
 					console.error(err);
@@ -93,7 +95,7 @@ const runApp = () => {
 	} catch (error) {
 		console.log(error)
 	}
-	
+
 }
 
 runApp()
