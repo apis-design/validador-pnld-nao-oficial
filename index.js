@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import pa11y from 'pa11y'
 import puppeteer from 'puppeteer'
-import handleFsError from './utils/fs-validator.js'
+import handleFsError from './helpers/fs-validator.js'
 
 let folderPath = `/Users/design10/APIS design Dropbox/PROJETOS-SERVIDOR/MODERNA - OS 809 - PNLD EJA 2025/06 - Pacotes/04 - HUMANAS_VOL1/07 - 07082024`
 

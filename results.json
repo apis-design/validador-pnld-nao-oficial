@@ -17,8 +17,8 @@
         "message": "Verifica se os arquivos na raiz são permitidos",
         "type": "notice",
         "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "Arquivo não permitido encontrado na raiz: .DS_Store. Permitidos: index.html, cover.jpeg, toc.ncx, content.opf. 5.1 Estrutura"
+          "status": "passed",
+          "errorMessage": null
         }
       },
       {
@@ -69,24 +69,6 @@
       {
         "code": "Verifica se o diretório base existe",
         "message": "Verifica se o diretório base existe",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica nomenclatura de .DS_Store",
-        "message": "Verifica nomenclatura de .DS_Store",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica localização de .DS_Store",
-        "message": "Verifica localização de .DS_Store",
         "type": "notice",
         "runnerExtras": {
           "status": "passed",
