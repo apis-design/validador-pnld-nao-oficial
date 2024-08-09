@@ -1375,7 +1375,7 @@ runner.run = (options, pa11y) => {
 		// })
 
 		// - Todas as imagens tem o atributo alt
-		testar('Todas as imagens têm atributo alt', () => {
+		testar('Todas as tags <img> têm atributo alt (mesmo que vazio)', () => {
 			const images = $('img');
 			images.each(function () {
 				expect($(this).attr('alt')).to.be.ok();
@@ -1411,7 +1411,7 @@ runner.run = (options, pa11y) => {
 		});
 
 		// – tag meta viewport existe e está configurada de forma acessível
-		testar('tag meta viewport existe e está configurada de forma acessível', () => {
+		testar('A tag meta viewport existe e está configurada de forma acessível', () => {
 			const metaViewport = $('head>meta[name=viewport]');
 			expect(metaViewport.length).to.equal(1);
 			expect(metaViewport.attr('content')).to.equal("width=device-width, initial-scale=1.0");
@@ -1420,7 +1420,7 @@ runner.run = (options, pa11y) => {
 		// – Todos os assets são locais
 
 		// – Não tem nenhum link <a href> apontando para fora do livro
-		testar('Não tem nenhum link <a href> apontando para fora do livro', () => {
+		testar('Nenhum link <a href> aponta para fora do livro', () => {
 			function listarLinksExternos() {
 				let linksExternos = [];
 				$('a').each(function () {
@@ -1543,7 +1543,7 @@ runner.run = (options, pa11y) => {
 		})
 
 		// – Não tem IDs duplicados
-		testar('Verificação de IDs', () => {
+		testar('Não há IDs duplicados na página', () => {
 			function verificarIdsDuplicados() {
 				var ids = [];
 				var duplicates = [];
@@ -1563,26 +1563,12 @@ runner.run = (options, pa11y) => {
 		});
 
 		// – lista de um item
-		testar('lista com somente um item', () => {
-			function verificarListaComUmItem() {
-				let listaDeUmItem = []
-				$('ul, ol').each(function () {
-					const $list = $(this);
-					if ($list.children().length === 1) {
-						listaDeUmItem.push($list)
-					} else {
-						listaDeUmItem = []
-					}
-				});
-				return listaDeUmItem
-			}
-
-			const result = verificarListaComUmItem();
-			expect(result.length).to.equal(0);
+		testar('Não tem listas com somente um item', () => {
+			expect($('ul, ol').filter(i => $(i).children().length == 1).length).to.equal(0);
 		})
 
 		// – salto hierárquico
-		testar('O documento não contém salto hierárquico', () => {
+		testar('O documento não contém salto hierárquico de títulos', () => {
 			function checkHeadingHierarchy() {
 				const errors = [];
 				const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
@@ -1630,7 +1616,7 @@ runner.run = (options, pa11y) => {
 		});
 		// 		5.8.2 Head
 		// Na página inicial é obrigatório a inclusão da tag <head> com alguns metadados.
-		testar('Tag Head incluida na página', () => {
+		testar('Tag Head incluída na página', () => {
 			const tagHead = $('head');
 			expect(tagHead.length).to.equal(1);
 		});
@@ -1647,13 +1633,13 @@ runner.run = (options, pa11y) => {
 			expect(tituloObra.text()).to.be.ok();
 		});
 		// - Incluir um metadado para a descrição da obra
-		testar('Metadado com a descrição da obra e com valor', () => {
+		testar('Metadado com a descrição da obra presente e com valor', () => {
 			const metaDescription = $('head>meta[name=description]');
 			expect(metaDescription.length).to.equal(1);
 			expect(metaDescription.attr('content')).to.be.ok();
 		});
 		// - Incluir metadado autor
-		testar('Metadado com nome do autor', () => {
+		testar('Metadado com nome do autor presente e com valor', () => {
 			const metaAuthor = $('head>meta[name=author]');
 			expect(metaAuthor.length).to.equal(1);
 			expect(metaAuthor.attr('content')).to.be.ok();

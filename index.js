@@ -1,7 +1,9 @@
 import fs from 'fs'
+import path from 'path'
 import pa11y from 'pa11y'
+import puppeteer from 'puppeteer'
 
-let folder = 'teste'
+let folderPath = `/Users/clebersantana/APIS\ design\ Dropbox/PROJETOS-SERVIDOR/MODERNA\ -\ OS\ 809\ -\ PNLD\ EJA\ 2025/06\ -\ Pacotes/04\ -\ HUMANAS_VOL1/07\ -\ 07082024`
 
 const pa11yOptions = (filename) => {
 	try {
@@ -29,37 +31,64 @@ const pa11yOptions = (filename) => {
 			chromeLaunchConfig: {
 				headless: true,
 				devtools: true,
-			}
+			},
+			browser: browser
 		}
 	} catch (error) {
 		console.log(error)
 	}
 }
 
+const getAllFiles = (dirPath, arrayOfFiles) => {
+  const files = fs.readdirSync(dirPath)
+
+  arrayOfFiles = arrayOfFiles || []
+
+  files.forEach((file) => {
+    if (fs.statSync(path.join(dirPath, file)).isDirectory()) {
+      arrayOfFiles = getAllFiles(path.join(dirPath, file), arrayOfFiles)
+    } else {
+      arrayOfFiles.push(path.join(dirPath, file))
+    }
+  })
+
+  return arrayOfFiles
+}
+
+let browser = await puppeteer.launch();
+
 const runApp = () => {
 	try {
-		fs.readdir(`./${folder}`, {
-			encoding: 'utf-8'
-		}, async (error, files) => {
-			const urlList = files
-				.filter(file => file.endsWith('.htm') || file.endsWith('.html'))
-				.map((file) => pa11y(`./${folder}/${file}`, pa11yOptions(file.split('.')[0])))
+		const allFiles = getAllFiles(folderPath)
+		const urlList = allFiles
+			.filter(file => file.endsWith('.htm') || file.endsWith('.html'))
+			.map((file) => pa11y(file, pa11yOptions(path.basename(file).split('.')[0])))
 
-			const results = await Promise.all(urlList);
+		const results = Promise.all(urlList);
 
-			fs.writeFile(`${folder}.json`, JSON.stringify(results), err => {
+		results.then((results) => {
+			fs.writeFile(`results.json`, JSON.stringify(results, null, 2), err => {
 				if (err) {
 					console.error(err);
 				} else {
 					// file written successfully
 				}
 			})
-
-			// console.log(JSON.stringify(results, null, 2))
+			fs.writeFile(`results.js`, 'var testResults = ' + JSON.stringify(results, null, 2), err => {
+				if (err) {
+					console.error(err);
+				} else {
+					// file written successfully
+				}
+			})
+			browser.close();
 		})
+
+		// console.log(JSON.stringify(results, null, 2))
 	} catch (error) {
 		console.log(error)
 	}
+	
 }
 
 runApp()
