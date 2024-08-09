@@ -41,8 +41,8 @@ runner.run = (options, pa11y) => {
 							if ("function" == typeof Assertion.prototype[s]) {
 								var c = this[s];
 								for (var a in this[s] = function () {
-									return c.apply(i, arguments)
-								}, Assertion.prototype) Assertion.prototype.hasOwnProperty(a) && a != s && (this[s][a] = bind(f[a], f))
+										return c.apply(i, arguments)
+									}, Assertion.prototype) Assertion.prototype.hasOwnProperty(a) && a != s && (this[s][a] = bind(f[a], f))
 							} else this[s] = f
 						}
 				}
@@ -214,8 +214,8 @@ runner.run = (options, pa11y) => {
 				var r = keys(this.obj),
 					o = t.length;
 				if (n = every(t, function (t) {
-					return ~indexOf(r, t)
-				}), !this.flags.not && this.flags.only && (n = n && t.length == r.length), o > 1) {
+						return ~indexOf(r, t)
+					}), !this.flags.not && this.flags.only && (n = n && t.length == r.length), o > 1) {
 					var u = (t = map(t, function (t) {
 						return i(t)
 					})).pop();
@@ -233,12 +233,12 @@ runner.run = (options, pa11y) => {
 				return this.assert(!1, e, e), this
 			};
 			var getOuterHTML = function (t) {
-				if ("outerHTML" in t) return t.outerHTML;
-				var e, n = "http://www.w3.org/1999/xhtml",
-					r = document.createElementNS(n, "_"),
-					o = new XMLSerializer;
-				return document.xmlVersion ? o.serializeToString(t) : (r.appendChild(t.cloneNode(!1)), e = r.innerHTML.replace("><", ">" + t.innerHTML + "<"), r.innerHTML = "", e)
-			},
+					if ("outerHTML" in t) return t.outerHTML;
+					var e, n = "http://www.w3.org/1999/xhtml",
+						r = document.createElementNS(n, "_"),
+						o = new XMLSerializer;
+					return document.xmlVersion ? o.serializeToString(t) : (r.appendChild(t.cloneNode(!1)), e = r.innerHTML.replace("><", ">" + t.innerHTML + "<"), r.innerHTML = "", e)
+				},
 				isDOMElement = function (t) {
 					return "object" == typeof HTMLElement ? t instanceof HTMLElement : t && "object" == typeof t && 1 === t.nodeType && "string" == typeof t.nodeName
 				};
@@ -280,10 +280,10 @@ runner.run = (options, pa11y) => {
 					var l = map(p, function (e) {
 						var u, f;
 						if (t.__lookupGetter__ && (t.__lookupGetter__(e) ? f = t.__lookupSetter__(e) ? o("[Getter/Setter]", "special") : o("[Getter]", "special") : t.__lookupSetter__(e) && (f = o("[Setter]", "special"))), 0 > indexOf(a, e) && (u = "[" + e + "]"), !f && (0 > indexOf(r, t[e]) ? (f = null === n ? i(t[e]) : i(t[e], n - 1)).indexOf("\n") > -1 && (f = isArray(t) ? map(f.split("\n"), function (t) {
-							return "  " + t
-						}).join("\n").substr(2) : "\n" + map(f.split("\n"), function (t) {
-							return "   " + t
-						}).join("\n")) : f = o("[Circular]", "special")), void 0 === u) {
+								return "  " + t
+							}).join("\n").substr(2) : "\n" + map(f.split("\n"), function (t) {
+								return "   " + t
+							}).join("\n")) : f = o("[Circular]", "special")), void 0 === u) {
 							if ("Array" === s && e.match(/^\d+$/)) return f;
 							u = (u = json.stringify("" + e)).match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/) ? o(u = u.substr(1, u.length - 2), "name") : o(u = u.replace(/'/g, "\\'").replace(/\\"/g, '"').replace(/(^"|"$)/g, "'"), "string")
 						}
@@ -336,7 +336,7 @@ runner.run = (options, pa11y) => {
 				var r = 0;
 				if (arguments.length >= 2) var o = arguments[1];
 				else
-					for (; ;) {
+					for (;;) {
 						if (r in this) {
 							o = this[r++];
 							break
@@ -465,8 +465,8 @@ runner.run = (options, pa11y) => {
 						return reviver.call(t, e, o)
 					}
 					if (text = String(text), cx.lastIndex = 0, cx.test(text) && (text = text.replace(cx, function (t) {
-						return "\\u" + ("0000" + t.charCodeAt(0).toString(16)).slice(-4)
-					})), /^[\],:{}\s]*$/.test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, "@").replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, "]").replace(/(?:^|:|,)(?:\s*\[)+/g, ""))) return j = eval("(" + text + ")"), "function" == typeof reviver ? walk({
+							return "\\u" + ("0000" + t.charCodeAt(0).toString(16)).slice(-4)
+						})), /^[\],:{}\s]*$/.test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, "@").replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, "]").replace(/(?:^|:|,)(?:\s*\[)+/g, ""))) return j = eval("(" + text + ")"), "function" == typeof reviver ? walk({
 						"": j
 					}, "") : j;
 					throw SyntaxError("JSON.parse")
@@ -510,22 +510,22 @@ runner.run = (options, pa11y) => {
 				return !t || !r && !A(n) && !c(n) ? [] : !r && Ht.test(t) ? n.getElementsByClassName(t.slice(1).replace(/\\/g, "")) : !r && jt.test(t) ? n.getElementsByTagName(t) : n.querySelectorAll(t)
 			}
 			var dt = function () {
-				function t(n, r) {
-					if (n) {
-						if (Y(n)) return n;
-						var i = n;
-						if (g(n)) {
-							var e = r || C;
-							if (i = Pt.test(n) && A(e) ? e.getElementById(n.slice(1).replace(/\\/g, "")) : $t.test(n) ? yt(n) : Y(e) ? e.find(n) : g(e) ? o(e).find(n) : J(n, e), !i) return
-						} else if (O(n)) return this.ready(n);
-						(i.nodeType || i === D) && (i = [i]), this.length = i.length;
-						for (var s = 0, f = this.length; s < f; s++) this[s] = i[s]
+					function t(n, r) {
+						if (n) {
+							if (Y(n)) return n;
+							var i = n;
+							if (g(n)) {
+								var e = r || C;
+								if (i = Pt.test(n) && A(e) ? e.getElementById(n.slice(1).replace(/\\/g, "")) : $t.test(n) ? yt(n) : Y(e) ? e.find(n) : g(e) ? o(e).find(n) : J(n, e), !i) return
+							} else if (O(n)) return this.ready(n);
+							(i.nodeType || i === D) && (i = [i]), this.length = i.length;
+							for (var s = 0, f = this.length; s < f; s++) this[s] = i[s]
+						}
 					}
-				}
-				return t.prototype.init = function (n, r) {
-					return new t(n, r)
-				}, t
-			}(),
+					return t.prototype.init = function (n, r) {
+						return new t(n, r)
+					}, t
+				}(),
 				u = dt.prototype,
 				o = u.init;
 			o.fn = o.prototype = u, u.length = 0, u.splice = _t, typeof Symbol == "function" && (u[Symbol.iterator] = S[Symbol.iterator]);
@@ -594,8 +594,8 @@ runner.run = (options, pa11y) => {
 						var f = e[i];
 						if (n.call(t[f], f, t[f]) === !1) return t
 					} else
-					for (var i = 0, s = t.length; i < s; i++)
-						if (n.call(t[i], i, t[i]) === !1) return t;
+						for (var i = 0, s = t.length; i < s; i++)
+							if (n.call(t[i], i, t[i]) === !1) return t;
 				return t
 			}
 			o.each = d, u.each = function (t) {
@@ -1327,10 +1327,10 @@ runner.run = (options, pa11y) => {
 		let results = []
 
 		/** 
-			* Executa um teste e registra ele na array results 
-			* @param {string} testDescription - 
-			* @param {function} testFunction - 
-			* */
+		 * Executa um teste e registra ele na array results 
+		 * @param {string} testDescription - 
+		 * @param {function} testFunction - 
+		 * */
 		function testar(testDescription, testFunction) {
 			let status;
 			let errorMessage = null;
@@ -1355,13 +1355,13 @@ runner.run = (options, pa11y) => {
 		}
 
 		/*
-			*	Teste: Todos os assets carregaram corretamente
-			*	Descrição: Checa se imagens, scripts, arquivos CSS e outros assets foram carregados
-			*  Tentei usar o page.on, mas esse é o contexto errado pra isso. Esse método run 
-			*  é rodado dentro do browser e o page pertence ao puppeteer.
-			*  A solução é, ou desenvolver um código que faz essa checagem no browser ou
-			*  levar esse teste para o contexto do puppeteer
-			*/
+		 *	Teste: Todos os assets carregaram corretamente
+		 *	Descrição: Checa se imagens, scripts, arquivos CSS e outros assets foram carregados
+		 *  Tentei usar o page.on, mas esse é o contexto errado pra isso. Esse método run 
+		 *  é rodado dentro do browser e o page pertence ao puppeteer.
+		 *  A solução é, ou desenvolver um código que faz essa checagem no browser ou
+		 *  levar esse teste para o contexto do puppeteer
+		 */
 		// let assetsWithErrors = []
 		// Escuta os eventos de request falha e response recebida
 		// page.on('requestfailed', request => {
@@ -1378,7 +1378,7 @@ runner.run = (options, pa11y) => {
 		testar('Todas as tags <img> têm atributo alt (mesmo que vazio)', () => {
 			const images = $('img');
 			images.each(function () {
-				expect($(this).attr('alt')).to.be.ok();
+				expect($(this).attr('alt')).to.not.be.undefined;
 			});
 		});
 
@@ -1441,24 +1441,24 @@ runner.run = (options, pa11y) => {
 			function verificarIdsInternos() {
 				var resultado = true;
 
-                // Coleta todos os IDs de links de ida
-                var idsDeIda = [];
-                $('a[href^="#"]').each(function() {
-                    var id = $(this).attr('href').substring(1); // Remove o "#"
-                    if (id && idsDeIda.indexOf(id) === -1) {
-                        idsDeIda.push(id);
-                    }
-                });
+				// Coleta todos os IDs de links de ida
+				var idsDeIda = [];
+				$('a[href^="#"]').each(function () {
+					var id = $(this).attr('href').substring(1); // Remove o "#"
+					if (id && idsDeIda.indexOf(id) === -1) {
+						idsDeIda.push(id);
+					}
+				});
 
-                // Verifica se cada ID é um ID de um termo no glossário
-                idsDeIda.forEach(function(id) {
-                    if ($('#' + id).length === 0) {
-                        console.log('O ID de ida "#' + id + '" não corresponde a um termo no glossário.');
-                        resultado = false;
-                    }
-                });
+				// Verifica se cada ID é um ID de um termo no glossário
+				idsDeIda.forEach(function (id) {
+					if ($('#' + id).length === 0) {
+						console.log('O ID de ida "#' + id + '" não corresponde a um termo no glossário.');
+						resultado = false;
+					}
+				});
 
-                return resultado;
+				return resultado;
 			}
 
 			function verificarLinksDeIdaEVoltaGlossario() {
@@ -1655,12 +1655,16 @@ runner.run = (options, pa11y) => {
 		// No corpo da página principal é obrigatório a inclusão da tag <body> adicionando as suas propriedades o idioma apresentado.
 		testar('tag BODY possui atributo lang', () => {
 			const bodyTag = $('body');
-			expect(bodyTag.attr('lang')).to.be.ok();
+			expect(bodyTag.attr('lang')).to.not.be.undefined;
 		});
 		testar('A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)', () => {
 			const bodyTag = $('body');
 			const valoresPermitidos = ['pt-br', 'es', 'en']
-			expect(valoresPermitidos.includes(bodyTag.attr('lang').toLowerCase())).to.equal(true);
+			if (!$(bodyTag).attr('lang')) {
+				throw new Error('Não possui atributo lang')
+			} else {
+				expect(valoresPermitidos.includes(bodyTag.attr('lang').toLowerCase())).to.equal(true);
+			}
 		});
 		// Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.
 		// testar('Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.', () => {

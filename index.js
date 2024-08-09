@@ -2,8 +2,12 @@ import fs from 'fs'
 import path from 'path'
 import pa11y from 'pa11y'
 import puppeteer from 'puppeteer'
+import handleFsError from './utils/fs-validator.js'
 
-let folderPath = `/Users/clebersantana/APIS\ design\ Dropbox/PROJETOS-SERVIDOR/MODERNA\ -\ OS\ 809\ -\ PNLD\ EJA\ 2025/06\ -\ Pacotes/04\ -\ HUMANAS_VOL1/07\ -\ 07082024`
+let folderPath = `/Users/design10/APIS design Dropbox/PROJETOS-SERVIDOR/MODERNA - OS 809 - PNLD EJA 2025/06 - Pacotes/04 - HUMANAS_VOL1/07 - 07082024`
+
+
+const errosFsResult = handleFsError(folderPath)
 
 const pa11yOptions = (filename) => {
 	try {
@@ -64,17 +68,18 @@ const runApp = () => {
 			.filter(file => file.endsWith('.htm') || file.endsWith('.html'))
 			.map((file) => pa11y(file, pa11yOptions(path.basename(file).split('.')[0])))
 
-		const results = Promise.all(urlList);
+		let results = Promise.all(urlList);
 
 		results.then((results) => {
-			fs.writeFile(`results.json`, JSON.stringify(results, null, 2), err => {
+	
+			fs.writeFile(`results.json`, JSON.stringify([errosFsResult, ...results], null, 2), err => {
 				if (err) {
 					console.error(err);
 				} else {
 					// file written successfully
 				}
 			})
-			fs.writeFile(`results.js`, 'var testResults = ' + JSON.stringify(results, null, 2), err => {
+			fs.writeFile(`results.js`, 'var testResults = ' + JSON.stringify([errosFsResult, ...results], null, 2), err => {
 				if (err) {
 					console.error(err);
 				} else {
