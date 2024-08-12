@@ -4,9 +4,11 @@ import pa11y from 'pa11y'
 import puppeteer from 'puppeteer'
 import handleFsError from './helpers/fs-validator.js'
 
-let folderPath = `teste`
+let folderPath = `/Users/design10/APIS design Dropbox/PROJETOS-SERVIDOR/MODERNA - OS 809 - PNLD EJA 2025/06 - Pacotes/02 - LINGUAGENS/03 - 07082024`
 
 const errosFsResult = handleFsError(folderPath)
+
+const browser = await puppeteer.launch()
 
 const pa11yOptions = (filename) => {
 	try {

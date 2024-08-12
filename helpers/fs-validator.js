@@ -50,7 +50,7 @@ export default function handleFsError(basePath) {
     function handleFolderAndFileError(basePath) {
         // 5.2 Nomenclatura
         function checkName(name, fullPath) {
-            const invalidNameRegex = /[^a-zA-Z0-9._-]|^[0-9]/;
+            const invalidNameRegex = /^[0-9]|[^a-zA-Z0-9._-]/;
 
             if (invalidNameRegex.test(name)) {
                 throw new Error(`Nome inválido encontrado: ${name} em ${fullPath}. 5.2 Nomenclatura: Todas as pastas/arquivos adicionadas ao projeto deverão ser nomeadas utilizando caracteres minúsculos, sem caracteres especiais e/ou acentos e separados por linha baixa "_" (underline), não sendo permitido iniciar o nome com números.`);
