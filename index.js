@@ -4,7 +4,7 @@ import pa11y from 'pa11y'
 import puppeteer from 'puppeteer'
 import handleFsError from './helpers/fs-validator.js'
 
-let folderPath = `/Users/design10/APIS design Dropbox/PROJETOS-SERVIDOR/MODERNA - OS 809 - PNLD EJA 2025/06 - Pacotes/02 - LINGUAGENS/03 - 07082024`
+let folderPath = `/Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS`
 
 const errosFsResult = handleFsError(folderPath)
 
@@ -22,7 +22,7 @@ const pa11yOptions = (filename) => {
 			reporter: "json",
 			runners: [
 				// 'htmlcs',
-				'../../../custom-runners/index.cjs'
+				'../../../helpers/custom-runners/index.cjs'
 			],
 			actions: [
 				//`screen capture ${folder}/${filename}.png`

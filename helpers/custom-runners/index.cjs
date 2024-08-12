@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-const scriptsPath = path.resolve('custom-runners/scripts');
+const scriptsPath = path.resolve('helpers/custom-runners/scripts');
 
 const runner = module.exports = {};
 

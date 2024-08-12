@@ -1,7 +1,7 @@
 var testResults = [
   {
-    "documentTitle": "/Users/design10/APIS design Dropbox/PROJETOS-SERVIDOR/MODERNA - OS 809 - PNLD EJA 2025/06 - Pacotes/02 - LINGUAGENS/03 - 07082024",
-    "pageUrl": "/Users/design10/APIS design Dropbox/PROJETOS-SERVIDOR/MODERNA - OS 809 - PNLD EJA 2025/06 - Pacotes/02 - LINGUAGENS/03 - 07082024",
+    "documentTitle": "/Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS",
+    "pageUrl": "/Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS",
     "issues": [
       {
         "code": "Verifica se as pastas na raiz são permitidas",
@@ -699,24 +699,6 @@ var testResults = [
       {
         "code": "Verifica nomenclatura de fonts",
         "message": "Verifica nomenclatura de fonts",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica nomenclatura de .DS_Store",
-        "message": "Verifica nomenclatura de .DS_Store",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica localização de .DS_Store",
-        "message": "Verifica localização de .DS_Store",
         "type": "notice",
         "runnerExtras": {
           "status": "passed",
@@ -2130,24 +2112,6 @@ var testResults = [
       {
         "code": "Verifica nomenclatura de images",
         "message": "Verifica nomenclatura de images",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica nomenclatura de .DS_Store",
-        "message": "Verifica nomenclatura de .DS_Store",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica localização de .DS_Store",
-        "message": "Verifica localização de .DS_Store",
         "type": "notice",
         "runnerExtras": {
           "status": "passed",
@@ -8077,35 +8041,17 @@ var testResults = [
         }
       },
       {
-        "code": "Verifica nomenclatura de image_assets_ktj45zvngw---img019_f_a1plc_c02_g25-B.png",
-        "message": "Verifica nomenclatura de image_assets_ktj45zvngw---img019_f_a1plc_c02_g25-B.png",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica localização de image_assets_ktj45zvngw---img019_f_a1plc_c02_g25-B.png",
-        "message": "Verifica localização de image_assets_ktj45zvngw---img019_f_a1plc_c02_g25-B.png",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica nomenclatura de image_assets_ktj45zvngw_img019_f_a1plc_c02_g25-B_%281%29.png",
-        "message": "Verifica nomenclatura de image_assets_ktj45zvngw_img019_f_a1plc_c02_g25-B_%281%29.png",
+        "code": "Verifica nomenclatura de image_assets_ktj45zvngw_img019_f_a1plc_c02_g25-B_(1).png",
+        "message": "Verifica nomenclatura de image_assets_ktj45zvngw_img019_f_a1plc_c02_g25-B_(1).png",
         "type": "notice",
         "runnerExtras": {
           "status": "not passed",
-          "errorMessage": "Nome inválido encontrado: image_assets_ktj45zvngw_img019_f_a1plc_c02_g25-B_%281%29.png em /Users/design10/APIS design Dropbox/PROJETOS-SERVIDOR/MODERNA - OS 809 - PNLD EJA 2025/06 - Pacotes/02 - LINGUAGENS/03 - 07082024/resources/images/image_assets_ktj45zvngw_img019_f_a1plc_c02_g25-B_%281%29.png. 5.2 Nomenclatura: Todas as pastas/arquivos adicionadas ao projeto deverão ser nomeadas utilizando caracteres minúsculos, sem caracteres especiais e/ou acentos e separados por linha baixa \"_\" (underline), não sendo permitido iniciar o nome com números."
+          "errorMessage": "Nome inválido encontrado: image_assets_ktj45zvngw_img019_f_a1plc_c02_g25-B_(1).png em /Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/resources/images/image_assets_ktj45zvngw_img019_f_a1plc_c02_g25-B_(1).png. 5.2 Nomenclatura: Todas as pastas/arquivos adicionadas ao projeto deverão ser nomeadas utilizando caracteres minúsculos, sem caracteres especiais e/ou acentos e separados por linha baixa \"_\" (underline), não sendo permitido iniciar o nome com números."
         }
       },
       {
-        "code": "Verifica localização de image_assets_ktj45zvngw_img019_f_a1plc_c02_g25-B_%281%29.png",
-        "message": "Verifica localização de image_assets_ktj45zvngw_img019_f_a1plc_c02_g25-B_%281%29.png",
+        "code": "Verifica localização de image_assets_ktj45zvngw_img019_f_a1plc_c02_g25-B_(1).png",
+        "message": "Verifica localização de image_assets_ktj45zvngw_img019_f_a1plc_c02_g25-B_(1).png",
         "type": "notice",
         "runnerExtras": {
           "status": "passed",
@@ -8275,6 +8221,24 @@ var testResults = [
         }
       },
       {
+        "code": "Verifica nomenclatura de image_assets_mcnlpmir0j_capa_GUIA_DIG-1.jpg",
+        "message": "Verifica nomenclatura de image_assets_mcnlpmir0j_capa_GUIA_DIG-1.jpg",
+        "type": "notice",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "Verifica localização de image_assets_mcnlpmir0j_capa_GUIA_DIG-1.jpg",
+        "message": "Verifica localização de image_assets_mcnlpmir0j_capa_GUIA_DIG-1.jpg",
+        "type": "notice",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
         "code": "Verifica nomenclatura de image_assets_mdpcvh7aay_img004_f_a1plc_c07_g25.jpg",
         "message": "Verifica nomenclatura de image_assets_mdpcvh7aay_img004_f_a1plc_c07_g25.jpg",
         "type": "notice",
@@ -8311,35 +8275,17 @@ var testResults = [
         }
       },
       {
-        "code": "Verifica nomenclatura de image_assets_mdvvbwulb6---notificacoes.png",
-        "message": "Verifica nomenclatura de image_assets_mdvvbwulb6---notificacoes.png",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica localização de image_assets_mdvvbwulb6---notificacoes.png",
-        "message": "Verifica localização de image_assets_mdvvbwulb6---notificacoes.png",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica nomenclatura de image_assets_mdvvbwulb6_notifica%E2%94%9C_%E2%94%9C_es20.png",
-        "message": "Verifica nomenclatura de image_assets_mdvvbwulb6_notifica%E2%94%9C_%E2%94%9C_es20.png",
+        "code": "Verifica nomenclatura de image_assets_mdvvbwulb6_notifica├_├_es20.png",
+        "message": "Verifica nomenclatura de image_assets_mdvvbwulb6_notifica├_├_es20.png",
         "type": "notice",
         "runnerExtras": {
           "status": "not passed",
-          "errorMessage": "Nome inválido encontrado: image_assets_mdvvbwulb6_notifica%E2%94%9C_%E2%94%9C_es20.png em /Users/design10/APIS design Dropbox/PROJETOS-SERVIDOR/MODERNA - OS 809 - PNLD EJA 2025/06 - Pacotes/02 - LINGUAGENS/03 - 07082024/resources/images/image_assets_mdvvbwulb6_notifica%E2%94%9C_%E2%94%9C_es20.png. 5.2 Nomenclatura: Todas as pastas/arquivos adicionadas ao projeto deverão ser nomeadas utilizando caracteres minúsculos, sem caracteres especiais e/ou acentos e separados por linha baixa \"_\" (underline), não sendo permitido iniciar o nome com números."
+          "errorMessage": "Nome inválido encontrado: image_assets_mdvvbwulb6_notifica├_├_es20.png em /Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/resources/images/image_assets_mdvvbwulb6_notifica├_├_es20.png. 5.2 Nomenclatura: Todas as pastas/arquivos adicionadas ao projeto deverão ser nomeadas utilizando caracteres minúsculos, sem caracteres especiais e/ou acentos e separados por linha baixa \"_\" (underline), não sendo permitido iniciar o nome com números."
         }
       },
       {
-        "code": "Verifica localização de image_assets_mdvvbwulb6_notifica%E2%94%9C_%E2%94%9C_es20.png",
-        "message": "Verifica localização de image_assets_mdvvbwulb6_notifica%E2%94%9C_%E2%94%9C_es20.png",
+        "code": "Verifica localização de image_assets_mdvvbwulb6_notifica├_├_es20.png",
+        "message": "Verifica localização de image_assets_mdvvbwulb6_notifica├_├_es20.png",
         "type": "notice",
         "runnerExtras": {
           "status": "passed",
@@ -8545,35 +8491,17 @@ var testResults = [
         }
       },
       {
-        "code": "Verifica nomenclatura de image_assets_ots3fy3piq---img001_sub__f_a1plc_c09_g25.jpg",
-        "message": "Verifica nomenclatura de image_assets_ots3fy3piq---img001_sub__f_a1plc_c09_g25.jpg",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica localização de image_assets_ots3fy3piq---img001_sub__f_a1plc_c09_g25.jpg",
-        "message": "Verifica localização de image_assets_ots3fy3piq---img001_sub__f_a1plc_c09_g25.jpg",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica nomenclatura de image_assets_ots3fy3piq_img001_sub__f_a1plc_c09_g25_%281%29.jpg",
-        "message": "Verifica nomenclatura de image_assets_ots3fy3piq_img001_sub__f_a1plc_c09_g25_%281%29.jpg",
+        "code": "Verifica nomenclatura de image_assets_ots3fy3piq_img001_sub__f_a1plc_c09_g25_(1).jpg",
+        "message": "Verifica nomenclatura de image_assets_ots3fy3piq_img001_sub__f_a1plc_c09_g25_(1).jpg",
         "type": "notice",
         "runnerExtras": {
           "status": "not passed",
-          "errorMessage": "Nome inválido encontrado: image_assets_ots3fy3piq_img001_sub__f_a1plc_c09_g25_%281%29.jpg em /Users/design10/APIS design Dropbox/PROJETOS-SERVIDOR/MODERNA - OS 809 - PNLD EJA 2025/06 - Pacotes/02 - LINGUAGENS/03 - 07082024/resources/images/image_assets_ots3fy3piq_img001_sub__f_a1plc_c09_g25_%281%29.jpg. 5.2 Nomenclatura: Todas as pastas/arquivos adicionadas ao projeto deverão ser nomeadas utilizando caracteres minúsculos, sem caracteres especiais e/ou acentos e separados por linha baixa \"_\" (underline), não sendo permitido iniciar o nome com números."
+          "errorMessage": "Nome inválido encontrado: image_assets_ots3fy3piq_img001_sub__f_a1plc_c09_g25_(1).jpg em /Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/resources/images/image_assets_ots3fy3piq_img001_sub__f_a1plc_c09_g25_(1).jpg. 5.2 Nomenclatura: Todas as pastas/arquivos adicionadas ao projeto deverão ser nomeadas utilizando caracteres minúsculos, sem caracteres especiais e/ou acentos e separados por linha baixa \"_\" (underline), não sendo permitido iniciar o nome com números."
         }
       },
       {
-        "code": "Verifica localização de image_assets_ots3fy3piq_img001_sub__f_a1plc_c09_g25_%281%29.jpg",
-        "message": "Verifica localização de image_assets_ots3fy3piq_img001_sub__f_a1plc_c09_g25_%281%29.jpg",
+        "code": "Verifica localização de image_assets_ots3fy3piq_img001_sub__f_a1plc_c09_g25_(1).jpg",
+        "message": "Verifica localização de image_assets_ots3fy3piq_img001_sub__f_a1plc_c09_g25_(1).jpg",
         "type": "notice",
         "runnerExtras": {
           "status": "passed",
@@ -9139,24 +9067,6 @@ var testResults = [
         }
       },
       {
-        "code": "Verifica nomenclatura de image_assets_stbca0p2af_capa_LE_DIG-1.jpg",
-        "message": "Verifica nomenclatura de image_assets_stbca0p2af_capa_LE_DIG-1.jpg",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica localização de image_assets_stbca0p2af_capa_LE_DIG-1.jpg",
-        "message": "Verifica localização de image_assets_stbca0p2af_capa_LE_DIG-1.jpg",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
         "code": "Verifica nomenclatura de image_assets_t2iec8bds2_img004_f_a1plc_c04_g25.jpg",
         "message": "Verifica nomenclatura de image_assets_t2iec8bds2_img004_f_a1plc_c04_g25.jpg",
         "type": "notice",
@@ -9679,35 +9589,17 @@ var testResults = [
         }
       },
       {
-        "code": "Verifica nomenclatura de image_assets_wiqljv3szh---img001_f_a1plc_c12_g25.jpg",
-        "message": "Verifica nomenclatura de image_assets_wiqljv3szh---img001_f_a1plc_c12_g25.jpg",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica localização de image_assets_wiqljv3szh---img001_f_a1plc_c12_g25.jpg",
-        "message": "Verifica localização de image_assets_wiqljv3szh---img001_f_a1plc_c12_g25.jpg",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica nomenclatura de image_assets_wiqljv3szh_img001_f_a1plc_c12_g25_%281%29.jpg",
-        "message": "Verifica nomenclatura de image_assets_wiqljv3szh_img001_f_a1plc_c12_g25_%281%29.jpg",
+        "code": "Verifica nomenclatura de image_assets_wiqljv3szh_img001_f_a1plc_c12_g25_(1).jpg",
+        "message": "Verifica nomenclatura de image_assets_wiqljv3szh_img001_f_a1plc_c12_g25_(1).jpg",
         "type": "notice",
         "runnerExtras": {
           "status": "not passed",
-          "errorMessage": "Nome inválido encontrado: image_assets_wiqljv3szh_img001_f_a1plc_c12_g25_%281%29.jpg em /Users/design10/APIS design Dropbox/PROJETOS-SERVIDOR/MODERNA - OS 809 - PNLD EJA 2025/06 - Pacotes/02 - LINGUAGENS/03 - 07082024/resources/images/image_assets_wiqljv3szh_img001_f_a1plc_c12_g25_%281%29.jpg. 5.2 Nomenclatura: Todas as pastas/arquivos adicionadas ao projeto deverão ser nomeadas utilizando caracteres minúsculos, sem caracteres especiais e/ou acentos e separados por linha baixa \"_\" (underline), não sendo permitido iniciar o nome com números."
+          "errorMessage": "Nome inválido encontrado: image_assets_wiqljv3szh_img001_f_a1plc_c12_g25_(1).jpg em /Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/resources/images/image_assets_wiqljv3szh_img001_f_a1plc_c12_g25_(1).jpg. 5.2 Nomenclatura: Todas as pastas/arquivos adicionadas ao projeto deverão ser nomeadas utilizando caracteres minúsculos, sem caracteres especiais e/ou acentos e separados por linha baixa \"_\" (underline), não sendo permitido iniciar o nome com números."
         }
       },
       {
-        "code": "Verifica localização de image_assets_wiqljv3szh_img001_f_a1plc_c12_g25_%281%29.jpg",
-        "message": "Verifica localização de image_assets_wiqljv3szh_img001_f_a1plc_c12_g25_%281%29.jpg",
+        "code": "Verifica localização de image_assets_wiqljv3szh_img001_f_a1plc_c12_g25_(1).jpg",
+        "message": "Verifica localização de image_assets_wiqljv3szh_img001_f_a1plc_c12_g25_(1).jpg",
         "type": "notice",
         "runnerExtras": {
           "status": "passed",
@@ -9841,35 +9733,17 @@ var testResults = [
         }
       },
       {
-        "code": "Verifica nomenclatura de image_assets_xcmilfn11w---img008_f_a1plc_c03_g25.png",
-        "message": "Verifica nomenclatura de image_assets_xcmilfn11w---img008_f_a1plc_c03_g25.png",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica localização de image_assets_xcmilfn11w---img008_f_a1plc_c03_g25.png",
-        "message": "Verifica localização de image_assets_xcmilfn11w---img008_f_a1plc_c03_g25.png",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica nomenclatura de image_assets_xcmilfn11w_img008_f_a1plc_c03_g25_%281%29.png",
-        "message": "Verifica nomenclatura de image_assets_xcmilfn11w_img008_f_a1plc_c03_g25_%281%29.png",
+        "code": "Verifica nomenclatura de image_assets_xcmilfn11w_img008_f_a1plc_c03_g25_(1).png",
+        "message": "Verifica nomenclatura de image_assets_xcmilfn11w_img008_f_a1plc_c03_g25_(1).png",
         "type": "notice",
         "runnerExtras": {
           "status": "not passed",
-          "errorMessage": "Nome inválido encontrado: image_assets_xcmilfn11w_img008_f_a1plc_c03_g25_%281%29.png em /Users/design10/APIS design Dropbox/PROJETOS-SERVIDOR/MODERNA - OS 809 - PNLD EJA 2025/06 - Pacotes/02 - LINGUAGENS/03 - 07082024/resources/images/image_assets_xcmilfn11w_img008_f_a1plc_c03_g25_%281%29.png. 5.2 Nomenclatura: Todas as pastas/arquivos adicionadas ao projeto deverão ser nomeadas utilizando caracteres minúsculos, sem caracteres especiais e/ou acentos e separados por linha baixa \"_\" (underline), não sendo permitido iniciar o nome com números."
+          "errorMessage": "Nome inválido encontrado: image_assets_xcmilfn11w_img008_f_a1plc_c03_g25_(1).png em /Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/resources/images/image_assets_xcmilfn11w_img008_f_a1plc_c03_g25_(1).png. 5.2 Nomenclatura: Todas as pastas/arquivos adicionadas ao projeto deverão ser nomeadas utilizando caracteres minúsculos, sem caracteres especiais e/ou acentos e separados por linha baixa \"_\" (underline), não sendo permitido iniciar o nome com números."
         }
       },
       {
-        "code": "Verifica localização de image_assets_xcmilfn11w_img008_f_a1plc_c03_g25_%281%29.png",
-        "message": "Verifica localização de image_assets_xcmilfn11w_img008_f_a1plc_c03_g25_%281%29.png",
+        "code": "Verifica localização de image_assets_xcmilfn11w_img008_f_a1plc_c03_g25_(1).png",
+        "message": "Verifica localização de image_assets_xcmilfn11w_img008_f_a1plc_c03_g25_(1).png",
         "type": "notice",
         "runnerExtras": {
           "status": "passed",
@@ -9985,35 +9859,17 @@ var testResults = [
         }
       },
       {
-        "code": "Verifica nomenclatura de image_assets_yw718icdpe---img018_f_a1plc_c01_g25.jpg",
-        "message": "Verifica nomenclatura de image_assets_yw718icdpe---img018_f_a1plc_c01_g25.jpg",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica localização de image_assets_yw718icdpe---img018_f_a1plc_c01_g25.jpg",
-        "message": "Verifica localização de image_assets_yw718icdpe---img018_f_a1plc_c01_g25.jpg",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica nomenclatura de image_assets_yw718icdpe_img018_f_a1plc_c01_g25__%281%29.jpg",
-        "message": "Verifica nomenclatura de image_assets_yw718icdpe_img018_f_a1plc_c01_g25__%281%29.jpg",
+        "code": "Verifica nomenclatura de image_assets_yw718icdpe_img018_f_a1plc_c01_g25__(1).jpg",
+        "message": "Verifica nomenclatura de image_assets_yw718icdpe_img018_f_a1plc_c01_g25__(1).jpg",
         "type": "notice",
         "runnerExtras": {
           "status": "not passed",
-          "errorMessage": "Nome inválido encontrado: image_assets_yw718icdpe_img018_f_a1plc_c01_g25__%281%29.jpg em /Users/design10/APIS design Dropbox/PROJETOS-SERVIDOR/MODERNA - OS 809 - PNLD EJA 2025/06 - Pacotes/02 - LINGUAGENS/03 - 07082024/resources/images/image_assets_yw718icdpe_img018_f_a1plc_c01_g25__%281%29.jpg. 5.2 Nomenclatura: Todas as pastas/arquivos adicionadas ao projeto deverão ser nomeadas utilizando caracteres minúsculos, sem caracteres especiais e/ou acentos e separados por linha baixa \"_\" (underline), não sendo permitido iniciar o nome com números."
+          "errorMessage": "Nome inválido encontrado: image_assets_yw718icdpe_img018_f_a1plc_c01_g25__(1).jpg em /Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/resources/images/image_assets_yw718icdpe_img018_f_a1plc_c01_g25__(1).jpg. 5.2 Nomenclatura: Todas as pastas/arquivos adicionadas ao projeto deverão ser nomeadas utilizando caracteres minúsculos, sem caracteres especiais e/ou acentos e separados por linha baixa \"_\" (underline), não sendo permitido iniciar o nome com números."
         }
       },
       {
-        "code": "Verifica localização de image_assets_yw718icdpe_img018_f_a1plc_c01_g25__%281%29.jpg",
-        "message": "Verifica localização de image_assets_yw718icdpe_img018_f_a1plc_c01_g25__%281%29.jpg",
+        "code": "Verifica localização de image_assets_yw718icdpe_img018_f_a1plc_c01_g25__(1).jpg",
+        "message": "Verifica localização de image_assets_yw718icdpe_img018_f_a1plc_c01_g25__(1).jpg",
         "type": "notice",
         "runnerExtras": {
           "status": "passed",
@@ -10534,24 +10390,6 @@ var testResults = [
         }
       },
       {
-        "code": "Verifica nomenclatura de .DS_Store",
-        "message": "Verifica nomenclatura de .DS_Store",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica localização de .DS_Store",
-        "message": "Verifica localização de .DS_Store",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
         "code": "Verifica nomenclatura de g25_a1plcVU_ativismo_redes",
         "message": "Verifica nomenclatura de g25_a1plcVU_ativismo_redes",
         "type": "notice",
@@ -10788,24 +10626,6 @@ var testResults = [
       {
         "code": "Verifica nomenclatura de styles",
         "message": "Verifica nomenclatura de styles",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica nomenclatura de .DS_Store",
-        "message": "Verifica nomenclatura de .DS_Store",
-        "type": "notice",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Verifica localização de .DS_Store",
-        "message": "Verifica localização de .DS_Store",
         "type": "notice",
         "runnerExtras": {
           "status": "passed",
@@ -11527,7 +11347,7 @@ var testResults = [
   },
   {
     "documentTitle": "NOVA MODERNA - PRATICAS EM LINGUAGENS E CULTURA DIGITAL - PNLD 2025 - ENSINO DE JOVENS E ADULTOS",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/creditos.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/creditos.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -11536,7 +11356,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11549,7 +11369,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11562,7 +11382,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11575,7 +11395,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11588,7 +11408,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11601,7 +11421,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11614,7 +11434,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11627,7 +11447,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11640,7 +11460,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11653,7 +11473,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11666,7 +11486,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11679,7 +11499,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11692,7 +11512,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11705,7 +11525,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11718,10 +11538,10 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "expected +0 to equal 1"
+          "status": "passed",
+          "errorMessage": null
         }
       },
       {
@@ -11731,7 +11551,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11744,7 +11564,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11757,7 +11577,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11770,7 +11590,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11783,7 +11603,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11796,7 +11616,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -11809,7 +11629,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -11822,7 +11642,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11835,7 +11655,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11845,7 +11665,7 @@ var testResults = [
   },
   {
     "documentTitle": "NOVA MODERNA - PRATICAS EM LINGUAGENS E CULTURA DIGITAL - PNLD 2025 - ENSINO DE JOVENS E ADULTOS",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/g25003009a1plciniciais.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/g25003009a1plciniciais.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -11854,7 +11674,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11867,7 +11687,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11880,7 +11700,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11893,7 +11713,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11906,7 +11726,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11919,7 +11739,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11932,7 +11752,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11945,7 +11765,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11958,7 +11778,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11971,7 +11791,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11984,7 +11804,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -11997,7 +11817,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12010,7 +11830,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12023,7 +11843,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12036,10 +11856,10 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "expected +0 to equal 1"
+          "status": "passed",
+          "errorMessage": null
         }
       },
       {
@@ -12049,7 +11869,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12062,7 +11882,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12075,7 +11895,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12088,7 +11908,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12101,7 +11921,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12114,7 +11934,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -12127,7 +11947,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -12140,7 +11960,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12153,7 +11973,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12163,7 +11983,7 @@ var testResults = [
   },
   {
     "documentTitle": "NOVA MODERNA - PRATICAS EM LINGUAGENS E CULTURA DIGITAL - PNLD 2025 - ENSINO DE JOVENS E ADULTOS",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/g25003096a1plcpgguia.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/g25003096a1plcpgguia.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -12172,7 +11992,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12185,7 +12005,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12198,7 +12018,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12211,7 +12031,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12224,7 +12044,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12237,7 +12057,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12250,7 +12070,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12263,7 +12083,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12276,7 +12096,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12289,7 +12109,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12302,7 +12122,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12315,7 +12135,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12328,7 +12148,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12341,7 +12161,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12354,10 +12174,10 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "expected +0 to equal 1"
+          "status": "passed",
+          "errorMessage": null
         }
       },
       {
@@ -12367,7 +12187,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12380,7 +12200,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12393,7 +12213,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12406,7 +12226,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12419,7 +12239,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12432,7 +12252,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -12445,7 +12265,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -12458,7 +12278,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12471,7 +12291,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12481,7 +12301,7 @@ var testResults = [
   },
   {
     "documentTitle": "NOVA MODERNA - PRATICAS EM LINGUAGENS E CULTURA DIGITAL - PNLD 2025 - ENSINO DE JOVENS E ADULTOS",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/g25010054a1plcu01.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/g25010054a1plcu01.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -12490,7 +12310,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12503,7 +12323,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12516,7 +12336,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12529,7 +12349,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12542,7 +12362,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12555,7 +12375,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12568,7 +12388,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12581,7 +12401,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12594,7 +12414,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12607,7 +12427,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12620,7 +12440,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12633,7 +12453,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12646,7 +12466,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12659,7 +12479,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12672,10 +12492,10 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "expected +0 to equal 1"
+          "status": "passed",
+          "errorMessage": null
         }
       },
       {
@@ -12685,7 +12505,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12698,7 +12518,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12711,7 +12531,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12724,7 +12544,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12737,7 +12557,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12750,7 +12570,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -12763,7 +12583,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -12776,7 +12596,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12789,7 +12609,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12799,7 +12619,7 @@ var testResults = [
   },
   {
     "documentTitle": "NOVA MODERNA - PRATICAS EM LINGUAGENS E CULTURA DIGITAL - PNLD 2025 - ENSINO DE JOVENS E ADULTOS",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/g25055103a1plcu02.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/g25055103a1plcu02.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -12808,7 +12628,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12821,7 +12641,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12834,7 +12654,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12847,7 +12667,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12860,7 +12680,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12873,7 +12693,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12886,7 +12706,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12899,7 +12719,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12912,7 +12732,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12925,7 +12745,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12938,7 +12758,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12951,7 +12771,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12964,7 +12784,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12977,7 +12797,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -12990,10 +12810,10 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "expected +0 to equal 1"
+          "status": "passed",
+          "errorMessage": null
         }
       },
       {
@@ -13003,7 +12823,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13016,7 +12836,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13029,7 +12849,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13042,7 +12862,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13055,7 +12875,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13068,7 +12888,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -13081,7 +12901,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -13094,7 +12914,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13107,7 +12927,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13117,7 +12937,7 @@ var testResults = [
   },
   {
     "documentTitle": "NOVA MODERNA - PRATICAS EM LINGUAGENS E CULTURA DIGITAL - PNLD 2025 - ENSINO DE JOVENS E ADULTOS",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/g25104150a1plcu03.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/g25104150a1plcu03.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -13126,7 +12946,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13139,7 +12959,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13152,7 +12972,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13165,7 +12985,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13178,7 +12998,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13191,7 +13011,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13204,7 +13024,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13217,7 +13037,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13230,7 +13050,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13243,7 +13063,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13256,7 +13076,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13269,7 +13089,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13282,7 +13102,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13295,7 +13115,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13308,10 +13128,10 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "expected +0 to equal 1"
+          "status": "passed",
+          "errorMessage": null
         }
       },
       {
@@ -13321,7 +13141,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13334,7 +13154,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13347,7 +13167,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13360,7 +13180,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13373,7 +13193,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13386,7 +13206,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -13399,7 +13219,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -13412,7 +13232,325 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "not passed",
+          "errorMessage": "expected false to equal true"
+        }
+      },
+      {
+        "code": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "not passed",
+          "errorMessage": "expected false to equal true"
+        }
+      }
+    ]
+  },
+  {
+    "documentTitle": "NOVA MODERNA - PRATICAS EM LINGUAGENS E CULTURA DIGITAL - PNLD 2025 - ENSINO DE JOVENS E ADULTOS",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/g25151201a1plcu04.html",
+    "issues": [
+      {
+        "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "tag HTML possui atributo lang",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "tag HTML possui atributo lang",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "A tag meta viewport existe e está configurada de forma acessível",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "A tag meta viewport existe e está configurada de forma acessível",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "Nenhum link <a href> aponta para fora do livro",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Nenhum link <a href> aponta para fora do livro",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "Glossários tem link de ida e de volta válidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Glossários tem link de ida e de volta válidos",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "Glossários tem a formatação correta (dt, dl, dd)",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Glossários tem a formatação correta (dt, dl, dd)",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "Não há IDs duplicados na página",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Não há IDs duplicados na página",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "Não tem listas com somente um item",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Não tem listas com somente um item",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "O documento não contém salto hierárquico de títulos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "O documento não contém salto hierárquico de títulos",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "tag DOCTYPE de acordo com a tecnologia escolhida",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "Tag Head incluída na página",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Tag Head incluída na página",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "Tag meta charset presente e com valor UTF-8",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Tag meta charset presente e com valor UTF-8",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "Titulo da obra presente e com valor",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Titulo da obra presente e com valor",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "Metadado com a descrição da obra presente e com valor",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Metadado com a descrição da obra presente e com valor",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "Metadado com nome do autor presente e com valor",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Metadado com nome do autor presente e com valor",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "Tag Body incluida na página",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Tag Body incluida na página",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "tag BODY possui atributo lang",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "tag BODY possui atributo lang",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null
+        }
+      },
+      {
+        "code": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "not passed",
+          "errorMessage": "expected false to equal true"
+        }
+      },
+      {
+        "code": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "not passed",
+          "errorMessage": "expected undefined to equal 'doc-toc'"
+        }
+      },
+      {
+        "code": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
+        "context": "",
+        "selector": "",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13425,7 +13563,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13435,7 +13573,7 @@ var testResults = [
   },
   {
     "documentTitle": "NOVA MODERNA - PRATICAS EM LINGUAGENS E CULTURA DIGITAL - PNLD 2025 - ENSINO DE JOVENS E ADULTOS",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/g25151201a1plcu04.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/g25202208a1plcfinais.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -13444,7 +13582,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13457,7 +13595,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13470,7 +13608,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13483,7 +13621,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13496,7 +13634,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13509,7 +13647,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13522,7 +13660,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13535,7 +13673,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13548,7 +13686,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13561,7 +13699,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13574,7 +13712,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13587,7 +13725,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13600,7 +13738,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13613,7 +13751,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13626,10 +13764,10 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "expected +0 to equal 1"
+          "status": "passed",
+          "errorMessage": null
         }
       },
       {
@@ -13639,7 +13777,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13652,7 +13790,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13665,7 +13803,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13678,7 +13816,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13691,7 +13829,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13704,7 +13842,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -13717,7 +13855,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -13730,7 +13868,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13743,7 +13881,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13753,7 +13891,7 @@ var testResults = [
   },
   {
     "documentTitle": "NOVA MODERNA - PRATICAS EM LINGUAGENS E CULTURA DIGITAL - PNLD 2025 - ENSINO DE JOVENS E ADULTOS",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/g25202208a1plcfinais.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/g253e4capasle.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -13762,7 +13900,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13775,7 +13913,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13788,7 +13926,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13801,7 +13939,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13814,7 +13952,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13827,7 +13965,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13840,7 +13978,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13853,7 +13991,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13866,7 +14004,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13879,7 +14017,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13892,7 +14030,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13905,7 +14043,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13918,7 +14056,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13931,7 +14069,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13944,10 +14082,10 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "expected +0 to equal 1"
+          "status": "passed",
+          "errorMessage": null
         }
       },
       {
@@ -13957,7 +14095,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13970,7 +14108,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13983,7 +14121,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -13996,7 +14134,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14009,7 +14147,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14022,7 +14160,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -14035,7 +14173,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -14048,7 +14186,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14061,7 +14199,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14071,7 +14209,7 @@ var testResults = [
   },
   {
     "documentTitle": "NOVA MODERNA - PRATICAS EM LINGUAGENS E CULTURA DIGITAL - PNLD 2025 - ENSINO DE JOVENS E ADULTOS",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/g253e4capasle.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/g253e4capasmp.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -14080,7 +14218,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14093,7 +14231,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14106,7 +14244,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14119,7 +14257,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14132,7 +14270,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14145,7 +14283,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14158,7 +14296,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14171,7 +14309,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14184,7 +14322,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14197,7 +14335,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14210,7 +14348,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14223,7 +14361,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14236,7 +14374,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14249,7 +14387,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14262,10 +14400,10 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "expected +0 to equal 1"
+          "status": "passed",
+          "errorMessage": null
         }
       },
       {
@@ -14275,7 +14413,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14288,7 +14426,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14301,7 +14439,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14314,7 +14452,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14327,7 +14465,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14340,7 +14478,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -14353,7 +14491,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -14366,7 +14504,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14379,325 +14517,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      }
-    ]
-  },
-  {
-    "documentTitle": "NOVA MODERNA - PRATICAS EM LINGUAGENS E CULTURA DIGITAL - PNLD 2025 - ENSINO DE JOVENS E ADULTOS",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/g253e4capasmp.html",
-    "issues": [
-      {
-        "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "tag HTML possui atributo lang",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "tag HTML possui atributo lang",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "A tag meta viewport existe e está configurada de forma acessível",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "A tag meta viewport existe e está configurada de forma acessível",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Nenhum link <a href> aponta para fora do livro",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Nenhum link <a href> aponta para fora do livro",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Glossários tem link de ida e de volta válidos",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Glossários tem link de ida e de volta válidos",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Glossários tem a formatação correta (dt, dl, dd)",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Glossários tem a formatação correta (dt, dl, dd)",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Não há IDs duplicados na página",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Não há IDs duplicados na página",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Não tem listas com somente um item",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Não tem listas com somente um item",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "O documento não contém salto hierárquico de títulos",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "O documento não contém salto hierárquico de títulos",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "tag DOCTYPE de acordo com a tecnologia escolhida",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Tag Head incluída na página",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Tag Head incluída na página",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Tag meta charset presente e com valor UTF-8",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Tag meta charset presente e com valor UTF-8",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Titulo da obra presente e com valor",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Titulo da obra presente e com valor",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Metadado com a descrição da obra presente e com valor",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Metadado com a descrição da obra presente e com valor",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "expected +0 to equal 1"
-        }
-      },
-      {
-        "code": "Metadado com nome do autor presente e com valor",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Metadado com nome do autor presente e com valor",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Tag Body incluida na página",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Tag Body incluida na página",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "tag BODY possui atributo lang",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "tag BODY possui atributo lang",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "expected false to equal true"
-        }
-      },
-      {
-        "code": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "expected undefined to equal 'doc-toc'"
-        }
-      },
-      {
-        "code": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null
-        }
-      },
-      {
-        "code": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
-        "context": "",
-        "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14707,7 +14527,7 @@ var testResults = [
   },
   {
     "documentTitle": "",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/g25_a1plcVU_ativismo_redes/index.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/g25_a1plcVU_ativismo_redes/index.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -14716,7 +14536,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14729,7 +14549,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14742,7 +14562,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14755,7 +14575,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14768,7 +14588,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14781,7 +14601,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14794,7 +14614,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14807,7 +14627,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14820,7 +14640,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14833,7 +14653,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14846,7 +14666,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14859,7 +14679,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14872,7 +14692,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14885,7 +14705,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -14898,7 +14718,7 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14911,7 +14731,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -14924,7 +14744,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -14937,7 +14757,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -14950,7 +14770,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined not to be undefined"
@@ -14963,7 +14783,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "Não possui atributo lang"
@@ -14976,7 +14796,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -14989,7 +14809,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -15002,7 +14822,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -15015,7 +14835,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -15025,7 +14845,7 @@ var testResults = [
   },
   {
     "documentTitle": "",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/g25_a1plcVU_camera/index.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/g25_a1plcVU_camera/index.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -15034,7 +14854,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15047,7 +14867,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15060,7 +14880,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15073,7 +14893,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15086,7 +14906,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15099,7 +14919,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15112,7 +14932,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15125,7 +14945,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15138,7 +14958,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15151,7 +14971,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15164,7 +14984,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15177,7 +14997,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15190,7 +15010,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15203,7 +15023,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -15216,7 +15036,7 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15229,7 +15049,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -15242,7 +15062,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -15255,7 +15075,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15268,7 +15088,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined not to be undefined"
@@ -15281,7 +15101,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "Não possui atributo lang"
@@ -15294,7 +15114,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -15307,7 +15127,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -15320,7 +15140,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -15333,7 +15153,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -15343,7 +15163,7 @@ var testResults = [
   },
   {
     "documentTitle": "",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/g25_a1plcVU_construir_infograficos/index.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/g25_a1plcVU_construir_infograficos/index.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -15352,7 +15172,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15365,7 +15185,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15378,7 +15198,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15391,7 +15211,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15404,7 +15224,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15417,7 +15237,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15430,7 +15250,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15443,7 +15263,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15456,7 +15276,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15469,7 +15289,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15482,7 +15302,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15495,7 +15315,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15508,7 +15328,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15521,7 +15341,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -15534,7 +15354,7 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15547,7 +15367,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -15560,7 +15380,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -15573,7 +15393,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15586,7 +15406,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined not to be undefined"
@@ -15599,7 +15419,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "Não possui atributo lang"
@@ -15612,7 +15432,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -15625,7 +15445,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -15638,7 +15458,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -15651,7 +15471,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -15661,7 +15481,7 @@ var testResults = [
   },
   {
     "documentTitle": "",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/g25_a1plcVU_cyberbullying/index.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/g25_a1plcVU_cyberbullying/index.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -15670,7 +15490,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15683,7 +15503,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15696,7 +15516,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15709,7 +15529,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15722,7 +15542,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15735,7 +15555,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15748,7 +15568,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15761,7 +15581,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15774,7 +15594,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15787,7 +15607,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15800,7 +15620,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15813,7 +15633,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15826,7 +15646,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15839,7 +15659,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -15852,7 +15672,7 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15865,7 +15685,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -15878,7 +15698,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -15891,7 +15711,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -15904,7 +15724,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined not to be undefined"
@@ -15917,7 +15737,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "Não possui atributo lang"
@@ -15930,7 +15750,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -15943,7 +15763,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -15956,7 +15776,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -15969,7 +15789,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -15979,7 +15799,7 @@ var testResults = [
   },
   {
     "documentTitle": "",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/g25_a1plcVU_fake_news/index.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/g25_a1plcVU_fake_news/index.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -15988,7 +15808,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16001,7 +15821,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16014,7 +15834,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16027,7 +15847,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16040,7 +15860,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16053,7 +15873,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16066,7 +15886,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16079,7 +15899,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16092,7 +15912,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16105,7 +15925,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16118,7 +15938,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16131,7 +15951,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16144,7 +15964,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16157,7 +15977,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -16170,7 +15990,7 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16183,7 +16003,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -16196,7 +16016,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -16209,7 +16029,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16222,7 +16042,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined not to be undefined"
@@ -16235,7 +16055,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "Não possui atributo lang"
@@ -16248,7 +16068,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -16261,7 +16081,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -16274,7 +16094,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -16287,7 +16107,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -16297,7 +16117,7 @@ var testResults = [
   },
   {
     "documentTitle": "",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/g25_a1plcVU_leis_internet/index.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/g25_a1plcVU_leis_internet/index.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -16306,7 +16126,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16319,7 +16139,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16332,7 +16152,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16345,7 +16165,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16358,7 +16178,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16371,7 +16191,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16384,7 +16204,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16397,7 +16217,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16410,7 +16230,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16423,7 +16243,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16436,7 +16256,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16449,7 +16269,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16462,7 +16282,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16475,7 +16295,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -16488,7 +16308,7 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16501,7 +16321,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -16514,7 +16334,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -16527,7 +16347,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16540,7 +16360,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined not to be undefined"
@@ -16553,7 +16373,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "Não possui atributo lang"
@@ -16566,7 +16386,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -16579,7 +16399,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -16592,7 +16412,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -16605,7 +16425,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -16615,7 +16435,7 @@ var testResults = [
   },
   {
     "documentTitle": "",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/g25_a1plcVU_museu_pessoa/index.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/g25_a1plcVU_museu_pessoa/index.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -16624,7 +16444,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16637,7 +16457,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16650,7 +16470,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16663,7 +16483,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16676,7 +16496,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16689,7 +16509,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16702,7 +16522,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16715,7 +16535,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16728,7 +16548,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16741,7 +16561,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16754,7 +16574,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16767,7 +16587,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16780,7 +16600,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16793,7 +16613,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -16806,7 +16626,7 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16819,7 +16639,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -16832,7 +16652,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -16845,7 +16665,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16858,7 +16678,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined not to be undefined"
@@ -16871,7 +16691,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "Não possui atributo lang"
@@ -16884,7 +16704,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -16897,7 +16717,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -16910,7 +16730,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -16923,7 +16743,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -16933,7 +16753,7 @@ var testResults = [
   },
   {
     "documentTitle": "",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/g25_a1plcVU_tecnologias_trabalho/index.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/g25_a1plcVU_tecnologias_trabalho/index.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -16942,7 +16762,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16955,7 +16775,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16968,7 +16788,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16981,7 +16801,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -16994,7 +16814,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17007,7 +16827,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17020,7 +16840,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17033,7 +16853,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17046,7 +16866,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17059,7 +16879,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17072,7 +16892,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17085,7 +16905,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17098,7 +16918,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17111,7 +16931,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -17124,7 +16944,7 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17137,7 +16957,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -17150,7 +16970,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected +0 to equal 1"
@@ -17163,7 +16983,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17176,7 +16996,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined not to be undefined"
@@ -17189,7 +17009,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "Não possui atributo lang"
@@ -17202,7 +17022,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -17215,7 +17035,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -17228,7 +17048,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -17241,7 +17061,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -17251,7 +17071,7 @@ var testResults = [
   },
   {
     "documentTitle": "NOVA MODERNA - PRATICAS EM LINGUAGENS E CULTURA DIGITAL - PNLD 2025 - ENSINO DE JOVENS E ADULTOS",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/content/links.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/content/links.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -17260,7 +17080,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17273,7 +17093,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17286,7 +17106,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17299,7 +17119,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17312,7 +17132,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17325,7 +17145,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17338,7 +17158,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17351,7 +17171,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17364,7 +17184,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17377,7 +17197,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17390,7 +17210,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17403,7 +17223,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17416,7 +17236,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17429,7 +17249,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17442,10 +17262,10 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "expected +0 to equal 1"
+          "status": "passed",
+          "errorMessage": null
         }
       },
       {
@@ -17455,7 +17275,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17468,7 +17288,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17481,7 +17301,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17494,7 +17314,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17507,7 +17327,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17520,7 +17340,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -17533,7 +17353,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected undefined to equal 'doc-toc'"
@@ -17546,7 +17366,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17559,7 +17379,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17569,7 +17389,7 @@ var testResults = [
   },
   {
     "documentTitle": "NOVA MODERNA - PRATICAS EM LINGUAGENS E CULTURA DIGITAL - PNLD 2025 - ENSINO DE JOVENS E ADULTOS",
-    "pageUrl": "file:///Users/design10/APIS%20design%20Dropbox/PROJETOS-SERVIDOR/MODERNA%20-%20OS%20809%20-%20PNLD%20EJA%202025/06%20-%20Pacotes/02%20-%20LINGUAGENS/03%20-%2007082024/index.html",
+    "pageUrl": "file:///Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS/index.html",
     "issues": [
       {
         "code": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
@@ -17578,7 +17398,7 @@ var testResults = [
         "message": "Todas as tags <img> têm atributo alt (mesmo que vazio)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17591,7 +17411,7 @@ var testResults = [
         "message": "tag HTML possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17604,7 +17424,7 @@ var testResults = [
         "message": "A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17617,7 +17437,7 @@ var testResults = [
         "message": "A tag meta viewport existe e está configurada de forma acessível",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17630,7 +17450,7 @@ var testResults = [
         "message": "Nenhum link <a href> aponta para fora do livro",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17643,7 +17463,7 @@ var testResults = [
         "message": "Glossários tem link de ida e de volta válidos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17656,7 +17476,7 @@ var testResults = [
         "message": "Glossários tem a formatação correta (dt, dl, dd)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17669,7 +17489,7 @@ var testResults = [
         "message": "Não há IDs duplicados na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17682,7 +17502,7 @@ var testResults = [
         "message": "Não tem listas com somente um item",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17695,7 +17515,7 @@ var testResults = [
         "message": "O documento não contém salto hierárquico de títulos",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17708,7 +17528,7 @@ var testResults = [
         "message": "tag DOCTYPE de acordo com a tecnologia escolhida",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17721,7 +17541,7 @@ var testResults = [
         "message": "Tag Head incluída na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17734,7 +17554,7 @@ var testResults = [
         "message": "Tag meta charset presente e com valor UTF-8",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17747,7 +17567,7 @@ var testResults = [
         "message": "Titulo da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17760,10 +17580,10 @@ var testResults = [
         "message": "Metadado com a descrição da obra presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "expected +0 to equal 1"
+          "status": "passed",
+          "errorMessage": null
         }
       },
       {
@@ -17773,7 +17593,7 @@ var testResults = [
         "message": "Metadado com nome do autor presente e com valor",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17786,7 +17606,7 @@ var testResults = [
         "message": "Metadado que desabilita indexação do conteúdo da obra por motores de busca.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17799,7 +17619,7 @@ var testResults = [
         "message": "Tag Body incluida na página",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17812,7 +17632,7 @@ var testResults = [
         "message": "tag BODY possui atributo lang",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17825,7 +17645,7 @@ var testResults = [
         "message": "A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17838,7 +17658,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os dados da obra e seus recursos de acessibilidade uQlizados, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17851,7 +17671,7 @@ var testResults = [
         "message": "Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role=\"doc-toc\" id=\"toc\">",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null
@@ -17864,7 +17684,7 @@ var testResults = [
         "message": "Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"
@@ -17877,7 +17697,7 @@ var testResults = [
         "message": "Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>",
         "context": "",
         "selector": "",
-        "runner": "../../../custom-runners/index.cjs",
+        "runner": "../../../helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "not passed",
           "errorMessage": "expected false to equal true"

@@ -183,5 +183,17 @@ export default function handleFsError(basePath) {
 
     handleFolderAndFileError(basePath);
 
+    const erros = results.issues.filter((i) => i.runnerExtras.status == 'not passed')
+
+    // fs.writeFile('teste.json', JSON.stringify(erros, null, 2), (err) => {
+    //     if (err) {
+    //         console.error(err);
+    //     } else {
+    //        console.log('done')
+    //     }
+    // })
+
     return results
 }
+
+// handleFsError(`/Users/design10/Desktop/WORKSPACE/apis-editor-microservices/temp/LINGUAGENS`)
