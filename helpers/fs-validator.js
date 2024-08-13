@@ -25,7 +25,7 @@ export default function handleFsError(basePath) {
     }
     // 5.1 Estrutura
     const allowedDirectoriesInRoot = ['resources', 'content'];
-    testar('Verifica se as pastas na raiz são permitidas', () => {
+    testar('Diretório raíz não contém outras pastas além de "resources" e "content"', () => {
         const rootItems = fs.readdirSync(basePath);
         rootItems.forEach(item => {
             const itemPath = path.join(basePath, item);
@@ -44,6 +44,10 @@ export default function handleFsError(basePath) {
                 throw new Error(`Arquivo não permitido encontrado na raiz: ${item}. Permitidos: ${allowedFilesInRoot.join(', ')}. 5.1 Estrutura`);
             }
         });
+    }, results);
+
+    testar('O diretório base existe', () => {
+        expect(basePath).to.be.a.directory(`Não foi encontrado o diretório ${basePath}`)
     }, results);
 
 
@@ -140,35 +144,33 @@ export default function handleFsError(basePath) {
             });
         }
 
-        testar('Verifica se o diretório base existe', () => {
-            expect(basePath).to.be.a.directory(`Não possui o diretório ${basePath}`)
-        }, results);
+        
 
         traverseDirectory(basePath);
     }
 
     // 5.5 Criação do arquivo de Capa
-    testar('Verifica se o arquivo cover.jpeg existe', () => {
+    testar('Arquivo cover.jpeg existe no diretório raíz', () => {
         expect(path.join(basePath, 'cover.jpeg')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'cover.jpeg')}. 5.5 Criação do arquivo de capa`)
     }, results);
 
     // 5.6 Criação do arquivo de navegação
-    testar('Verifica se o arquivo toc.ncx existe', () => {
+    testar('Arquivo toc.ncx existe no diretório raíz', () => {
         expect(path.join(basePath, 'toc.ncx')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'toc.npx')}. 5.6 Criação do arquivo de navegação`)
     }, results);
 
     // 5.7 Criação do arquivo de conteúdo
-    testar('Verifica se o arquivo content.opf existe', () => {
+    testar('Arquivo content.opf existe no diretório raíz', () => {
         expect(path.join(basePath, 'content.opf')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'content.opf')}. 5.7 Criação do arquivo de conteúdo`)
     }, results);
 
     // 5.8 Criação da página principal
-    testar('Verifica se o arquivo index.html existe', () => {
+    testar('Arquivo index.html existe no diretório raíz', () => {
         expect(path.join(basePath, 'index.html')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'index.html')}. 5.8 Criação da página principal`)
     }, results);
 
     const allowedDirectoriesInResources = ['images', 'scripts', 'styles', 'videos', 'audios', 'fonts', 'extras']
-    testar('Verifica se as pastas no resources são permitidas', () => {
+    testar("Os diretórios dentro do diretório 'resources' são permitidos ('images', 'scripts', 'styles', 'videos', 'audios', 'fonts', 'extras')", () => {
         const resourcesPath = path.join(basePath, 'resources');
         const rootItems = fs.readdirSync(resourcesPath);
         rootItems.forEach(item => {

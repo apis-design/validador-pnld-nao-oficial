@@ -19,7 +19,7 @@ async function validateHtmlFile(filePath) {
 
 // Exemplo de uso
 (async () => {
-    const filePath = 'results.htm'; // Substitua pelo caminho real do arquivo
+    const filePath = 'results.html'; // Substitua pelo caminho real do arquivo
     const validationResult = await validateHtmlFile(filePath);
 
     if (validationResult.messages && validationResult.messages.length > 0) {
