@@ -64,9 +64,9 @@ const getAllFiles = (dirPath, arrayOfFiles) => {
 	}
 }
 
-const runApp = async () => {
+
+const runApp = () => {
 	try {
-		let browser = await puppeteer.launch();
 		const allFiles = getAllFiles(folderPath)
 		const urlList = allFiles
 			.filter(file => file.endsWith('.htm') || file.endsWith('.html'))
