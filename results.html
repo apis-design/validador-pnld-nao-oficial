@@ -104,6 +104,7 @@
 				resultados: window.testResults || [],
 				testesAgrupados: function() {
 					const testes = {};
+					console.log(this.resultados)
 					this.resultados.forEach(arquivo => {
 						arquivo.issues.forEach(resultado => {
 							if (!testes[resultado.message]) {
@@ -120,23 +121,20 @@
 
 							if (resultado.runnerExtras.status === 'passed') {
 								testes[resultado.message].positivos.push({
-									arquivo: this.extrairNomeArquivo(arquivo.pageUrl)
+									arquivo: arquivo.pageUrl
 								})
 							}
 							
 							if (resultado.runnerExtras.status !== 'passed') {
 								testes[resultado.message].passouEmTodos = false;
 								testes[resultado.message].falhas.push({
-									arquivo: this.extrairNomeArquivo(arquivo.pageUrl),
+									arquivo: arquivo.pageUrl,
 									mensagem: resultado.runnerExtras.errorMessage
 								});
 							}
 						});
 					});
 					return Object.values(testes);
-				},
-				extrairNomeArquivo: function(url) {
-					return url.split('/').pop();
 				},
 				testesFalhados: function() {
 					return this.testesAgrupados().filter(teste => !teste.passouEmTodos);
