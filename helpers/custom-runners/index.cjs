@@ -914,6 +914,90 @@ runner.run = (options, pa11y) => {
 			expect(linksInvalidos.length).to.equal(0);
 		});
 
+		testar('Registrar todos os atributos lang encontrados nas páginas', () => {
+			function registrarLangs() {
+				let langsEncontrados = {
+					html: [],
+					body: [],
+					elementos: [],
+					total: 0  // Added total counter
+				};
+
+				// Registra lang do HTML
+				const htmlLang = $('html').attr('lang');
+				if (htmlLang) {
+					langsEncontrados.html.push({
+						valor: htmlLang,
+						arquivo: window.location.pathname
+					});
+					langsEncontrados.total++;  // Increment counter
+				}
+
+				// Registra lang do BODY
+				const bodyLang = $('body').attr('lang');
+				if (bodyLang) {
+					langsEncontrados.body.push({
+						valor: bodyLang,
+						arquivo: window.location.pathname
+					});
+					langsEncontrados.total++;  // Increment counter
+				}
+
+				// Registra lang de outros elementos
+				$('[lang]').each(function() {
+					const $elemento = $(this);
+					if (!$elemento.is('html, body')) {
+						langsEncontrados.elementos.push({
+							elemento: this.tagName.toLowerCase(),
+							valor: $elemento.attr('lang'),
+							arquivo: window.location.pathname,
+							html: $elemento.prop('outerHTML')
+						});
+						langsEncontrados.total++;  // Increment counter
+					}
+				});
+
+				return langsEncontrados;
+			}
+
+			const langs = registrarLangs();
+			
+			// Registra os resultados encontrados em um único objeto
+			results.push({
+				code: 'Atributos lang encontrados',
+				message: `Total de atributos lang encontrados`,
+				type: 'notice',
+				runnerExtras: {
+					status: 'passed',
+					total: langs.total,
+					html: langs.html,
+					body: langs.body,
+					elementos: langs.elementos
+				}
+			});
+
+			// O teste sempre passa, pois estamos apenas registrando
+			expect(true).to.equal(true);
+		});
+
+		testar('A página tem um título válido', () => {
+			const title = $('head>title');
+			
+			// Verifica se o título existe
+			expect(title.length).to.equal(1, 'A página deve ter exatamente um elemento title');
+			
+			// Verifica se o título tem conteúdo
+			const titleText = title.text().trim();
+			expect(titleText).to.not.be.empty('O título não pode estar vazio');
+			
+			// Verifica se o título tem um comprimento mínimo
+			expect(titleText.length).to.be.at.least(3, 'O título deve ter pelo menos 3 caracteres');
+			
+			// Verifica se o título não contém apenas espaços ou caracteres especiais
+			expect(titleText.replace(/[\s\W]/g, '')).to.not.be.empty('O título não pode conter apenas espaços ou caracteres especiais');
+		});
+
+
 		return results
 	}
 

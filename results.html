@@ -37,6 +37,10 @@
 				<header>Testes Reprovados</header>
 				<h3 x-text="testesAgrupados().filter(i => !i.passouEmTodos).length" style="color: red;"></h3>
 			</article>
+			<article>
+				<header>Total de Atributos Lang</header>
+				<h3 x-text="totalLangs()"></h3>
+			</article>
 		</div>
 
 		<h2>Testes Reprovados</h2>
@@ -141,6 +145,18 @@
 				},
 				testesAprovados: function() {
 					return this.testesAgrupados().filter(teste => teste.passouEmTodos);
+				},
+				totalLangs: function() {
+					let total = 0;
+					this.resultados.forEach(arquivo => {
+						arquivo.issues.forEach(resultado => {
+							if (resultado.message === 'Total de atributos lang encontrados') {
+								console.log('entrou', resultado)
+								total += resultado.runnerExtras.total;
+							}
+						});
+					});
+					return total;
 				}
 			}))
 		})
