@@ -125,10 +125,6 @@
         <form class="upload-form" id="uploadForm">
             <div class="file-input">
                 <input type="file" id="zipFile" accept=".zip" required>
-                <div class="dpi-input">
-                    <label for="dpiValue">DPI das imagens (opcional):</label>
-                    <input type="number" id="dpiValue" min="72" max="600" placeholder="Ex: 300">
-                </div>
             </div>
             <div style="display: flex; gap: 10px;">
                 <button type="submit" class="submit-button">Enviar e Processar</button>
@@ -264,12 +260,6 @@
 
             const formData = new FormData();
             formData.append('zipFile', fileInput.files[0]);
-            
-            // Add DPI value if provided
-            const dpiValue = document.getElementById('dpiValue').value;
-            if (dpiValue) {
-                formData.append('dpi', dpiValue);
-            }
 
             try {
                 showStatus('Enviando arquivo...', 'info');
@@ -299,20 +289,6 @@
                             
                             // Show clear button after successful processing
                             document.getElementById('clearButton').style.display = 'inline-block';
-                            
-                            // Only add download button if zipFileName exists
-                            if (result.zipFileName) {
-                                const downloadButton = document.createElement('button');
-                                downloadButton.className = 'submit-button';
-                                downloadButton.style.marginTop = '20px';
-                                downloadButton.style.marginLeft = '20px';
-                                downloadButton.textContent = 'Baixar ZIP';
-                                downloadButton.onclick = () => {
-                                    window.location.href = `/download/${result.zipFileName}`;
-                                };
-                                
-                                statusDiv.appendChild(downloadButton);
-                            }
                         } else {
                             throw new Error(result.error || 'Erro no processamento');
                         }
@@ -402,9 +378,6 @@
         function clearAll() {
             // Clear the file input
             document.getElementById('zipFile').value = '';
-            
-            // Clear the DPI input
-            document.getElementById('dpiValue').value = '';
             
             // Hide and clear the progress container
             const progressContainer = document.getElementById('progressContainer');
