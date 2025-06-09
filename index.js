@@ -3,8 +3,9 @@ import path from 'path'
 import pa11y from 'pa11y'
 import puppeteer from 'puppeteer'
 import handleFsError from './helpers/fs-validator.js'
+import { sendProgress } from './server.js'
 
-let folderPath = `/Users/design21/Downloads/2b1187ea3ce52384b5e6bbb67d965ab4`
+let folderPath = `/Users/design21/Downloads/dfa3a5aa89f7093c713a269ed860fdee`
 
 const errosFsResult = handleFsError(folderPath)
 
@@ -124,35 +125,55 @@ const getAllFiles = (dirPath, arrayOfFiles) => {
 }
 
 
-const runApp = () => {
-	try {
-		const allFiles = getAllFiles(folderPath)
-		const urlList = allFiles
-			.filter(file => file.endsWith('.htm') || file.endsWith('.html'))
-			.map((file) => pa11y(file, pa11yOptions(path.basename(file).split('.')[0])))
+export const runApp = async (newFolderPath) => {
+    try {
+        if (!browser) {
+            browser = await puppeteer.launch();
+        }
 
-		let results = Promise.all(urlList);
+        const allFiles = getAllFiles(newFolderPath);
+        const htmlFiles = allFiles.filter(file => file.endsWith('.htm') || file.endsWith('.html'));
+        
+        sendProgress({ 
+            type: 'info', 
+            message: `Iniciando validação de ${htmlFiles.length} arquivos HTML...` 
+        });
 
-		results.then((results) => {
+        const urlList = htmlFiles.map((file) => pa11y(file, pa11yOptions(path.basename(file).split('.')[0])));
 
-			fs.writeFile(`results.json`, JSON.stringify([errosFsResult, ...results], null, 2), err => {
-				if (err) {
-					console.error(err);
-				}
-			})
-			fs.writeFile(`results.js`, 'var testResults = ' + JSON.stringify([errosFsResult, ...results], null, 2), err => {
-				if (err) {
-					console.error(err);
-				}
-			})
-			browser.close();
-		})
+        let results = await Promise.all(urlList);
+        sendProgress({ 
+            type: 'info', 
+            message: 'Validação HTML concluída. Verificando estrutura de arquivos...' 
+        });
 
-		// console.log(JSON.stringify(results, null, 2))
-	} catch (error) {
-		console.log(error)
-	}
+        const errosFsResult = handleFsError(newFolderPath);
+        sendProgress({ 
+            type: 'info', 
+            message: 'Validação de estrutura de arquivos concluída. Gerando relatório...' 
+        });
 
+        fs.writeFile(`public/results.json`, JSON.stringify([errosFsResult, ...results], null, 2), err => {
+            if (err) {
+                console.error(err);
+            }
+        });
+        
+        fs.writeFile(`public/results.js`, 'var testResults = ' + JSON.stringify([errosFsResult, ...results], null, 2), err => {
+            if (err) {
+                console.error(err);
+            }
+        });
+
+        return results;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+};
+
+// Se executado diretamente, use o caminho padrão
+if (import.meta.url === `file://${process.argv[1]}`) {
+    const defaultFolderPath = `/Users/design21/Downloads/98be55cdf5b37a9c03ebb179b589f6f9`;
+    runApp(defaultFolderPath);
 }
-
-runApp()

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validador PNLD não oficial</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <script src="http://unpkg.com/alpinejs" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .upload-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .file-input {
+            padding: 10px;
+            border: 2px dashed #ccc;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .dpi-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .dpi-input input {
+            width: 100px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        .progress-container {
+            margin-top: 20px;
+            display: none;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 0%;
+            transition: width 0.3s ease-in-out;
+        }
+        .progress-text {
+            margin-top: 5px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+        .results-container {
+            display: none;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .pass td {
+            background-color: rgb(202, 234, 202);
+        }
+        .notpass td {
+            background-color: rgb(231, 201, 188);
+        }
+        .clear-button {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .clear-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h1>Validador PNLD</h1>
+        <form class="upload-form" id="uploadForm">
+            <div class="file-input">
+                <input type="file" id="zipFile" accept=".zip" required>
+                <div class="dpi-input">
+                    <label for="dpiValue">DPI das imagens (opcional):</label>
+                    <input type="number" id="dpiValue" min="72" max="600" placeholder="Ex: 300">
+                </div>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" class="submit-button">Enviar e Processar</button>
+                <button type="button" class="clear-button" onclick="clearAll()" style="display: none;" id="clearButton">Limpar Tudo</button>
+            </div>
+        </form>
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+            <div class="progress-text" id="progressText">0%</div>
+        </div>
+        <div id="status" class="status" style="display: none;"></div>
+    </div>
+
+    <div class="results-container" id="resultsContainer" x-data="dados">
+        <h1>Relatório de Testes</h1>
+        <div class="grid">
+            <article>
+                <header>Total de Testes</header>
+                <h3 x-text="testesAgrupados().length"></h3>
+            </article>
+            <article>
+                <header>Testes Aprovados</header>
+                <h3 x-text="testesAgrupados().filter(i => i.passouEmTodos).length" style="color: green;"></h3>
+            </article>
+            <article>
+                <header>Testes Reprovados</header>
+                <h3 x-text="testesAgrupados().filter(i => !i.passouEmTodos).length" style="color: red;"></h3>
+            </article>
+            <article>
+                <header>Total de Atributos Lang</header>
+                <h3 x-text="totalLangs()"></h3>
+            </article>
+        </div>
+
+        <h2>Testes Reprovados</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Teste</th>
+                    <th>Status</th>
+                    <th>Detalhes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template x-for="teste in testesFalhados()">
+                    <tr class="notpass">
+                        <td x-text="teste.nome"></td>
+                        <td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
+                        <td>
+                            <details>
+                                <summary>Ver detalhes</summary>
+                                <ul>
+                                    <template x-for="falha in teste.falhas">
+                                        <li>
+                                            <span x-text="falha.arquivo"></span>:
+                                            <span x-text="falha.mensagem"></span>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </details>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+
+        <h2>Testes Aprovados</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Teste</th>
+                    <th>Status</th>
+                    <th>Detalhes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template x-for="teste in testesAprovados()">
+                    <tr class="pass">
+                        <td x-text="teste.nome"></td>
+                        <td x-text="'Todos passaram'"></td>
+                        <td>
+                            <details>
+                                <summary>Ver detalhes</summary>
+                                Passou em todos os arquivos
+                            </details>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="results.js"></script>
+    <script>
+        let eventSource;
+
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const fileInput = document.getElementById('zipFile');
+            const statusDiv = document.getElementById('status');
+            const progressContainer = document.getElementById('progressContainer');
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            const resultsContainer = document.getElementById('resultsContainer');
+            
+            if (!fileInput.files.length) {
+                showStatus('Por favor, selecione um arquivo ZIP.', 'error');
+                return;
+            }
+
+            // Show progress bar
+            progressContainer.style.display = 'block';
+            progressBar.style.width = '0%';
+            progressText.textContent = '0%';
+
+            // Connect to SSE
+            eventSource = new EventSource('/progress');
+            eventSource.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                if (data.type === 'upload-progress') {
+                    const percent = parseFloat(data.progress).toFixed(0);
+                    progressBar.style.width = `${percent}%`;
+                    progressText.textContent = `${percent}%`;
+                    if (parseFloat(percent) === 100) {
+                        progressContainer.style.display = 'none';
+                    }
+                } else {
+                    showStatus(data.message, data.type);
+                }
+            };
+
+            const formData = new FormData();
+            formData.append('zipFile', fileInput.files[0]);
+            
+            // Add DPI value if provided
+            const dpiValue = document.getElementById('dpiValue').value;
+            if (dpiValue) {
+                formData.append('dpi', dpiValue);
+            }
+
+            try {
+                showStatus('Enviando arquivo...', 'info');
+                
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/upload', true);
+
+                xhr.upload.onprogress = (event) => {
+                    if (event.lengthComputable) {
+                        const percent = ((event.loaded / event.total) * 100).toFixed(2);
+                        progressBar.style.width = `${percent}%`;
+                        progressText.textContent = `${percent}%`;
+                        if (parseFloat(percent) === 100) {
+                            progressContainer.style.display = 'none';
+                        }
+                    }
+                };
+
+                xhr.onload = async function() {
+                    if (xhr.status === 200) {
+                        const result = JSON.parse(xhr.responseText);
+                        if (result.success) {
+                            showStatus(result.message || 'Upload concluído! Processando arquivo...', 'success');
+                            
+                            // Show results container
+                            resultsContainer.style.display = 'block';
+                            
+                            // Show clear button after successful processing
+                            document.getElementById('clearButton').style.display = 'inline-block';
+                            
+                            // Only add download button if zipFileName exists
+                            if (result.zipFileName) {
+                                const downloadButton = document.createElement('button');
+                                downloadButton.className = 'submit-button';
+                                downloadButton.style.marginTop = '20px';
+                                downloadButton.style.marginLeft = '20px';
+                                downloadButton.textContent = 'Baixar ZIP';
+                                downloadButton.onclick = () => {
+                                    window.location.href = `/download/${result.zipFileName}`;
+                                };
+                                
+                                statusDiv.appendChild(downloadButton);
+                            }
+                        } else {
+                            throw new Error(result.error || 'Erro no processamento');
+                        }
+                    } else {
+                        throw new Error('Erro no upload');
+                    }
+                };
+
+                xhr.onerror = function() {
+                    throw new Error('Erro na conexão');
+                };
+
+                xhr.send(formData);
+                
+            } catch (error) {
+                if (eventSource) {
+                    eventSource.close();
+                }
+                showStatus('Erro ao processar o arquivo: ' + error.message, 'error');
+                progressContainer.style.display = 'none';
+            }
+        });
+
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.textContent = message;
+            statusDiv.className = 'status ' + type;
+            statusDiv.style.display = 'block';
+        }
+
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('dados', () => ({
+                resultados: window.testResults || [],
+                testesAgrupados: function() {
+                    const testes = {};
+                    this.resultados.forEach(arquivo => {
+                        arquivo.issues.forEach(resultado => {
+                            if (!testes[resultado.message]) {
+                                testes[resultado.message] = {
+                                    nome: resultado.message,
+                                    passouEmTodos: true,
+                                    quantosArquivosTestados: 0,
+                                    positivos: [],
+                                    falhas: []
+                                };
+                            }
+
+                            testes[resultado.message].quantosArquivosTestados++;
+
+                            if (resultado.runnerExtras.status === 'passed') {
+                                testes[resultado.message].positivos.push({
+                                    arquivo: arquivo.pageUrl
+                                })
+                            }
+                            
+                            if (resultado.runnerExtras.status !== 'passed') {
+                                testes[resultado.message].passouEmTodos = false;
+                                testes[resultado.message].falhas.push({
+                                    arquivo: arquivo.pageUrl,
+                                    mensagem: resultado.runnerExtras.errorMessage
+                                });
+                            }
+                        });
+                    });
+                    return Object.values(testes);
+                },
+                testesFalhados: function() {
+                    return this.testesAgrupados().filter(teste => !teste.passouEmTodos);
+                },
+                testesAprovados: function() {
+                    return this.testesAgrupados().filter(teste => teste.passouEmTodos);
+                },
+                totalLangs: function() {
+                    let total = 0;
+                    this.resultados.forEach(arquivo => {
+                        arquivo.issues.forEach(resultado => {
+                            if (resultado.message === 'Total de atributos lang encontrados') {
+                                total += resultado.runnerExtras.total;
+                            }
+                        });
+                    });
+                    return total;
+                }
+            }))
+        });
+
+        function clearAll() {
+            // Clear the file input
+            document.getElementById('zipFile').value = '';
+            
+            // Clear the DPI input
+            document.getElementById('dpiValue').value = '';
+            
+            // Hide and clear the progress container
+            const progressContainer = document.getElementById('progressContainer');
+            progressContainer.style.display = 'none';
+            document.getElementById('progressBar').style.width = '0%';
+            document.getElementById('progressText').textContent = '0%';
+            
+            // Hide and clear the status message
+            const status = document.getElementById('status');
+            status.style.display = 'none';
+            status.textContent = '';
+            status.className = 'status';
+            
+            // Hide and clear the results container
+            const resultsContainer = document.getElementById('resultsContainer');
+            resultsContainer.style.display = 'none';
+            
+            // Hide the clear button
+            document.getElementById('clearButton').style.display = 'none';
+            
+            // Reset any Alpine.js data if needed
+            if (window.Alpine) {
+                window.Alpine.data('dados', () => ({
+                    testes: [],
+                    // Add any other data properties that need to be reset
+                }));
+            }
+        }
+    </script>
+</body>
+</html>

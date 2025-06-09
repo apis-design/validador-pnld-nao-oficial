@@ -10,7 +10,6 @@
 	>
 	<script src="http://unpkg.com/alpinejs" defer></script>
 	<style>
-
 		.pass td {
 			background-color: rgb(202, 234, 202);
 		}
@@ -18,11 +17,29 @@
 		.notpass td {
 			background-color: rgb(231, 201, 188);
 		}
+
+		.back-button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 16px;
+			margin-bottom: 20px;
+			text-decoration: none;
+			display: inline-block;
+		}
+
+		.back-button:hover {
+			background-color: #45a049;
+		}
 	</style>
 </head>
 <body>
 
 	<div class="container" x-data="dados">
+		<a href="/" class="back-button">← Voltar para o Início</a>
 		<h1>Relatório de Testes</h1>
 		<div class="grid">
 			<article>
