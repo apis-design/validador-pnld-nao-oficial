@@ -5,10 +5,6 @@ import puppeteer from 'puppeteer'
 import handleFsError from './helpers/fs-validator.js'
 import { sendProgress } from './server.js'
 
-let folderPath = `/Users/design21/Downloads/dfa3a5aa89f7093c713a269ed860fdee`
-
-const errosFsResult = handleFsError(folderPath)
-
 const browser = await puppeteer.launch()
 
 // criar verificação se todos os links dos sumarios estão indo para o href certo
