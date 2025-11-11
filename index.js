@@ -3,9 +3,10 @@ import path from 'path'
 import pa11y from 'pa11y'
 import puppeteer from 'puppeteer'
 import handleFsError from './helpers/fs-validator.js'
+import { validateTocNcxIds } from './helpers/toc-ncx-validator.js'
 import { sendProgress } from './server.js'
 
-const browser = await puppeteer.launch()
+let browser = null; // Inicializado como null para ser criado sob demanda
 
 // criar verificação se todos os links dos sumarios estão indo para o href certo
 
@@ -121,11 +122,71 @@ const getAllFiles = (dirPath, arrayOfFiles) => {
 }
 
 
+// Função para limpar cache de resultados anteriores
+const clearPreviousResults = () => {
+    try {
+        const resultsJsonPath = 'public/results.json';
+        const resultsJsPath = 'public/results.js';
+        
+        // Remove arquivos de resultados anteriores se existirem
+        if (fs.existsSync(resultsJsonPath)) {
+            fs.unlinkSync(resultsJsonPath);
+        }
+        if (fs.existsSync(resultsJsPath)) {
+            fs.unlinkSync(resultsJsPath);
+        }
+        
+        sendProgress({ 
+            type: 'info', 
+            message: 'Cache de resultados anteriores limpo com sucesso.' 
+        });
+    } catch (error) {
+        console.log('Erro ao limpar cache:', error);
+        sendProgress({ 
+            type: 'warning', 
+            message: 'Aviso: Não foi possível limpar completamente o cache anterior.' 
+        });
+    }
+};
+
+// Função para garantir browser limpo
+const ensureCleanBrowser = async () => {
+    try {
+        if (browser && browser.isConnected()) {
+            await browser.close();
+            sendProgress({ 
+                type: 'info', 
+                message: 'Instância anterior do browser fechada.' 
+            });
+        }
+        
+        // Recria uma nova instância do browser
+        const newBrowser = await puppeteer.launch();
+        sendProgress({ 
+            type: 'info', 
+            message: 'Nova instância do browser criada.' 
+        });
+        
+        return newBrowser;
+    } catch (error) {
+        console.log('Erro ao gerenciar browser:', error);
+        sendProgress({ 
+            type: 'warning', 
+            message: 'Aviso: Problema ao gerenciar instâncias do browser.' 
+        });
+        
+        // Fallback: tenta criar um novo browser mesmo assim
+        return await puppeteer.launch();
+    }
+};
+
 export const runApp = async (newFolderPath) => {
     try {
-        if (!browser) {
-            browser = await puppeteer.launch();
-        }
+        // Limpar resultados anteriores no início
+        clearPreviousResults();
+
+        // Garantir browser limpo para cada teste
+        browser = await ensureCleanBrowser();
 
         const allFiles = getAllFiles(newFolderPath);
         const htmlFiles = allFiles.filter(file => file.endsWith('.htm') || file.endsWith('.html'));
@@ -146,24 +207,43 @@ export const runApp = async (newFolderPath) => {
         const errosFsResult = handleFsError(newFolderPath);
         sendProgress({ 
             type: 'info', 
-            message: 'Validação de estrutura de arquivos concluída. Gerando relatório...' 
+            message: 'Validação de estrutura de arquivos concluída. Verificando IDs do toc.ncx...' 
         });
 
-        fs.writeFile(`public/results.json`, JSON.stringify([errosFsResult, ...results], null, 2), err => {
+        // Validação específica dos IDs do toc.ncx
+        const tocNcxValidationResult = validateTocNcxIds(newFolderPath);
+        sendProgress({ 
+            type: 'info', 
+            message: 'Validação de IDs do toc.ncx concluída. Gerando relatório...' 
+        });
+
+        const allResults = [errosFsResult, tocNcxValidationResult, ...results];
+		
+
+        fs.writeFile(`public/results.json`, JSON.stringify(allResults, null, 2), err => {
             if (err) {
                 console.error(err);
             }
         });
         
-        fs.writeFile(`public/results.js`, 'var testResults = ' + JSON.stringify([errosFsResult, ...results], null, 2), err => {
+        fs.writeFile(`public/results.js`, 'var testResults = ' + JSON.stringify(allResults, null, 2), err => {
             if (err) {
                 console.error(err);
             }
         });
 
+        sendProgress({ 
+            type: 'success', 
+            message: 'Validação concluída! Resultados salvos com sucesso.' 
+        });
+
         return results;
     } catch (error) {
         console.log(error);
+        sendProgress({ 
+            type: 'error', 
+            message: `Erro durante a validação: ${error.message}` 
+        });
         throw error;
     }
 };

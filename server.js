@@ -75,8 +75,81 @@ async function removeDSStoreFiles(dirPath) {
     }
 }
 
+// Função para limpar cache de resultados anteriores
+function clearPreviousResults() {
+    try {
+        const resultsJsonPath = path.join(__dirname, 'public', 'results.json');
+        const resultsJsPath = path.join(__dirname, 'public', 'results.js');
+        const extractedPath = path.join(__dirname, 'extracted');
+        
+        // Remove arquivos de resultados anteriores se existirem
+        if (fs.existsSync(resultsJsonPath)) {
+            fs.unlinkSync(resultsJsonPath);
+            sendProgress({ type: 'info', message: 'Arquivo results.json anterior removido.' });
+        }
+        if (fs.existsSync(resultsJsPath)) {
+            fs.unlinkSync(resultsJsPath);
+            sendProgress({ type: 'info', message: 'Arquivo results.js anterior removido.' });
+        }
+        
+        // Limpar pastas extraídas antigas
+        if (fs.existsSync(extractedPath)) {
+            const extractedItems = fs.readdirSync(extractedPath);
+            extractedItems.forEach(item => {
+                const itemPath = path.join(extractedPath, item);
+                if (fs.statSync(itemPath).isDirectory()) {
+                    fs.rmSync(itemPath, { recursive: true, force: true });
+                    sendProgress({ type: 'info', message: `Pasta extraída anterior removida: ${item}` });
+                }
+            });
+        }
+        
+        // Limpar arquivos de upload antigos (mantém apenas os últimos 5 para não encher o disco)
+        const uploadsPath = path.join(__dirname, 'uploads');
+        if (fs.existsSync(uploadsPath)) {
+            const uploadItems = fs.readdirSync(uploadsPath);
+            const uploadFiles = uploadItems.filter(item => {
+                const itemPath = path.join(uploadsPath, item);
+                return fs.statSync(itemPath).isFile();
+            });
+            
+            if (uploadFiles.length > 5) {
+                // Ordena por data de modificação (mais antigos primeiro)
+                const sortedFiles = uploadFiles
+                    .map(file => ({
+                        name: file,
+                        path: path.join(uploadsPath, file),
+                        mtime: fs.statSync(path.join(uploadsPath, file)).mtime
+                    }))
+                    .sort((a, b) => a.mtime - b.mtime);
+                
+                // Remove os mais antigos, mantendo apenas os últimos 5
+                const filesToRemove = sortedFiles.slice(0, sortedFiles.length - 5);
+                filesToRemove.forEach(file => {
+                    fs.unlinkSync(file.path);
+                    sendProgress({ type: 'info', message: `Arquivo de upload antigo removido: ${file.name}` });
+                });
+            }
+        }
+        
+        sendProgress({ 
+            type: 'info', 
+            message: 'Cache e arquivos temporários anteriores limpos com sucesso.' 
+        });
+    } catch (error) {
+        console.log('Erro ao limpar cache:', error);
+        sendProgress({ 
+            type: 'warning', 
+            message: 'Aviso: Não foi possível limpar completamente o cache anterior.' 
+        });
+    }
+}
+
 app.post('/upload', upload.single('zipFile'), async (req, res) => {
     try {
+        // Limpar cache de resultados anteriores no início do processo
+        clearPreviousResults();
+
         const zipPath = req.file.path;
         const extractPath = path.join(__dirname, 'extracted', Date.now().toString());
         

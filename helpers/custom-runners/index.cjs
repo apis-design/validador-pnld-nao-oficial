@@ -752,6 +752,7 @@ runner.run = (options, pa11y) => {
 			expect(verificarTocNcx()).to.equal(true);
 		});
 
+
 		testar('O arquivo content.opf está estruturado corretamente', () => {
 			function verificarContentOpf() {
 				// Verifica se é o arquivo content.opf
@@ -848,6 +849,92 @@ runner.run = (options, pa11y) => {
 			}
 
 			expect(verificarContentOpf()).to.equal(true);
+		});
+
+		// Teste para extrair e listar todos os IDs do toc.ncx (apenas para registro)
+		testar('Coletar IDs do arquivo toc.ncx para verificação posterior', () => {
+			function coletarIdsTocNcx() {
+				// Verifica se é o arquivo toc.ncx
+				const pathname = window.location.pathname;
+				if (!pathname.endsWith('toc.ncx')) {
+					return { ids: [], totalIds: 0, isValidToc: false };
+				}
+
+				const parser = new DOMParser();
+				const xmlDoc = parser.parseFromString(document.documentElement.outerHTML, "text/xml");
+
+				// Verifica se houve erro no parsing
+				if (xmlDoc.getElementsByTagName("parsererror").length > 0) {
+					return { ids: [], totalIds: 0, isValidToc: false, error: "XML inválido" };
+				}
+
+				// Coleta todos os navPoints e seus links
+				const navPoints = xmlDoc.getElementsByTagName("navPoint");
+				const idsMapeados = [];
+				const linksArquivos = [];
+
+				for (const navPoint of navPoints) {
+					const content = navPoint.getElementsByTagName("content")[0];
+					if (content) {
+						const src = content.getAttribute("src");
+						if (src) {
+							// Separa o arquivo do ID (se houver âncora)
+							let arquivo = src;
+							let targetId = null;
+							
+							if (src.includes('#')) {
+								const partes = src.split('#');
+								arquivo = partes[0];
+								targetId = partes[1];
+							}
+
+							const linkInfo = {
+								src: src,
+								arquivo: arquivo,
+								targetId: targetId,
+								navPointId: navPoint.getAttribute("id"),
+								playOrder: navPoint.getAttribute("playOrder"),
+								label: navPoint.getElementsByTagName("text")[0]?.textContent || "Sem label"
+							};
+
+							idsMapeados.push(linkInfo);
+							linksArquivos.push(arquivo);
+						}
+					}
+				}
+
+				// Remove duplicatas de arquivos
+				const arquivosUnicos = [...new Set(linksArquivos)];
+
+				return {
+					ids: idsMapeados,
+					totalIds: idsMapeados.length,
+					arquivosReferenciados: arquivosUnicos,
+					totalArquivos: arquivosUnicos.length,
+					isValidToc: true
+				};
+			}
+
+			const dadosToc = coletarIdsTocNcx();
+			
+			// Registra os dados coletados
+			if (dadosToc.isValidToc) {
+				// Armazena os dados no window para uso posterior
+				window.tocNcxData = dadosToc;
+				
+				results.push({
+					code: 'IDs coletados do toc.ncx',
+					message: `Coletados ${dadosToc.totalIds} links do toc.ncx referenciando ${dadosToc.totalArquivos} arquivos`,
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						tocData: dadosToc
+					}
+				});
+			}
+
+			// O teste sempre passa, pois estamos apenas coletando dados
+			expect(true).to.equal(true);
 		});
 
 		testar('Links dentro de elementos nav têm atributos href válidos e com IDs específicos', () => {
@@ -996,6 +1083,187 @@ runner.run = (options, pa11y) => {
 			// Verifica se o título não contém apenas espaços ou caracteres especiais
 			expect(titleText.replace(/[\s\W]/g, '')).to.not.be.empty('O título não pode conter apenas espaços ou caracteres especiais');
 		});
+
+		// Teste para verificar se os IDs internos e externos das páginas estão corretos
+		testar('IDs internos e externos das páginas estão corretos', () => {
+			function verificarIdsInternosExternos() {
+				let problemas = [];
+				let idsInternosMapeados = new Set();
+				let linksExternosInvalidos = [];
+				let linksInternosInvalidos = [];
+
+				// 1. Mapear todos os IDs presentes na página
+				$('[id]').each(function() {
+					const id = $(this).attr('id');
+					if (id && id.trim() !== '') {
+						idsInternosMapeados.add(id);
+					}
+				});
+
+				// 2. Verificar todos os links âncora internos (que começam com #)
+				$('a[href^="#"]').each(function() {
+					const $link = $(this);
+					const href = $link.attr('href');
+					
+					if (!href || href === '#') {
+						linksInternosInvalidos.push({
+							elemento: $link.prop('outerHTML'),
+							href: href,
+							problema: 'Link âncora vazio ou apenas "#"'
+						});
+						return;
+					}
+
+					// Remove o # para obter o ID
+					const targetId = href.substring(1);
+					
+					// Verifica se o ID de destino existe na página
+					if (!idsInternosMapeados.has(targetId)) {
+						linksInternosInvalidos.push({
+							elemento: $link.prop('outerHTML'),
+							href: href,
+							targetId: targetId,
+							problema: 'ID de destino não existe na página'
+						});
+					}
+				});
+
+				// 3. Verificar links externos (que podem ser para outras páginas do projeto)
+				$('a[href]').each(function() {
+					const $link = $(this);
+					const href = $link.attr('href');
+					
+					if (!href) return;
+					
+					// Pula links âncora internos (já verificados acima)
+					if (href.startsWith('#')) return;
+					
+					// Pula links externos verdadeiros (http/https)
+					if (href.startsWith('http://') || href.startsWith('https://')) {
+						linksExternosInvalidos.push({
+							elemento: $link.prop('outerHTML'),
+							href: href,
+							problema: 'Link externo detectado (pode não ser permitido)'
+						});
+						return;
+					}
+					
+					// Verifica links para outras páginas com âncoras
+					if (href.includes('#')) {
+						const partes = href.split('#');
+						const arquivo = partes[0];
+						const anchorId = partes[1];
+						
+						if (!arquivo || arquivo.trim() === '') {
+							linksInternosInvalidos.push({
+								elemento: $link.prop('outerHTML'),
+								href: href,
+								problema: 'Nome do arquivo não especificado antes da âncora'
+							});
+						}
+						
+						if (!anchorId || anchorId.trim() === '') {
+							linksInternosInvalidos.push({
+								elemento: $link.prop('outerHTML'),
+								href: href,
+								problema: 'ID da âncora não especificado após o #'
+							});
+						}
+					}
+				});
+
+				// 4. Verificar se IDs seguem padrões válidos
+				idsInternosMapeados.forEach(id => {
+					// Verifica se o ID não contém caracteres inválidos
+					if (!/^[a-zA-Z][a-zA-Z0-9_-]*$/.test(id)) {
+						problemas.push({
+							id: id,
+							problema: 'ID contém caracteres inválidos ou não começa com letra'
+						});
+					}
+					
+					// Verifica se o ID não é muito curto
+					if (id.length < 2) {
+						problemas.push({
+							id: id,
+							problema: 'ID muito curto (menos de 2 caracteres)'
+						});
+					}
+				});
+
+				return {
+					idsTotal: idsInternosMapeados.size,
+					idsProblemas: problemas,
+					linksInternosInvalidos: linksInternosInvalidos,
+					linksExternosInvalidos: linksExternosInvalidos,
+					temProblemas: problemas.length > 0 || linksInternosInvalidos.length > 0 || linksExternosInvalidos.length > 0
+				};
+			}
+
+			const resultado = verificarIdsInternosExternos();
+
+			// Se houver problemas, adiciona cada um como um erro separado
+			if (resultado.temProblemas) {
+				// Problemas com IDs
+				resultado.idsProblemas.forEach(problema => {
+					results.push({
+						code: 'Problema com ID',
+						message: `ID "${problema.id}": ${problema.problema}`,
+						type: 'error',
+						runnerExtras: {
+							status: 'not passed',
+							errorMessage: problema.problema
+						}
+					});
+				});
+
+				// Problemas com links internos
+				resultado.linksInternosInvalidos.forEach(link => {
+					results.push({
+						code: 'Link interno inválido',
+						message: `${link.problema}: ${link.href}`,
+						type: 'error',
+						runnerExtras: {
+							status: 'not passed',
+							errorMessage: link.problema,
+							elemento: link.elemento
+						}
+					});
+				});
+
+				// Problemas com links externos
+				resultado.linksExternosInvalidos.forEach(link => {
+					results.push({
+						code: 'Link externo detectado',
+						message: `${link.problema}: ${link.href}`,
+						type: 'warning',
+						runnerExtras: {
+							status: 'not passed',
+							errorMessage: link.problema,
+							elemento: link.elemento
+						}
+					});
+				});
+			}
+
+			// Adiciona informações estatísticas
+			results.push({
+				code: 'Estatísticas de IDs e Links',
+				message: `Total de IDs encontrados: ${resultado.idsTotal}. Links internos inválidos: ${resultado.linksInternosInvalidos.length}. Links externos: ${resultado.linksExternosInvalidos.length}`,
+				type: 'notice',
+				runnerExtras: {
+					status: 'passed',
+					idsTotal: resultado.idsTotal,
+					linksInternosInvalidos: resultado.linksInternosInvalidos.length,
+					linksExternos: resultado.linksExternosInvalidos.length
+				}
+			});
+
+			expect(resultado.temProblemas).to.equal(false, 'Foram encontrados problemas com IDs ou links');
+		});
+
+
+
 
 
 		return results
