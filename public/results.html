@@ -3,45 +3,408 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Relatório</title>
+	<title>Resultados da Validação PNLD</title>
 	<link
 		rel="stylesheet"
 		href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
 	>
 	<script src="http://unpkg.com/alpinejs" defer></script>
 	<style>
-		.pass td {
-			background-color: rgb(202, 234, 202);
+		@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+		* {
+			box-sizing: border-box;
 		}
-		
-		.notpass td {
-			background-color: rgb(231, 201, 188);
+
+		body {
+			font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+			margin: 0;
+			padding: 20px;
+			color: #333;
+		}
+
+		.main-container {
+			max-width: 1400px;
+			margin: 0 auto;
+		}
+
+		.header {
+			text-align: center;
+			margin-bottom: 40px;
+			color: white;
+		}
+
+		.header h1 {
+			font-size: 3rem;
+			font-weight: 700;
+			margin: 0;
+			text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+			background: linear-gradient(45deg, #fff, #f0f0f0);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+
+		.header p {
+			font-size: 1.2rem;
+			font-weight: 300;
+			margin: 10px 0 0 0;
+			opacity: 0.9;
 		}
 
 		.back-button {
-			background-color: #4CAF50;
+			background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
 			color: white;
-			padding: 10px 20px;
+			padding: 12px 24px;
 			border: none;
-			border-radius: 4px;
+			border-radius: 8px;
 			cursor: pointer;
-			font-size: 16px;
-			margin-bottom: 20px;
-			text-decoration: none;
-			display: inline-block;
+			font-size: 1rem;
+			font-weight: 600;
+			transition: all 0.3s ease;
+			box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
+			margin-bottom: 30px;
 		}
 
 		.back-button:hover {
-			background-color: #45a049;
+			transform: translateY(-2px);
+			box-shadow: 0 8px 25px rgba(108, 117, 125, 0.4);
+		}
+
+		.results-container {
+			background: rgba(255, 255, 255, 0.95);
+			backdrop-filter: blur(20px);
+			padding: 30px;
+			border-radius: 24px;
+			box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+			border: 1px solid rgba(255, 255, 255, 0.2);
+		}
+
+		.pass td {
+			background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+			color: #155724;
+			font-weight: 500;
+		}
+		
+		.notpass td {
+			background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+			color: #721c24;
+			font-weight: 500;
+		}
+
+		.error td {
+			background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+			border-left: 4px solid #dc3545;
+			color: #721c24;
+			font-weight: 500;
+		}
+
+		.warning td {
+			background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+			border-left: 4px solid #ffc107;
+			color: #856404;
+			font-weight: 500;
+		}
+
+		.notice td {
+			background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+			border-left: 4px solid #17a2b8;
+			color: #0c5460;
+			font-weight: 500;
+		}
+
+		.tabs {
+			display: flex;
+			margin-bottom: 30px;
+			background: #f8fafc;
+			border-radius: 12px;
+			padding: 4px;
+			box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+		}
+
+		.tabs button {
+			flex: 1;
+			border: none;
+			padding: 12px 24px;
+			cursor: pointer;
+			font-size: 1rem;
+			font-weight: 500;
+			border-radius: 8px;
+			transition: all 0.3s ease;
+			background: transparent;
+			color: #4a5568;
+		}
+
+		.tabs button.active {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+		}
+
+		.tabs button:hover:not(.active) {
+			background: #e2e8f0;
+			color: #2d3748;
+		}
+
+		.w3c-tabs {
+			display: flex;
+			margin-bottom: 30px;
+			border-bottom: 2px solid #e2e8f0;
+			background: transparent;
+		}
+
+		.w3c-tabs button {
+			background: transparent;
+			border: none;
+			padding: 16px 32px;
+			cursor: pointer;
+			font-size: 1rem;
+			font-weight: 500;
+			position: relative;
+			border-bottom: 3px solid transparent;
+			color: #4a5568;
+			transition: all 0.3s ease;
+		}
+
+		.w3c-tabs button.active {
+			background: transparent;
+			border-bottom-color: #667eea;
+			color: #667eea;
+			font-weight: 600;
+		}
+
+		.w3c-tabs button:hover {
+			background: rgba(102, 126, 234, 0.05);
+			color: #667eea;
+		}
+
+		.w3c-tabs button .count {
+			background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+			color: white;
+			border-radius: 12px;
+			padding: 2px 8px;
+			font-size: 0.75rem;
+			margin-left: 8px;
+			font-weight: 600;
+			box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+		}
+
+		.w3c-tabs button.active .count {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+		}
+
+		.pnld-tabs {
+			display: flex;
+			margin-bottom: 30px;
+			border-bottom: 2px solid #e2e8f0;
+			background: transparent;
+		}
+
+		.pnld-tabs button {
+			background: transparent;
+			border: none;
+			padding: 16px 32px;
+			cursor: pointer;
+			font-size: 1rem;
+			font-weight: 500;
+			position: relative;
+			border-bottom: 3px solid transparent;
+			color: #4a5568;
+			transition: all 0.3s ease;
+		}
+		.pnld-tabs button.active {
+			background: transparent;
+			border-bottom-color: #dc3545;
+			color: #dc3545;
+			font-weight: 600;
+		}
+
+		.pnld-tabs button:hover {
+			background: rgba(220, 53, 69, 0.05);
+			color: #dc3545;
+		}
+
+		.pnld-tabs button .count {
+			background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+			color: white;
+			border-radius: 12px;
+			padding: 2px 8px;
+			font-size: 0.75rem;
+			margin-left: 8px;
+			font-weight: 600;
+			box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+		}
+
+		.pnld-tabs button.active .count {
+			background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+			box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+		}
+
+		.category-tabs {
+			display: flex;
+			margin-bottom: 30px;
+			border-bottom: 2px solid #e2e8f0;
+			flex-wrap: wrap;
+			gap: 4px;
+		}
+
+		.category-tabs button {
+			border: none;
+			padding: 12px 20px;
+			cursor: pointer;
+			font-size: 0.9rem;
+			font-weight: 500;
+			position: relative;
+			border-bottom: 3px solid transparent;
+			margin-right: 0;
+			border-radius: 8px 8px 0 0;
+			background: transparent;
+			color: #4a5568;
+			transition: all 0.3s ease;
+		}
+
+		.category-tabs button.active {
+			border-bottom-color: #48bb78;
+			color: #48bb78;
+			font-weight: 600;
+			background: rgba(72, 187, 120, 0.05);
+		}
+
+		.category-tabs button:hover {
+			background: rgba(102, 126, 234, 0.05);
+			color: #667eea;
+		}
+
+		.category-tabs button .count {
+			background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+			color: white;
+			border-radius: 12px;
+			padding: 2px 8px;
+			font-size: 0.75rem;
+			margin-left: 8px;
+			font-weight: 600;
+			box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+		}
+
+		.category-tabs button.active .count {
+			background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+			box-shadow: 0 2px 4px rgba(72, 187, 120, 0.3);
+		}
+
+		.tab-content {
+			display: none;
+			animation: fadeIn 0.3s ease-out;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+
+		.tab-content.active {
+			display: block;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: separate;
+			border-spacing: 0;
+			border-radius: 12px;
+			overflow: hidden;
+			box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+			background: white;
+		}
+
+		th {
+			background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+			color: #2d3748;
+			font-weight: 600;
+			padding: 16px;
+			text-align: left;
+			border-bottom: 2px solid #cbd5e0;
+		}
+
+		td {
+			padding: 14px 16px;
+			border-bottom: 1px solid #e2e8f0;
+			transition: all 0.2s ease;
+		}
+
+		tr:hover td {
+			background: rgba(102, 126, 234, 0.02);
+		}
+
+		.summary-card {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			padding: 24px;
+			border-radius: 16px;
+			margin-bottom: 30px;
+			box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+		}
+
+		.summary-card h3 {
+			margin: 0 0 16px 0;
+			font-size: 1.5rem;
+			font-weight: 600;
+		}
+
+		.summary-stats {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+			gap: 16px;
+		}
+
+		.stat-item {
+			background: rgba(255, 255, 255, 0.1);
+			padding: 16px;
+			border-radius: 8px;
+			text-align: center;
+			backdrop-filter: blur(10px);
+		}
+
+		.stat-number {
+			font-size: 2rem;
+			font-weight: 700;
+			display: block;
+		}
+
+		.stat-label {
+			font-size: 0.9rem;
+			opacity: 0.9;
+			font-weight: 500;
+		}
+
+		.tab-content.active {
+			display: block;
 		}
 	</style>
 </head>
 <body>
+	<div class="main-container">
+		<div class="header">
+			<h1>Relatório de Validação</h1>
+			<p>Resultados detalhados dos testes PNLD</p>
+		</div>
 
-	<div class="container" x-data="dados">
 		<a href="/" class="back-button">← Voltar para o Início</a>
-		<h1>Relatório de Testes</h1>
-		<div class="grid">
+
+		<div class="results-container" x-data="dados">
+
+		<!-- Tabs -->
+		<div class="tabs">
+			<button @click="currentTab = 'pnld'" :class="{ 'active': currentTab === 'pnld' }">Validador PNLD</button>
+			<button @click="currentTab = 'w3c'" :class="{ 'active': currentTab === 'w3c' }">Validador W3C Markup</button>
+		</div>
+
+		<div class="grid" x-show="currentTab === 'pnld'">
 			<article>
 				<header>Total de Testes</header>
 				<h3 x-text="testesAgrupados().length"></h3>
@@ -60,98 +423,583 @@
 			</article>
 		</div>
 
-		<h2>Testes Reprovados</h2>
-		<table>
-			<thead>
-				<tr>
-					<th>Nome do Teste</th>
-					<th>Status</th>
-					<th>Detalhes</th>
-					</tr>
-			</thead>
-			<tbody>
-				<template x-for="teste in testesFalhados()">
-					<tr class="notpass">
-						<td x-text="teste.nome"></td>
-						<td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
-						<td>
-							<details>
-								<summary>Ver detalhes</summary>
-								<ul>
-									<template x-for="falha in teste.falhas">
-										<li>
-											<span x-text="falha.arquivo"></span>:
-											<span x-text="falha.mensagem"></span>
-										</li>
-									</template>
-								</ul>
-							</details>
-						</td>
-					</tr>
-				</template>
-			</tbody>
-		</table>
+		<div class="grid" x-show="currentTab === 'w3c'">
+			<article>
+				<header>Total de Testes W3C</header>
+				<h3 x-text="testesAgrupadosW3C().length"></h3>
+			</article>
+			<article>
+				<header>Testes Aprovados</header>
+				<h3 x-text="testesAgrupadosW3C().filter(i => i.passouEmTodos).length" style="color: green;"></h3>
+			</article>
+			<article>
+				<header>Testes Reprovados</header>
+				<h3 x-text="testesAgrupadosW3C().filter(i => !i.passouEmTodos).length" style="color: red;"></h3>
+			</article>
+		</div>
 
-		<h2>Testes Aprovados</h2>
-		<table>
-			<thead>
-				<tr>
-					<th>Nome do Teste</th>
-					<th>Status</th>
-					<th>Detalhes</th>
-				</tr>
-			</thead>
-			<tbody>
-				<template x-for="teste in testesAprovados()">
-					<tr class="pass">
-						<td x-text="teste.nome"></td>
-						<td x-text="'Todos passaram'"></td>
-						<td>
-							<details>
-								<summary>Ver detalhes</summary>
-								Passou em todos os arquivos
-							</details>
-						</td>
-					</tr>
-				</template>
-			</tbody>
-		</table>
+		<div x-show="currentTab === 'pnld'">
+			<!-- Sub-abas para Todos os Testes -->
+			<div class="pnld-tabs">
+				<button @click="pnldSubTab = 'failed'" :class="{ 'active': pnldSubTab === 'failed' }">
+					Reprovados <span x-text="testesFalhados().length" class="count"></span>
+				</button>
+				<button @click="pnldSubTab = 'passed'" :class="{ 'active': pnldSubTab === 'passed' }">
+					Aprovados <span x-text="testesAprovados().length" class="count"></span>
+				</button>
+			</div>
+
+			<!-- Conteúdo das sub-abas -->
+			<div x-show="pnldSubTab === 'failed'">
+				<h2>Testes Reprovados</h2>
+
+				<!-- Sub-categorias para reprovados -->
+				<div class="category-tabs">
+					<button @click="pnldCategory = 'estrutura'" :class="{ 'active': pnldCategory === 'estrutura' }">
+						Estrutura <span x-text="testesPorCategoria('failed', 'estrutura').length" class="count"></span>
+					</button>
+					<button @click="pnldCategory = 'nomenclatura'" :class="{ 'active': pnldCategory === 'nomenclatura' }">
+						Nomenclatura <span x-text="testesPorCategoria('failed', 'nomenclatura').length" class="count"></span>
+					</button>
+					<button @click="pnldCategory = 'localizacao'" :class="{ 'active': pnldCategory === 'localizacao' }">
+						Localização <span x-text="testesPorCategoria('failed', 'localizacao').length" class="count"></span>
+					</button>
+					<button @click="pnldCategory = 'conteudo'" :class="{ 'active': pnldCategory === 'conteudo' }">
+						Conteúdo <span x-text="testesPorCategoria('failed', 'conteudo').length" class="count"></span>
+					</button>
+                    <button @click="pnldCategory = 'outros'" :class="{ 'active': pnldCategory === 'outros' }">
+                        Outros <span x-text="testesPorCategoria('failed', 'outros').length" class="count"></span>
+                    </button>
+								<tr class="notpass">
+									<td x-text="teste.nome"></td>
+									<td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
+									<td>
+										<details>
+											<summary>Ver detalhes</summary>
+											<ul>
+												<template x-for="falha in teste.falhas">
+													<li>
+														<span x-text="falha.arquivo"></span>:
+														<span x-text="falha.mensagem"></span>
+													</li>
+												</template>
+											</ul>
+										</details>
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
+
+				<div x-show="pnldCategory === 'nomenclatura'">
+					<h3>Nomenclatura - Reprovados</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Nome do Teste</th>
+								<th>Status</th>
+								<th>Detalhes</th>
+							</tr>
+						</thead>
+						<tbody>
+							<template x-for="teste in testesPorCategoria('failed', 'nomenclatura')">
+								<tr class="notpass">
+									<td x-text="teste.nome"></td>
+									<td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
+									<td>
+										<details>
+											<summary>Ver detalhes</summary>
+											<ul>
+												<template x-for="falha in teste.falhas">
+													<li>
+														<span x-text="falha.arquivo"></span>:
+														<span x-text="falha.mensagem"></span>
+													</li>
+												</template>
+											</ul>
+										</details>
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
+
+				<div x-show="pnldCategory === 'localizacao'">
+					<h3>Localização - Reprovados</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Nome do Teste</th>
+								<th>Status</th>
+								<th>Detalhes</th>
+							</tr>
+						</thead>
+						<tbody>
+							<template x-for="teste in testesPorCategoria('failed', 'localizacao')">
+								<tr class="notpass">
+									<td x-text="teste.nome"></td>
+									<td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
+									<td>
+										<details>
+											<summary>Ver detalhes</summary>
+											<ul>
+												<template x-for="falha in teste.falhas">
+													<li>
+														<span x-text="falha.arquivo"></span>:
+														<span x-text="falha.mensagem"></span>
+													</li>
+												</template>
+											</ul>
+										</details>
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
+
+				<div x-show="pnldCategory === 'estrutura'">
+					<h3>Estrutura - Reprovados</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Nome do Teste</th>
+								<th>Status</th>
+								<th>Detalhes</th>
+							</tr>
+						</thead>
+						<tbody>
+							<template x-for="teste in testesPorCategoria('failed', 'estrutura')">
+								<tr class="notpass">
+									<td x-text="teste.nome"></td>
+									<td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
+									<td>
+										<details>
+											<summary>Ver detalhes</summary>
+											<ul>
+												<template x-for="falha in teste.falhas">
+													<li>
+														<span x-text="falha.arquivo"></span>:
+														<span x-text="falha.mensagem"></span>
+													</li>
+												</template>
+											</ul>
+										</details>
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
+
+				<div x-show="pnldCategory === 'conteudo'">
+					<h3>Conteúdo - Reprovados</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Nome do Teste</th>
+								<th>Status</th>
+								<th>Detalhes</th>
+							</tr>
+						</thead>
+						<tbody>
+							<template x-for="teste in testesPorCategoria('failed', 'conteudo')">
+								<tr class="notpass">
+									<td x-text="teste.nome"></td>
+									<td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
+									<td>
+										<details>
+											<summary>Ver detalhes</summary>
+											<ul>
+												<template x-for="falha in teste.falhas">
+													<li>
+														<span x-text="falha.arquivo"></span>:
+														<span x-text="falha.mensagem"></span>
+													</li>
+												</template>
+											</ul>
+										</details>
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
+
+				<div x-show="pnldCategory === 'outros'">
+					<h3>Outros - Reprovados</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Nome do Teste</th>
+								<th>Status</th>
+								<th>Detalhes</th>
+							</tr>
+						</thead>
+						<tbody>
+							<template x-for="teste in testesPorCategoria('failed', 'outros')">
+								<tr class="notpass">
+									<td x-text="teste.nome"></td>
+									<td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
+									<td>
+										<details>
+											<summary>Ver detalhes</summary>
+											<ul>
+												<template x-for="falha in teste.falhas">
+													<li>
+														<span x-text="falha.arquivo"></span>:
+														<span x-text="falha.mensagem"></span>
+													</li>
+												</template>
+											</ul>
+										</details>
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div x-show="pnldSubTab === 'passed'">
+				<h2>Testes Aprovados</h2>
+
+				<!-- Sub-categorias para aprovados -->
+				<div class="category-tabs">
+					<button @click="pnldCategory = 'estrutura'" :class="{ 'active': pnldCategory === 'estrutura' }">
+						Estrutura <span x-text="testesPorCategoria('passed', 'estrutura').length" class="count"></span>
+					</button>
+					<button @click="pnldCategory = 'nomenclatura'" :class="{ 'active': pnldCategory === 'nomenclatura' }">
+						Nomenclatura <span x-text="testesPorCategoria('passed', 'nomenclatura').length" class="count"></span>
+					</button>
+					<button @click="pnldCategory = 'localizacao'" :class="{ 'active': pnldCategory === 'localizacao' }">
+						Localização <span x-text="testesPorCategoria('passed', 'localizacao').length" class="count"></span>
+					</button>
+					<button @click="pnldCategory = 'conteudo'" :class="{ 'active': pnldCategory === 'conteudo' }">
+						Conteúdo <span x-text="testesPorCategoria('passed', 'conteudo').length" class="count"></span>
+					</button>
+				</div>
+
+				<div x-show="pnldCategory === 'estrutura'">
+					<h3>Estrutura de Arquivos - Aprovados</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Nome do Teste</th>
+								<th>Status</th>
+								<th>Detalhes</th>
+							</tr>
+						</thead>
+						<tbody>
+							<template x-for="teste in testesPorCategoria('passed', 'estrutura')">
+								<tr class="pass">
+									<td x-text="teste.nome"></td>
+									<td x-text="'Todos passaram'"></td>
+									<td>
+										<details>
+											<summary>Ver detalhes</summary>
+											Passou em todos os arquivos
+										</details>
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
+
+				<div x-show="pnldCategory === 'nomenclatura'">
+					<h3>Nomenclatura - Aprovados</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Nome do Teste</th>
+								<th>Status</th>
+								<th>Detalhes</th>
+							</tr>
+							</thead>
+						<tbody>
+							<template x-for="teste in testesPorCategoria('passed', 'nomenclatura')">
+								<tr class="pass">
+									<td x-text="teste.nome"></td>
+									<td x-text="'Todos passaram'"></td>
+									<td>
+										<details>
+											<summary>Ver detalhes</summary>
+											Passou em todos os arquivos
+										</details>
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
+
+				<div x-show="pnldCategory === 'localizacao'">
+					<h3>Localização - Aprovados</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Nome do Teste</th>
+								<th>Status</th>
+								<th>Detalhes</th>
+							</tr>
+						</thead>
+						<tbody>
+							<template x-for="teste in testesPorCategoria('passed', 'localizacao')">
+								<tr class="pass">
+									<td x-text="teste.nome"></td>
+									<td x-text="'Todos passaram'"></td>
+									<td>
+										<details>
+											<summary>Ver detalhes</summary>
+											Passou em todos os arquivos
+										</details>
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
+
+				<div x-show="pnldCategory === 'conteudo'">
+					<h3>Conteúdo - Aprovados</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Nome do Teste</th>
+								<th>Status</th>
+								<th>Detalhes</th>
+							</tr>
+						</thead>
+						<tbody>
+							<template x-for="teste in testesPorCategoria('passed', 'conteudo')">
+								<tr class="pass">
+									<td x-text="teste.nome"></td>
+									<td x-text="'Todos passaram'"></td>
+									<td>
+										<details>
+											<summary>Ver detalhes</summary>
+											Passou em todos os arquivos
+										</details>
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div x-show="currentTab === 'w3c'">
+			<!-- Sub-abas para W3C -->
+			<div class="w3c-tabs">
+				<button @click="w3cSubTab = 'errors'" :class="{ 'active': w3cSubTab === 'errors' }">
+					Erros W3C <span x-text="testesErrosW3C().length" class="count"></span>
+				</button>
+				<button @click="w3cSubTab = 'warnings'" :class="{ 'active': w3cSubTab === 'warnings' }">
+					Avisos W3C <span x-text="testesWarningsW3C().length" class="count"></span>
+				</button>
+				<button @click="w3cSubTab = 'notices'" :class="{ 'active': w3cSubTab === 'notices' }">
+					Notificações W3C <span x-text="testesNoticesW3C().length" class="count"></span>
+				</button>
+			</div>
+
+			<!-- Conteúdo das sub-abas -->
+			<div x-show="w3cSubTab === 'errors'">
+				<h2>Erros W3C</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nome do Teste</th>
+							<th>Status</th>
+							<th>Detalhes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template x-for="teste in testesErrosW3C()">
+							<tr class="error">
+								<td x-text="teste.nome"></td>
+								<td x-text="`${teste.erros.length} erro(s) encontrado(s)`"></td>
+								<td>
+									<details>
+										<summary>Ver detalhes</summary>
+										<ul>
+											<template x-for="erro in teste.erros">
+												<li>
+													<strong>Arquivo:</strong> <span x-text="erro.arquivo"></span><br>
+													<strong>Contexto:</strong> <code x-text="erro.contexto"></code><br>
+													<strong>Seletor:</strong> <code x-text="erro.selector"></code>
+												</li>
+											</template>
+										</ul>
+									</details>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+
+			<div x-show="w3cSubTab === 'warnings'">
+				<h2>Avisos W3C</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nome do Teste</th>
+							<th>Status</th>
+							<th>Detalhes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template x-for="teste in testesWarningsW3C()">
+							<tr class="warning">
+								<td x-text="teste.nome"></td>
+								<td x-text="`${teste.warnings.length} aviso(s) encontrado(s)`"></td>
+								<td>
+									<details>
+										<summary>Ver detalhes</summary>
+										<ul>
+											<template x-for="aviso in teste.warnings">
+												<li>
+													<strong>Arquivo:</strong> <span x-text="aviso.arquivo"></span><br>
+													<strong>Contexto:</strong> <code x-text="aviso.contexto"></code><br>
+													<strong>Seletor:</strong> <code x-text="aviso.selector"></code>
+												</li>
+											</template>
+										</ul>
+									</details>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+
+			<div x-show="w3cSubTab === 'notices'">
+				<h2>Notificações W3C</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nome do Teste</th>
+							<th>Status</th>
+							<th>Detalhes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template x-for="teste in testesNoticesW3C()">
+							<tr class="notice">
+								<td x-text="teste.nome"></td>
+								<td x-text="`${teste.notices.length} notificação(ões) encontrada(s)`"></td>
+								<td>
+									<details>
+										<summary>Ver detalhes</summary>
+										<ul>
+											<template x-for="notice in teste.notices">
+												<li>
+													<strong>Arquivo:</strong> <span x-text="notice.arquivo"></span><br>
+													<strong>Contexto:</strong> <code x-text="notice.contexto"></code><br>
+													<strong>Seletor:</strong> <code x-text="notice.selector"></code>
+												</li>
+											</template>
+										</ul>
+									</details>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
 
 	<script src="results.js"></script>
 	<script>
 		document.addEventListener('alpine:init', () => {
 			Alpine.data('dados', () => ({
+				currentTab: 'pnld',
+				w3cSubTab: 'errors',
+				pnldSubTab: 'failed',
+				pnldCategory: 'estrutura',
 				resultados: window.testResults || [],
 				testesAgrupados: function() {
 					const testes = {};
 					console.log(this.resultados)
 					this.resultados.forEach(arquivo => {
 						arquivo.issues.forEach(resultado => {
-							if (!testes[resultado.message]) {
-								testes[resultado.message] = {
-									nome: resultado.message,
-									passouEmTodos: true,
-									quantosArquivosTestados: 0,
-									positivos: [],
-									falhas: []
-								};
-							}
+							// Filtrar apenas testes que NÃO são W3C
+							if (!resultado.code || !resultado.code.startsWith('WCAG')) {
+								if (!testes[resultado.message]) {
+									testes[resultado.message] = {
+										nome: resultado.message,
+										passouEmTodos: true,
+										quantosArquivosTestados: 0,
+										positivos: [],
+										falhas: []
+									};
+								}
 
-							testes[resultado.message].quantosArquivosTestados++;
+								testes[resultado.message].quantosArquivosTestados++;
 
-							if (resultado.runnerExtras.status === 'passed') {
-								testes[resultado.message].positivos.push({
-									arquivo: arquivo.pageUrl
-								})
+								if (resultado.runnerExtras.status === 'passed') {
+									testes[resultado.message].positivos.push({
+										arquivo: arquivo.pageUrl
+									})
+								}
+								
+								if (resultado.runnerExtras.status !== 'passed') {
+									testes[resultado.message].passouEmTodos = false;
+									testes[resultado.message].falhas.push({
+										arquivo: arquivo.pageUrl,
+										mensagem: resultado.runnerExtras.errorMessage
+									});
+								}
 							}
-							
-							if (resultado.runnerExtras.status !== 'passed') {
-								testes[resultado.message].passouEmTodos = false;
-								testes[resultado.message].falhas.push({
-									arquivo: arquivo.pageUrl,
-									mensagem: resultado.runnerExtras.errorMessage
-								});
+						});
+					});
+					return Object.values(testes);
+				},
+				testesAgrupadosW3C: function() {
+					const testes = {};
+					this.resultados.forEach(arquivo => {
+						arquivo.issues.forEach(resultado => {
+							if (resultado.code && resultado.code.startsWith('WCAG')) {
+								if (!testes[resultado.message]) {
+									testes[resultado.message] = {
+										nome: resultado.message,
+										quantosArquivosTestados: 0,
+										erros: [],
+										warnings: [],
+										notices: []
+									};
+								}
+
+								testes[resultado.message].quantosArquivosTestados++;
+
+								// Categorizar por tipo de severidade
+								if (resultado.type === 'error') {
+									testes[resultado.message].erros.push({
+										arquivo: arquivo.pageUrl,
+										mensagem: resultado.message,
+										contexto: resultado.context,
+										selector: resultado.selector
+									});
+								} else if (resultado.type === 'warning') {
+									testes[resultado.message].warnings.push({
+										arquivo: arquivo.pageUrl,
+										mensagem: resultado.message,
+										contexto: resultado.context,
+										selector: resultado.selector
+									});
+								} else if (resultado.type === 'notice') {
+									testes[resultado.message].notices.push({
+										arquivo: arquivo.pageUrl,
+										mensagem: resultado.message,
+										contexto: resultado.context,
+										selector: resultado.selector
+									});
+								}
 							}
 						});
 					});
@@ -162,6 +1010,38 @@
 				},
 				testesAprovados: function() {
 					return this.testesAgrupados().filter(teste => teste.passouEmTodos);
+				},
+				testesErrosW3C: function() {
+					return this.testesAgrupadosW3C().filter(teste => teste.erros.length > 0);
+				},
+				testesWarningsW3C: function() {
+					return this.testesAgrupadosW3C().filter(teste => teste.warnings.length > 0);
+				},
+				testesNoticesW3C: function() {
+					return this.testesAgrupadosW3C().filter(teste => teste.notices.length > 0);
+				},
+				testesPorCategoria: function(status, categoria) {
+					const testes = status === 'failed' ? this.testesFalhados() : this.testesAprovados();
+					return testes.filter(teste => {
+						const nome = teste.nome.toLowerCase();
+						switch(categoria) {
+							case 'estrutura':
+								return nome.includes('arquivo') || nome.includes('diretório') || nome.includes('obrigatório') || nome.includes('estrutura');
+							case 'nomenclatura':
+								return nome.includes('nome') || nome.includes('nomenclatura') || nome.includes('extensão');
+							case 'localizacao':
+								return nome.includes('localização') || nome.includes('caminho') || nome.includes('pasta') || nome.includes('diretório');
+							case 'conteudo':
+								return nome.includes('conteúdo') || nome.includes('toc') || nome.includes('ncx') || nome.includes('lang') || nome.includes('atributo');
+							case 'outros':
+								return !(nome.includes('arquivo') || nome.includes('diretório') || nome.includes('obrigatório') || nome.includes('estrutura') ||
+										nome.includes('nome') || nome.includes('nomenclatura') || nome.includes('extensão') ||
+										nome.includes('localização') || nome.includes('caminho') || nome.includes('pasta') ||
+										nome.includes('conteúdo') || nome.includes('toc') || nome.includes('ncx') || nome.includes('lang') || nome.includes('atributo'));
+							default:
+								return false;
+						}
+					});
 				},
 				totalLangs: function() {
 					let total = 0;

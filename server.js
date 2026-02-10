@@ -28,7 +28,15 @@ const upload = multer({
     }
 });
 
-app.use(express.static('public'));
+// Desabilita cache para arquivos estáticos
+app.use(express.static('public', {
+    setHeaders: (res) => {
+        res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
+        res.setHeader('Surrogate-Control', 'no-store');
+    }
+}));
 
 // Store connected clients
 const clients = new Map();
@@ -199,7 +207,7 @@ app.post('/upload', upload.single('zipFile'), async (req, res) => {
     }
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3009;
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
 });

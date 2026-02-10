@@ -7,130 +7,628 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <script src="http://unpkg.com/alpinejs" defer></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            max-width: 1200px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .main-container {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
         }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+
         .upload-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 30px;
+            transition: box-shadow 0.3s ease;
         }
+
+        .upload-container:hover {
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
         .upload-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .form-group {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 8px;
         }
+
+        .form-label {
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
         .file-input {
-            padding: 10px;
-            border: 2px dashed #ccc;
-            border-radius: 4px;
+            position: relative;
+            padding: 40px 20px;
+            border: 3px dashed #cbd5e0;
+            border-radius: 16px;
             text-align: center;
+            background: #f8fafc;
+            transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
+
+        .file-text {
+            font-size: 1rem;
+            color: #4a5568;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .file-input:hover {
+            border-color: #667eea;
+            background: #f1f5f9;
+        }
+
+        .file-input input[type="file"] {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-input.dragover {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e6f3ff 100%);
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .file-input.dragover::before {
+            content: "📦";
+            font-size: 2.5rem;
+            color: #667eea;
+        }
+
+        .file-input.has-file {
+            border-color: #48bb78;
+            background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+        }
+
+        .file-input.has-file::before {
+            content: "✅";
+            color: #48bb78;
+        }
+
+        .file-name {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: #4a5568;
+            font-weight: 500;
+            text-align: center;
+            word-break: break-all;
+        }
+
         .dpi-input {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 15px;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
         }
+
         .dpi-input input {
-            width: 100px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            width: 120px;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
+
+        .dpi-input input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
         .submit-button {
-            background-color: #4CAF50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 10px 20px;
+            padding: 16px 32px;
             border: none;
-            border-radius: 4px;
+            border-radius: 12px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: box-shadow 0.2s ease, transform 0.1s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
+
         .submit-button:hover {
-            background-color: #45a049;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
+
+        .submit-button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .results-button {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: box-shadow 0.2s ease, transform 0.1s ease;
+            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
+        }
+
+        .results-button:hover {
+            box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
+        }
+
+        .results-button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(72, 187, 120, 0.3);
+        }
+
         .status {
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 4px;
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 12px;
+            font-weight: 500;
+            animation: slideIn 0.3s ease-out;
         }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .success {
-            background-color: #dff0d8;
-            color: #3c763d;
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
+
         .error {
-            background-color: #f2dede;
-            color: #a94442;
+            background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
+
         .progress-container {
-            margin-top: 20px;
+            margin-top: 30px;
             display: none;
         }
+
         .progress-bar {
             width: 100%;
-            height: 20px;
-            background-color: #f0f0f0;
-            border-radius: 10px;
+            height: 24px;
+            background: #e2e8f0;
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
         }
+
         .progress-bar-fill {
             height: 100%;
-            background-color: #4CAF50;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
             width: 0%;
-            transition: width 0.3s ease-in-out;
+            transition: width 0.4s ease-in-out;
+            border-radius: 12px;
         }
+
         .progress-text {
-            margin-top: 5px;
+            margin-top: 12px;
             text-align: center;
-            font-size: 14px;
-            color: #666;
+            font-size: 0.95rem;
+            color: #4a5568;
+            font-weight: 500;
         }
+
         .results-container {
             display: none;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 30px;
         }
         .pass td {
-            background-color: rgb(202, 234, 202);
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            color: #155724;
+            font-weight: 500;
         }
         .notpass td {
-            background-color: rgb(231, 201, 188);
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            color: #721c24;
+            font-weight: 500;
+        }
+        .error td {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+            font-weight: 500;
+        }
+        .warning td {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border-left: 4px solid #ffc107;
+            color: #856404;
+            font-weight: 500;
+        }
+        .notice td {
+            background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+            border-left: 4px solid #17a2b8;
+            color: #0c5460;
+            font-weight: 500;
         }
         .clear-button {
-            background-color: #dc3545;
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
             color: white;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: box-shadow 0.2s ease, transform 0.1s ease;
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
         }
+
         .clear-button:hover {
-            background-color: #c82333;
+            box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+        }
+
+        .clear-button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(220, 53, 69, 0.3);
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 30px;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .tabs button {
+            flex: 1;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+            background: transparent;
+            color: #4a5568;
+        }
+
+        .tabs button.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .tabs button:hover:not(.active) {
+            background: #e2e8f0;
+            color: #2d3748;
+        }
+        .w3c-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
+            background: transparent;
+        }
+
+        .w3c-tabs button {
+            background: transparent;
+            border: none;
+            padding: 16px 32px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
+            border-bottom: 3px solid transparent;
+            color: #4a5568;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .w3c-tabs button.active {
+            background: transparent;
+            border-bottom-color: #667eea;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .w3c-tabs button:hover {
+            background: rgba(102, 126, 234, 0.05);
+            color: #667eea;
+        }
+        .w3c-tabs button .count {
+            background-color: #6c757d;
+            color: white;
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+        .w3c-tabs button.active .count {
+            background-color: #007bff;
+        }
+        .pnld-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
+            background: transparent;
+        }
+
+        .pnld-tabs button {
+            background: transparent;
+            border: none;
+            padding: 16px 32px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
+            border-bottom: 3px solid transparent;
+            color: #4a5568;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .pnld-tabs button.active {
+            background: transparent;
+            border-bottom-color: #dc3545;
+            color: #dc3545;
+            font-weight: 600;
+        }
+
+        .pnld-tabs button:hover {
+            background: rgba(220, 53, 69, 0.05);
+            color: #dc3545;
+        }
+        .pnld-tabs button .count {
+            background-color: #6c757d;
+            color: white;
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+        .pnld-tabs button.active .count {
+            background-color: #dc3545;
+        }
+        .category-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .category-tabs button {
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+            border-bottom: 3px solid transparent;
+            margin-right: 0;
+            border-radius: 8px 8px 0 0;
+            background: transparent;
+            color: #4a5568;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .category-tabs button.active {
+            border-bottom-color: #48bb78;
+            color: #48bb78;
+            font-weight: 600;
+            background: rgba(72, 187, 120, 0.05);
+        }
+
+        .category-tabs button:hover {
+            background: rgba(102, 126, 234, 0.05);
+            color: #667eea;
+        }
+
+        .category-tabs button .count {
+            background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            margin-left: 8px;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .category-tabs button.active .count {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            box-shadow: 0 2px 4px rgba(72, 187, 120, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        th {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #2d3748;
+            font-weight: 600;
+            padding: 16px;
+            text-align: left;
+            border-bottom: 2px solid #cbd5e0;
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+
+        tr:hover td {
+            background: rgba(102, 126, 234, 0.02);
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .summary-card h3 {
+            margin: 0 0 16px 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
-    <div class="upload-container">
-        <h1>Validador PNLD</h1>
-        <form class="upload-form" id="uploadForm">
-            <div class="file-input">
-                <input type="file" id="zipFile" accept=".zip" required>
-            </div>
-            <div style="display: flex; gap: 10px;">
-                <button type="submit" class="submit-button">Enviar e Processar</button>
-                <button type="button" class="clear-button" onclick="clearAll()" style="display: none;" id="clearButton">Limpar Tudo</button>
-            </div>
-        </form>
+    <div class="main-container">
+        <div class="header">
+            <h1>Validador PNLD</h1>
+            <p>Valide seus arquivos EPUB do Programa Nacional do Livro Didático</p>
+        </div>
+
+        <div class="upload-container">
+            <form class="upload-form" id="uploadForm" onsubmit="return false;">
+                <div class="form-group">
+                    <label class="form-label" for="zipFile">Selecione o arquivo ZIP contendo os EPUBs</label>
+                    <div class="file-input" id="fileInput">
+                        <input type="file" id="zipFile" accept=".zip" required>
+                        <div class="file-text">Clique aqui ou arraste o arquivo ZIP</div>
+                        <div class="file-name" id="fileName" style="display: none;"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Configurações opcionais</label>
+                    <div class="dpi-input">
+                        <label for="dpi">DPI mínimo das imagens:</label>
+                        <input type="number" id="dpi" value="150" min="72" max="600">
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <button type="button" class="submit-button" onclick="handleUpload()">🚀 Enviar e Processar</button>
+                    <button type="button" class="results-button" onclick="viewResults()" style="display: none;" id="viewResultsButton">📊 Ver Resultados</button>
+                    <button type="button" class="clear-button" onclick="clearAll()" style="display: none;" id="clearButton">🗑️ Limpar Tudo</button>
+                </div>
+            </form>
         <div class="progress-container" id="progressContainer">
             <div class="progress-bar">
                 <div class="progress-bar-fill" id="progressBar"></div>
@@ -142,7 +640,14 @@
 
     <div class="results-container" id="resultsContainer" x-data="dados">
         <h1>Relatório de Testes</h1>
-        <div class="grid">
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button @click="currentTab = 'pnld'" :class="{ 'active': currentTab === 'pnld' }">Validador PNLD</button>
+            <button @click="currentTab = 'w3c'" :class="{ 'active': currentTab === 'w3c' }">Validador W3C Markup</button>
+        </div>
+
+        <div class="grid" x-show="currentTab === 'pnld'">
             <article>
                 <header>Total de Testes</header>
                 <h3 x-text="testesAgrupados().length"></h3>
@@ -161,70 +666,566 @@
             </article>
         </div>
 
-        <h2>Testes Reprovados</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome do Teste</th>
-                    <th>Status</th>
-                    <th>Detalhes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <template x-for="teste in testesFalhados()">
-                    <tr class="notpass">
-                        <td x-text="teste.nome"></td>
-                        <td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
-                        <td>
-                            <details>
-                                <summary>Ver detalhes</summary>
-                                <ul>
-                                    <template x-for="falha in teste.falhas">
-                                        <li>
-                                            <span x-text="falha.arquivo"></span>:
-                                            <span x-text="falha.mensagem"></span>
-                                        </li>
-                                    </template>
-                                </ul>
-                            </details>
-                        </td>
-                    </tr>
-                </template>
-            </tbody>
-        </table>
+        <div class="grid" x-show="currentTab === 'w3c'">
+            <article>
+                <header>Total de Testes W3C</header>
+                <h3 x-text="testesAgrupadosW3C().length"></h3>
+            </article>
+            <article>
+                <header>Testes Aprovados</header>
+                <h3 x-text="testesAgrupadosW3C().filter(i => i.passouEmTodos).length" style="color: green;"></h3>
+            </article>
+            <article>
+                <header>Testes Reprovados</header>
+                <h3 x-text="testesAgrupadosW3C().filter(i => !i.passouEmTodos).length" style="color: red;"></h3>
+            </article>
+        </div>
 
-        <h2>Testes Aprovados</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome do Teste</th>
-                    <th>Status</th>
-                    <th>Detalhes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <template x-for="teste in testesAprovados()">
-                    <tr class="pass">
-                        <td x-text="teste.nome"></td>
-                        <td x-text="'Todos passaram'"></td>
-                        <td>
-                            <details>
-                                <summary>Ver detalhes</summary>
-                                Passou em todos os arquivos
-                            </details>
-                        </td>
-                    </tr>
-                </template>
-            </tbody>
-        </table>
+        <div x-show="currentTab === 'pnld'">
+            <!-- Sub-abas para PNLD -->
+            <div class="pnld-tabs">
+                <button @click="pnldSubTab = 'failed'" :class="{ 'active': pnldSubTab === 'failed' }">
+                    Reprovados <span x-text="testesFalhados().length" class="count"></span>
+                </button>
+                <button @click="pnldSubTab = 'passed'" :class="{ 'active': pnldSubTab === 'passed' }">
+                    Aprovados <span x-text="testesAprovados().length" class="count"></span>
+                </button>
+            </div>
+
+            <!-- Conteúdo das sub-abas -->
+            <div x-show="pnldSubTab === 'failed'">
+                <h2>Testes PNLD Reprovados</h2>
+
+                <!-- Sub-categorias para reprovados -->
+                <div class="category-tabs">
+                    <button @click="pnldCategory = 'estrutura'" :class="{ 'active': pnldCategory === 'estrutura' }">
+                        Estrutura <span x-text="testesPorCategoria('failed', 'estrutura').length" class="count"></span>
+                    </button>
+                    <button @click="pnldCategory = 'nomenclatura'" :class="{ 'active': pnldCategory === 'nomenclatura' }">
+                        Nomenclatura <span x-text="testesPorCategoria('failed', 'nomenclatura').length" class="count"></span>
+                    </button>
+                    <button @click="pnldCategory = 'localizacao'" :class="{ 'active': pnldCategory === 'localizacao' }">
+                        Localização <span x-text="testesPorCategoria('failed', 'localizacao').length" class="count"></span>
+                    </button>
+                    <button @click="pnldCategory = 'conteudo'" :class="{ 'active': pnldCategory === 'conteudo' }">
+                        Conteúdo <span x-text="testesPorCategoria('failed', 'conteudo').length" class="count"></span>
+                    </button>
+                    <button @click="pnldCategory = 'outros'" :class="{ 'active': pnldCategory === 'outros' }">
+                        Outros <span x-text="testesPorCategoria('failed', 'outros').length" class="count"></span>
+                    </button>
+                </div>
+
+                <div x-show="pnldCategory === 'estrutura'">
+                    <h3>Estrutura de Arquivos - Reprovados</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome do Teste</th>
+                                <th>Status</th>
+                                <th>Detalhes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template x-for="teste in testesPorCategoria('failed', 'estrutura')">
+                                <tr class="notpass">
+                                    <td x-text="teste.nome"></td>
+                                    <td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
+                                    <td>
+                                        <details>
+                                            <summary>Ver detalhes</summary>
+                                            <ul>
+                                                <template x-for="falha in teste.falhas">
+                                                    <li>
+                                                        <span x-text="falha.arquivo"></span>:
+                                                        <span x-text="falha.mensagem"></span>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </details>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div x-show="pnldCategory === 'nomenclatura'">
+                    <h3>Nomenclatura - Reprovados</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome do Teste</th>
+                                <th>Status</th>
+                                <th>Detalhes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template x-for="teste in testesPorCategoria('failed', 'nomenclatura')">
+                                <tr class="notpass">
+                                    <td x-text="teste.nome"></td>
+                                    <td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
+                                    <td>
+                                        <details>
+                                            <summary>Ver detalhes</summary>
+                                            <ul>
+                                                <template x-for="falha in teste.falhas">
+                                                    <li>
+                                                        <span x-text="falha.arquivo"></span>:
+                                                        <span x-text="falha.mensagem"></span>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </details>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div x-show="pnldCategory === 'localizacao'">
+                    <h3>Localização - Reprovados</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome do Teste</th>
+                                <th>Status</th>
+                                <th>Detalhes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template x-for="teste in testesPorCategoria('failed', 'localizacao')">
+                                <tr class="notpass">
+                                    <td x-text="teste.nome"></td>
+                                    <td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
+                                    <td>
+                                        <details>
+                                            <summary>Ver detalhes</summary>
+                                            <ul>
+                                                <template x-for="falha in teste.falhas">
+                                                    <li>
+                                                        <span x-text="falha.arquivo"></span>:
+                                                        <span x-text="falha.mensagem"></span>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </details>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div x-show="pnldCategory === 'conteudo'">
+                    <h3>Conteúdo - Reprovados</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome do Teste</th>
+                                <th>Status</th>
+                                <th>Detalhes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template x-for="teste in testesPorCategoria('failed', 'conteudo')">
+                                <tr class="notpass">
+                                    <td x-text="teste.nome"></td>
+                                    <td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
+                                    <td>
+                                        <details>
+                                            <summary>Ver detalhes</summary>
+                                            <ul>
+                                                <template x-for="falha in teste.falhas">
+                                                    <li>
+                                                        <span x-text="falha.arquivo"></span>:
+                                                        <span x-text="falha.mensagem"></span>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </details>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div x-show="pnldCategory === 'outros'">
+                    <h3>Outros - Reprovados</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome do Teste</th>
+                                <th>Status</th>
+                                <th>Detalhes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template x-for="teste in testesPorCategoria('failed', 'outros')">
+                                <tr class="notpass">
+                                    <td x-text="teste.nome"></td>
+                                    <td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
+                                    <td>
+                                        <details>
+                                            <summary>Ver detalhes</summary>
+                                            <ul>
+                                                <template x-for="falha in teste.falhas">
+                                                    <li>
+                                                        <span x-text="falha.arquivo"></span>:
+                                                        <span x-text="falha.mensagem"></span>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </details>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div x-show="pnldSubTab === 'passed'">
+                <h2>Testes PNLD Aprovados</h2>
+
+                <!-- Sub-categorias para aprovados -->
+                <div class="category-tabs">
+                    <button @click="pnldCategory = 'estrutura'" :class="{ 'active': pnldCategory === 'estrutura' }">
+                        Estrutura <span x-text="testesPorCategoria('passed', 'estrutura').length" class="count"></span>
+                    </button>
+                    <button @click="pnldCategory = 'nomenclatura'" :class="{ 'active': pnldCategory === 'nomenclatura' }">
+                        Nomenclatura <span x-text="testesPorCategoria('passed', 'nomenclatura').length" class="count"></span>
+                    </button>
+                    <button @click="pnldCategory = 'localizacao'" :class="{ 'active': pnldCategory === 'localizacao' }">
+                        Localização <span x-text="testesPorCategoria('passed', 'localizacao').length" class="count"></span>
+                    </button>
+                    <button @click="pnldCategory = 'conteudo'" :class="{ 'active': pnldCategory === 'conteudo' }">
+                        Conteúdo <span x-text="testesPorCategoria('passed', 'conteudo').length" class="count"></span>
+                    </button>
+                </div>
+
+                <div x-show="pnldCategory === 'estrutura'">
+                    <h3>Estrutura de Arquivos - Aprovados</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome do Teste</th>
+                                <th>Status</th>
+                                <th>Detalhes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template x-for="teste in testesPorCategoria('passed', 'estrutura')">
+                                <tr class="pass">
+                                    <td x-text="teste.nome"></td>
+                                    <td x-text="'Todos passaram'"></td>
+                                    <td>
+                                        <details>
+                                            <summary>Ver detalhes</summary>
+                                            Passou em todos os arquivos
+                                        </details>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div x-show="pnldCategory === 'nomenclatura'">
+                    <h3>Nomenclatura - Aprovados</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome do Teste</th>
+                                <th>Status</th>
+                                <th>Detalhes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template x-for="teste in testesPorCategoria('passed', 'nomenclatura')">
+                                <tr class="pass">
+                                    <td x-text="teste.nome"></td>
+                                    <td x-text="'Todos passaram'"></td>
+                                    <td>
+                                        <details>
+                                            <summary>Ver detalhes</summary>
+                                            Passou em todos os arquivos
+                                        </details>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div x-show="pnldCategory === 'localizacao'">
+                    <h3>Localização - Aprovados</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome do Teste</th>
+                                <th>Status</th>
+                                <th>Detalhes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template x-for="teste in testesPorCategoria('passed', 'localizacao')">
+                                <tr class="pass">
+                                    <td x-text="teste.nome"></td>
+                                    <td x-text="'Todos passaram'"></td>
+                                    <td>
+                                        <details>
+                                            <summary>Ver detalhes</summary>
+                                            Passou em todos os arquivos
+                                        </details>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div x-show="pnldCategory === 'conteudo'">
+                    <h3>Conteúdo - Aprovados</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome do Teste</th>
+                                <th>Status</th>
+                                <th>Detalhes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template x-for="teste in testesPorCategoria('passed', 'conteudo')">
+                                <tr class="pass">
+                                    <td x-text="teste.nome"></td>
+                                    <td x-text="'Todos passaram'"></td>
+                                    <td>
+                                        <details>
+                                            <summary>Ver detalhes</summary>
+                                            Passou em todos os arquivos
+                                        </details>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="currentTab === 'w3c'">
+            <!-- Sub-abas para W3C -->
+            <div class="w3c-tabs">
+                <button @click="w3cSubTab = 'errors'" :class="{ 'active': w3cSubTab === 'errors' }">
+                    Erros W3C <span x-text="testesErrosW3C().length" class="count"></span>
+                </button>
+                <button @click="w3cSubTab = 'warnings'" :class="{ 'active': w3cSubTab === 'warnings' }">
+                    Avisos W3C <span x-text="testesWarningsW3C().length" class="count"></span>
+                </button>
+                <button @click="w3cSubTab = 'notices'" :class="{ 'active': w3cSubTab === 'notices' }">
+                    Notificações W3C <span x-text="testesNoticesW3C().length" class="count"></span>
+                </button>
+            </div>
+
+            <!-- Conteúdo das sub-abas -->
+            <div x-show="w3cSubTab === 'errors'">
+                <h2>Erros W3C</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome do Teste</th>
+                            <th>Status</th>
+                            <th>Detalhes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template x-for="teste in testesErrosW3C()">
+                            <tr class="error">
+                                <td x-text="teste.nome"></td>
+                                <td x-text="`${teste.erros.length} erro(s) encontrado(s)`"></td>
+                                <td>
+                                    <details>
+                                        <summary>Ver detalhes</summary>
+                                        <ul>
+                                            <template x-for="erro in teste.erros">
+                                                <li>
+                                                    <strong>Arquivo:</strong> <span x-text="erro.arquivo"></span><br>
+                                                    <strong>Contexto:</strong> <code x-text="erro.contexto"></code><br>
+                                                    <strong>Seletor:</strong> <code x-text="erro.selector"></code>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </details>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+
+            <div x-show="w3cSubTab === 'warnings'">
+                <h2>Avisos W3C</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome do Teste</th>
+                            <th>Status</th>
+                            <th>Detalhes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template x-for="teste in testesWarningsW3C()">
+                            <tr class="warning">
+                                <td x-text="teste.nome"></td>
+                                <td x-text="`${teste.warnings.length} aviso(s) encontrado(s)`"></td>
+                                <td>
+                                    <details>
+                                        <summary>Ver detalhes</summary>
+                                        <ul>
+                                            <template x-for="aviso in teste.warnings">
+                                                <li>
+                                                    <strong>Arquivo:</strong> <span x-text="aviso.arquivo"></span><br>
+                                                    <strong>Contexto:</strong> <code x-text="aviso.contexto"></code><br>
+                                                    <strong>Seletor:</strong> <code x-text="aviso.selector"></code>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </details>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+
+            <div x-show="w3cSubTab === 'notices'">
+                <h2>Notificações W3C</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome do Teste</th>
+                            <th>Status</th>
+                            <th>Detalhes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template x-for="teste in testesNoticesW3C()">
+                            <tr class="notice">
+                                <td x-text="teste.nome"></td>
+                                <td x-text="`${teste.notices.length} notificação(ões) encontrada(s)`"></td>
+                                <td>
+                                    <details>
+                                        <summary>Ver detalhes</summary>
+                                        <ul>
+                                            <template x-for="notice in teste.notices">
+                                                <li>
+                                                    <strong>Arquivo:</strong> <span x-text="notice.arquivo"></span><br>
+                                                    <strong>Contexto:</strong> <code x-text="notice.contexto"></code><br>
+                                                    <strong>Seletor:</strong> <code x-text="notice.selector"></code>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </details>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <script src="results.js"></script>
     <script>
         let eventSource;
 
-        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+        // File input handling
+        const fileInput = document.getElementById('zipFile');
+        const fileInputDiv = document.getElementById('fileInput');
+        const fileNameDiv = document.getElementById('fileName');
+        const fileTextDiv = document.querySelector('.file-text');
+
+        // Handle file selection
+        fileInput.addEventListener('change', (e) => {
             e.preventDefault();
+            e.stopPropagation();
+            handleFileSelection(e.target.files);
+        });
+
+        // Drag and drop functionality
+        fileInputDiv.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            fileInputDiv.classList.add('dragover');
+        });
+
+        fileInputDiv.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            fileInputDiv.classList.remove('dragover');
+        });
+
+        fileInputDiv.addEventListener('drop', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            fileInputDiv.classList.remove('dragover');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                // Check if it's a ZIP file
+                if (!files[0].name.toLowerCase().endsWith('.zip')) {
+                    showStatus('Por favor, selecione apenas arquivos ZIP.', 'error');
+                    return;
+                }
+                
+                // Set the file to the input
+                const dt = new DataTransfer();
+                dt.items.add(files[0]);
+                fileInput.files = dt.files;
+                
+                handleFileSelection(files);
+            }
+        });
+
+        function handleFileSelection(files) {
+            if (files.length > 0) {
+                const file = files[0];
+                
+                // Show file name
+                fileNameDiv.textContent = file.name;
+                fileNameDiv.style.display = 'block';
+                fileTextDiv.textContent = 'Arquivo selecionado:';
+                
+                // Update visual state
+                fileInputDiv.classList.add('has-file');
+                fileInputDiv.classList.remove('dragover');
+                
+                showStatus(`Arquivo "${file.name}" selecionado com sucesso!`, 'success');
+            }
+        }
+
+        // Prevent form submission on drag and drop
+        document.getElementById('uploadForm').addEventListener('drop', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+
+        document.getElementById('uploadForm').addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.preventDefault();
+            e.stopPropagation();
+        });
+
+        // Prevent any form submission that might occur
+        document.getElementById('uploadForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+
+        // Handle upload function
+        async function handleUpload() {
             const fileInput = document.getElementById('zipFile');
             const statusDiv = document.getElementById('status');
             const progressContainer = document.getElementById('progressContainer');
@@ -285,9 +1286,18 @@
                             showStatus(result.message || 'Upload concluído! Processando arquivo...', 'success');
                             
                             // Show results container
-                            resultsContainer.style.display = 'block';
+                            //resultsContainer.style.display = 'block';
                             
-                            // Show clear button after successful processing
+                            // Scroll to results with smooth animation
+                            setTimeout(() => {
+                                resultsContainer.scrollIntoView({ 
+                                    behavior: 'smooth', 
+                                    block: 'start' 
+                                });
+                            }, 100);
+                            
+                            // Show buttons after successful processing
+                            document.getElementById('viewResultsButton').style.display = 'inline-block';
                             document.getElementById('clearButton').style.display = 'inline-block';
                         } else {
                             throw new Error(result.error || 'Erro no processamento');
@@ -310,7 +1320,7 @@
                 showStatus('Erro ao processar o arquivo: ' + error.message, 'error');
                 progressContainer.style.display = 'none';
             }
-        });
+        }
 
         function showStatus(message, type) {
             const statusDiv = document.getElementById('status');
@@ -321,35 +1331,87 @@
 
         document.addEventListener('alpine:init', () => {
             Alpine.data('dados', () => ({
+                currentTab: 'pnld',
+                w3cSubTab: 'errors',
+                pnldSubTab: 'failed',
+                pnldCategory: 'estrutura',
                 resultados: window.testResults || [],
                 testesAgrupados: function() {
                     const testes = {};
                     this.resultados.forEach(arquivo => {
                         arquivo.issues.forEach(resultado => {
-                            if (!testes[resultado.message]) {
-                                testes[resultado.message] = {
-                                    nome: resultado.message,
-                                    passouEmTodos: true,
-                                    quantosArquivosTestados: 0,
-                                    positivos: [],
-                                    falhas: []
-                                };
-                            }
+                            // Filtrar apenas testes que NÃO são W3C
+                            if (!resultado.code || !resultado.code.startsWith('WCAG')) {
+                                if (!testes[resultado.message]) {
+                                    testes[resultado.message] = {
+                                        nome: resultado.message,
+                                        passouEmTodos: true,
+                                        quantosArquivosTestados: 0,
+                                        positivos: [],
+                                        falhas: []
+                                    };
+                                }
 
-                            testes[resultado.message].quantosArquivosTestados++;
+                                testes[resultado.message].quantosArquivosTestados++;
 
-                            if (resultado.runnerExtras.status === 'passed') {
-                                testes[resultado.message].positivos.push({
-                                    arquivo: arquivo.pageUrl
-                                })
+                                if (resultado.runnerExtras.status === 'passed') {
+                                    testes[resultado.message].positivos.push({
+                                        arquivo: arquivo.pageUrl
+                                    })
+                                }
+                                
+                                if (resultado.runnerExtras.status !== 'passed') {
+                                    testes[resultado.message].passouEmTodos = false;
+                                    testes[resultado.message].falhas.push({
+                                        arquivo: arquivo.pageUrl,
+                                        mensagem: resultado.runnerExtras.errorMessage
+                                    });
+                                }
                             }
-                            
-                            if (resultado.runnerExtras.status !== 'passed') {
-                                testes[resultado.message].passouEmTodos = false;
-                                testes[resultado.message].falhas.push({
-                                    arquivo: arquivo.pageUrl,
-                                    mensagem: resultado.runnerExtras.errorMessage
-                                });
+                        });
+                    });
+                    return Object.values(testes);
+                },
+                testesAgrupadosW3C: function() {
+                    const testes = {};
+                    this.resultados.forEach(arquivo => {
+                        arquivo.issues.forEach(resultado => {
+                            if (resultado.code && resultado.code.startsWith('WCAG')) {
+                                if (!testes[resultado.message]) {
+                                    testes[resultado.message] = {
+                                        nome: resultado.message,
+                                        quantosArquivosTestados: 0,
+                                        erros: [],
+                                        warnings: [],
+                                        notices: []
+                                    };
+                                }
+
+                                testes[resultado.message].quantosArquivosTestados++;
+
+                                // Categorizar por tipo de severidade
+                                if (resultado.type === 'error') {
+                                    testes[resultado.message].erros.push({
+                                        arquivo: arquivo.pageUrl,
+                                        mensagem: resultado.message,
+                                        contexto: resultado.context,
+                                        selector: resultado.selector
+                                    });
+                                } else if (resultado.type === 'warning') {
+                                    testes[resultado.message].warnings.push({
+                                        arquivo: arquivo.pageUrl,
+                                        mensagem: resultado.message,
+                                        contexto: resultado.context,
+                                        selector: resultado.selector
+                                    });
+                                } else if (resultado.type === 'notice') {
+                                    testes[resultado.message].notices.push({
+                                        arquivo: arquivo.pageUrl,
+                                        mensagem: resultado.message,
+                                        contexto: resultado.context,
+                                        selector: resultado.selector
+                                    });
+                                }
                             }
                         });
                     });
@@ -360,6 +1422,38 @@
                 },
                 testesAprovados: function() {
                     return this.testesAgrupados().filter(teste => teste.passouEmTodos);
+                },
+                testesErrosW3C: function() {
+                    return this.testesAgrupadosW3C().filter(teste => teste.erros.length > 0);
+                },
+                testesWarningsW3C: function() {
+                    return this.testesAgrupadosW3C().filter(teste => teste.warnings.length > 0);
+                },
+                testesNoticesW3C: function() {
+                    return this.testesAgrupadosW3C().filter(teste => teste.notices.length > 0);
+                },
+                testesPorCategoria: function(status, categoria) {
+                    const testes = status === 'failed' ? this.testesFalhados() : this.testesAprovados();
+                    return testes.filter(teste => {
+                        const nome = teste.nome.toLowerCase();
+                        switch(categoria) {
+                            case 'estrutura':
+                                return nome.includes('arquivo') || nome.includes('diretório') || nome.includes('obrigatório') || nome.includes('estrutura');
+                            case 'nomenclatura':
+                                return nome.includes('nome') || nome.includes('nomenclatura') || nome.includes('extensão');
+                            case 'localizacao':
+                                return nome.includes('localização') || nome.includes('caminho') || nome.includes('pasta') || nome.includes('diretório');
+                            case 'conteudo':
+                                return nome.includes('conteúdo') || nome.includes('toc') || nome.includes('ncx') || nome.includes('lang') || nome.includes('atributo');
+                            case 'outros':
+                                return !(nome.includes('arquivo') || nome.includes('diretório') || nome.includes('obrigatório') || nome.includes('estrutura') ||
+                                        nome.includes('nome') || nome.includes('nomenclatura') || nome.includes('extensão') ||
+                                        nome.includes('localização') || nome.includes('caminho') || nome.includes('pasta') ||
+                                        nome.includes('conteúdo') || nome.includes('toc') || nome.includes('ncx') || nome.includes('lang') || nome.includes('atributo'));
+                            default:
+                                return false;
+                        }
+                    });
                 },
                 totalLangs: function() {
                     let total = 0;
@@ -375,9 +1469,23 @@
             }))
         });
 
+        function viewResults() {
+            window.location.href = 'results.html';
+        }
+
         function clearAll() {
             // Clear the file input
             document.getElementById('zipFile').value = '';
+            
+            // Reset file input visual state
+            const fileInputDiv = document.getElementById('fileInput');
+            const fileNameDiv = document.getElementById('fileName');
+            const fileTextDiv = document.querySelector('.file-text');
+            
+            fileInputDiv.classList.remove('has-file', 'dragover');
+            fileNameDiv.style.display = 'none';
+            fileNameDiv.textContent = '';
+            fileTextDiv.textContent = 'Clique aqui ou arraste o arquivo ZIP';
             
             // Hide and clear the progress container
             const progressContainer = document.getElementById('progressContainer');
@@ -395,15 +1503,21 @@
             const resultsContainer = document.getElementById('resultsContainer');
             resultsContainer.style.display = 'none';
             
-            // Hide the clear button
+            // Hide the buttons
+            document.getElementById('viewResultsButton').style.display = 'none';
             document.getElementById('clearButton').style.display = 'none';
             
-            // Reset any Alpine.js data if needed
+            // Reset Alpine.js data
             if (window.Alpine) {
-                window.Alpine.data('dados', () => ({
-                    testes: [],
-                    // Add any other data properties that need to be reset
-                }));
+                // Find the Alpine component and reset its data
+                const component = Alpine.closest(document.querySelector('[x-data="dados"]'), '[x-data]');
+                if (component && component._x_dataStack) {
+                    component._x_dataStack[0].currentTab = 'pnld';
+                    component._x_dataStack[0].w3cSubTab = 'errors';
+                    component._x_dataStack[0].pnldSubTab = 'failed';
+                    component._x_dataStack[0].pnldCategory = 'estrutura';
+                    component._x_dataStack[0].resultados = [];
+                }
             }
         }
     </script>
