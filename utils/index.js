@@ -16,7 +16,8 @@ export function testar(testDescription, testFunction, array) {
         type: 'notice',
         runnerExtras: {
             status: status,
-            errorMessage: errorMessage
+            errorMessage: errorMessage,
+            category: 'estrutura'
         }
     });
 }

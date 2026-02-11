@@ -41,9 +41,38 @@ runner.run = (options, pa11y) => {
 				type: 'notice',
 				runnerExtras: {
 					status: status,
-					errorMessage: errorMessage
+					errorMessage: errorMessage,
+					category: getCategory(testDescription)
 				}
 			});
+		}
+
+		/**
+		 * Determina a categoria de um teste baseado no texto
+		 * @param {string} text - Texto para análise
+		 * @returns {string} Categoria
+		 */
+		function getCategory(text) {
+			const lower = text.toLowerCase();
+			const categories = {
+				'IDs': ['problema com id', 'id duplicado encontrado'],
+				'Listas': ['lista com somente um item'],
+				'Salto hierárquico de títulos': ['salto hierárquico de títulos'],
+				'Atributos': ['todas as tags <img> têm atributo alt (mesmo que vazio)', 'tag html possui atributo lang', 'atributos lang encontrados'],
+				'Glossário': ['id de glossário inválido', 'problemas com ids internos do glossário', 'link de ida inválido no glossário', 'link de volta correto no glossário'],
+				'Links': ['problema com id', 'link interno inválido', 'link inválido em nav'],
+				'estrutura': ['arquivo', 'diretório', 'obrigatório', 'estrutura', 'doctype'],
+				'nomenclatura': ['nome', 'nomenclatura', 'extensão'],
+				'localizacao': ['localização', 'caminho', 'pasta'],
+				'conteudo': ['conteúdo', 'toc', 'ncx', 'lang', 'atributo', 'charset', 'meta', 'body', 'html', 'main']
+			};
+
+			for (const [category, keywords] of Object.entries(categories)) {
+				if (keywords.some(keyword => lower.includes(keyword))) {
+					return category;
+				}
+			}
+			return 'outros';
 		}
 
 		/*
@@ -69,11 +98,31 @@ runner.run = (options, pa11y) => {
 
 		// - Todas as imagens tem o atributo alt
 		testar('Todas as tags <img> têm atributo alt (mesmo que vazio)', () => {
-			const images = $('img');
-			images.each(function () {
-				expect($(this).attr('alt')).to.not.be.undefined
+			let status;
+			let errorMessage = null;
+			try {
+				const images = $('img');
+				images.each(function () {
+					expect($(this).attr('alt')).to.not.be.undefined
+				});
+				status = 'passed';
+			} catch (e) {
+				status = 'not passed';
+				errorMessage = e.message
+			}
+			results.push({
+				code: 'Todas as tags <img> têm atributo alt (mesmo que vazio)',
+				message: status === 'passed' ? 'Todas as tags <img> têm atributo alt (mesmo que vazio)' : errorMessage,
+				type: 'notice',
+				runnerExtras: {
+					status: status,
+					errorMessage: errorMessage,
+					category: getCategory('Todas as tags <img> têm atributo alt (mesmo que vazio)')
+				}
 			});
-		});
+		})
+
+
 
 
 		// Não funciona porque estamos no contexto errado. 
@@ -92,41 +141,158 @@ runner.run = (options, pa11y) => {
 
 		// – tag HTML possui atributo lang 
 		testar('tag HTML possui atributo lang', () => {
-			const htmlTag = $('html');
-			expect(htmlTag.attr('lang')).to.not.be.undefined
-		});
+			let status;
+			let errorMessage = null;
+			try {
+				const htmlTag = $('html');
+				expect(htmlTag.attr('lang')).to.not.be.undefined
+				status = 'passed';
+			} catch (e) {
+				status = 'not passed';
+				errorMessage = e.message
+			}
+			results.push({
+				code: 'tag HTML possui atributo lang',
+				message: status === 'passed' ? 'tag HTML possui atributo lang' : errorMessage,
+				type: 'notice',
+				runnerExtras: {
+					status: status,
+					errorMessage: errorMessage,
+					category: getCategory('tag HTML possui atributo lang')
+				}
+			});
+		})
+
 
 		// – atributo lang da tag HTML é igual a pt-BR (ou espanhol ou inglês???)
 		testar('A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)', () => {
-			const htmlTag = $('html');
-			const valoresPermitidos = ['pt-br', 'es', 'en']
-			expect(valoresPermitidos.includes(htmlTag.attr('lang').toLowerCase())).to.equal(true);
-		});
+			let status;
+			let errorMessage = null;
+			try {
+				const htmlTag = $('html');
+				const valoresPermitidos = ['pt-br', 'es', 'en']
+				expect(valoresPermitidos.includes(htmlTag.attr('lang').toLowerCase())).to.equal(true);
+				status = 'passed';
+			} catch (e) {
+				status = 'not passed';
+				errorMessage = e.message
+			}
+			results.push({
+				code: 'A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)',
+				message: status === 'passed' ? 'A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)' : errorMessage,
+				type: 'notice',
+				runnerExtras: {
+					status: status,
+					errorMessage: errorMessage,
+					category: getCategory('A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)')
+				}
+			});
+		})
+
 
 		// – tag meta viewport existe e está configurada de forma acessível
 		testar('A tag meta viewport existe e está configurada de forma acessível', () => {
-			const metaViewport = $('head>meta[name=viewport]');
-			expect(metaViewport.length).to.equal(1);
-			expect(metaViewport.attr('content')).to.equal("width=device-width, initial-scale=1.0");
+			let status;
+			let errorMessage = null;
+			try {
+				const metaViewport = $('head>meta[name=viewport]');
+				expect(metaViewport.length).to.equal(1);
+				expect(metaViewport.attr('content')).to.equal("width=device-width, initial-scale=1.0");
+				status = 'passed';
+			} catch (e) {
+				status = 'not passed';
+				errorMessage = e.message
+			}
+			results.push({
+				code: 'A tag meta viewport existe e está configurada de forma acessível',
+				message: status === 'passed' ? 'A tag meta viewport existe e está configurada de forma acessível' : errorMessage,
+				type: 'notice',
+				runnerExtras: {
+					status: status,
+					errorMessage: errorMessage,
+					category: getCategory('A tag meta viewport existe e está configurada de forma acessível')
+				}
+			})
 		})
 
 		// – Todos os assets são locais
+		testar('Todos os assets são locais', () => {
+			let status;
+			let errorMessage = null;
+			try {
+				// Verifica imagens
+				$('img').each(function () {
+					const src = $(this).attr('src');
+					if (src && (src.startsWith('http://') || src.startsWith('https://'))) {
+						throw new Error('Imagem externa encontrada: ' + src);
+					}
+				});
+
+				// Verifica scripts
+				$('script').each(function () {
+					const src = $(this).attr('src');
+					if (src && (src.startsWith('http://') || src.startsWith('https://'))) {
+						throw new Error('Script externo encontrado: ' + src);
+					}
+				});
+
+				// Verifica estilos CSS
+				$('link[rel=stylesheet]').each(function () {
+					const href = $(this).attr('href');
+					if (href && (href.startsWith('http://') || href.startsWith('https://'))) {
+						throw new Error('CSS externo encontrado: ' + href);
+					}
+				});
+				status = 'passed';
+			} catch (e) {
+				status = 'not passed';
+				errorMessage = e.message
+			}
+			results.push({
+				code: 'Todos os assets são locais',
+				message: status === 'passed' ? 'Todos os assets são locais' : errorMessage,
+				type: 'notice',
+				runnerExtras: {
+					status: status,
+					errorMessage: errorMessage,
+					category: getCategory('Todos os assets são locais')
+				}
+			})
+		})
 
 		// – Não tem nenhum link <a href> apontando para fora do livro
 		testar('Nenhum link <a href> aponta para fora do livro', () => {
-			function listarLinksExternos() {
-				let linksExternos = [];
-				$('a').each(function () {
-					let href = $(this).attr('href');
-					if (href && (href.startsWith('http://') || href.startsWith('https://') || href.startsWith('www'))) {
-						linksExternos.push(href);
-					}
-				});
-				return linksExternos
-			}
+			let status;
+			let errorMessage = null;
+			try {
+				function listarLinksExternos() {
+					let linksExternos = [];
+					$('a').each(function () {
+						let href = $(this).attr('href');
+						if (href && (href.startsWith('http://') || href.startsWith('https://') || href.startsWith('www'))) {
+							linksExternos.push(href);
+						}
+					});
+					return linksExternos
+				}
 
-			const result = listarLinksExternos();
-			expect(result.length).to.equal(0);
+				const result = listarLinksExternos();
+				expect(result.length).to.equal(0);
+				status = 'passed';
+			} catch (e) {
+				status = 'not passed';
+				errorMessage = e.message
+			}
+			results.push({
+				code: 'Nenhum link <a href> aponta para fora do livro',
+				message: status === 'passed' ? 'Nenhum link <a href> aponta para fora do livro' : errorMessage,
+				type: 'notice',
+				runnerExtras: {
+					status: status,
+					errorMessage: errorMessage,
+					category: getCategory('Nenhum link <a href> aponta para fora do livro')
+				}
+			})
 		})
 
 		// – Glossários tem link de ida e de volta
@@ -146,8 +312,16 @@ runner.run = (options, pa11y) => {
 				// Verifica se cada ID é um ID de um termo no glossário
 				idsDeIda.forEach(function (id) {
 					if ($('#' + id).length === 0) {
-						console.log('O ID de ida "#' + id + '" não corresponde a um termo no glossário.');
-						resultado = false;
+						results.push({
+							code: 'ID de glossário inválido',
+							message: 'O ID de ida "#' + id + '" não corresponde a um termo no glossário.',
+							type: 'error',
+							runnerExtras: {
+								status: 'not passed',
+								errorMessage: 'ID de glossário inválido: ' + id,
+								category: getCategory('ID de glossário inválido')
+							}
+						});
 					}
 				});
 
@@ -159,7 +333,16 @@ runner.run = (options, pa11y) => {
 				var resultado = true;
 
 				if (!idsInternosOk) {
-					console.log('Há problemas com alguns IDs internos.');
+					results.push({
+						code: 'Problemas com IDs internos do glossário',
+						message: 'Há problemas com alguns IDs internos.',
+						type: 'error',
+						runnerExtras: {
+							status: 'not passed',
+							errorMessage: 'IDs internos do glossário inválidos',
+							category: getCategory('Problemas com IDs internos do glossário')
+						}
+					});
 					return;
 				}
 
@@ -172,7 +355,16 @@ runner.run = (options, pa11y) => {
 
 					// Verifica se o termo existe no glossário
 					if (termo.length === 0) {
-						console.log('O link de ida "' + linkIda + '" não leva a um termo existente.');
+						results.push({
+							code: 'Link de ida inválido no glossário',
+							message: 'O link de ida "' + linkIda + '" não leva a um termo existente.',
+							type: 'error',
+							runnerExtras: {
+								status: 'not passed',
+								errorMessage: 'Link de ida inválido: ' + linkIda,
+								category: getCategory('Link de ida inválido no glossário')
+							}
+						});
 						resultado = false;
 						return; // Encerra a iteração atual
 					}
@@ -182,7 +374,16 @@ runner.run = (options, pa11y) => {
 					var linkVoltaId = linkVolta.attr('href');
 
 					if (linkVoltaId === linkIdaId) {
-						console.log('O link de volta dentro do termo "' + termoId + '" está correto.');
+						results.push({
+							code: 'Link de volta correto no glossário',
+							message: 'O link de volta dentro do termo "' + termoId + '" está correto.',
+							type: 'notice',
+							runnerExtras: {
+								status: 'passed',
+								info: 'Link de volta válido',
+								category: getCategory('Link de volta correto no glossário')
+							}
+						});
 						resultado = true;
 					}
 				});
@@ -205,13 +406,31 @@ runner.run = (options, pa11y) => {
 					let definicoes = $dl.find('dd');
 
 					if (termos.length === 0 || definicoes.length === 0) {
-						console.log('Erro: O elemento <dl> está vazio ou não contém <dt> e <dd>.');
+						results.push({
+							code: 'Glossário vazio ou incompleto',
+							message: 'Erro: O elemento <dl> está vazio ou não contém <dt> e <dd>.',
+							type: 'error',
+							runnerExtras: {
+								status: 'not passed',
+								errorMessage: 'Glossário vazio ou sem termos/definições',
+								category: getCategory('Glossário vazio ou incompleto')
+							}
+						});
 						valido = false;
 						return;
 					}
 
 					if (termos.length !== definicoes.length) {
-						console.log('Erro: O número de <dt> não corresponde ao número de <dd>.');
+						results.push({
+							code: 'Número de termos e definições não correspondem',
+							message: 'Erro: O número de <dt> não corresponde ao número de <dd>.',
+							type: 'error',
+							runnerExtras: {
+								status: 'not passed',
+								errorMessage: 'Número de dt e dd diferentes',
+								category: getCategory('Número de termos e definições não correspondem')
+							}
+						});
 						valido = false;
 					}
 
@@ -220,7 +439,16 @@ runner.run = (options, pa11y) => {
 						let $dd = definicoes.eq(index);
 
 						if (!$dd.length || $dd.prev().get(0) !== $dt.get(0)) {
-							console.log('Erro: O elemento <dt> não tem uma <dd> correspondente imediatamente após.');
+							results.push({
+								code: 'Estrutura de glossário inválida',
+								message: 'Erro: O elemento <dt> não tem uma <dd> correspondente imediatamente após.',
+								type: 'error',
+								runnerExtras: {
+									status: 'not passed',
+									errorMessage: 'dt sem dd correspondente',
+									category: getCategory('Estrutura de glossário inválida')
+								}
+							});
 							valido = false;
 							return false; // Interrompe o loop se houver um erro
 						}
@@ -261,7 +489,8 @@ runner.run = (options, pa11y) => {
 						type: 'error',
 						runnerExtras: {
 							status: 'not passed',
-							errorMessage: 'ID duplicado: ' + duplicates
+							errorMessage: 'ID duplicado: ' + duplicates,
+							category: getCategory('ID duplicado encontrado: ' + duplicates)
 						}
 					});
 				})
@@ -273,7 +502,27 @@ runner.run = (options, pa11y) => {
 
 		// – lista de um item
 		testar('Não tem listas com somente um item', () => {
-			expect($('ul, ol').filter(i => $(i).children().length == 1).length).to.equal(0);
+			const invalidLists = $('ul, ol').filter(function () {
+				return $(this).children('li').length === 1;
+			});
+			const count = invalidLists.length;
+			if (count > 0) {
+				invalidLists.each(function () {
+					const listHtml = $(this).prop('outerHTML');
+					results.push({
+						code: 'Lista com somente um item',
+						message: 'Encontrada lista com somente um item: ' + listHtml.substring(0, 100) + '...',
+						type: 'error',
+						runnerExtras: {
+							status: 'not passed',
+							errorMessage: 'Lista com um item encontrado',
+							category: getCategory('Lista com somente um item')
+						}
+					});
+				});
+			} else {
+				expect(count).to.equal(0);
+			}
 		})
 
 		// – salto hierárquico
@@ -311,13 +560,14 @@ runner.run = (options, pa11y) => {
 						type: 'error',
 						runnerExtras: {
 							status: 'not passed',
-							errorMessage: 'Saltos hierárquicos encontrados.'
+							errorMessage: 'Saltos hierárquicos encontrados.',
+							category: getCategory('Salto hierárquico de títulos')
 						}
 					});
 				})
 
 			} else {
-				expect(errors.length).to.equal(0);
+				 expect(errors.length).to.equal(0);
 			}
 
 
@@ -489,14 +739,41 @@ runner.run = (options, pa11y) => {
 
 				// Se todas as meta tags necessárias estão presentes
 				if (metaTagsCount >= 8) { // Total de 8 meta tags esperadas
-					console.log("O primeiro filho do body possui a estrutura desejada.");
+					results.push({
+						code: 'Estrutura Book válida no index.html',
+						message: "O primeiro filho do body possui a estrutura desejada.",
+						type: 'notice',
+						runnerExtras: {
+							status: 'passed',
+							info: 'Estrutura Book correta',
+							category: getCategory('Estrutura Book válida no index.html')
+						}
+					});
 					valido = true
 				} else {
-					console.log("O primeiro filho do body não contém todas as meta tags necessárias.");
+					results.push({
+						code: 'Estrutura Book incompleta no index.html',
+						message: "O primeiro filho do body não contém todas as meta tags necessárias.",
+						type: 'error',
+						runnerExtras: {
+							status: 'not passed',
+							errorMessage: 'Meta tags faltando na estrutura Book',
+							category: getCategory('Estrutura Book incompleta no index.html')
+						}
+					});
 					valido = false
 				}
 			} else {
-				console.log("O primeiro filho do body não é um div do tipo Book.");
+				results.push({
+					code: 'Primeiro filho do body inválido no index.html',
+					message: "O primeiro filho do body não é um div do tipo Book.",
+					type: 'error',
+					runnerExtras: {
+						status: 'not passed',
+						errorMessage: 'Primeiro filho não é div itemscope itemtype Book',
+						category: getCategory('Primeiro filho do body inválido no index.html')
+					}
+				});
 				valido = false
 			}
 
@@ -552,7 +829,7 @@ runner.run = (options, pa11y) => {
 			const headings = $('h1, h2, h3, h4, h5, h6');
 			const headingsWithNbsp = [];
 
-			headings.each(function() {
+			headings.each(function () {
 				const heading = $(this);
 				const headingHtml = heading.html();
 
@@ -578,7 +855,8 @@ runner.run = (options, pa11y) => {
 						type: 'error',
 						runnerExtras: {
 							status: 'not passed',
-							errorMessage: `Encontrado &nbsp; no elemento: ${heading.html}`
+							errorMessage: `Encontrado &nbsp; no elemento: ${heading.html}`,
+							category: getCategory('Título com &nbsp;')
 						}
 					});
 				});
@@ -624,10 +902,28 @@ runner.run = (options, pa11y) => {
 				&& firstBodyChild.find('meta[itemprop="accessibilityControl"]').length === 1;
 
 			if (isFirstChildValid) {
-				console.log('O primeiro filho da tag <body> tem a estrutura correta.');
+				results.push({
+					code: 'Estrutura Book válida na página de conteúdo',
+					message: 'O primeiro filho da tag <body> tem a estrutura correta.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						info: 'Estrutura Book correta na página de conteúdo',
+						category: getCategory('Estrutura Book válida na página de conteúdo')
+					}
+				});
 				valido = true
 			} else {
-				console.log('O primeiro filho da tag <body> não tem a estrutura correta.');
+				results.push({
+					code: 'Estrutura Book inválida na página de conteúdo',
+					message: 'O primeiro filho da tag <body> não tem a estrutura correta.',
+					type: 'error',
+					runnerExtras: {
+						status: 'not passed',
+						errorMessage: 'Estrutura Book incorreta na página de conteúdo',
+						category: getCategory('Estrutura Book inválida na página de conteúdo')
+					}
+				});
 				valido = false
 			}
 
@@ -651,7 +947,16 @@ runner.run = (options, pa11y) => {
 			const isMainPresent = mainTag.length > 0;
 
 			if (!isMainPresent) {
-				console.log('A tag <main> está ausente na página.');
+				results.push({
+					code: 'Tag <main> ausente',
+					message: 'A tag <main> está ausente na página.',
+					type: 'error',
+					runnerExtras: {
+						status: 'not passed',
+						errorMessage: 'Tag main obrigatória não encontrada',
+						category: getCategory('Tag <main> ausente')
+					}
+				});
 				valido = false
 			} else {
 				// 3. Verifica se todo o conteúdo, exceto o primeiro filho da <body>, está dentro da <main>
@@ -662,10 +967,28 @@ runner.run = (options, pa11y) => {
 				const allContentInsideMain = otherBodyContents.length === 0;
 
 				if (allContentInsideMain) {
-					console.log('Todo o conteúdo, exceto o primeiro filho da tag <body>, está dentro da tag <main>.');
+					results.push({
+						code: 'Conteúdo dentro de <main>',
+						message: 'Todo o conteúdo, exceto o primeiro filho da tag <body>, está dentro da tag <main>.',
+						type: 'notice',
+						runnerExtras: {
+							status: 'passed',
+							info: 'Conteúdo corretamente envolto em main',
+							category: getCategory('Conteúdo dentro de <main>')
+						}
+					});
 					valido = true
 				} else {
-					console.log('Há conteúdo fora da tag <main>, além do primeiro filho da <body>.');
+					results.push({
+						code: 'Conteúdo fora de <main>',
+						message: 'Há conteúdo fora da tag <main>, além do primeiro filho da <body>.',
+						type: 'error',
+						runnerExtras: {
+							status: 'not passed',
+							errorMessage: 'Conteúdo não envolto em main',
+							category: getCategory('Conteúdo fora de <main>')
+						}
+					});
 					valido = false
 				}
 			}
@@ -881,7 +1204,7 @@ runner.run = (options, pa11y) => {
 							// Separa o arquivo do ID (se houver âncora)
 							let arquivo = src;
 							let targetId = null;
-							
+
 							if (src.includes('#')) {
 								const partes = src.split('#');
 								arquivo = partes[0];
@@ -916,19 +1239,20 @@ runner.run = (options, pa11y) => {
 			}
 
 			const dadosToc = coletarIdsTocNcx();
-			
+
 			// Registra os dados coletados
 			if (dadosToc.isValidToc) {
 				// Armazena os dados no window para uso posterior
 				window.tocNcxData = dadosToc;
-				
+
 				results.push({
 					code: 'IDs coletados do toc.ncx',
 					message: `Coletados ${dadosToc.totalIds} links do toc.ncx referenciando ${dadosToc.totalArquivos} arquivos`,
 					type: 'notice',
 					runnerExtras: {
 						status: 'passed',
-						tocData: dadosToc
+						tocData: dadosToc,
+						category: getCategory('IDs coletados do toc.ncx')
 					}
 				});
 			}
@@ -990,9 +1314,11 @@ runner.run = (options, pa11y) => {
 						code: 'Link inválido em nav',
 						message: `Link com href inválido encontrado: ${link.elemento}. Razão: ${link.razao}`,
 						type: 'error',
+						
 						runnerExtras: {
 							status: 'not passed',
-							errorMessage: `href inválido: ${link.href}. Razão: ${link.razao}`
+							errorMessage: `href inválido: ${link.href}. Razão: ${link.razao}`,
+							category: getCategory('Link inválido em nav')
 						}
 					});
 				});
@@ -1031,7 +1357,7 @@ runner.run = (options, pa11y) => {
 				}
 
 				// Registra lang de outros elementos
-				$('[lang]').each(function() {
+				$('[lang]').each(function () {
 					const $elemento = $(this);
 					if (!$elemento.is('html, body')) {
 						langsEncontrados.elementos.push({
@@ -1048,12 +1374,13 @@ runner.run = (options, pa11y) => {
 			}
 
 			const langs = registrarLangs();
-			
+
 			// Registra os resultados encontrados em um único objeto
 			results.push({
 				code: 'Atributos lang encontrados',
 				message: `Total de atributos lang encontrados`,
 				type: 'notice',
+				category: getCategory('Atributos lang encontrados'),
 				runnerExtras: {
 					status: 'passed',
 					total: langs.total,
@@ -1069,17 +1396,17 @@ runner.run = (options, pa11y) => {
 
 		testar('A página tem um título válido', () => {
 			const title = $('head>title');
-			
+
 			// Verifica se o título existe
 			expect(title.length).to.equal(1, 'A página deve ter exatamente um elemento title');
-			
+
 			// Verifica se o título tem conteúdo
 			const titleText = title.text().trim();
 			expect(titleText).to.not.be.empty('O título não pode estar vazio');
-			
+
 			// Verifica se o título tem um comprimento mínimo
 			expect(titleText.length).to.be.at.least(3, 'O título deve ter pelo menos 3 caracteres');
-			
+
 			// Verifica se o título não contém apenas espaços ou caracteres especiais
 			expect(titleText.replace(/[\s\W]/g, '')).to.not.be.empty('O título não pode conter apenas espaços ou caracteres especiais');
 		});
@@ -1093,7 +1420,7 @@ runner.run = (options, pa11y) => {
 				let linksInternosInvalidos = [];
 
 				// 1. Mapear todos os IDs presentes na página
-				$('[id]').each(function() {
+				$('[id]').each(function () {
 					const id = $(this).attr('id');
 					if (id && id.trim() !== '') {
 						idsInternosMapeados.add(id);
@@ -1101,10 +1428,10 @@ runner.run = (options, pa11y) => {
 				});
 
 				// 2. Verificar todos os links âncora internos (que começam com #)
-				$('a[href^="#"]').each(function() {
+				$('a[href^="#"]').each(function () {
 					const $link = $(this);
 					const href = $link.attr('href');
-					
+
 					if (!href || href === '#') {
 						linksInternosInvalidos.push({
 							elemento: $link.prop('outerHTML'),
@@ -1116,7 +1443,7 @@ runner.run = (options, pa11y) => {
 
 					// Remove o # para obter o ID
 					const targetId = href.substring(1);
-					
+
 					// Verifica se o ID de destino existe na página
 					if (!idsInternosMapeados.has(targetId)) {
 						linksInternosInvalidos.push({
@@ -1129,15 +1456,15 @@ runner.run = (options, pa11y) => {
 				});
 
 				// 3. Verificar links externos (que podem ser para outras páginas do projeto)
-				$('a[href]').each(function() {
+				$('a[href]').each(function () {
 					const $link = $(this);
 					const href = $link.attr('href');
-					
+
 					if (!href) return;
-					
+
 					// Pula links âncora internos (já verificados acima)
 					if (href.startsWith('#')) return;
-					
+
 					// Pula links externos verdadeiros (http/https)
 					if (href.startsWith('http://') || href.startsWith('https://')) {
 						linksExternosInvalidos.push({
@@ -1147,13 +1474,13 @@ runner.run = (options, pa11y) => {
 						});
 						return;
 					}
-					
+
 					// Verifica links para outras páginas com âncoras
 					if (href.includes('#')) {
 						const partes = href.split('#');
 						const arquivo = partes[0];
 						const anchorId = partes[1];
-						
+
 						if (!arquivo || arquivo.trim() === '') {
 							linksInternosInvalidos.push({
 								elemento: $link.prop('outerHTML'),
@@ -1161,7 +1488,7 @@ runner.run = (options, pa11y) => {
 								problema: 'Nome do arquivo não especificado antes da âncora'
 							});
 						}
-						
+
 						if (!anchorId || anchorId.trim() === '') {
 							linksInternosInvalidos.push({
 								elemento: $link.prop('outerHTML'),
@@ -1181,7 +1508,7 @@ runner.run = (options, pa11y) => {
 							problema: 'ID contém caracteres inválidos ou não começa com letra'
 						});
 					}
-					
+
 					// Verifica se o ID não é muito curto
 					if (id.length < 2) {
 						problemas.push({
@@ -1212,7 +1539,8 @@ runner.run = (options, pa11y) => {
 						type: 'error',
 						runnerExtras: {
 							status: 'not passed',
-							errorMessage: problema.problema
+							errorMessage: problema.problema,
+							category: getCategory('Problema com ID')
 						}
 					});
 				});
@@ -1226,7 +1554,8 @@ runner.run = (options, pa11y) => {
 						runnerExtras: {
 							status: 'not passed',
 							errorMessage: link.problema,
-							elemento: link.elemento
+							elemento: link.elemento,
+							category: getCategory('Link interno inválido')
 						}
 					});
 				});
@@ -1240,26 +1569,30 @@ runner.run = (options, pa11y) => {
 						runnerExtras: {
 							status: 'not passed',
 							errorMessage: link.problema,
-							elemento: link.elemento
+							elemento: link.elemento,
+							category: getCategory('Link externo detectado')
 						}
 					});
 				});
+			} else {
+				// Adiciona informações estatísticas
+				results.push({
+					code: 'Estatísticas de IDs e Links',
+					message: `Total de IDs encontrados: ${resultado.idsTotal}. Links internos inválidos: ${resultado.linksInternosInvalidos.length}. Links externos: ${resultado.linksExternosInvalidos.length}`,
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						idsTotal: resultado.idsTotal,
+						linksInternosInvalidos: resultado.linksInternosInvalidos.length,
+						linksExternos: resultado.linksExternosInvalidos.length,
+						category: getCategory('Estatísticas de IDs e Links')
+					}
+				});
+
+				 expect(resultado.temProblemas).to.equal(false, 'Foram encontrados problemas com IDs ou links');
 			}
 
-			// Adiciona informações estatísticas
-			results.push({
-				code: 'Estatísticas de IDs e Links',
-				message: `Total de IDs encontrados: ${resultado.idsTotal}. Links internos inválidos: ${resultado.linksInternosInvalidos.length}. Links externos: ${resultado.linksExternosInvalidos.length}`,
-				type: 'notice',
-				runnerExtras: {
-					status: 'passed',
-					idsTotal: resultado.idsTotal,
-					linksInternosInvalidos: resultado.linksInternosInvalidos.length,
-					linksExternos: resultado.linksExternosInvalidos.length
-				}
-			});
 
-			expect(resultado.temProblemas).to.equal(false, 'Foram encontrados problemas com IDs ou links');
 		});
 
 

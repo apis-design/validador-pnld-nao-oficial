@@ -24,7 +24,8 @@ function testar(testDescription, testFunction, results) {
         type: 'notice',
         runnerExtras: {
             status: status,
-            errorMessage: errorMessage
+            errorMessage: errorMessage,
+            category: 'TOC NCX Validation'
         }
     });
 }

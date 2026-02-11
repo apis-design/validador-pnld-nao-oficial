@@ -1,10 +1,13 @@
 import fs from 'fs'
 import path from 'path'
+import { fileURLToPath } from 'url'
 import pa11y from 'pa11y'
 import puppeteer from 'puppeteer'
 import handleFsError from './helpers/fs-validator.js'
 import { validateTocNcxIds } from './helpers/toc-ncx-validator.js'
 import { sendProgress } from './server.js'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 let browser = null; // Inicializado como null para ser criado sob demanda
 
@@ -121,7 +124,7 @@ const pa11yOptions = (filename) => {
 			reporter: "json",
 			runners: [
 				'htmlcs',
-				'../../../helpers/custom-runners/index.cjs'
+				path.resolve(__dirname, 'helpers/custom-runners/index.cjs')
 			],
 			actions: [
 				//`screen capture ${folder}/${filename}.png`

@@ -455,21 +455,11 @@
 
 				<!-- Sub-categorias para reprovados -->
 				<div class="category-tabs">
-					<button @click="pnldCategory = 'estrutura'" :class="{ 'active': pnldCategory === 'estrutura' }">
-						Estrutura <span x-text="testesPorCategoria('failed', 'estrutura').length" class="count"></span>
-					</button>
-					<button @click="pnldCategory = 'nomenclatura'" :class="{ 'active': pnldCategory === 'nomenclatura' }">
-						Nomenclatura <span x-text="testesPorCategoria('failed', 'nomenclatura').length" class="count"></span>
-					</button>
-					<button @click="pnldCategory = 'localizacao'" :class="{ 'active': pnldCategory === 'localizacao' }">
-						Localização <span x-text="testesPorCategoria('failed', 'localizacao').length" class="count"></span>
-					</button>
-					<button @click="pnldCategory = 'conteudo'" :class="{ 'active': pnldCategory === 'conteudo' }">
-						Conteúdo <span x-text="testesPorCategoria('failed', 'conteudo').length" class="count"></span>
-					</button>
-                    <button @click="pnldCategory = 'outros'" :class="{ 'active': pnldCategory === 'outros' }">
-                        Outros <span x-text="testesPorCategoria('failed', 'outros').length" class="count"></span>
-                    </button>
+					<template x-for="cat in uniqueCategories">
+						<button @click="pnldCategory = cat" :class="{ 'active': pnldCategory === cat }">
+							<span x-text="cat.length > 50 ? cat.substring(0, 50) + '...' : cat"></span> <span x-text="testesPorCategoria('failed', cat).length" class="count"></span>
+						</button>
+					</template>
 								<tr class="notpass">
 									<td x-text="teste.nome"></td>
 									<td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
@@ -492,175 +482,41 @@
 					</table>
 				</div>
 
-				<div x-show="pnldCategory === 'nomenclatura'">
-					<h3>Nomenclatura - Reprovados</h3>
-					<table>
-						<thead>
-							<tr>
-								<th>Nome do Teste</th>
-								<th>Status</th>
-								<th>Detalhes</th>
-							</tr>
-						</thead>
-						<tbody>
-							<template x-for="teste in testesPorCategoria('failed', 'nomenclatura')">
-								<tr class="notpass">
-									<td x-text="teste.nome"></td>
-									<td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
-									<td>
-										<details>
-											<summary>Ver detalhes</summary>
-											<ul>
-												<template x-for="falha in teste.falhas">
-													<li>
-														<span x-text="falha.arquivo"></span>:
-														<span x-text="falha.mensagem"></span>
-													</li>
-												</template>
-											</ul>
-										</details>
-									</td>
+				<template x-for="cat in uniqueCategories">
+					<div x-show="pnldCategory === cat">
+						<h3 x-text="cat + ' - Reprovados'"></h3>
+						<table>
+							<thead>
+								<tr>
+									<th>Nome do Teste</th>
+									<th>Status</th>
+									<th>Detalhes</th>
 								</tr>
-							</template>
-						</tbody>
-					</table>
-				</div>
-
-				<div x-show="pnldCategory === 'localizacao'">
-					<h3>Localização - Reprovados</h3>
-					<table>
-						<thead>
-							<tr>
-								<th>Nome do Teste</th>
-								<th>Status</th>
-								<th>Detalhes</th>
-							</tr>
-						</thead>
-						<tbody>
-							<template x-for="teste in testesPorCategoria('failed', 'localizacao')">
-								<tr class="notpass">
-									<td x-text="teste.nome"></td>
-									<td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
-									<td>
-										<details>
-											<summary>Ver detalhes</summary>
-											<ul>
-												<template x-for="falha in teste.falhas">
-													<li>
-														<span x-text="falha.arquivo"></span>:
-														<span x-text="falha.mensagem"></span>
-													</li>
-												</template>
-											</ul>
-										</details>
-									</td>
-								</tr>
-							</template>
-						</tbody>
-					</table>
-				</div>
-
-				<div x-show="pnldCategory === 'estrutura'">
-					<h3>Estrutura - Reprovados</h3>
-					<table>
-						<thead>
-							<tr>
-								<th>Nome do Teste</th>
-								<th>Status</th>
-								<th>Detalhes</th>
-							</tr>
-						</thead>
-						<tbody>
-							<template x-for="teste in testesPorCategoria('failed', 'estrutura')">
-								<tr class="notpass">
-									<td x-text="teste.nome"></td>
-									<td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
-									<td>
-										<details>
-											<summary>Ver detalhes</summary>
-											<ul>
-												<template x-for="falha in teste.falhas">
-													<li>
-														<span x-text="falha.arquivo"></span>:
-														<span x-text="falha.mensagem"></span>
-													</li>
-												</template>
-											</ul>
-										</details>
-									</td>
-								</tr>
-							</template>
-						</tbody>
-					</table>
-				</div>
-
-				<div x-show="pnldCategory === 'conteudo'">
-					<h3>Conteúdo - Reprovados</h3>
-					<table>
-						<thead>
-							<tr>
-								<th>Nome do Teste</th>
-								<th>Status</th>
-								<th>Detalhes</th>
-							</tr>
-						</thead>
-						<tbody>
-							<template x-for="teste in testesPorCategoria('failed', 'conteudo')">
-								<tr class="notpass">
-									<td x-text="teste.nome"></td>
-									<td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
-									<td>
-										<details>
-											<summary>Ver detalhes</summary>
-											<ul>
-												<template x-for="falha in teste.falhas">
-													<li>
-														<span x-text="falha.arquivo"></span>:
-														<span x-text="falha.mensagem"></span>
-													</li>
-												</template>
-											</ul>
-										</details>
-									</td>
-								</tr>
-							</template>
-						</tbody>
-					</table>
-				</div>
-
-				<div x-show="pnldCategory === 'outros'">
-					<h3>Outros - Reprovados</h3>
-					<table>
-						<thead>
-							<tr>
-								<th>Nome do Teste</th>
-								<th>Status</th>
-								<th>Detalhes</th>
-							</tr>
-						</thead>
-						<tbody>
-							<template x-for="teste in testesPorCategoria('failed', 'outros')">
-								<tr class="notpass">
-									<td x-text="teste.nome"></td>
-									<td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
-									<td>
-										<details>
-											<summary>Ver detalhes</summary>
-											<ul>
-												<template x-for="falha in teste.falhas">
-													<li>
-														<span x-text="falha.arquivo"></span>:
-														<span x-text="falha.mensagem"></span>
-													</li>
-												</template>
-											</ul>
-										</details>
-									</td>
-								</tr>
-							</template>
-						</tbody>
-					</table>
-				</div>
+							</thead>
+							<tbody>
+								<template x-for="teste in testesPorCategoria('failed', cat)">
+									<tr class="notpass">
+										<td x-text="teste.nome"></td>
+										<td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
+										<td>
+											<details>
+												<summary>Ver detalhes</summary>
+												<ul>
+													<template x-for="falha in teste.falhas">
+														<li>
+															<span x-text="falha.arquivo"></span>:
+															<span x-text="falha.mensagem"></span>
+														</li>
+													</template>
+												</ul>
+											</details>
+										</td>
+									</tr>
+								</template>
+							</tbody>
+						</table>
+					</div>
+				</template>
 			</div>
 
 			<div x-show="pnldSubTab === 'passed'">
@@ -668,127 +524,41 @@
 
 				<!-- Sub-categorias para aprovados -->
 				<div class="category-tabs">
-					<button @click="pnldCategory = 'estrutura'" :class="{ 'active': pnldCategory === 'estrutura' }">
-						Estrutura <span x-text="testesPorCategoria('passed', 'estrutura').length" class="count"></span>
-					</button>
-					<button @click="pnldCategory = 'nomenclatura'" :class="{ 'active': pnldCategory === 'nomenclatura' }">
-						Nomenclatura <span x-text="testesPorCategoria('passed', 'nomenclatura').length" class="count"></span>
-					</button>
-					<button @click="pnldCategory = 'localizacao'" :class="{ 'active': pnldCategory === 'localizacao' }">
-						Localização <span x-text="testesPorCategoria('passed', 'localizacao').length" class="count"></span>
-					</button>
-					<button @click="pnldCategory = 'conteudo'" :class="{ 'active': pnldCategory === 'conteudo' }">
-						Conteúdo <span x-text="testesPorCategoria('passed', 'conteudo').length" class="count"></span>
-					</button>
+					<template x-for="cat in uniqueCategories">
+						<button @click="pnldCategory = cat" :class="{ 'active': pnldCategory === cat }">
+							<span x-text="cat"></span> <span x-text="testesPorCategoria('passed', cat).length" class="count"></span>
+						</button>
+					</template>
 				</div>
 
-				<div x-show="pnldCategory === 'estrutura'">
-					<h3>Estrutura de Arquivos - Aprovados</h3>
-					<table>
-						<thead>
-							<tr>
-								<th>Nome do Teste</th>
-								<th>Status</th>
-								<th>Detalhes</th>
-							</tr>
-						</thead>
-						<tbody>
-							<template x-for="teste in testesPorCategoria('passed', 'estrutura')">
-								<tr class="pass">
-									<td x-text="teste.nome"></td>
-									<td x-text="'Todos passaram'"></td>
-									<td>
-										<details>
-											<summary>Ver detalhes</summary>
-											Passou em todos os arquivos
-										</details>
-									</td>
+				<template x-for="cat in uniqueCategories">
+					<div x-show="pnldCategory === cat">
+						<h3 x-text="cat + ' - Aprovados'"></h3>
+						<table>
+							<thead>
+								<tr>
+									<th>Nome do Teste</th>
+									<th>Status</th>
+									<th>Detalhes</th>
 								</tr>
-							</template>
-						</tbody>
-					</table>
-				</div>
-
-				<div x-show="pnldCategory === 'nomenclatura'">
-					<h3>Nomenclatura - Aprovados</h3>
-					<table>
-						<thead>
-							<tr>
-								<th>Nome do Teste</th>
-								<th>Status</th>
-								<th>Detalhes</th>
-							</tr>
 							</thead>
-						<tbody>
-							<template x-for="teste in testesPorCategoria('passed', 'nomenclatura')">
-								<tr class="pass">
-									<td x-text="teste.nome"></td>
-									<td x-text="'Todos passaram'"></td>
-									<td>
-										<details>
-											<summary>Ver detalhes</summary>
-											Passou em todos os arquivos
-										</details>
-									</td>
-								</tr>
-							</template>
-						</tbody>
-					</table>
-				</div>
-
-				<div x-show="pnldCategory === 'localizacao'">
-					<h3>Localização - Aprovados</h3>
-					<table>
-						<thead>
-							<tr>
-								<th>Nome do Teste</th>
-								<th>Status</th>
-								<th>Detalhes</th>
-							</tr>
-						</thead>
-						<tbody>
-							<template x-for="teste in testesPorCategoria('passed', 'localizacao')">
-								<tr class="pass">
-									<td x-text="teste.nome"></td>
-									<td x-text="'Todos passaram'"></td>
-									<td>
-										<details>
-											<summary>Ver detalhes</summary>
-											Passou em todos os arquivos
-										</details>
-									</td>
-								</tr>
-							</template>
-						</tbody>
-					</table>
-				</div>
-
-				<div x-show="pnldCategory === 'conteudo'">
-					<h3>Conteúdo - Aprovados</h3>
-					<table>
-						<thead>
-							<tr>
-								<th>Nome do Teste</th>
-								<th>Status</th>
-								<th>Detalhes</th>
-							</tr>
-						</thead>
-						<tbody>
-							<template x-for="teste in testesPorCategoria('passed', 'conteudo')">
-								<tr class="pass">
-									<td x-text="teste.nome"></td>
-									<td x-text="'Todos passaram'"></td>
-									<td>
-										<details>
-											<summary>Ver detalhes</summary>
-											Passou em todos os arquivos
-										</details>
-									</td>
-								</tr>
-							</template>
-						</tbody>
-					</table>
-				</div>
+							<tbody>
+								<template x-for="teste in testesPorCategoria('passed', cat)">
+									<tr class="pass">
+										<td x-text="teste.nome"></td>
+										<td x-text="'Todos passaram'"></td>
+										<td>
+											<details>
+												<summary>Ver detalhes</summary>
+												Passou em todos os arquivos
+											</details>
+										</td>
+									</tr>
+								</template>
+							</tbody>
+						</table>
+					</div>
+				</template>
 			</div>
 		</div>
 
@@ -921,18 +691,20 @@
 				currentTab: 'pnld',
 				w3cSubTab: 'errors',
 				pnldSubTab: 'failed',
-				pnldCategory: 'estrutura',
+				pnldCategory: 'conteudo',
 				resultados: window.testResults || [],
 				testesAgrupados: function() {
 					const testes = {};
-					console.log(this.resultados)
+					console.log('resultados: ',this.resultados)
 					this.resultados.forEach(arquivo => {
 						arquivo.issues.forEach(resultado => {
 							// Filtrar apenas testes que NÃO são W3C
 							if (!resultado.code || !resultado.code.startsWith('WCAG')) {
+								console.log('resultado.category:', resultado.runnerExtras?.category);
 								if (!testes[resultado.message]) {
 									testes[resultado.message] = {
 										nome: resultado.message,
+										category: resultado.runnerExtras?.category,
 										passouEmTodos: true,
 										quantosArquivosTestados: 0,
 										positivos: [],
@@ -1005,6 +777,13 @@
 					});
 					return Object.values(testes);
 				},
+				uniqueCategories: function() {
+					const categories = new Set();
+					this.testesAgrupados().forEach(teste => {
+						categories.add(teste.category);
+					});
+					return Array.from(categories).sort();
+				},
 				testesFalhados: function() {
 					return this.testesAgrupados().filter(teste => !teste.passouEmTodos);
 				},
@@ -1022,26 +801,7 @@
 				},
 				testesPorCategoria: function(status, categoria) {
 					const testes = status === 'failed' ? this.testesFalhados() : this.testesAprovados();
-					return testes.filter(teste => {
-						const nome = teste.nome.toLowerCase();
-						switch(categoria) {
-							case 'estrutura':
-								return nome.includes('arquivo') || nome.includes('diretório') || nome.includes('obrigatório') || nome.includes('estrutura');
-							case 'nomenclatura':
-								return nome.includes('nome') || nome.includes('nomenclatura') || nome.includes('extensão');
-							case 'localizacao':
-								return nome.includes('localização') || nome.includes('caminho') || nome.includes('pasta') || nome.includes('diretório');
-							case 'conteudo':
-								return nome.includes('conteúdo') || nome.includes('toc') || nome.includes('ncx') || nome.includes('lang') || nome.includes('atributo');
-							case 'outros':
-								return !(nome.includes('arquivo') || nome.includes('diretório') || nome.includes('obrigatório') || nome.includes('estrutura') ||
-										nome.includes('nome') || nome.includes('nomenclatura') || nome.includes('extensão') ||
-										nome.includes('localização') || nome.includes('caminho') || nome.includes('pasta') ||
-										nome.includes('conteúdo') || nome.includes('toc') || nome.includes('ncx') || nome.includes('lang') || nome.includes('atributo'));
-							default:
-								return false;
-						}
-					});
+					return testes.filter(teste => teste.category === categoria);
 				},
 				totalLangs: function() {
 					let total = 0;
