@@ -149,7 +149,6 @@
 		}
 
 		.w3c-tabs {
-			display: flex;
 			margin-bottom: 30px;
 			border-bottom: 2px solid #e2e8f0;
 			background: transparent;
@@ -294,6 +293,37 @@
 			box-shadow: 0 2px 4px rgba(72, 187, 120, 0.3);
 		}
 
+		.loading {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(255, 255, 255, 0.9);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
+			font-size: 1.5rem;
+			font-weight: 600;
+			color: #333;
+		}
+
+		.loading-spinner {
+			border: 4px solid #f3f3f3;
+			border-top: 4px solid #007bff;
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+			animation: spin 1s linear infinite;
+			margin-right: 20px;
+		}
+
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
+
 		.tab-content {
 			display: none;
 			animation: fadeIn 0.3s ease-out;
@@ -387,8 +417,12 @@
 		}
 	</style>
 </head>
-<body>
-	<div class="main-container">
+<body x-data="dados">
+	<div x-show="loading" class="loading">
+		<div class="loading-spinner"></div>
+		Carregando resultados...
+	</div>
+	<div class="main-container" x-if="!loading">
 		<div class="header">
 			<h1>Relatório de Validação</h1>
 			<p>Resultados detalhados dos testes PNLD</p>
@@ -396,12 +430,13 @@
 
 		<a href="/" class="back-button">← Voltar para o Início</a>
 
-		<div class="results-container" x-data="dados">
+		<div class="results-container">
 
 		<!-- Tabs -->
 		<div class="tabs">
 			<button @click="currentTab = 'pnld'" :class="{ 'active': currentTab === 'pnld' }">Validador PNLD</button>
 			<button @click="currentTab = 'w3c'" :class="{ 'active': currentTab === 'w3c' }">Validador W3C Markup</button>
+			<button @click="currentTab = 'wave'" :class="{ 'active': currentTab === 'wave' }">Validador WAVE</button>
 		</div>
 
 		<div class="grid" x-show="currentTab === 'pnld'">
@@ -438,6 +473,25 @@
 			</article>
 		</div>
 
+		<div class="grid" x-show="currentTab === 'wave'">
+			<article>
+				<header>Total de Testes WAVE</header>
+				<h3 x-text="testesAgrupadosWAVE().length"></h3>
+			</article>
+			<article>
+				<header>Erros de Acessibilidade</header>
+				<h3 x-text="testesErrosWAVE().length" style="color: red;"></h3>
+			</article>
+			<article>
+				<header>Alertas de Acessibilidade</header>
+				<h3 x-text="testesAlertasWAVE().length" style="color: orange;"></h3>
+			</article>
+			<article>
+				<header>Problemas de Contraste</header>
+				<h3 x-text="testesContrasteWAVE().length" style="color: red;"></h3>
+			</article>
+		</div>
+
 		<div x-show="currentTab === 'pnld'">
 			<!-- Sub-abas para Todos os Testes -->
 			<div class="pnld-tabs">
@@ -460,7 +514,7 @@
 							<span x-text="cat.length > 50 ? cat.substring(0, 50) + '...' : cat"></span> <span x-text="testesPorCategoria('failed', cat).length" class="count"></span>
 						</button>
 					</template>
-								<tr class="notpass">
+								<!-- <tr class="notpass">
 									<td x-text="teste.nome"></td>
 									<td x-text="`${teste.falhas.length} de ${teste.quantosArquivosTestados} falharam`"></td>
 									<td>
@@ -476,7 +530,7 @@
 											</ul>
 										</details>
 									</td>
-								</tr>
+								</tr> -->
 							</template>
 						</tbody>
 					</table>
@@ -682,24 +736,437 @@
 				</table>
 			</div>
 		</div>
-	</div>
 
+		<div x-show="currentTab === 'wave'">
+			<!-- Sub-abas para WAVE -->
+			<div class="w3c-tabs">
+				<button @click="waveSubTab = 'errors'" :class="{ 'active': waveSubTab === 'errors' }">
+					Erros WAVE <span x-text="testesErrosWAVE().length" class="count"></span>
+				</button>
+				<button @click="waveSubTab = 'alerts'" :class="{ 'active': waveSubTab === 'alerts' }">
+					Alertas WAVE <span x-text="testesAlertasWAVE().length" class="count"></span>
+				</button>
+				<button @click="waveSubTab = 'contrast'" :class="{ 'active': waveSubTab === 'contrast' }">
+					Contraste WAVE <span x-text="testesContrasteWAVE().length" class="count"></span>
+				</button>
+				<button @click="waveSubTab = 'structure'" :class="{ 'active': waveSubTab === 'structure' }">
+					Estrutura WAVE <span x-text="testesEstruturaWAVE().length" class="count"></span>
+				</button>
+				<button @click="waveSubTab = 'aria'" :class="{ 'active': waveSubTab === 'aria' }">
+					ARIA WAVE <span x-text="testesAriaWAVE().length" class="count"></span>
+				</button>
+				<button @click="waveSubTab = 'html5'" :class="{ 'active': waveSubTab === 'html5' }">
+					HTML5 WAVE <span x-text="testesHtml5WAVE().length" class="count"></span>
+				</button>
+				<button @click="waveSubTab = 'link'" :class="{ 'active': waveSubTab === 'link' }">
+					Links WAVE <span x-text="testesLinkWAVE().length" class="count"></span>
+				</button>
+				<button @click="waveSubTab = 'media'" :class="{ 'active': waveSubTab === 'media' }">
+					Mídia WAVE <span x-text="testesMediaWAVE().length" class="count"></span>
+				</button>
+				<button @click="waveSubTab = 'table'" :class="{ 'active': waveSubTab === 'table' }">
+					Tabelas WAVE <span x-text="testesTableWAVE().length" class="count"></span>
+				</button>
+				<button @click="waveSubTab = 'feature'" :class="{ 'active': waveSubTab === 'feature' }">
+					Funcionalidades WAVE <span x-text="testesFeatureWAVE().length" class="count"></span>
+				</button>
+				<button @click="waveSubTab = 'passed'" :class="{ 'active': waveSubTab === 'passed' }">
+					Sucesso WAVE <span x-text="testesAprovadosWAVE().length" class="count"></span>
+				</button>
+			</div>
+
+			<!-- Conteúdo das sub-abas WAVE -->
+			<div x-show="waveSubTab === 'errors'">
+				<h2>Erros de Acessibilidade WAVE</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nome do Teste</th>
+							<th>Status</th>
+							<th>Detalhes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template x-for="teste in testesErrosWAVE()">
+							<tr class="error">
+								<td x-text="teste.nome"></td>
+								<td x-text="`${teste.erros.length} erro(s) encontrado(s)`"></td>
+								<td>
+									<details>
+										<summary>Ver detalhes</summary>
+										<ul>
+											<template x-for="erro in teste.erros">
+												<li>
+													<strong>Arquivo:</strong> <span x-text="erro.arquivo"></span><br>
+													<strong>Mensagem:</strong> <span x-text="erro.mensagem"></span>
+												</li>
+											</template>
+										</ul>
+									</details>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+
+			<div x-show="waveSubTab === 'alerts'">
+				<h2>Alertas de Acessibilidade WAVE</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nome do Teste</th>
+							<th>Status</th>
+							<th>Detalhes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template x-for="teste in testesAlertasWAVE()">
+							<tr class="warning">
+								<td x-text="teste.nome"></td>
+								<td x-text="`${teste.alertas.length} alerta(s) encontrado(s)`"></td>
+								<td>
+									<details>
+										<summary>Ver detalhes</summary>
+										<ul>
+											<template x-for="alerta in teste.alertas">
+												<li>
+													<strong>Arquivo:</strong> <span x-text="alerta.arquivo"></span><br>
+													<strong>Mensagem:</strong> <span x-text="alerta.mensagem"></span>
+												</li>
+											</template>
+										</ul>
+									</details>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+
+			<div x-show="waveSubTab === 'contrast'">
+				<h2>Problemas de Contraste WAVE</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nome do Teste</th>
+							<th>Status</th>
+							<th>Detalhes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template x-for="teste in testesContrasteWAVE()">
+							<tr class="error">
+								<td x-text="teste.nome"></td>
+								<td x-text="`${teste.contrastes.length} problema(s) encontrado(s)`"></td>
+								<td>
+									<details>
+										<summary>Ver detalhes</summary>
+										<ul>
+											<template x-for="contraste in teste.contrastes">
+												<li>
+													<strong>Arquivo:</strong> <span x-text="contraste.arquivo"></span><br>
+													<strong>Mensagem:</strong> <span x-text="contraste.mensagem"></span>
+												</li>
+											</template>
+										</ul>
+									</details>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+
+			<div x-show="waveSubTab === 'structure'">
+				<h2>Estrutura WAVE</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nome do Teste</th>
+							<th>Status</th>
+							<th>Detalhes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template x-for="teste in testesEstruturaWAVE()">
+							<tr class="notice">
+								<td x-text="teste.nome"></td>
+								<td x-text="`${teste.estruturas.length} item(s) encontrado(s)`"></td>
+								<td>
+									<details>
+										<summary>Ver detalhes</summary>
+										<ul>
+											<template x-for="item in teste.estruturas">
+												<li>
+													<strong>Arquivo:</strong> <span x-text="item.arquivo"></span><br>
+													<strong>Mensagem:</strong> <span x-text="item.mensagem"></span>
+												</li>
+											</template>
+										</ul>
+									</details>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+
+			<div x-show="waveSubTab === 'aria'">
+				<h2>ARIA WAVE</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nome do Teste</th>
+							<th>Status</th>
+							<th>Detalhes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template x-for="teste in testesAriaWAVE()">
+							<tr class="warning">
+								<td x-text="teste.nome"></td>
+								<td x-text="`${teste.aria.length} item(s) encontrado(s)`"></td>
+								<td>
+									<details>
+										<summary>Ver detalhes</summary>
+										<ul>
+											<template x-for="item in teste.aria">
+												<li>
+													<strong>Arquivo:</strong> <span x-text="item.arquivo"></span><br>
+													<strong>Mensagem:</strong> <span x-text="item.mensagem"></span>
+												</li>
+											</template>
+										</ul>
+									</details>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+
+			<div x-show="waveSubTab === 'html5'">
+				<h2>HTML5 WAVE</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nome do Teste</th>
+							<th>Status</th>
+							<th>Detalhes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template x-for="teste in testesHtml5WAVE()">
+							<tr class="notice">
+								<td x-text="teste.nome"></td>
+								<td x-text="`${teste.html5.length} item(s) encontrado(s)`"></td>
+								<td>
+									<details>
+										<summary>Ver detalhes</summary>
+										<ul>
+											<template x-for="item in teste.html5">
+												<li>
+													<strong>Arquivo:</strong> <span x-text="item.arquivo"></span><br>
+													<strong>Mensagem:</strong> <span x-text="item.mensagem"></span>
+												</li>
+											</template>
+										</ul>
+									</details>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+
+			<div x-show="waveSubTab === 'link'">
+				<h2>Links WAVE</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nome do Teste</th>
+							<th>Status</th>
+							<th>Detalhes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template x-for="teste in testesLinkWAVE()">
+							<tr class="warning">
+								<td x-text="teste.nome"></td>
+								<td x-text="`${teste.link.length} item(s) encontrado(s)`"></td>
+								<td>
+									<details>
+										<summary>Ver detalhes</summary>
+										<ul>
+											<template x-for="item in teste.link">
+												<li>
+													<strong>Arquivo:</strong> <span x-text="item.arquivo"></span><br>
+													<strong>Mensagem:</strong> <span x-text="item.mensagem"></span>
+												</li>
+											</template>
+										</ul>
+									</details>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+
+			<div x-show="waveSubTab === 'media'">
+				<h2>Mídia WAVE</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nome do Teste</th>
+							<th>Status</th>
+							<th>Detalhes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template x-for="teste in testesMediaWAVE()">
+							<tr class="warning">
+								<td x-text="teste.nome"></td>
+								<td x-text="`${teste.media.length} item(s) encontrado(s)`"></td>
+								<td>
+									<details>
+										<summary>Ver detalhes</summary>
+										<ul>
+											<template x-for="item in teste.media">
+												<li>
+													<strong>Arquivo:</strong> <span x-text="item.arquivo"></span><br>
+													<strong>Mensagem:</strong> <span x-text="item.mensagem"></span>
+												</li>
+											</template>
+										</ul>
+									</details>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+
+			<div x-show="waveSubTab === 'table'">
+				<h2>Tabelas WAVE</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nome do Teste</th>
+							<th>Status</th>
+							<th>Detalhes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template x-for="teste in testesTableWAVE()">
+							<tr class="warning">
+								<td x-text="teste.nome"></td>
+								<td x-text="`${teste.table.length} item(s) encontrado(s)`"></td>
+								<td>
+									<details>
+										<summary>Ver detalhes</summary>
+										<ul>
+											<template x-for="item in teste.table">
+												<li>
+													<strong>Arquivo:</strong> <span x-text="item.arquivo"></span><br>
+													<strong>Mensagem:</strong> <span x-text="item.mensagem"></span>
+												</li>
+											</template>
+										</ul>
+									</details>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+
+			<div x-show="waveSubTab === 'feature'">
+				<h2>Funcionalidades WAVE</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nome do Teste</th>
+							<th>Status</th>
+							<th>Detalhes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template x-for="teste in testesFeatureWAVE()">
+							<tr class="notice">
+								<td x-text="teste.nome"></td>
+								<td x-text="`${teste.feature.length} item(s) encontrado(s)`"></td>
+								<td>
+									<details>
+										<summary>Ver detalhes</summary>
+										<ul>
+											<template x-for="item in teste.feature">
+												<li>
+													<strong>Arquivo:</strong> <span x-text="item.arquivo"></span><br>
+													<strong>Mensagem:</strong> <span x-text="item.mensagem"></span>
+												</li>
+											</template>
+										</ul>
+									</details>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+
+			<div x-show="waveSubTab === 'passed'">
+				<h2>Sucesso WAVE</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nome do Teste</th>
+							<th>Status</th>
+							<th>Detalhes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template x-for="teste in testesAprovadosWAVE()">
+							<tr class="notice">
+								<td x-text="teste.nome"></td>
+								<td>Sucesso</td>
+								<td>
+									<details>
+										<summary>Ver detalhes</summary>
+										<ul>
+											<li>Arquivo validado com sucesso pela ferramenta WAVE.</li>
+										</ul>
+									</details>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 	<script src="results.js"></script>
 	<script>
 		document.addEventListener('alpine:init', () => {
 			Alpine.data('dados', () => ({
 				currentTab: 'pnld',
 				w3cSubTab: 'errors',
+				waveSubTab: 'errors',
 				pnldSubTab: 'failed',
 				pnldCategory: 'conteudo',
+				loading: true,
 				resultados: window.testResults || [],
+				init() {
+					this.loading = false;
+				},
 				testesAgrupados: function() {
 					const testes = {};
 					console.log('resultados: ',this.resultados)
 					this.resultados.forEach(arquivo => {
 						arquivo.issues.forEach(resultado => {
-							// Filtrar apenas testes que NÃO são W3C
-							if (!resultado.code || !resultado.code.startsWith('WCAG')) {
+							// Filtrar apenas testes que NÃO são W3C e NÃO são WAVE
+							if ((!resultado.code || !resultado.code.startsWith('WCAG')) && (!resultado.runnerExtras?.category || !resultado.runnerExtras.category.includes('WAVE'))) {
 								console.log('resultado.category:', resultado.runnerExtras?.category);
 								if (!testes[resultado.message]) {
 									testes[resultado.message] = {
@@ -780,7 +1247,7 @@
 				uniqueCategories: function() {
 					const categories = new Set();
 					this.testesAgrupados().forEach(teste => {
-						categories.add(teste.category);
+						if (teste.category) categories.add(teste.category);
 					});
 					return Array.from(categories).sort();
 				},
@@ -798,6 +1265,117 @@
 				},
 				testesNoticesW3C: function() {
 					return this.testesAgrupadosW3C().filter(teste => teste.notices.length > 0);
+				},
+				testesAgrupadosWAVE: function() {
+					const testes = {};
+					this.resultados.forEach(arquivo => {
+						arquivo.issues.forEach(resultado => {
+							if (resultado.runnerExtras?.category && resultado.runnerExtras.category.includes('WAVE')) {
+								if (!testes[resultado.message]) {
+									testes[resultado.message] = {
+										nome: resultado.message,
+										erros: [],
+										alertas: [],
+										contrastes: [],
+										estruturas: [],
+										aria: [],
+										html5: [],
+										link: [],
+										media: [],
+										table: [],
+										feature: []
+									};
+								}
+
+								// Categorizar por tipo de categoria WAVE
+								if (resultado.runnerExtras.category.includes('Erros')) {
+									testes[resultado.message].erros.push({
+										arquivo: arquivo.pageUrl,
+										mensagem: resultado.runnerExtras.errorMessage
+									});
+								} else if (resultado.runnerExtras.category.includes('Alertas')) {
+									testes[resultado.message].alertas.push({
+										arquivo: arquivo.pageUrl,
+										mensagem: resultado.runnerExtras.errorMessage
+									});
+								} else if (resultado.runnerExtras.category.includes('Contraste')) {
+									testes[resultado.message].contrastes.push({
+										arquivo: arquivo.pageUrl,
+										mensagem: resultado.runnerExtras.errorMessage
+									});
+								} else if (resultado.runnerExtras.category.includes('Estrutura')) {
+									testes[resultado.message].estruturas.push({
+										arquivo: arquivo.pageUrl,
+										mensagem: resultado.runnerExtras.errorMessage
+									});
+								} else if (resultado.runnerExtras.category.includes('ARIA')) {
+									testes[resultado.message].aria.push({
+										arquivo: arquivo.pageUrl,
+										mensagem: resultado.runnerExtras.errorMessage
+									});
+								} else if (resultado.runnerExtras.category.includes('HTML5')) {
+									testes[resultado.message].html5.push({
+										arquivo: arquivo.pageUrl,
+										mensagem: resultado.runnerExtras.errorMessage
+									});
+								} else if (resultado.runnerExtras.category.includes('Links')) {
+									testes[resultado.message].link.push({
+										arquivo: arquivo.pageUrl,
+										mensagem: resultado.runnerExtras.errorMessage
+									});
+								} else if (resultado.runnerExtras.category.includes('Mídia')) {
+									testes[resultado.message].media.push({
+										arquivo: arquivo.pageUrl,
+										mensagem: resultado.runnerExtras.errorMessage
+									});
+								} else if (resultado.runnerExtras.category.includes('Tabelas')) {
+									testes[resultado.message].table.push({
+										arquivo: arquivo.pageUrl,
+										mensagem: resultado.runnerExtras.errorMessage
+									});
+								} else if (resultado.runnerExtras.category.includes('Funcionalidades')) {
+									testes[resultado.message].feature.push({
+										arquivo: arquivo.pageUrl,
+										mensagem: resultado.runnerExtras.errorMessage
+									});
+								}
+							}
+						});
+					});
+					return Object.values(testes);
+				},
+				testesErrosWAVE: function() {
+					return this.testesAgrupadosWAVE().filter(teste => teste.erros.length > 0);
+				},
+				testesAlertasWAVE: function() {
+					return this.testesAgrupadosWAVE().filter(teste => teste.alertas.length > 0);
+				},
+				testesContrasteWAVE: function() {
+					return this.testesAgrupadosWAVE().filter(teste => teste.contrastes.length > 0);
+				},
+				testesEstruturaWAVE: function() {
+					return this.testesAgrupadosWAVE().filter(teste => teste.estruturas.length > 0);
+				},
+				testesAriaWAVE: function() {
+					return this.testesAgrupadosWAVE().filter(teste => teste.aria.length > 0);
+				},
+				testesHtml5WAVE: function() {
+					return this.testesAgrupadosWAVE().filter(teste => teste.html5.length > 0);
+				},
+				testesLinkWAVE: function() {
+					return this.testesAgrupadosWAVE().filter(teste => teste.link.length > 0);
+				},
+				testesMediaWAVE: function() {
+					return this.testesAgrupadosWAVE().filter(teste => teste.media.length > 0);
+				},
+				testesTableWAVE: function() {
+					return this.testesAgrupadosWAVE().filter(teste => teste.table.length > 0);
+				},
+				testesFeatureWAVE: function() {
+					return this.testesAgrupadosWAVE().filter(teste => teste.feature.length > 0);
+				},
+				testesAprovadosWAVE: function() {
+					return this.testesAgrupadosWAVE().filter(teste => teste.erros.length === 0 && teste.alertas.length === 0 && teste.contrastes.length === 0 && teste.estruturas.length === 0 && teste.aria.length === 0 && teste.html5.length === 0 && teste.link.length === 0 && teste.media.length === 0 && teste.table.length === 0 && teste.feature.length === 0);
 				},
 				testesPorCategoria: function(status, categoria) {
 					const testes = status === 'failed' ? this.testesFalhados() : this.testesAprovados();

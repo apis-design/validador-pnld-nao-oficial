@@ -24,6 +24,7 @@ runner.run = (options, pa11y) => {
 		 * @param {function} testFunction - 
 		 * */
 		function testar(testDescription, testFunction) {
+			let initialLength = results.length;
 			let status;
 			let errorMessage = null;
 
@@ -35,16 +36,18 @@ runner.run = (options, pa11y) => {
 				errorMessage = e.message
 			}
 
-			results.push({
-				code: testDescription,
-				message: testDescription,
-				type: 'notice',
-				runnerExtras: {
-					status: status,
-					errorMessage: errorMessage,
-					category: getCategory(testDescription)
-				}
-			});
+			if (results.length === initialLength) {
+				results.push({
+					code: testDescription,
+					message: testDescription,
+					type: 'notice',
+					runnerExtras: {
+						status: status,
+						errorMessage: errorMessage,
+						category: getCategory(testDescription)
+					}
+				});
+			}
 		}
 
 		/**
@@ -55,16 +58,18 @@ runner.run = (options, pa11y) => {
 		function getCategory(text) {
 			const lower = text.toLowerCase();
 			const categories = {
-				'IDs': ['problema com id', 'id duplicado encontrado'],
-				'Listas': ['lista com somente um item'],
-				'Salto hierárquico de títulos': ['salto hierárquico de títulos'],
-				'Atributos': ['todas as tags <img> têm atributo alt (mesmo que vazio)', 'tag html possui atributo lang', 'atributos lang encontrados'],
-				'Glossário': ['id de glossário inválido', 'problemas com ids internos do glossário', 'link de ida inválido no glossário', 'link de volta correto no glossário'],
-				'Links': ['problema com id', 'link interno inválido', 'link inválido em nav'],
-				'estrutura': ['arquivo', 'diretório', 'obrigatório', 'estrutura', 'doctype'],
-				'nomenclatura': ['nome', 'nomenclatura', 'extensão'],
-				'localizacao': ['localização', 'caminho', 'pasta'],
-				'conteudo': ['conteúdo', 'toc', 'ncx', 'lang', 'atributo', 'charset', 'meta', 'body', 'html', 'main']
+				'Glossário': ['glossario', 'glossários'],
+				'Estrutura': ['estrutura', 'nav', 'navegação'],
+				'IDs': ['id'],
+				'Listas': ['lista'],
+				'Títulos': ['titulo', 'títulos'],
+				'Imagens': ['imagem'],
+				'Lang': ['lang'],
+				'Links': ['link'],
+				'Nomenclatura': ['nomenclatura'],
+				'Localizacao': ['localizacao'],
+				'Conteudo': ['conteudo'],
+				'Metadados': ['metadado'],
 			};
 
 			for (const [category, keywords] of Object.entries(categories)) {
@@ -117,7 +122,7 @@ runner.run = (options, pa11y) => {
 				runnerExtras: {
 					status: status,
 					errorMessage: errorMessage,
-					category: getCategory('Todas as tags <img> têm atributo alt (mesmo que vazio)')
+					category: getCategory('imagem')
 				}
 			});
 		})
@@ -158,7 +163,7 @@ runner.run = (options, pa11y) => {
 				runnerExtras: {
 					status: status,
 					errorMessage: errorMessage,
-					category: getCategory('tag HTML possui atributo lang')
+					category: getCategory('lang')
 				}
 			});
 		})
@@ -184,7 +189,7 @@ runner.run = (options, pa11y) => {
 				runnerExtras: {
 					status: status,
 					errorMessage: errorMessage,
-					category: getCategory('A tag HTML tem o atributo lang com um dos seguintes valores (pt-BR, es, en)')
+					category: getCategory('lang')
 				}
 			});
 		})
@@ -197,7 +202,9 @@ runner.run = (options, pa11y) => {
 			try {
 				const metaViewport = $('head>meta[name=viewport]');
 				expect(metaViewport.length).to.equal(1);
-				expect(metaViewport.attr('content')).to.equal("width=device-width, initial-scale=1.0");
+				if (metaViewport.attr('content') !== "width=device-width, initial-scale=1.0") {
+					throw new Error("Meta viewport deve ter content='width=device-width, initial-scale=1.0'");
+				}
 				status = 'passed';
 			} catch (e) {
 				status = 'not passed';
@@ -210,7 +217,7 @@ runner.run = (options, pa11y) => {
 				runnerExtras: {
 					status: status,
 					errorMessage: errorMessage,
-					category: getCategory('A tag meta viewport existe e está configurada de forma acessível')
+					category: getCategory('metadado')
 				}
 			})
 		})
@@ -255,7 +262,7 @@ runner.run = (options, pa11y) => {
 				runnerExtras: {
 					status: status,
 					errorMessage: errorMessage,
-					category: getCategory('Todos os assets são locais')
+					category: getCategory('estrutura')
 				}
 			})
 		})
@@ -290,7 +297,7 @@ runner.run = (options, pa11y) => {
 				runnerExtras: {
 					status: status,
 					errorMessage: errorMessage,
-					category: getCategory('Nenhum link <a href> aponta para fora do livro')
+					category: getCategory('link')
 				}
 			})
 		})
@@ -319,7 +326,7 @@ runner.run = (options, pa11y) => {
 							runnerExtras: {
 								status: 'not passed',
 								errorMessage: 'ID de glossário inválido: ' + id,
-								category: getCategory('ID de glossário inválido')
+								category: getCategory('glossario')
 							}
 						});
 					}
@@ -340,7 +347,7 @@ runner.run = (options, pa11y) => {
 						runnerExtras: {
 							status: 'not passed',
 							errorMessage: 'IDs internos do glossário inválidos',
-							category: getCategory('Problemas com IDs internos do glossário')
+							category: getCategory('glossario')
 						}
 					});
 					return;
@@ -362,7 +369,7 @@ runner.run = (options, pa11y) => {
 							runnerExtras: {
 								status: 'not passed',
 								errorMessage: 'Link de ida inválido: ' + linkIda,
-								category: getCategory('Link de ida inválido no glossário')
+								category: getCategory('glossario')
 							}
 						});
 						resultado = false;
@@ -381,7 +388,7 @@ runner.run = (options, pa11y) => {
 							runnerExtras: {
 								status: 'passed',
 								info: 'Link de volta válido',
-								category: getCategory('Link de volta correto no glossário')
+								category: getCategory('glossario')
 							}
 						});
 						resultado = true;
@@ -413,7 +420,7 @@ runner.run = (options, pa11y) => {
 							runnerExtras: {
 								status: 'not passed',
 								errorMessage: 'Glossário vazio ou sem termos/definições',
-								category: getCategory('Glossário vazio ou incompleto')
+								category: getCategory('glossario')
 							}
 						});
 						valido = false;
@@ -428,7 +435,7 @@ runner.run = (options, pa11y) => {
 							runnerExtras: {
 								status: 'not passed',
 								errorMessage: 'Número de dt e dd diferentes',
-								category: getCategory('Número de termos e definições não correspondem')
+								category: getCategory('glossario')
 							}
 						});
 						valido = false;
@@ -446,7 +453,7 @@ runner.run = (options, pa11y) => {
 								runnerExtras: {
 									status: 'not passed',
 									errorMessage: 'dt sem dd correspondente',
-									category: getCategory('Estrutura de glossário inválida')
+									category: getCategory('glossario')
 								}
 							});
 							valido = false;
@@ -490,7 +497,7 @@ runner.run = (options, pa11y) => {
 						runnerExtras: {
 							status: 'not passed',
 							errorMessage: 'ID duplicado: ' + duplicates,
-							category: getCategory('ID duplicado encontrado: ' + duplicates)
+							category: getCategory('id')
 						}
 					});
 				})
@@ -516,7 +523,7 @@ runner.run = (options, pa11y) => {
 						runnerExtras: {
 							status: 'not passed',
 							errorMessage: 'Lista com um item encontrado',
-							category: getCategory('Lista com somente um item')
+							category: getCategory('lista')
 						}
 					});
 				});
@@ -561,16 +568,13 @@ runner.run = (options, pa11y) => {
 						runnerExtras: {
 							status: 'not passed',
 							errorMessage: 'Saltos hierárquicos encontrados.',
-							category: getCategory('Salto hierárquico de títulos')
+							category: getCategory('titulo')
 						}
 					});
 				})
-
 			} else {
-				 expect(errors.length).to.equal(0);
+				expect(errors.length).to.equal(0);
 			}
-
-
 		});
 
 		// – Separador de página (n sei bem como testar ele pq o edital não exige uma markup muito específica)
@@ -583,24 +587,104 @@ runner.run = (options, pa11y) => {
 		// Todo arquivo HTML deverá iniciar com a tag DOCTYPE de acordo com a tecnologia escolhida, o HTML5, conforme exemplificado no item 4.1.
 		testar('tag DOCTYPE de acordo com a tecnologia escolhida', () => {
 			var hasDoctype = document.doctype !== null;
-			if (hasDoctype) {
-				var doctypeString = '<!DOCTYPE ' + document.doctype.name + '>';
-				expect(doctypeString).to.equal('<!DOCTYPE html>');
+			if (!hasDoctype) {
+				results.push({
+					code: 'tag DOCTYPE de acordo com a tecnologia escolhida',
+					message: 'DOCTYPE não encontrado',
+					type: 'error',
+					runnerExtras: {
+						status: 'not passed',
+						errorMessage: 'DOCTYPE não encontrado.',
+						category: getCategory('estrutura')
+					}
+				});
 			} else {
-				expect(hasDoctype).to.equal('<!DOCTYPE html>');
+				var doctypeString = '<!DOCTYPE ' + document.doctype.name + '>';
+				if (doctypeString === '<!DOCTYPE html>') {
+					results.push({
+						code: 'tag DOCTYPE de acordo com a tecnologia escolhida',
+						message: 'DOCTYPE correto.',
+						type: 'notice',
+						runnerExtras: {
+							status: 'passed',
+							errorMessage: null,
+							category: getCategory('estrutura')
+						}
+					});
+				} else {
+					results.push({
+						code: 'tag DOCTYPE de acordo com a tecnologia escolhida',
+						message: 'DOCTYPE incorreto: ' + doctypeString,
+						type: 'error',
+						runnerExtras: {
+							status: 'not passed',
+							errorMessage: 'DOCTYPE incorreto.',
+							category: getCategory('estrutura')
+						}
+					});
+				}
 			}
 		});
 		// 		5.8.2 Head
 		// Na página inicial é obrigatório a inclusão da tag <head> com alguns metadados.
 		testar('Tag Head incluída na página', () => {
 			const tagHead = $('head');
-			expect(tagHead.length).to.equal(1);
+			if (tagHead.length === 1) {
+				results.push({
+					code: 'Tag Head incluída na página',
+					message: 'Tag <head> presente.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						errorMessage: null,
+						category: getCategory('estrutura')
+					}
+				});
+			} else {
+				results.push({
+					code: 'Tag Head incluída na página',
+					message: `Esperado 1 tag <head>, encontrado ${tagHead.length}.`,
+					type: 'error',
+					runnerExtras: {
+						status: 'not passed',
+						errorMessage: 'Número incorreto de tags <head>.',
+						category: getCategory('estrutura')
+					}
+				});
+			}
 		});
 		// - Definir o charset de todos os arquivos para "UTF-8"
 		testar('Tag meta charset presente e com valor UTF-8', () => {
 			const metaCharset = $('head>meta[charset]');
-			expect(metaCharset.length).to.equal(1);
-			expect(metaCharset.attr('charset')).to.equal("UTF-8");
+			if (metaCharset.length === 1 && metaCharset.attr('charset') === 'UTF-8') {
+				results.push({
+					code: 'Tag meta charset presente e com valor UTF-8',
+					message: 'Meta charset UTF-8 presente.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						errorMessage: null,
+						category: getCategory('metadado')
+					}
+				});
+			} else {
+				let message = 'Meta charset UTF-8 não encontrado corretamente.';
+				if (metaCharset.length !== 1) {
+					message += ` Encontrado ${metaCharset.length} meta[charset].`;
+				} else if (metaCharset.attr('charset') !== 'UTF-8') {
+					message += ` Valor encontrado: ${metaCharset.attr('charset')}.`;
+				}
+				results.push({
+					code: 'Tag meta charset presente e com valor UTF-8',
+					message: message,
+					type: 'error',
+					runnerExtras: {
+						status: 'not passed',
+						errorMessage: 'Meta charset incorreto.',
+						category: getCategory('metadado')
+					}
+				});
+			}
 		});
 		// - Definir o titulo da obra
 		testar('Titulo da obra presente e com valor', () => {
@@ -609,13 +693,49 @@ runner.run = (options, pa11y) => {
 			const isRootIndex = filename === 'index.html' && pathname.includes('content');
 
 			if (isRootIndex) {
-				// Se não for o index.html da raiz, o teste passa automaticamente
+				results.push({
+					code: 'Titulo da obra presente e com valor',
+					message: 'Título não obrigatório para index.html raiz.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						errorMessage: null,
+						category: getCategory('titulo')
+					}
+				});
 				return;
 			}
 
 			const tituloObra = $('head>title');
-			expect(tituloObra.length).to.equal(1);
-			expect(tituloObra.text()).to.not.be.undefined;
+			if (tituloObra.length === 1 && tituloObra.text().trim() !== '') {
+				results.push({
+					code: 'Titulo da obra presente e com valor',
+					message: 'Título da obra presente.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						errorMessage: null,
+						category: getCategory('titulo')
+					}
+				});
+			} else {
+				let message = 'Título da obra não encontrado ou vazio.';
+				if (tituloObra.length !== 1) {
+					message += ` Encontrado ${tituloObra.length} tags <title>.`;
+				} else if (tituloObra.text().trim() === '') {
+					message += ' Título vazio.';
+				}
+				results.push({
+					code: 'Titulo da obra presente e com valor',
+					message: message,
+					type: 'error',
+					runnerExtras: {
+						status: 'not passed',
+						errorMessage: 'Título da obra ausente ou inválido.',
+						category: getCategory('titulo')
+					}
+				});
+			}
 		});
 		// - Incluir um metadado para a descrição da obra
 		testar('Metadado com a descrição da obra presente e com valor', () => {
@@ -624,12 +744,48 @@ runner.run = (options, pa11y) => {
 			const isRootIndex = filename === 'index.html' && pathname.includes('content');
 
 			if (isRootIndex) {
-				// Se não for o index.html da raiz, o teste passa automaticamente
+				results.push({
+					code: 'Metadado com a descrição da obra presente e com valor',
+					message: 'Metadado não obrigatório para index.html raiz.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						errorMessage: null,
+						category: getCategory('metadado')
+					}
+				});
 				return;
 			}
 			const metaDescription = $('head>meta[name=description]');
-			expect(metaDescription.length).to.equal(1);
-			expect(metaDescription.attr('content')).to.not.be.undefined;
+			if (metaDescription.length === 1 && metaDescription.attr('content') !== undefined) {
+				results.push({
+					code: 'Metadado com a descrição da obra presente e com valor',
+					message: 'Meta description presente.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						errorMessage: null,
+						category: getCategory('metadado')
+					}
+				});
+			} else {
+				let message = 'Meta description não encontrado ou sem valor.';
+				if (metaDescription.length !== 1) {
+					message += ` Encontrado ${metaDescription.length} meta[name=description].`;
+				} else if (metaDescription.attr('content') === undefined) {
+					message += ' Atributo content ausente.';
+				}
+				results.push({
+					code: 'Metadado com a descrição da obra presente e com valor',
+					message: message,
+					type: 'error',
+					runnerExtras: {
+						status: 'not passed',
+						errorMessage: 'Meta description inválido.',
+						category: getCategory('metadado')
+					}
+				});
+			}
 		});
 		// - Incluir metadado autor
 		testar('Metadado com nome do autor presente e com valor', () => {
@@ -638,12 +794,48 @@ runner.run = (options, pa11y) => {
 			const isRootIndex = filename === 'index.html' && pathname.includes('content');
 
 			if (isRootIndex) {
-				// Se não for o index.html da raiz, o teste passa automaticamente
+				results.push({
+					code: 'Metadado com nome do autor presente e com valor',
+					message: 'Metadado não obrigatório para index.html raiz.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						errorMessage: null,
+						category: getCategory('metadado')
+					}
+				});
 				return;
 			}
 			const metaAuthor = $('head>meta[name=author]');
-			expect(metaAuthor.length).to.equal(1);
-			expect(metaAuthor.attr('content')).to.not.be.undefined;
+			if (metaAuthor.length === 1 && metaAuthor.attr('content') !== undefined) {
+				results.push({
+					code: 'Metadado com nome do autor presente e com valor',
+					message: 'Meta author presente.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						errorMessage: null,
+						category: getCategory('metadado')
+					}
+				});
+			} else {
+				let message = 'Meta author não encontrado ou sem valor.';
+				if (metaAuthor.length !== 1) {
+					message += ` Encontrado ${metaAuthor.length} meta[name=author].`;
+				} else if (metaAuthor.attr('content') === undefined) {
+					message += ' Atributo content ausente.';
+				}
+				results.push({
+					code: 'Metadado com nome do autor presente e com valor',
+					message: message,
+					type: 'error',
+					runnerExtras: {
+						status: 'not passed',
+						errorMessage: 'Meta author inválido.',
+						category: getCategory('metadado')
+					}
+				});
+			}
 		});
 		// - Incluir metadados para desabilitar a indexação do conteúdo da obra por motores de busca.
 		testar('Metadado que desabilita indexação do conteúdo da obra por motores de busca.', () => {
@@ -652,12 +844,48 @@ runner.run = (options, pa11y) => {
 			const isRootIndex = filename === 'index.html' && pathname.includes('content');
 
 			if (isRootIndex) {
-				// Se não for o index.html da raiz, o teste passa automaticamente
+				results.push({
+					code: 'Metadado que desabilita indexação do conteúdo da obra por motores de busca.',
+					message: 'Metadado não obrigatório para index.html raiz.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						errorMessage: null,
+						category: getCategory('metadado')
+					}
+				});
 				return;
 			}
 			const metaRobots = $('head>meta[name=robots]');
-			expect(metaRobots.length).to.equal(1);
-			expect(metaRobots.attr('content')).to.not.be.undefined;
+			if (metaRobots.length === 1 && metaRobots.attr('content') !== undefined) {
+				results.push({
+					code: 'Metadado que desabilita indexação do conteúdo da obra por motores de busca.',
+					message: 'Meta robots presente.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						errorMessage: null,
+						category: getCategory('metadado')
+					}
+				});
+			} else {
+				let message = 'Meta robots não encontrado ou sem valor.';
+				if (metaRobots.length !== 1) {
+					message += ` Encontrado ${metaRobots.length} meta[name=robots].`;
+				} else if (metaRobots.attr('content') === undefined) {
+					message += ' Atributo content ausente.';
+				}
+				results.push({
+					code: 'Metadado que desabilita indexação do conteúdo da obra por motores de busca.',
+					message: message,
+					type: 'error',
+					runnerExtras: {
+						status: 'not passed',
+						errorMessage: 'Meta robots inválido.',
+						category: getCategory('metadado')
+					}
+				});
+			}
 		});
 
 		// 		5.8.3 Body
@@ -668,11 +896,42 @@ runner.run = (options, pa11y) => {
 			const isRootIndex = filename === 'index.html' && pathname.includes('content');
 
 			if (isRootIndex) {
-				// Se não for o index.html da raiz, o teste passa automaticamente
+				results.push({
+					code: 'Tag Body incluida na página',
+					message: 'Tag body não obrigatória para index.html raiz.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						errorMessage: null,
+						category: getCategory('estrutura')
+					}
+				});
 				return;
 			}
 			const bodyTag = $('body');
-			expect(bodyTag.length).to.equal(1);
+			if (bodyTag.length === 1) {
+				results.push({
+					code: 'Tag Body incluida na página',
+					message: 'Tag <body> presente.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						errorMessage: null,
+						category: getCategory('estrutura')
+					}
+				});
+			} else {
+				results.push({
+					code: 'Tag Body incluida na página',
+					message: `Esperado 1 tag <body>, encontrado ${bodyTag.length}.`,
+					type: 'error',
+					runnerExtras: {
+						status: 'not passed',
+						errorMessage: 'Número incorreto de tags <body>.',
+						category: getCategory('estrutura')
+					}
+				});
+			}
 		});
 
 		// – tag BODY possui atributo lang 
@@ -682,11 +941,42 @@ runner.run = (options, pa11y) => {
 			const isRootIndex = filename === 'index.html' && pathname.includes('content');
 
 			if (isRootIndex) {
-				// Se não for o index.html da raiz, o teste passa automaticamente
+				results.push({
+					code: 'tag BODY possui atributo lang',
+					message: 'Atributo lang não obrigatório para index.html raiz.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						errorMessage: null,
+						category: getCategory('lang')
+					}
+				});
 				return;
 			}
 			const bodyTag = $('body');
-			expect(bodyTag.attr('lang')).to.not.be.undefined
+			if (bodyTag.attr('lang') !== undefined) {
+				results.push({
+					code: 'tag BODY possui atributo lang',
+					message: 'Tag <body> possui atributo lang.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						errorMessage: null,
+						category: getCategory('lang')
+					}
+				});
+			} else {
+				results.push({
+					code: 'tag BODY possui atributo lang',
+					message: 'Tag <body> não possui atributo lang.',
+					type: 'error',
+					runnerExtras: {
+						status: 'not passed',
+						errorMessage: 'Atributo lang ausente na tag <body>.',
+						category: getCategory('lang')
+					}
+				});
+			}
 		});
 
 		// – atributo lang da tag BODY é igual a pt-BR (ou espanhol ou inglês???)
@@ -696,15 +986,49 @@ runner.run = (options, pa11y) => {
 			const isRootIndex = filename === 'index.html' && pathname.includes('content');
 
 			if (isRootIndex) {
-				// Se não for o index.html da raiz, o teste passa automaticamente
+				results.push({
+					code: 'A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)',
+					message: 'Atributo lang não obrigatório para index.html raiz.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						errorMessage: null,
+						category: getCategory('lang')
+					}
+				});
 				return;
 			}
 			const bodyTag = $('body');
-			const valoresPermitidos = ['pt-br', 'es', 'en']
-			if (!$(bodyTag).attr('lang')) {
-				throw new Error('Não possui atributo lang')
+			const lang = bodyTag.attr('lang');
+			const valoresPermitidos = ['pt-br', 'es', 'en'];
+			if (lang && valoresPermitidos.includes(lang.toLowerCase())) {
+				results.push({
+					code: 'A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)',
+					message: 'Tag <body> possui atributo lang válido.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						errorMessage: null,
+						category: getCategory('lang')
+					}
+				});
 			} else {
-				expect(valoresPermitidos.includes(bodyTag.attr('lang').toLowerCase())).to.equal(true);
+				let message = 'Tag <body> não possui atributo lang válido.';
+				if (!lang) {
+					message += ' Atributo lang ausente.';
+				} else {
+					message += ` Valor encontrado: ${lang}. Valores permitidos: pt-BR, es, en.`;
+				}
+				results.push({
+					code: 'A tag BODY tem o atributo lang com um dos seguintes valores (pt-BR, es, en)',
+					message: message,
+					type: 'error',
+					runnerExtras: {
+						status: 'not passed',
+						errorMessage: 'Atributo lang inválido na tag <body>.',
+						category: getCategory('lang')
+					}
+				});
 			}
 		});
 
@@ -746,7 +1070,7 @@ runner.run = (options, pa11y) => {
 						runnerExtras: {
 							status: 'passed',
 							info: 'Estrutura Book correta',
-							category: getCategory('Estrutura Book válida no index.html')
+							category: getCategory('estrutura')
 						}
 					});
 					valido = true
@@ -758,7 +1082,7 @@ runner.run = (options, pa11y) => {
 						runnerExtras: {
 							status: 'not passed',
 							errorMessage: 'Meta tags faltando na estrutura Book',
-							category: getCategory('Estrutura Book incompleta no index.html')
+							category: getCategory('estrutura')
 						}
 					});
 					valido = false
@@ -771,7 +1095,7 @@ runner.run = (options, pa11y) => {
 					runnerExtras: {
 						status: 'not passed',
 						errorMessage: 'Primeiro filho não é div itemscope itemtype Book',
-						category: getCategory('Primeiro filho do body inválido no index.html')
+						category: getCategory('estrutura')
 					}
 				});
 				valido = false
@@ -779,6 +1103,56 @@ runner.run = (options, pa11y) => {
 
 			expect(valido).to.equal(true);
 		});
+
+		// Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em h]ps://schema.org/Book.
+		testar('Após abrir a tag <body> das páginas que não são o index.html, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade utilizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.', () => {
+			// Verifica se é o index.html da raiz
+			const pathname = window.location.pathname;
+			const filename = pathname.split('/').pop(); // Pega apenas o nome do arquivo
+			const isRootIndex = filename === 'index.html';
+
+
+			if (isRootIndex || filename === 'index.html' && pathname.includes('content')) {
+				// Se for o index.html da raiz, o teste passa automaticamente
+				return;
+			}
+
+			// Verifica se o primeiro filho da tag <body> tem a estrutura correta
+			let valido = false
+			const firstBodyChild = $('body').children().first();
+			const isFirstChildValid = firstBodyChild.is('div[itemscope][itemtype="https://schema.org/Book"]')
+				&& firstBodyChild.find('meta[itemprop="accessibilityFeature"]').length === 2
+				&& firstBodyChild.find('meta[itemprop="accessibilityControl"]').length === 1;
+
+			if (isFirstChildValid) {
+				results.push({
+					code: 'Estrutura Book válida na página de conteúdo',
+					message: 'O primeiro filho da tag <body> tem a estrutura correta.',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						info: 'Estrutura Book correta na página de conteúdo',
+						category: getCategory('estrutura')
+					}
+				});
+				valido = true
+			} else {
+				results.push({
+					code: 'Estrutura Book inválida na página de conteúdo',
+					message: 'O primeiro filho da tag <body> não tem a estrutura correta.',
+					type: 'error',
+					runnerExtras: {
+						status: 'not passed',
+						errorMessage: 'Estrutura Book incorreta na página de conteúdo',
+						category: getCategory('estrutura')
+					}
+				});
+				valido = false
+			}
+
+			expect(valido).to.equal(true);
+		})
+
 
 		// Finalizando a tag <body> deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role="doc-toc" id="toc">
 		testar('Finalizando a tag <body> do index.html deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role="doc-toc" id="toc">', () => {
@@ -792,10 +1166,32 @@ runner.run = (options, pa11y) => {
 				return;
 			}
 
-			const bodyTag = $('body');
-			const navTag = $(bodyTag).find('nav')
-			expect(navTag.attr('role')).to.equal("doc-toc");
-			expect(navTag.attr('id')).to.equal("toc");
+			let status;
+			let errorMessage = null;
+			try {
+				const bodyTag = $('body');
+				const navTag = $(bodyTag).find('nav')
+				if (navTag.attr('role') !== "doc-toc") {
+					throw new Error("O nav de índice deve ter role='doc-toc'");
+				}
+				if (navTag.attr('id') !== "toc") {
+					throw new Error("O nav de índice deve ter id='toc'");
+				}
+				status = 'passed';
+			} catch (e) {
+				status = 'not passed';
+				errorMessage = e.message
+			}
+			results.push({
+				code: 'Finalizando a tag <body> do index.html deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role="doc-toc" id="toc">',
+				message: status === 'passed' ? 'Finalizando a tag <body> do index.html deverá ser adicionado uma tag <nav> com a propriedade id com o valor setado para toc e sua role para doc-toc, seguindo para a construção do índice de navegação da obra.<nav role="doc-toc" id="toc">' : errorMessage,
+				type: 'notice',
+				runnerExtras: {
+					status: status,
+					errorMessage: errorMessage,
+					category: getCategory('estrutura')
+				}
+			})
 		});
 
 		// O índice de navegação (nav#toc) não deve conter &nbsp;
@@ -811,17 +1207,40 @@ runner.run = (options, pa11y) => {
 				return;
 			}
 
-			const navToc = $('#toc');
-			const navTocHtml = navToc.html();
+			let status;
+			let errorMessage = null;
+			try {
+				const navToc = $('#toc');
+				if (navToc.length === 0) {
+					throw new Error("Nav #toc não encontrado");
+				}
+				const navTocHtml = navToc.html();
 
-			// Verifica se o HTML do nav contém &nbsp; em qualquer formato
-			const hasNbsp = navTocHtml && (
-				navTocHtml.includes('&nbsp;') ||
-				navTocHtml.includes('&#160;') ||
-				navTocHtml.includes('\u00A0')
-			);
+				// Verifica se o HTML do nav contém &nbsp; em qualquer formato
+				const hasNbsp = navTocHtml && (
+					navTocHtml.includes('&nbsp;') ||
+					navTocHtml.includes('&#160;') ||
+					navTocHtml.includes('\u00A0')
+				);
 
-			expect(hasNbsp).to.equal(false);
+				if (hasNbsp) {
+					throw new Error("O nav #toc contém &nbsp;");
+				}
+				status = 'passed';
+			} catch (e) {
+				status = 'not passed';
+				errorMessage = e.message
+			}
+			results.push({
+				code: 'O índice de navegação (nav#toc) não deve conter &nbsp;',
+				message: status === 'passed' ? 'O índice de navegação (nav#toc) não deve conter &nbsp;' : errorMessage,
+				type: 'notice',
+				runnerExtras: {
+					status: status,
+					errorMessage: errorMessage,
+					category: getCategory('estrutura')
+				}
+			})
 		});
 
 		// Verifica presença de &nbsp; nos títulos (h1-h6)
@@ -856,7 +1275,7 @@ runner.run = (options, pa11y) => {
 						runnerExtras: {
 							status: 'not passed',
 							errorMessage: `Encontrado &nbsp; no elemento: ${heading.html}`,
-							category: getCategory('Título com &nbsp;')
+							category: getCategory('titulo')
 						}
 					});
 				});
@@ -881,54 +1300,6 @@ runner.run = (options, pa11y) => {
 		// 5.9.3 Body
 		// No corpo da página é obrigatório a inclusão da tag <body> adicionando as suas propriedades o idioma apresentado. 
 
-		// Após abrir a tag <body>, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade uQlizados na construção desta página em específico, seguindo a especificação disposta em h]ps://schema.org/Book.
-		testar('Após abrir a tag <body> das páginas que não são o index.html, como primeiro filho, deverá conter uma tag <div> implementando o esquema Book, registrando internamente todos os recursos de acessibilidade utilizados na construção desta página em específico, seguindo a especificação disposta em https://schema.org/Book.', () => {
-			// Verifica se é o index.html da raiz
-			const pathname = window.location.pathname;
-			const filename = pathname.split('/').pop(); // Pega apenas o nome do arquivo
-			const isRootIndex = filename === 'index.html';
-
-
-			if (isRootIndex || filename === 'index.html' && pathname.includes('content')) {
-				// Se for o index.html da raiz, o teste passa automaticamente
-				return;
-			}
-
-			// Verifica se o primeiro filho da tag <body> tem a estrutura correta
-			let valido = false
-			const firstBodyChild = $('body').children().first();
-			const isFirstChildValid = firstBodyChild.is('div[itemscope][itemtype="https://schema.org/Book"]')
-				&& firstBodyChild.find('meta[itemprop="accessibilityFeature"]').length === 2
-				&& firstBodyChild.find('meta[itemprop="accessibilityControl"]').length === 1;
-
-			if (isFirstChildValid) {
-				results.push({
-					code: 'Estrutura Book válida na página de conteúdo',
-					message: 'O primeiro filho da tag <body> tem a estrutura correta.',
-					type: 'notice',
-					runnerExtras: {
-						status: 'passed',
-						info: 'Estrutura Book correta na página de conteúdo',
-						category: getCategory('Estrutura Book válida na página de conteúdo')
-					}
-				});
-				valido = true
-			} else {
-				results.push({
-					code: 'Estrutura Book inválida na página de conteúdo',
-					message: 'O primeiro filho da tag <body> não tem a estrutura correta.',
-					type: 'error',
-					runnerExtras: {
-						status: 'not passed',
-						errorMessage: 'Estrutura Book incorreta na página de conteúdo',
-						category: getCategory('Estrutura Book inválida na página de conteúdo')
-					}
-				});
-				valido = false
-			}
-
-			expect(valido).to.equal(true);
-		})
 
 		// Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>.
 		testar('Todo o conteúdo da obra a ser apresentado nesse arquivo deverá estar envolto de uma tag <main>', () => {
@@ -954,7 +1325,7 @@ runner.run = (options, pa11y) => {
 					runnerExtras: {
 						status: 'not passed',
 						errorMessage: 'Tag main obrigatória não encontrada',
-						category: getCategory('Tag <main> ausente')
+						category: getCategory('estrutura')
 					}
 				});
 				valido = false
@@ -974,7 +1345,7 @@ runner.run = (options, pa11y) => {
 						runnerExtras: {
 							status: 'passed',
 							info: 'Conteúdo corretamente envolto em main',
-							category: getCategory('Conteúdo dentro de <main>')
+							category: getCategory('estrutura')
 						}
 					});
 					valido = true
@@ -986,7 +1357,7 @@ runner.run = (options, pa11y) => {
 						runnerExtras: {
 							status: 'not passed',
 							errorMessage: 'Conteúdo não envolto em main',
-							category: getCategory('Conteúdo fora de <main>')
+							category: getCategory('estrutura')
 						}
 					});
 					valido = false
@@ -996,83 +1367,101 @@ runner.run = (options, pa11y) => {
 		})
 
 		testar('O arquivo toc.ncx está estruturado corretamente', () => {
-			function verificarTocNcx() {
-				// Verifica se é o arquivo toc.ncx
-				const pathname = window.location.pathname;
-				if (!pathname.endsWith('toc.ncx')) {
-					return true; // Ignora o teste se não for o toc.ncx
-				}
-
-				const parser = new DOMParser();
-				const xmlDoc = parser.parseFromString(document.documentElement.outerHTML, "text/xml");
-
-				// Verifica se houve erro no parsing
-				if (xmlDoc.getElementsByTagName("parsererror").length > 0) {
-					throw new Error("XML inválido");
-				}
-
-				// Verifica elementos obrigatórios
-				const ncx = xmlDoc.getElementsByTagName("ncx")[0];
-				if (!ncx || ncx.getAttribute("version") !== "2005-1") {
-					throw new Error("Elemento ncx ausente ou versão incorreta");
-				}
-
-				// Verifica head e metadados obrigatórios
-				const head = xmlDoc.getElementsByTagName("head")[0];
-				if (!head) {
-					throw new Error("Elemento head ausente");
-				}
-
-				const metaUids = Array.from(head.getElementsByTagName("meta")).filter(
-					meta => meta.getAttribute("name") === "dtb:uid"
-				);
-				if (metaUids.length === 0) {
-					throw new Error("Meta dtb:uid ausente");
-				}
-
-				// Verifica docTitle
-				const docTitle = xmlDoc.getElementsByTagName("docTitle")[0];
-				if (!docTitle || !docTitle.getElementsByTagName("text")[0]) {
-					throw new Error("docTitle ausente ou sem elemento text");
-				}
-
-				// Verifica navMap
-				const navMap = xmlDoc.getElementsByTagName("navMap")[0];
-				if (!navMap) {
-					throw new Error("navMap ausente");
-				}
-
-				// Verifica se há pelo menos um navPoint
-				const navPoints = navMap.getElementsByTagName("navPoint");
-				if (navPoints.length === 0) {
-					throw new Error("Nenhum navPoint encontrado");
-				}
-
-				// Verifica estrutura de cada navPoint
-				for (const navPoint of navPoints) {
-					if (!navPoint.getAttribute("id")) {
-						throw new Error("navPoint sem atributo id");
-					}
-					if (!navPoint.getAttribute("playOrder")) {
-						throw new Error("navPoint sem atributo playOrder");
+			let status;
+			let errorMessage = null;
+			try {
+				function verificarTocNcx() {
+					// Verifica se é o arquivo toc.ncx
+					const pathname = window.location.pathname;
+					if (!pathname.endsWith('toc.ncx')) {
+						return true; // Ignora o teste se não for o toc.ncx
 					}
 
-					const navLabel = navPoint.getElementsByTagName("navLabel")[0];
-					const text = navLabel?.getElementsByTagName("text")[0];
-					if (!navLabel || !text || !text.textContent.trim()) {
-						throw new Error("navPoint sem navLabel ou text válido");
+					const parser = new DOMParser();
+					const xmlDoc = parser.parseFromString(document.documentElement.outerHTML, "text/xml");
+
+					// Verifica se houve erro no parsing
+					if (xmlDoc.getElementsByTagName("parsererror").length > 0) {
+						throw new Error("XML inválido");
 					}
 
-					const content = navPoint.getElementsByTagName("content")[0];
-					if (!content || !content.getAttribute("src")) {
-						throw new Error("navPoint sem content ou src válido");
+					// Verifica elementos obrigatórios
+					const ncx = xmlDoc.getElementsByTagName("ncx")[0];
+					if (!ncx || ncx.getAttribute("version") !== "2005-1") {
+						throw new Error("Elemento ncx ausente ou versão incorreta");
 					}
+
+					// Verifica head e metadados obrigatórios
+					const head = xmlDoc.getElementsByTagName("head")[0];
+					if (!head) {
+						throw new Error("Elemento head ausente");
+					}
+
+					const metaUids = Array.from(head.getElementsByTagName("meta")).filter(
+						meta => meta.getAttribute("name") === "dtb:uid"
+					);
+					if (metaUids.length === 0) {
+						throw new Error("Meta dtb:uid ausente");
+					}
+
+					// Verifica docTitle
+					const docTitle = xmlDoc.getElementsByTagName("docTitle")[0];
+					if (!docTitle || !docTitle.getElementsByTagName("text")[0]) {
+						throw new Error("docTitle ausente ou sem elemento text");
+					}
+
+					// Verifica navMap
+					const navMap = xmlDoc.getElementsByTagName("navMap")[0];
+					if (!navMap) {
+						throw new Error("navMap ausente");
+					}
+
+					// Verifica se há pelo menos um navPoint
+					const navPoints = navMap.getElementsByTagName("navPoint");
+					if (navPoints.length === 0) {
+						throw new Error("Nenhum navPoint encontrado");
+					}
+
+					// Verifica estrutura de cada navPoint
+					for (const navPoint of navPoints) {
+						if (!navPoint.getAttribute("id")) {
+							throw new Error("navPoint sem atributo id");
+						}
+						if (!navPoint.getAttribute("playOrder")) {
+							throw new Error("navPoint sem atributo playOrder");
+						}
+
+						const navLabel = navPoint.getElementsByTagName("navLabel")[0];
+						const text = navLabel?.getElementsByTagName("text")[0];
+						if (!navLabel || !text || !text.textContent.trim()) {
+							throw new Error("navPoint sem navLabel ou text válido");
+						}
+
+						const content = navPoint.getElementsByTagName("content")[0];
+						if (!content || !content.getAttribute("src")) {
+							throw new Error("navPoint sem content ou src válido");
+						}
+					}
+
+					return true;
 				}
 
-				return true;
+				expect(verificarTocNcx()).to.equal(true);
+				status = 'passed';
+			} catch (e) {
+				status = 'not passed';
+				errorMessage = e.message
 			}
-
-			expect(verificarTocNcx()).to.equal(true);
+			results.push({
+				code: 'O arquivo toc.ncx está estruturado corretamente',
+				message: status === 'passed' ? 'O arquivo toc.ncx está estruturado corretamente' : errorMessage,
+				type: 'notice',
+				runnerExtras: {
+					status: status,
+					errorMessage: errorMessage,
+					category: getCategory('estrutura')
+				}
+			})
 		});
 
 
@@ -1252,7 +1641,7 @@ runner.run = (options, pa11y) => {
 					runnerExtras: {
 						status: 'passed',
 						tocData: dadosToc,
-						category: getCategory('IDs coletados do toc.ncx')
+						category: getCategory('id')
 					}
 				});
 			}
@@ -1314,11 +1703,11 @@ runner.run = (options, pa11y) => {
 						code: 'Link inválido em nav',
 						message: `Link com href inválido encontrado: ${link.elemento}. Razão: ${link.razao}`,
 						type: 'error',
-						
+
 						runnerExtras: {
 							status: 'not passed',
 							errorMessage: `href inválido: ${link.href}. Razão: ${link.razao}`,
-							category: getCategory('Link inválido em nav')
+							category: getCategory('link')
 						}
 					});
 				});
@@ -1380,13 +1769,13 @@ runner.run = (options, pa11y) => {
 				code: 'Atributos lang encontrados',
 				message: `Total de atributos lang encontrados`,
 				type: 'notice',
-				category: getCategory('Atributos lang encontrados'),
 				runnerExtras: {
 					status: 'passed',
 					total: langs.total,
 					html: langs.html,
 					body: langs.body,
-					elementos: langs.elementos
+					elementos: langs.elementos,
+					category: getCategory('lang')
 				}
 			});
 
@@ -1395,20 +1784,38 @@ runner.run = (options, pa11y) => {
 		});
 
 		testar('A página tem um título válido', () => {
-			const title = $('head>title');
+			let status;
+			let errorMessage = null;
+			try {
+				const title = $('head>title');
 
-			// Verifica se o título existe
-			expect(title.length).to.equal(1, 'A página deve ter exatamente um elemento title');
+				// Verifica se o título existe
+				expect(title.length).to.equal(1, 'A página deve ter exatamente um elemento title');
 
-			// Verifica se o título tem conteúdo
-			const titleText = title.text().trim();
-			expect(titleText).to.not.be.empty('O título não pode estar vazio');
+				// Verifica se o título tem conteúdo
+				const titleText = title.text().trim();
+				expect(titleText).to.have.length.greaterThan(0, 'O título não pode estar vazio');
 
-			// Verifica se o título tem um comprimento mínimo
-			expect(titleText.length).to.be.at.least(3, 'O título deve ter pelo menos 3 caracteres');
+				// Verifica se o título tem um comprimento mínimo
+				expect(titleText.length).to.be.at.least(3, 'O título deve ter pelo menos 3 caracteres');
 
-			// Verifica se o título não contém apenas espaços ou caracteres especiais
-			expect(titleText.replace(/[\s\W]/g, '')).to.not.be.empty('O título não pode conter apenas espaços ou caracteres especiais');
+				// Verifica se o título não contém apenas espaços ou caracteres especiais
+				expect(titleText.replace(/[\s\W]/g, '')).to.have.length.greaterThan(0, 'O título não pode conter apenas espaços ou caracteres especiais');
+				status = 'passed';
+			} catch (e) {
+				status = 'not passed';
+				errorMessage = e.message
+			}
+			results.push({
+				code: 'A página tem um título válido',
+				message: status === 'passed' ? 'A página tem um título válido' : errorMessage,
+				type: 'notice',
+				runnerExtras: {
+					status: status,
+					errorMessage: errorMessage,
+					category: getCategory('titulo')
+				}
+			})
 		});
 
 		// Teste para verificar se os IDs internos e externos das páginas estão corretos
@@ -1540,7 +1947,7 @@ runner.run = (options, pa11y) => {
 						runnerExtras: {
 							status: 'not passed',
 							errorMessage: problema.problema,
-							category: getCategory('Problema com ID')
+							category: getCategory('id')
 						}
 					});
 				});
@@ -1555,7 +1962,7 @@ runner.run = (options, pa11y) => {
 							status: 'not passed',
 							errorMessage: link.problema,
 							elemento: link.elemento,
-							category: getCategory('Link interno inválido')
+							category: getCategory('link')
 						}
 					});
 				});
@@ -1570,7 +1977,7 @@ runner.run = (options, pa11y) => {
 							status: 'not passed',
 							errorMessage: link.problema,
 							elemento: link.elemento,
-							category: getCategory('Link externo detectado')
+							category: getCategory('link')
 						}
 					});
 				});
@@ -1585,11 +1992,11 @@ runner.run = (options, pa11y) => {
 						idsTotal: resultado.idsTotal,
 						linksInternosInvalidos: resultado.linksInternosInvalidos.length,
 						linksExternos: resultado.linksExternosInvalidos.length,
-						category: getCategory('Estatísticas de IDs e Links')
+						category: getCategory('link')
 					}
 				});
 
-				 expect(resultado.temProblemas).to.equal(false, 'Foram encontrados problemas com IDs ou links');
+				expect(resultado.temProblemas).to.equal(false, 'Foram encontrados problemas com IDs ou links');
 			}
 
 

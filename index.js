@@ -1,10 +1,12 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import fetch from 'node-fetch'
 import pa11y from 'pa11y'
 import puppeteer from 'puppeteer'
 import handleFsError from './helpers/fs-validator.js'
 import { validateTocNcxIds } from './helpers/toc-ncx-validator.js'
+import { validateContentOpfFiles } from './helpers/content-opf-validator.js'
 import { sendProgress } from './server.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -145,6 +147,128 @@ const pa11yOptions = (filename) => {
 		console.log(error)
 	}
 }
+
+// Função para validar acessibilidade com WAVE
+const waveValidate = async (htmlContent, filename) => {
+	const maxRetries = 3;
+	const retryDelay = 2000; // 2 seconds
+
+	for (let attempt = 1; attempt <= maxRetries; attempt++) {
+		try {
+			const response = await fetch('https://wave.webaim.org/api/request', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
+				body: new URLSearchParams({
+					html: htmlContent,
+					reporttype: '3', // JSON detalhado
+				}),
+			});
+
+			if (!response.ok) {
+				throw new Error(`WAVE API error: ${response.status}`);
+			}
+
+			const data = await response.json();
+
+			const issues = [];
+
+		// Mapeamento de categorias WAVE para português
+		const categoryMapping = {
+			error: 'Validação de acessibilidade WAVE - Erros',
+			alert: 'Validação de acessibilidade WAVE - Alertas',
+			contrast: 'Validação de acessibilidade WAVE - Contraste',
+			structure: 'Validação de acessibilidade WAVE - Estrutura',
+			aria: 'Validação de acessibilidade WAVE - ARIA',
+			html5: 'Validação de acessibilidade WAVE - HTML5',
+			link: 'Validação de acessibilidade WAVE - Links',
+			media: 'Validação de acessibilidade WAVE - Mídia',
+			table: 'Validação de acessibilidade WAVE - Tabelas',
+			feature: 'Validação de acessibilidade WAVE - Funcionalidades',
+			// Adicionar outras categorias se necessário
+		};
+
+		// Mapeamento de tipos
+		const typeMapping = {
+			error: 'error',
+			alert: 'warning',
+			contrast: 'error',
+			structure: 'notice',
+			aria: 'warning',
+			html5: 'notice',
+			link: 'warning',
+			media: 'warning',
+			table: 'warning',
+			feature: 'notice',
+		};
+
+		// Processar todas as categorias
+		if (data.categories) {
+			Object.keys(data.categories).forEach(catKey => {
+				const category = data.categories[catKey];
+				if (category && category.items) {
+					const catName = categoryMapping[catKey] || `Validação de acessibilidade WAVE - ${catKey}`;
+					const type = typeMapping[catKey] || 'notice';
+					Object.values(category.items).forEach(item => {
+						issues.push({
+							code: item.id,
+							message: item.description,
+							type: type,
+							runnerExtras: {
+								status: catKey === 'error' || catKey === 'contrast' ? 'not passed' : catKey === 'alert' ? 'warning' : 'passed',
+								errorMessage: item.description,
+								category: catName
+							}
+						});
+					});
+				}
+			});
+		}
+
+		// Se não há issues, adicionar um sucesso
+		if (issues.length === 0) {
+			issues.push({
+				code: 'WAVE Accessibility Check',
+				message: `Arquivo ${filename} passou na validação de acessibilidade WAVE`,
+				type: 'notice',
+				runnerExtras: {
+					status: 'passed',
+					errorMessage: null,
+					category: 'Validação de acessibilidade WAVE'
+				}
+			});
+		}
+
+			return {
+				documentTitle: filename,
+				pageUrl: filename,
+				issues: issues
+			};
+
+		} catch (error) {
+			console.log(`Tentativa ${attempt} falhou para ${filename}:`, error.message);
+			if (attempt < maxRetries) {
+				console.log(`Tentando novamente em ${retryDelay}ms...`);
+				await new Promise(resolve => setTimeout(resolve, retryDelay));
+			} else {
+				console.log(`Erro na validação WAVE para ${filename} após ${maxRetries} tentativas:`, error.message);
+				return {
+					documentTitle: filename,
+					pageUrl: filename,
+					issues: [{
+						code: 'WAVE Validation Error',
+						message: `Erro ao validar acessibilidade WAVE após ${maxRetries} tentativas: ${error.message}`,
+						type: 'error',
+						runnerExtras: {
+							status: 'error',
+						}
+					}]
+				};
+			}
+		}
+	}
+};
 
 const getAllFiles = (dirPath, arrayOfFiles) => {
 	try {
@@ -331,7 +455,25 @@ export const runApp = async (newFolderPath) => {
         let results = await Promise.all(urlList);
         sendProgress({ 
             type: 'info', 
-            message: 'Validação HTML concluída. Verificando estrutura de arquivos...' 
+            message: 'Validação HTML concluída. Iniciando validação WAVE...' 
+        });
+
+        // Validação WAVE
+        const waveResults = [];
+        for (const file of htmlFiles) {
+            const htmlContent = fs.readFileSync(file, 'utf8');
+            const filename = path.basename(file);
+            sendProgress({ 
+                type: 'info', 
+                message: `Validando acessibilidade WAVE para ${filename}...` 
+            });
+            const waveResult = await waveValidate(htmlContent, filename);
+            waveResults.push(waveResult);
+        }
+
+        sendProgress({ 
+            type: 'info', 
+            message: 'Validação WAVE concluída. Verificando estrutura de arquivos...' 
         });
 
         const errosFsResult = handleFsError(newFolderPath);
@@ -344,10 +486,17 @@ export const runApp = async (newFolderPath) => {
         const tocNcxValidationResult = validateTocNcxIds(newFolderPath);
         sendProgress({ 
             type: 'info', 
-            message: 'Validação de IDs do toc.ncx concluída. Gerando relatório...' 
+            message: 'Validação de IDs do toc.ncx concluída. Verificando arquivos do content.opf...' 
         });
 
-        const allResults = [errosFsResult, tocNcxValidationResult, ...results];
+        // Validação específica dos arquivos do content.opf
+        const contentOpfValidationResult = validateContentOpfFiles(newFolderPath);
+        sendProgress({ 
+            type: 'info', 
+            message: 'Validação de arquivos do content.opf concluída. Gerando relatório...' 
+        });
+
+        const allResults = [errosFsResult, tocNcxValidationResult, contentOpfValidationResult, ...results, ...waveResults];
 		
 		// Traduzir mensagens dos resultados W3C
 		const translatedResults = translateResults(allResults);

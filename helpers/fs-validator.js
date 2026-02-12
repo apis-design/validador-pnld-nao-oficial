@@ -10,9 +10,31 @@ import path from "path"
 
 import fs from "fs"
 import mime from "mime-types"
-import {
-    testar
-} from '../utils/index.js';
+
+
+function testar(testDescription, testFunction, array) {
+    let status;
+    let errorMessage = null;
+
+    try {
+        testFunction()
+        status = 'passed';
+    } catch (e) {
+        status = 'not passed';
+        errorMessage = e.message
+    }
+
+    return array.issues.push({
+        code: testDescription,
+        message: testDescription,
+        type: 'notice',
+        runnerExtras: {
+            status: status,
+            errorMessage: errorMessage,
+            category: 'Validação de estrutura e organização de arquivos'
+        }
+    });
+}
 
 
 use(chaiFs);
@@ -169,8 +191,8 @@ export default function handleFsError(basePath) {
         expect(path.join(basePath, 'index.html')).to.be.a.file(`Não possui o arquivo ${path.join(basePath, 'index.html')}. 5.8 Criação da página principal`)
     }, results);
 
-    const allowedDirectoriesInResources = ['images', 'scripts', 'styles', 'videos', 'audios', 'fonts', 'extras']
-    testar("Os diretórios dentro do diretório 'resources' são permitidos ('images', 'scripts', 'styles', 'videos', 'audios', 'fonts', 'extras')", () => {
+    const allowedDirectoriesInResources = ['images', 'scripts', 'styles', 'videos', 'audios', 'fonts', 'extras', 'interactivities']
+    testar("Os diretórios dentro do diretório 'resources' são permitidos ('images', 'scripts', 'styles', 'videos', 'audios', 'fonts', 'extras', 'interactivities')", () => {
         const resourcesPath = path.join(basePath, 'resources');
         const rootItems = fs.readdirSync(resourcesPath);
         rootItems.forEach(item => {

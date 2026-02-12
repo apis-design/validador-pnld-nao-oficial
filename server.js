@@ -4,6 +4,7 @@ import extract from 'extract-zip';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
+import fetch from 'node-fetch';
 import { runApp } from './index.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -199,6 +200,92 @@ app.post('/upload', upload.single('zipFile'), async (req, res) => {
         });
     } catch (error) {
         console.error('Extraction error:', error);
+        sendProgress({ type: 'error', message: `Erro: ${error.message}` });
+        res.status(500).json({ 
+            success: false, 
+            error: error.message 
+        });
+    }
+});
+
+app.post('/upload-url', async (req, res) => {
+    try {
+        // Limpar cache de resultados anteriores no início do processo
+        clearPreviousResults();
+
+        const { url } = req.body;
+        if (!url) {
+            return res.status(400).json({ success: false, error: 'URL não fornecida' });
+        }
+
+        sendProgress({ type: 'info', message: 'Baixando arquivo da URL...' });
+
+        // Download the ZIP file with progress
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Erro ao baixar arquivo: ${response.status}`);
+        }
+
+        const contentLength = response.headers.get('content-length');
+        let buffer;
+
+        if (contentLength) {
+            let downloaded = 0;
+            const chunks = [];
+            const stream = response.body;
+
+            for await (const chunk of stream) {
+                chunks.push(chunk);
+                downloaded += chunk.length;
+                const percent = Math.round((downloaded / parseInt(contentLength)) * 100);
+                sendProgress({ type: 'download-progress', progress: percent });
+            }
+            buffer = Buffer.concat(chunks);
+        } else {
+            buffer = await response.buffer();
+        }
+        const zipPath = path.join(uploadsDir, `download-${Date.now()}.zip`);
+        fs.writeFileSync(zipPath, buffer);
+
+        const extractPath = path.join(__dirname, 'extracted', Date.now().toString());
+        
+        sendProgress({ type: 'info', message: 'Extraindo arquivo ZIP...' });
+        
+        // Criar diretório de extração se não existir
+        if (!fs.existsSync(extractPath)) {
+            fs.mkdirSync(extractPath, { recursive: true });
+        }
+
+        // Extrair o arquivo ZIP
+        await extract(zipPath, { dir: extractPath });
+        
+        // Listar arquivos extraídos
+        const extractedFiles = fs.readdirSync(extractPath);
+        sendProgress({ type: 'info', message: `Arquivos extraídos: ${extractedFiles.length} arquivos encontrados` });
+
+        // Remover o arquivo ZIP original
+        fs.unlinkSync(zipPath);
+
+        sendProgress({ type: 'info', message: 'Iniciando validação...' });
+        // Atualizar o folderPath e executar a validação
+        await runApp(extractPath);
+
+        // Remove .DS_Store files
+        sendProgress({ type: 'info', message: 'Removendo arquivos .DS_Store...' });
+        await removeDSStoreFiles(extractPath);
+
+        // Remove the extracted folder
+        sendProgress({ type: 'info', message: 'Removendo pasta extraída...' });
+        fs.rmSync(extractPath, { recursive: true, force: true });
+
+        sendProgress({ type: 'success', message: 'Processamento concluído com sucesso!' });
+        res.json({ 
+            success: true,
+            redirectUrl: '/results.html',
+            message: 'Processamento concluído com sucesso!'
+        });
+    } catch (error) {
+        console.error('URL upload error:', error);
         sendProgress({ type: 'error', message: `Erro: ${error.message}` });
         res.status(500).json({ 
             success: false, 
