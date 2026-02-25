@@ -196,12 +196,12 @@ export function validateTocNcxIds(basePath) {
         if (idsNaoEncontrados.length > 0) {
             testar('IDs não encontrados no toc.ncx', () => {
                 const resumoIds = idsNaoEncontrados.map(item => 
-                    `ID '${item.id}' no arquivo '${item.arquivo}' (${item.label})`
-                ).join(', ');
+                    `• ID '${item.id}' no arquivo '${item.arquivo}' (${item.label})`
+                ).join('\n');
                 
                 results.issues.push({
                     code: 'IDs não encontrados',
-                    message: `IDs referenciados no toc.ncx que não existem nos arquivos: ${resumoIds}`,
+                    message: `IDs referenciados no toc.ncx que não existem nos arquivos:\n${resumoIds}`,
                     type: 'error',
                     runnerExtras: {
                         status: 'not passed',
@@ -210,7 +210,7 @@ export function validateTocNcxIds(basePath) {
                     }
                 });
 
-                throw new Error(`${idsNaoEncontrados.length} IDs referenciados no toc.ncx não foram encontrados`);
+                throw new Error(`${idsNaoEncontrados.length} IDs referenciados no toc.ncx não foram encontrados:\n${resumoIds}`);
             }, results);
         } else {
             testar('Validação concluída com sucesso', () => {

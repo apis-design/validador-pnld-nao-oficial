@@ -532,6 +532,57 @@ runner.run = (options, pa11y) => {
 			}
 		})
 
+		// – listas apenas em navs específicos
+		testar('Listas (ol, ul, li) apenas em navs com classes específicas', () => {
+			const allowedClasses = ['sumario_index', 'sumario_aluno', 'sumario_professor'];
+			const invalidElements = $('ol, ul, li').filter(function() {
+				// Verifica se o elemento ou algum ancestral é um nav com as classes permitidas
+				let current = $(this);
+				let isAllowed = false;
+				
+				while (current.length > 0 && current[0] !== document.body) {
+					if (current.is('nav')) {
+						const hasAllowedClass = allowedClasses.some(cls => current.hasClass(cls));
+						if (hasAllowedClass) {
+							isAllowed = true;
+							break;
+						}
+					}
+					current = current.parent();
+				}
+				
+				return !isAllowed;
+			});
+			
+			const count = invalidElements.length;
+			if (count > 0) {
+				invalidElements.each(function() {
+					const elementHtml = $(this).prop('outerHTML');
+					const tagName = this.tagName.toLowerCase();
+					results.push({
+						code: 'Lista fora de nav permitido',
+						message: `Elemento ${tagName} encontrado fora de nav com classes sumario_index, sumario_aluno ou sumario_professor: ${elementHtml.substring(0, 100)}...`,
+						type: 'error',
+						runnerExtras: {
+							status: 'not passed',
+							errorMessage: `Elemento ${tagName} fora de nav permitido`,
+							category: getCategory('lista')
+						}
+					});
+				});
+			} else {
+				results.push({
+					code: 'Listas apenas em navs permitidos',
+					message: 'Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor',
+					type: 'notice',
+					runnerExtras: {
+						status: 'passed',
+						category: getCategory('lista')
+					}
+				});
+			}
+		})
+
 		// – salto hierárquico
 		testar('O documento não contém salto hierárquico de títulos', () => {
 			function checkHeadingHierarchy() {

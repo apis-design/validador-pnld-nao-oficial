@@ -1,7 +1,7 @@
 var testResults = [
   {
-    "documentTitle": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035",
-    "pageUrl": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035",
+    "documentTitle": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135",
+    "pageUrl": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135",
     "issues": [
       {
         "code": "Diretório raíz não contém outras pastas além de \"resources\" e \"content\"",
@@ -9384,6 +9384,26 @@ var testResults = [
         }
       },
       {
+        "code": "Verifica nomenclatura de style_77xq46lraj.css",
+        "message": "Verifica nomenclatura de style_77xq46lraj.css",
+        "type": "notice",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null,
+          "category": "Validação de estrutura e organização de arquivos"
+        }
+      },
+      {
+        "code": "Verifica localização de style_77xq46lraj.css",
+        "message": "Verifica localização de style_77xq46lraj.css",
+        "type": "notice",
+        "runnerExtras": {
+          "status": "passed",
+          "errorMessage": null,
+          "category": "Validação de estrutura e organização de arquivos"
+        }
+      },
+      {
         "code": "Verifica nomenclatura de style_components.css",
         "message": "Verifica nomenclatura de style_components.css",
         "type": "notice",
@@ -9487,25 +9507,40 @@ var testResults = [
   },
   {
     "documentTitle": "Validação de IDs do toc.ncx",
-    "pageUrl": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035",
+    "pageUrl": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135",
     "issues": [
       {
-        "code": "Sucesso",
-        "message": "Todos os IDs referenciados no toc.ncx foram encontrados nos arquivos correspondentes",
-        "type": "notice",
+        "code": "IDs não encontrados",
+        "message": "IDs referenciados no toc.ncx que não existem nos arquivos:\n• ID 'b1e9982e-19d6-45a2-9ba4-1e961c3710c4' no arquivo 'content/g27003007aba1leiniciais.html' (Objetos digitais)\n• ID '6e5c1f86-702d-4989-84a7-3f56f6d30daa' no arquivo 'content/g27003007aba1leiniciais.html' (Áudios)",
+        "type": "error",
         "runnerExtras": {
-          "status": "passed",
-          "totalLinks": 130,
-          "totalArquivos": 15
+          "status": "not passed",
+          "idsNaoEncontrados": [
+            {
+              "id": "b1e9982e-19d6-45a2-9ba4-1e961c3710c4",
+              "arquivo": "content/g27003007aba1leiniciais.html",
+              "label": "Objetos digitais",
+              "navPointId": "navPoint114",
+              "playOrder": "114"
+            },
+            {
+              "id": "6e5c1f86-702d-4989-84a7-3f56f6d30daa",
+              "arquivo": "content/g27003007aba1leiniciais.html",
+              "label": "Áudios",
+              "navPointId": "navPoint122",
+              "playOrder": "122"
+            }
+          ],
+          "totalIdsNaoEncontrados": 2
         }
       },
       {
-        "code": "Validação concluída com sucesso",
-        "message": "Validação concluída com sucesso",
+        "code": "IDs não encontrados no toc.ncx",
+        "message": "IDs não encontrados no toc.ncx",
         "type": "notice",
         "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null,
+          "status": "not passed",
+          "errorMessage": "2 IDs referenciados no toc.ncx não foram encontrados:\n• ID 'b1e9982e-19d6-45a2-9ba4-1e961c3710c4' no arquivo 'content/g27003007aba1leiniciais.html' (Objetos digitais)\n• ID '6e5c1f86-702d-4989-84a7-3f56f6d30daa' no arquivo 'content/g27003007aba1leiniciais.html' (Áudios)",
           "category": "Validação toc.ncx"
         }
       }
@@ -9513,7 +9548,7 @@ var testResults = [
   },
   {
     "documentTitle": "Validação de arquivos do content.opf",
-    "pageUrl": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035",
+    "pageUrl": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135",
     "issues": [
       {
         "code": "Sucesso",
@@ -9521,7 +9556,7 @@ var testResults = [
         "type": "notice",
         "runnerExtras": {
           "status": "passed",
-          "totalItens": 426
+          "totalItens": 427
         }
       },
       {
@@ -9548,7 +9583,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27003007aba1leiniciais.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27003007aba1leiniciais.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -9856,7 +9891,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Certifique-se de que o texto alt do elemento img serve ao mesmo propósito e apresenta as mesmas informações que a imagem.",
         "context": "<img class=\"box_buriti-topo s_f826d82e-0c7c-48dd-96e1-1e6880fdc96e\" src=\"../resources/images/image_f7o6vuhbcx.png\" alt=\"Ilustração. Apresenta um buritizeiro com folhas verdes e frutos vermelhos. O tronco é marrom e retorcido. Ao fundo, um círculo com...",
-        "selector": "#f9259c0a-b12d-4dc4-a601-56060ba262f2 > img",
+        "selector": "#S8z09ssisI > img",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -9866,7 +9901,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Se esta imagem não puder ser totalmente descrita em uma alternativa de texto curta, certifique-se de que uma alternativa de texto longa também esteja disponível, como no texto do corpo ou através de um link.",
         "context": "<img class=\"box_buriti-topo s_f826d82e-0c7c-48dd-96e1-1e6880fdc96e\" src=\"../resources/images/image_f7o6vuhbcx.png\" alt=\"Ilustração. Apresenta um buritizeiro com folhas verdes e frutos vermelhos. O tronco é marrom e retorcido. Ao fundo, um círculo com...",
-        "selector": "#f9259c0a-b12d-4dc4-a601-56060ba262f2 > img",
+        "selector": "#S8z09ssisI > img",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10796,7 +10831,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27008023aba1u1c1le.html#f751ab24-6d3f-4ea0-bcfc-ca69d77fab8f\" class=\"sumario-link s_7d5190b2-93af-415a-8db3-e07b7e837008\"><span class=\"sumario_titulo s_7...</a>",
-        "selector": "#b1e9982e-19d6-45a2-9ba4-1e961c3710c4 > ol > li:nth-child(1) > a",
+        "selector": "#1tjoCu2b6z > div > div:nth-child(1) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10806,7 +10841,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27008023aba1u1c1le.html#2b7b502e-3fd8-4419-8657-6179a039447c\" class=\"sumario-link s_7d5190b2-93af-415a-8db3-e07b7e837008\"><span class=\"sumario_titulo s_7...</a>",
-        "selector": "#b1e9982e-19d6-45a2-9ba4-1e961c3710c4 > ol > li:nth-child(2) > a",
+        "selector": "#1tjoCu2b6z > div > div:nth-child(2) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10816,7 +10851,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27024037aba1u1c2le.html#fbc77b70-e59c-4227-afbe-0265c4af95df\" class=\"sumario-link s_7d5190b2-93af-415a-8db3-e07b7e837008\"><span class=\"sumario_titulo s_7...</a>",
-        "selector": "#b1e9982e-19d6-45a2-9ba4-1e961c3710c4 > ol > li:nth-child(3) > a",
+        "selector": "#1tjoCu2b6z > div > div:nth-child(3) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10826,7 +10861,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27038051aba1u2c3le.html#2e941493-98f3-4099-a01d-f67a73eafa86\" class=\"sumario-link s_7d5190b2-93af-415a-8db3-e07b7e837008\"><span class=\"sumario_titulo s_7...</a>",
-        "selector": "#b1e9982e-19d6-45a2-9ba4-1e961c3710c4 > ol > li:nth-child(4) > a",
+        "selector": "#1tjoCu2b6z > div > div:nth-child(4) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10836,7 +10871,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27052065aba1u2c4le.html#d55d71ba-b41b-4e9a-b74c-6bce097ee01b\" class=\"sumario-link s_7d5190b2-93af-415a-8db3-e07b7e837008\"><span class=\"sumario_titulo s_7...</a>",
-        "selector": "#b1e9982e-19d6-45a2-9ba4-1e961c3710c4 > ol > li:nth-child(5) > a",
+        "selector": "#1tjoCu2b6z > div > div:nth-child(5) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10846,7 +10881,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27066079aba1u3c5le.html#2dee0db5-66f6-4f0d-9bf2-6c0d157f7dd6\" class=\"sumario-link s_7d5190b2-93af-415a-8db3-e07b7e837008\"><span class=\"sumario_titulo s_7...</a>",
-        "selector": "#b1e9982e-19d6-45a2-9ba4-1e961c3710c4 > ol > li:nth-child(6) > a",
+        "selector": "#1tjoCu2b6z > div > div:nth-child(6) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10856,7 +10891,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27066079aba1u3c5le.html#3a427ff3-c7a1-4655-8d49-fc7c0477859b\" class=\"sumario-link s_7d5190b2-93af-415a-8db3-e07b7e837008\"><span class=\"sumario_titulo s_7...</a>",
-        "selector": "#b1e9982e-19d6-45a2-9ba4-1e961c3710c4 > ol > li:nth-child(7) > a",
+        "selector": "#1tjoCu2b6z > div > div:nth-child(7) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10866,7 +10901,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27008023aba1u1c1le.html#ce4e85a2-8722-42fd-953a-1389bafd759a\" class=\"sumario-link s_fd1fb27c-7d02-4cc4-be26-2e8febb3b165\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#6e5c1f86-702d-4989-84a7-3f56f6d30daa > ol > li:nth-child(1) > a",
+        "selector": "#ggdEbBJrVC > div > div:nth-child(1) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10876,7 +10911,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27008023aba1u1c1le.html#075df8fd-e981-4f4f-aceb-0a39144063da\" class=\"sumario-link s_fd1fb27c-7d02-4cc4-be26-2e8febb3b165\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#6e5c1f86-702d-4989-84a7-3f56f6d30daa > ol > li:nth-child(2) > a",
+        "selector": "#ggdEbBJrVC > div > div:nth-child(2) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10886,7 +10921,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27008023aba1u1c1le.html#418cf170-8621-4d71-ae5e-5cc93fda79f7\" class=\"sumario-link s_fd1fb27c-7d02-4cc4-be26-2e8febb3b165\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#6e5c1f86-702d-4989-84a7-3f56f6d30daa > ol > li:nth-child(3) > a",
+        "selector": "#ggdEbBJrVC > div > div:nth-child(3) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10896,7 +10931,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27008023aba1u1c1le.html#d59cfb8f-810a-4002-8d2b-f8a7a3adf6df\" class=\"sumario-link s_fd1fb27c-7d02-4cc4-be26-2e8febb3b165\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#6e5c1f86-702d-4989-84a7-3f56f6d30daa > ol > li:nth-child(4) > a",
+        "selector": "#ggdEbBJrVC > div > div:nth-child(4) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10906,7 +10941,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27052065aba1u2c4le.html#f8c50b6c-b8cc-46f9-bbe9-8875f3030637\" class=\"sumario-link s_fd1fb27c-7d02-4cc4-be26-2e8febb3b165\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#6e5c1f86-702d-4989-84a7-3f56f6d30daa > ol > li:nth-child(5) > a",
+        "selector": "#ggdEbBJrVC > div > div:nth-child(5) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10916,7 +10951,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27066079aba1u3c5le.html#0dae4811-6bcb-4a66-9423-b2bd6f536dfa\" class=\"sumario-link s_fd1fb27c-7d02-4cc4-be26-2e8febb3b165\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#6e5c1f86-702d-4989-84a7-3f56f6d30daa > ol > li:nth-child(6) > a",
+        "selector": "#ggdEbBJrVC > div > div:nth-child(6) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10926,7 +10961,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27066079aba1u3c5le.html#2b33beb4-412e-40e8-a1ab-f1a1f9d70471\" class=\"sumario-link s_fd1fb27c-7d02-4cc4-be26-2e8febb3b165\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#6e5c1f86-702d-4989-84a7-3f56f6d30daa > ol > li:nth-child(7) > a",
+        "selector": "#ggdEbBJrVC > div > div:nth-child(7) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10936,7 +10971,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27066079aba1u3c5le.html#6627812d-911e-46e2-91b9-7222df28ff8c\" class=\"sumario-link s_fd1fb27c-7d02-4cc4-be26-2e8febb3b165\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#6e5c1f86-702d-4989-84a7-3f56f6d30daa > ol > li:nth-child(8) > a",
+        "selector": "#ggdEbBJrVC > div > div:nth-child(8) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10946,7 +10981,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27066079aba1u3c5le.html#01a8b4a0-d7c5-4645-bfef-33ff7f0b75ec\" class=\"sumario-link s_fd1fb27c-7d02-4cc4-be26-2e8febb3b165\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#6e5c1f86-702d-4989-84a7-3f56f6d30daa > ol > li:nth-child(9) > a",
+        "selector": "#ggdEbBJrVC > div > div:nth-child(9) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10956,7 +10991,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27080093aba1u3c6le.html#a4af43fe-c4c9-4678-bd08-1edddfbdef80\" class=\"sumario-link s_fd1fb27c-7d02-4cc4-be26-2e8febb3b165\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#6e5c1f86-702d-4989-84a7-3f56f6d30daa > ol > li:nth-child(10) > a",
+        "selector": "#ggdEbBJrVC > div > div:nth-child(10) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10966,7 +11001,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27080093aba1u3c6le.html#f05ab2cb-b244-42a8-8b4d-2e1b97942485\" class=\"sumario-link s_fd1fb27c-7d02-4cc4-be26-2e8febb3b165\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#6e5c1f86-702d-4989-84a7-3f56f6d30daa > ol > li:nth-child(11) > a",
+        "selector": "#ggdEbBJrVC > div > div:nth-child(11) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -10976,7 +11011,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27094107aba1u4c7le.html#6e3c37fa-c207-4656-a623-c31d3a9b5ee4\" class=\"sumario-link s_fd1fb27c-7d02-4cc4-be26-2e8febb3b165\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#6e5c1f86-702d-4989-84a7-3f56f6d30daa > ol > li:nth-child(12) > a",
+        "selector": "#ggdEbBJrVC > div > div:nth-child(12) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -11371,6 +11406,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "Salto hierárquico de títulos",
         "type": "error",
         "typeCode": 1,
@@ -11674,20 +11722,39 @@ var testResults = [
         "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
-          "total": 2,
+          "total": 5,
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27003007aba1leiniciais.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27003007aba1leiniciais.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27003007aba1leiniciais.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27003007aba1leiniciais.html"
             }
           ],
-          "elementos": [],
+          "elementos": [
+            {
+              "elemento": "span",
+              "valor": "en",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27003007aba1leiniciais.html",
+              "html": "<span lang=\"en\" class=\"s_803fde8a-7a09-41c7-9f80-34b32af4ead8\"><strong class=\"s_803fde8a-7a09-41c7-9f80-34b32af4ead8\"><em class=\"s_803fde8a-7a09-41c7-9f80-34b32af4ead8\">design</em></strong></span>"
+            },
+            {
+              "elemento": "span",
+              "valor": "en",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27003007aba1leiniciais.html",
+              "html": "<span lang=\"en\" class=\"s_803fde8a-7a09-41c7-9f80-34b32af4ead8\"><strong class=\"s_803fde8a-7a09-41c7-9f80-34b32af4ead8\"><em class=\"s_803fde8a-7a09-41c7-9f80-34b32af4ead8\">design</em></strong></span>"
+            },
+            {
+              "elemento": "span",
+              "valor": "en",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27003007aba1leiniciais.html",
+              "html": "<span lang=\"en\" class=\"s_803fde8a-7a09-41c7-9f80-34b32af4ead8\"><strong class=\"s_803fde8a-7a09-41c7-9f80-34b32af4ead8\"><em class=\"s_803fde8a-7a09-41c7-9f80-34b32af4ead8\">bureau</em></strong></span>"
+            }
+          ],
           "category": "Lang"
         }
       },
@@ -11765,7 +11832,7 @@ var testResults = [
         "code": "Problema com ID",
         "type": "error",
         "typeCode": 1,
-        "message": "ID \"07230ee2-2daf-4d5d-a008-9da8359f4276\": ID contém caracteres inválidos ou não começa com letra",
+        "message": "ID \"8P6pYKVVGx\": ID contém caracteres inválidos ou não começa com letra",
         "context": "",
         "selector": "",
         "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
@@ -11794,20 +11861,6 @@ var testResults = [
         "type": "error",
         "typeCode": 1,
         "message": "ID \"7ae5468e-3656-4062-9cf5-4978f400b1e1\": ID contém caracteres inválidos ou não começa com letra",
-        "context": "",
-        "selector": "",
-        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "ID contém caracteres inválidos ou não começa com letra",
-          "category": "IDs"
-        }
-      },
-      {
-        "code": "Problema com ID",
-        "type": "error",
-        "typeCode": 1,
-        "message": "ID \"8e8c8584-da23-403c-95a5-99842c7b9e75\": ID contém caracteres inválidos ou não começa com letra",
         "context": "",
         "selector": "",
         "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
@@ -11975,20 +12028,6 @@ var testResults = [
         "code": "Problema com ID",
         "type": "error",
         "typeCode": 1,
-        "message": "ID \"22063b9e-fade-42f9-9467-a40f12902792\": ID contém caracteres inválidos ou não começa com letra",
-        "context": "",
-        "selector": "",
-        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "ID contém caracteres inválidos ou não começa com letra",
-          "category": "IDs"
-        }
-      },
-      {
-        "code": "Problema com ID",
-        "type": "error",
-        "typeCode": 1,
         "message": "ID \"00b0385f-3199-4456-af80-5c436624265d\": ID contém caracteres inválidos ou não começa com letra",
         "context": "",
         "selector": "",
@@ -12004,20 +12043,6 @@ var testResults = [
         "type": "error",
         "typeCode": 1,
         "message": "ID \"06dac35b-680b-4cea-af69-ad675b526e5a\": ID contém caracteres inválidos ou não começa com letra",
-        "context": "",
-        "selector": "",
-        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "ID contém caracteres inválidos ou não começa com letra",
-          "category": "IDs"
-        }
-      },
-      {
-        "code": "Problema com ID",
-        "type": "error",
-        "typeCode": 1,
-        "message": "ID \"0cacd970-f44f-4646-bc58-4d74a326ab37\": ID contém caracteres inválidos ou não começa com letra",
         "context": "",
         "selector": "",
         "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
@@ -12115,6 +12140,20 @@ var testResults = [
         "code": "Problema com ID",
         "type": "error",
         "typeCode": 1,
+        "message": "ID \"6mWThFG5ZC\": ID contém caracteres inválidos ou não começa com letra",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "not passed",
+          "errorMessage": "ID contém caracteres inválidos ou não começa com letra",
+          "category": "IDs"
+        }
+      },
+      {
+        "code": "Problema com ID",
+        "type": "error",
+        "typeCode": 1,
         "message": "ID \"93186cea-50b7-4dbb-8339-5985df0904bd\": ID contém caracteres inválidos ou não começa com letra",
         "context": "",
         "selector": "",
@@ -12129,7 +12168,7 @@ var testResults = [
         "code": "Problema com ID",
         "type": "error",
         "typeCode": 1,
-        "message": "ID \"4307b606-658d-4c83-8414-2ededac26946\": ID contém caracteres inválidos ou não começa com letra",
+        "message": "ID \"0-X8C0Ahhc\": ID contém caracteres inválidos ou não começa com letra",
         "context": "",
         "selector": "",
         "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
@@ -12157,21 +12196,7 @@ var testResults = [
         "code": "Problema com ID",
         "type": "error",
         "typeCode": 1,
-        "message": "ID \"6e5c1f86-702d-4989-84a7-3f56f6d30daa\": ID contém caracteres inválidos ou não começa com letra",
-        "context": "",
-        "selector": "",
-        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
-        "runnerExtras": {
-          "status": "not passed",
-          "errorMessage": "ID contém caracteres inválidos ou não começa com letra",
-          "category": "IDs"
-        }
-      },
-      {
-        "code": "Problema com ID",
-        "type": "error",
-        "typeCode": 1,
-        "message": "ID \"7d928a61-3c44-44b3-9037-48c5920dea27\": ID contém caracteres inválidos ou não começa com letra",
+        "message": "ID \"1tjoCu2b6z\": ID contém caracteres inválidos ou não começa com letra",
         "context": "",
         "selector": "",
         "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
@@ -12185,7 +12210,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27008023aba1u1c1le.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27008023aba1u1c1le.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -13238,6 +13263,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "Salto hierárquico de títulos",
         "type": "error",
         "typeCode": 1,
@@ -13545,50 +13583,50 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27008023aba1u1c1le.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27008023aba1u1c1le.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27008023aba1u1c1le.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27008023aba1u1c1le.html"
             }
           ],
           "elementos": [
             {
               "elemento": "em",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27008023aba1u1c1le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27008023aba1u1c1le.html",
               "html": "<em lang=\"en\" class=\"s_eabc518b-df73-4064-9e6e-bec067613548\">play</em>"
             },
             {
               "elemento": "em",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27008023aba1u1c1le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27008023aba1u1c1le.html",
               "html": "<em lang=\"en\" class=\"s_eabc518b-df73-4064-9e6e-bec067613548\">play</em>"
             },
             {
               "elemento": "em",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27008023aba1u1c1le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27008023aba1u1c1le.html",
               "html": "<em lang=\"en\" class=\"s_eabc518b-df73-4064-9e6e-bec067613548\">play</em>"
             },
             {
               "elemento": "em",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27008023aba1u1c1le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27008023aba1u1c1le.html",
               "html": "<em lang=\"en\" class=\"s_eabc518b-df73-4064-9e6e-bec067613548\">play</em>"
             },
             {
               "elemento": "span",
               "valor": "es",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27008023aba1u1c1le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27008023aba1u1c1le.html",
               "html": "<span lang=\"es\">Audio</span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27008023aba1u1c1le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27008023aba1u1c1le.html",
               "html": "<span lang=\"en\">site</span>"
             }
           ],
@@ -15335,7 +15373,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27024037aba1u1c2le.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27024037aba1u1c2le.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -16118,6 +16156,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "Salto hierárquico de títulos",
         "type": "error",
         "typeCode": 1,
@@ -16425,20 +16476,20 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27024037aba1u1c2le.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27024037aba1u1c2le.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27024037aba1u1c2le.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27024037aba1u1c2le.html"
             }
           ],
           "elementos": [
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27024037aba1u1c2le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27024037aba1u1c2le.html",
               "html": "<span lang=\"en\">site</span>"
             }
           ],
@@ -17961,7 +18012,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27038051aba1u2c3le.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27038051aba1u2c3le.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -18868,6 +18919,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "Salto hierárquico de títulos",
         "type": "error",
         "typeCode": 1,
@@ -19175,13 +19239,13 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27038051aba1u2c3le.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27038051aba1u2c3le.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27038051aba1u2c3le.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27038051aba1u2c3le.html"
             }
           ],
           "elementos": [],
@@ -20732,7 +20796,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27052065aba1u2c4le.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27052065aba1u2c4le.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -21685,6 +21749,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "Salto hierárquico de títulos",
         "type": "error",
         "typeCode": 1,
@@ -21992,26 +22069,26 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27052065aba1u2c4le.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27052065aba1u2c4le.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27052065aba1u2c4le.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27052065aba1u2c4le.html"
             }
           ],
           "elementos": [
             {
               "elemento": "span",
               "valor": "es",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27052065aba1u2c4le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27052065aba1u2c4le.html",
               "html": "<span lang=\"es\">diálogos</span>"
             },
             {
               "elemento": "em",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27052065aba1u2c4le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27052065aba1u2c4le.html",
               "html": "<em lang=\"en\" class=\"s_eabc518b-df73-4064-9e6e-bec067613548\">play</em>"
             }
           ],
@@ -23576,7 +23653,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27066079aba1u3c5le.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27066079aba1u3c5le.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -24637,6 +24714,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "Salto hierárquico de títulos",
         "type": "error",
         "typeCode": 1,
@@ -24944,62 +25034,62 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27066079aba1u3c5le.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27066079aba1u3c5le.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27066079aba1u3c5le.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27066079aba1u3c5le.html"
             }
           ],
           "elementos": [
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27066079aba1u3c5le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27066079aba1u3c5le.html",
               "html": "<span lang=\"en\">site</span>"
             },
             {
               "elemento": "em",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27066079aba1u3c5le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27066079aba1u3c5le.html",
               "html": "<em lang=\"en\" class=\"s_eabc518b-df73-4064-9e6e-bec067613548\">play</em>"
             },
             {
               "elemento": "em",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27066079aba1u3c5le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27066079aba1u3c5le.html",
               "html": "<em lang=\"en\" class=\"s_eabc518b-df73-4064-9e6e-bec067613548\">play</em>"
             },
             {
               "elemento": "em",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27066079aba1u3c5le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27066079aba1u3c5le.html",
               "html": "<em lang=\"en\" class=\"s_eabc518b-df73-4064-9e6e-bec067613548\">play</em>"
             },
             {
               "elemento": "em",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27066079aba1u3c5le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27066079aba1u3c5le.html",
               "html": "<em lang=\"en\" class=\"s_eabc518b-df73-4064-9e6e-bec067613548\">play</em>"
             },
             {
               "elemento": "span",
               "valor": "FR-fr",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27066079aba1u3c5le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27066079aba1u3c5le.html",
               "html": "<span lang=\"FR-fr\" class=\"__lang s_21fc8de3-4d80-4d6c-8384-c644b9cada18\" id=\"9c3d3d9f-2b5e-4170-b43c-cce29a46b37c\" data-first-component=\"9c3d3d9f-2b5e-4170-b43c-cce29a46b37c\">CIRQUE DU SOLEIL</span>"
             },
             {
               "elemento": "span",
               "valor": "FR-fr",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27066079aba1u3c5le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27066079aba1u3c5le.html",
               "html": "<span lang=\"FR-fr\" class=\"__lang s_21fc8de3-4d80-4d6c-8384-c644b9cada18\" id=\"6a2909f0-e623-4ab5-925c-4fe8c766110c\" data-first-component=\"6a2909f0-e623-4ab5-925c-4fe8c766110c\">CIRQUE DU SOLEIL</span>"
             },
             {
               "elemento": "span",
               "valor": "FR-fr",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27066079aba1u3c5le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27066079aba1u3c5le.html",
               "html": "<span lang=\"FR-fr\" class=\"__lang s_21fc8de3-4d80-4d6c-8384-c644b9cada18\" id=\"6a2909f0-e623-4ab5-925c-4fe8c766110c\" data-first-component=\"6a2909f0-e623-4ab5-925c-4fe8c766110c\">CIRQUE DU SOLEIL</span>"
             }
           ],
@@ -26438,7 +26528,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27080093aba1u3c6le.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27080093aba1u3c6le.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -27291,6 +27381,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "Salto hierárquico de títulos",
         "type": "error",
         "typeCode": 1,
@@ -27598,26 +27701,26 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27080093aba1u3c6le.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27080093aba1u3c6le.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27080093aba1u3c6le.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27080093aba1u3c6le.html"
             }
           ],
           "elementos": [
             {
               "elemento": "em",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27080093aba1u3c6le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27080093aba1u3c6le.html",
               "html": "<em lang=\"en\" class=\"s_eabc518b-df73-4064-9e6e-bec067613548\">play</em>"
             },
             {
               "elemento": "em",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27080093aba1u3c6le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27080093aba1u3c6le.html",
               "html": "<em lang=\"en\" class=\"s_eabc518b-df73-4064-9e6e-bec067613548\">play</em>"
             }
           ],
@@ -29168,7 +29271,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27094107aba1u4c7le.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27094107aba1u4c7le.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -30121,6 +30224,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "Salto hierárquico de títulos",
         "type": "error",
         "typeCode": 1,
@@ -30428,26 +30544,26 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27094107aba1u4c7le.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27094107aba1u4c7le.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27094107aba1u4c7le.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27094107aba1u4c7le.html"
             }
           ],
           "elementos": [
             {
               "elemento": "em",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27094107aba1u4c7le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27094107aba1u4c7le.html",
               "html": "<em lang=\"en\" class=\"s_eabc518b-df73-4064-9e6e-bec067613548\">play</em>"
             },
             {
               "elemento": "span",
               "valor": "es",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27094107aba1u4c7le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27094107aba1u4c7le.html",
               "html": "<span lang=\"es\">AUDIO</span>"
             }
           ],
@@ -31802,7 +31918,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27108123aba1u4c8le.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27108123aba1u4c8le.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -31819,7 +31935,7 @@ var testResults = [
         "type": "warning",
         "typeCode": 2,
         "message": "The heading structure is not logically nested. This h3 element appears to be the primary document heading, so should be an h1 element.",
-        "context": "<h3 class=\"abre_capitulo-titulo s_f36adfb7-6aa5-4280-97d5-e93b3a676035 h3\">       <span class=\"abre_capitu...</h3>",
+        "context": "<h3 class=\"abre_capitulo-titulo s_f36adfb7-6aa5-4280-97d5-e93b3a676035 h3\"> <span class=\"abre_capitulo-vin...</h3>",
         "selector": "#b9596b41-50c6-416e-ac6b-86122ead177b > div > h3",
         "runner": "htmlcs",
         "runnerExtras": {}
@@ -31829,7 +31945,7 @@ var testResults = [
         "type": "warning",
         "typeCode": 2,
         "message": "The heading structure is not logically nested. This h3 element should be an h1 to be properly nested.",
-        "context": "<h3 class=\"abre_capitulo-titulo s_f36adfb7-6aa5-4280-97d5-e93b3a676035 h3\">       <span class=\"abre_capitu...</h3>",
+        "context": "<h3 class=\"abre_capitulo-titulo s_f36adfb7-6aa5-4280-97d5-e93b3a676035 h3\"> <span class=\"abre_capitulo-vin...</h3>",
         "selector": "#b9596b41-50c6-416e-ac6b-86122ead177b > div > h3",
         "runner": "htmlcs",
         "runnerExtras": {}
@@ -32289,7 +32405,7 @@ var testResults = [
         "type": "notice",
         "typeCode": 3,
         "message": "This table appears to be a data table. If it is meant to instead be a layout table, ensure there are no th elements, and no summary or caption.",
-        "context": "<table data-id=\"06f6309e-a9dc-495d-93c6-2cb9221b862b\" class=\"s_91ab9110-dbd6-4787-95c3-7da9caaddf18\" id=\"06f6309e-a9dc-495d-93c6-2cb9221b862b\"><tbody class=\"s_91ab9110-dbd6-4...</table>",
+        "context": "<table data-id=\"06f6309e-a9dc-495d-93c6-2cb9221b862b\" class=\"s_91ab9110-dbd6-4787-95c3-7da9caaddf18\" id=\"06f6309e-a9dc-495d-93c6-2cb9221b862b\">\n                        <tbody...</table>",
         "selector": "#06f6309e-a9dc-495d-93c6-2cb9221b862b",
         "runner": "htmlcs",
         "runnerExtras": {}
@@ -32299,7 +32415,7 @@ var testResults = [
         "type": "warning",
         "typeCode": 2,
         "message": "If this table is a data table, consider using a caption element to the table element to identify this table.",
-        "context": "<table data-id=\"06f6309e-a9dc-495d-93c6-2cb9221b862b\" class=\"s_91ab9110-dbd6-4787-95c3-7da9caaddf18\" id=\"06f6309e-a9dc-495d-93c6-2cb9221b862b\"><tbody class=\"s_91ab9110-dbd6-4...</table>",
+        "context": "<table data-id=\"06f6309e-a9dc-495d-93c6-2cb9221b862b\" class=\"s_91ab9110-dbd6-4787-95c3-7da9caaddf18\" id=\"06f6309e-a9dc-495d-93c6-2cb9221b862b\">\n                        <tbody...</table>",
         "selector": "#06f6309e-a9dc-495d-93c6-2cb9221b862b",
         "runner": "htmlcs",
         "runnerExtras": {}
@@ -32791,16 +32907,44 @@ var testResults = [
         }
       },
       {
-        "code": "Não tem listas com somente um item",
-        "type": "notice",
-        "typeCode": 3,
-        "message": "Não tem listas com somente um item",
+        "code": "Lista com somente um item",
+        "type": "error",
+        "typeCode": 1,
+        "message": "Encontrada lista com somente um item: <ul>\n        <li>teste</li>\n      </ul>...",
         "context": "",
         "selector": "",
         "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
         "runnerExtras": {
-          "status": "passed",
-          "errorMessage": null,
+          "status": "not passed",
+          "errorMessage": "Lista com um item encontrado",
+          "category": "Listas"
+        }
+      },
+      {
+        "code": "Lista fora de nav permitido",
+        "type": "error",
+        "typeCode": 1,
+        "message": "Elemento ul encontrado fora de nav com classes sumario_index, sumario_aluno ou sumario_professor: <ul>\n        <li>teste</li>\n      </ul>...",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "not passed",
+          "errorMessage": "Elemento ul fora de nav permitido",
+          "category": "Listas"
+        }
+      },
+      {
+        "code": "Lista fora de nav permitido",
+        "type": "error",
+        "typeCode": 1,
+        "message": "Elemento li encontrado fora de nav com classes sumario_index, sumario_aluno ou sumario_professor: <li>teste</li>...",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "not passed",
+          "errorMessage": "Elemento li fora de nav permitido",
           "category": "Listas"
         }
       },
@@ -32808,7 +32952,7 @@ var testResults = [
         "code": "Salto hierárquico de títulos",
         "type": "error",
         "typeCode": 1,
-        "message": "Saltos hierárquicos encontrados:Esperado: 1, Encontrado: 3 em <h3 class=\"abre_capitulo-titulo s_f36adfb7-6aa5-4280-97d5-e93b3a676035 h3\">       <span class=\"abre_capitulo-vinheta-capitulo s_f36adfb7-6aa5-4280-97d5-e93b3a676035\">Capítulo</span><span class=\"abre_capitulo-vinheta-numero s_f36adfb7-6aa5-4280-97d5-e93b3a676035\">8</span>         <span class=\"abre_capitulo-vinheta-titulo s_f36adfb7-6aa5-4280-97d5-e93b3a676035\">O CORPO E O ESPAÇO</span>    </h3>",
+        "message": "Saltos hierárquicos encontrados:Esperado: 1, Encontrado: 3 em <h3 class=\"abre_capitulo-titulo s_f36adfb7-6aa5-4280-97d5-e93b3a676035 h3\"> <span class=\"abre_capitulo-vinheta-capitulo s_f36adfb7-6aa5-4280-97d5-e93b3a676035\">Capítulo</span><span class=\"abre_capitulo-vinheta-numero s_f36adfb7-6aa5-4280-97d5-e93b3a676035\">8</span> <span class=\"abre_capitulo-vinheta-titulo s_f36adfb7-6aa5-4280-97d5-e93b3a676035\">O CORPO E O ESPAÇO</span>\n          </h3>",
         "context": "",
         "selector": "",
         "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
@@ -33112,26 +33256,26 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27108123aba1u4c8le.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27108123aba1u4c8le.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27108123aba1u4c8le.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27108123aba1u4c8le.html"
             }
           ],
           "elementos": [
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27108123aba1u4c8le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27108123aba1u4c8le.html",
               "html": "<span lang=\"en\">site</span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27108123aba1u4c8le.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27108123aba1u4c8le.html",
               "html": "<span lang=\"en\">site</span>"
             }
           ],
@@ -35060,7 +35204,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27124128aba1lefinais.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27124128aba1lefinais.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -35703,6 +35847,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "Salto hierárquico de títulos",
         "type": "error",
         "typeCode": 1,
@@ -36010,50 +36167,50 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27124128aba1lefinais.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27124128aba1lefinais.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27124128aba1lefinais.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27124128aba1lefinais.html"
             }
           ],
           "elementos": [
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27124128aba1lefinais.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27124128aba1lefinais.html",
               "html": "<span lang=\"en\" class=\"s_803fde8a-7a09-41c7-9f80-34b32af4ead8\">LEARNING</span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27124128aba1lefinais.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27124128aba1lefinais.html",
               "html": "<span lang=\"en\" class=\"s_803fde8a-7a09-41c7-9f80-34b32af4ead8\">Freesound</span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27124128aba1lefinais.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27124128aba1lefinais.html",
               "html": "<span lang=\"en\" class=\"s_803fde8a-7a09-41c7-9f80-34b32af4ead8\">Freesound</span>"
             },
             {
               "elemento": "span",
               "valor": "es",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27124128aba1lefinais.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27124128aba1lefinais.html",
               "html": "<span lang=\"es\">Audio</span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27124128aba1lefinais.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27124128aba1lefinais.html",
               "html": "<span lang=\"en\" class=\"s_803fde8a-7a09-41c7-9f80-34b32af4ead8\">ESSENTIAL CLASSICS</span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27124128aba1lefinais.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27124128aba1lefinais.html",
               "html": "<span lang=\"en\" class=\"s_803fde8a-7a09-41c7-9f80-34b32af4ead8\">AUDIO EXPERIENCE</span>"
             }
           ],
@@ -36568,7 +36725,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27ixxxiiaba1pgmp.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27ixxxiiaba1pgmp.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -36756,7 +36913,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27ixxxiiaba1pgmp.html#e0dcf139-cefa-479f-855c-181884ca5db1\" class=\"sumario-link s_9fa549e3-1328-426e-8411-3f7892d183bf\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#0cfa9233-18c1-4964-a5e4-f73628e828da > ol > li:nth-child(10) > p > span > a",
+        "selector": "#0cfa9233-18c1-4964-a5e4-f73628e828da > ol > li:nth-child(10) > ol > li > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -37847,16 +38004,29 @@ var testResults = [
         }
       },
       {
-        "code": "Não tem listas com somente um item",
+        "code": "Lista com somente um item",
+        "type": "error",
+        "typeCode": 1,
+        "message": "Encontrada lista com somente um item: <ol class=\"sumario-nivel-2 s_9fa549e3-1328-426e-8411-3f7892d183bf\"><li class=\"sumario-item nivel-2 s...",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "not passed",
+          "errorMessage": "Lista com um item encontrado",
+          "category": "Listas"
+        }
+      },
+      {
+        "code": "Listas apenas em navs permitidos",
         "type": "notice",
         "typeCode": 3,
-        "message": "Não tem listas com somente um item",
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
         "context": "",
         "selector": "",
         "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
-          "errorMessage": null,
           "category": "Listas"
         }
       },
@@ -38168,44 +38338,44 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27ixxxiiaba1pgmp.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27ixxxiiaba1pgmp.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27ixxxiiaba1pgmp.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27ixxxiiaba1pgmp.html"
             }
           ],
           "elementos": [
             {
               "elemento": "span",
               "valor": "es",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27ixxxiiaba1pgmp.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27ixxxiiaba1pgmp.html",
               "html": "<span lang=\"es\">diálogos</span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27ixxxiiaba1pgmp.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27ixxxiiaba1pgmp.html",
               "html": "<span lang=\"en\">site</span>"
             },
             {
               "elemento": "span",
               "valor": "es",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27ixxxiiaba1pgmp.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27ixxxiiaba1pgmp.html",
               "html": "<span lang=\"es\">diálogos</span>"
             },
             {
               "elemento": "span",
               "valor": "es",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27ixxxiiaba1pgmp.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27ixxxiiaba1pgmp.html",
               "html": "<span lang=\"es\">diálogos</span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/g27ixxxiiaba1pgmp.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/g27ixxxiiaba1pgmp.html",
               "html": "<span lang=\"en\" class=\"s_803fde8a-7a09-41c7-9f80-34b32af4ead8\">Cengage Learning</span>"
             }
           ],
@@ -39351,7 +39521,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-creditos.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-creditos.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -39754,6 +39924,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "Salto hierárquico de títulos",
         "type": "error",
         "typeCode": 1,
@@ -40061,13 +40244,13 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-creditos.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-creditos.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-creditos.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-creditos.html"
             }
           ],
           "elementos": [],
@@ -40108,7 +40291,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -40146,7 +40329,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_3f6e1280-98a2-44fc-826d-ecf2c85b1c7d\"><span class=\"sumario_titulo s_3...</a>",
-        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > ul > li:nth-child(1) > a",
+        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > div > div:nth-child(1) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -40156,7 +40339,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27008023aba1u1c1le.html#37f2b2c9-871f-4fec-a703-dd9171fec6cc\" class=\"sumario-link s_3f6e1280-98a2-44fc-826d-ecf2c85b1c7d\"><span class=\"sumario_titulo s_3...</a>",
-        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > ul > li:nth-child(1) > p > span > a",
+        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > div > div:nth-child(1) > div > div > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -40166,7 +40349,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_3f6e1280-98a2-44fc-826d-ecf2c85b1c7d\"><span class=\"sumario_titulo s_3...</a>",
-        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > ul > li:nth-child(2) > a",
+        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > div > div:nth-child(2) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -40176,7 +40359,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27024037aba1u1c2le.html#f566f52b-bfe8-44c3-b892-4268dc82c4e2\" class=\"sumario-link s_3f6e1280-98a2-44fc-826d-ecf2c85b1c7d\"><span class=\"sumario_titulo s_3...</a>",
-        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > ul > li:nth-child(2) > p > span > a",
+        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > div > div:nth-child(2) > div > div > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -40186,7 +40369,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_3f6e1280-98a2-44fc-826d-ecf2c85b1c7d\"><span class=\"sumario_titulo s_3...</a>",
-        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > ul > li:nth-child(3) > a",
+        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > div > div:nth-child(3) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -40196,7 +40379,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27038051aba1u2c3le.html#3e5763e2-0b18-4b70-acd2-c7b9570729c8\" class=\"sumario-link s_3f6e1280-98a2-44fc-826d-ecf2c85b1c7d\"><span class=\"sumario_titulo s_3...</a>",
-        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > ul > li:nth-child(3) > p > span > a",
+        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > div > div:nth-child(3) > div > div > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -40206,7 +40389,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_3f6e1280-98a2-44fc-826d-ecf2c85b1c7d\"><span class=\"sumario_titulo s_3...</a>",
-        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > ul > li:nth-child(4) > a",
+        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > div > div:nth-child(4) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -40216,7 +40399,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27038051aba1u2c3le.html#d706ac64-f314-4fbf-97cf-2c40d9f5c282\" class=\"sumario-link s_3f6e1280-98a2-44fc-826d-ecf2c85b1c7d\"><span class=\"sumario_titulo s_3...</a>",
-        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > ul > li:nth-child(4) > p > span > a",
+        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > div > div:nth-child(4) > div > div > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -40226,7 +40409,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_3f6e1280-98a2-44fc-826d-ecf2c85b1c7d\"><span class=\"sumario_titulo s_3...</a>",
-        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > ul > li:nth-child(5) > a",
+        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > div > div:nth-child(5) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -40236,7 +40419,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27066079aba1u3c5le.html#443eb9c7-4dca-47be-a082-77be60aa8699\" class=\"sumario-link s_3f6e1280-98a2-44fc-826d-ecf2c85b1c7d\"><span class=\"sumario_titulo s_3...</a>",
-        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > ul > li:nth-child(5) > p > span > a",
+        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > div > div:nth-child(5) > div > div > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -40246,7 +40429,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_3f6e1280-98a2-44fc-826d-ecf2c85b1c7d\"><span class=\"sumario_titulo s_3...</a>",
-        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > ul > li:nth-child(6) > a",
+        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > div > div:nth-child(6) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -40256,7 +40439,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27094107aba1u4c7le.html#b8acb280-6707-494a-8df7-fdab9e57feeb\" class=\"sumario-link s_3f6e1280-98a2-44fc-826d-ecf2c85b1c7d\"><span class=\"sumario_titulo s_3...</a>",
-        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > ul > li:nth-child(6) > p > span > a",
+        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > div > div:nth-child(6) > div > div > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -40266,7 +40449,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_3f6e1280-98a2-44fc-826d-ecf2c85b1c7d\"><span class=\"sumario_titulo s_3...</a>",
-        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > ul > li:nth-child(7) > a",
+        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > div > div:nth-child(7) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -40276,7 +40459,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27ixxxiiaba1pgmp.html#12441917-3a39-46a4-a34a-1b20a6d7d673\" class=\"sumario-link s_3f6e1280-98a2-44fc-826d-ecf2c85b1c7d\"><span class=\"sumario_titulo s_3...</a>",
-        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > ul > li:nth-child(7) > p > span > a",
+        "selector": "#0316e2ff-9353-45d5-bdce-649605c098d9 > div > div:nth-child(7) > div > div > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -40657,6 +40840,19 @@ var testResults = [
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null,
+          "category": "Listas"
+        }
+      },
+      {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
           "category": "Listas"
         }
       },
@@ -41052,104 +41248,104 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html"
             }
           ],
           "elementos": [
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html",
               "html": "<span lang=\"en\">links</span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html",
               "html": "<span lang=\"en\"><i>Link</i></span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html",
               "html": "<span lang=\"en\"><i>Link</i></span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html",
               "html": "<span lang=\"en\"><i>Link</i></span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html",
               "html": "<span lang=\"en\"><i>Link</i></span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html",
               "html": "<span lang=\"en\"><i>Link</i></span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html",
               "html": "<span lang=\"en\"><i>Link</i></span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html",
               "html": "<span lang=\"en\"><i>Link</i></span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html",
               "html": "<span lang=\"en\"><i>Link</i></span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html",
               "html": "<span lang=\"en\"><i>Link</i></span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html",
               "html": "<span lang=\"en\"><i>Link</i></span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html",
               "html": "<span lang=\"en\"><i>Link</i></span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html",
               "html": "<span lang=\"en\"><i>Link</i></span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html",
               "html": "<span lang=\"en\"><i>Link</i></span>"
             },
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-links.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-links.html",
               "html": "<span lang=\"en\"><i>Link</i></span>"
             }
           ],
@@ -41293,7 +41489,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-oeds.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-oeds.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -41331,7 +41527,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(1) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(1) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41341,7 +41537,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27008023aba1u1c1le.html#f751ab24-6d3f-4ea0-bcfc-ca69d77fab8f\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(1) > p > span > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(1) > div > div > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41351,7 +41547,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(2) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(2) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41361,7 +41557,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27008023aba1u1c1le.html#ce4e85a2-8722-42fd-953a-1389bafd759a\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(2) > p > span > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(2) > div > div > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41371,7 +41567,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(3) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(3) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41381,7 +41577,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27008023aba1u1c1le.html#075df8fd-e981-4f4f-aceb-0a39144063da\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(3) > ol > li:nth-child(1) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(3) > div > div:nth-child(1) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41391,7 +41587,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27008023aba1u1c1le.html#418cf170-8621-4d71-ae5e-5cc93fda79f7\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(3) > ol > li:nth-child(2) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(3) > div > div:nth-child(2) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41401,7 +41597,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27008023aba1u1c1le.html#d59cfb8f-810a-4002-8d2b-f8a7a3adf6df\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(3) > ol > li:nth-child(3) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(3) > div > div:nth-child(3) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41411,7 +41607,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(4) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(4) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41421,7 +41617,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27008023aba1u1c1le.html#2b7b502e-3fd8-4419-8657-6179a039447c\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(4) > p > span > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(4) > div > div > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41431,7 +41627,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(5) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(5) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41441,7 +41637,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27024037aba1u1c2le.html#fbc77b70-e59c-4227-afbe-0265c4af95df\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(5) > p > span > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(5) > div > div > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41451,7 +41647,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(6) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(6) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41461,7 +41657,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27038051aba1u2c3le.html#2e941493-98f3-4099-a01d-f67a73eafa86\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(6) > p > span > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(6) > div > div > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41471,7 +41667,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(7) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(7) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41481,7 +41677,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27052065aba1u2c4le.html#d55d71ba-b41b-4e9a-b74c-6bce097ee01b\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(7) > p > span > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(7) > div > div > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41491,7 +41687,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(8) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(8) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41501,7 +41697,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27052065aba1u2c4le.html#f8c50b6c-b8cc-46f9-bbe9-8875f3030637\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(8) > p > span > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(8) > div > div > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41511,7 +41707,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(9) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(9) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41521,7 +41717,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27066079aba1u3c5le.html#2dee0db5-66f6-4f0d-9bf2-6c0d157f7dd6\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(9) > p > span > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(9) > div > div > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41531,7 +41727,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(10) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(10) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41541,7 +41737,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27066079aba1u3c5le.html#3a427ff3-c7a1-4655-8d49-fc7c0477859b\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(10) > p > span > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(10) > div > div > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41551,7 +41747,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(11) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(11) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41561,7 +41757,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27066079aba1u3c5le.html#2b33beb4-412e-40e8-a1ab-f1a1f9d70471\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(11) > ol > li:nth-child(1) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(11) > div > div:nth-child(1) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41571,7 +41767,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27066079aba1u3c5le.html#0dae4811-6bcb-4a66-9423-b2bd6f536dfa\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(11) > ol > li:nth-child(2) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(11) > div > div:nth-child(2) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41581,7 +41777,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(12) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(12) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41591,7 +41787,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27066079aba1u3c5le.html#6627812d-911e-46e2-91b9-7222df28ff8c\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(12) > ol > li:nth-child(1) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(12) > div > div:nth-child(1) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41601,7 +41797,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27066079aba1u3c5le.html#01a8b4a0-d7c5-4645-bfef-33ff7f0b75ec\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(12) > ol > li:nth-child(2) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(12) > div > div:nth-child(2) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41611,7 +41807,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(13) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(13) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41621,7 +41817,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27080093aba1u3c6le.html#a4af43fe-c4c9-4678-bd08-1edddfbdef80\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(13) > ol > li:nth-child(1) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(13) > div > div:nth-child(1) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41631,7 +41827,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27080093aba1u3c6le.html#f05ab2cb-b244-42a8-8b4d-2e1b97942485\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(13) > ol > li:nth-child(2) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(13) > div > div:nth-child(2) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41641,7 +41837,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"#\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(14) > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(14) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -41651,7 +41847,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"g27094107aba1u4c7le.html#6e3c37fa-c207-4656-a623-c31d3a9b5ee4\" class=\"sumario-link s_965fbe17-b2d5-4f0d-95c5-ac3838a47e98\"><span class=\"sumario_titulo s_9...</a>",
-        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > ul > li:nth-child(14) > p > span > a",
+        "selector": "#cc957090-a3ec-4c29-a221-967402bd2c5b > div > div:nth-child(14) > div > div > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -42032,6 +42228,19 @@ var testResults = [
         "runnerExtras": {
           "status": "passed",
           "errorMessage": null,
+          "category": "Listas"
+        }
+      },
+      {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
           "category": "Listas"
         }
       },
@@ -42525,13 +42734,13 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-oeds.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-oeds.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/lista-de-oeds.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/lista-de-oeds.html"
             }
           ],
           "elementos": [],
@@ -42766,7 +42975,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/tabelaarte1pviii.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/tabelaarte1pviii.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -43169,6 +43378,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "O documento não contém salto hierárquico de títulos",
         "type": "notice",
         "typeCode": 3,
@@ -43476,13 +43698,13 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/tabelaarte1pviii.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/tabelaarte1pviii.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/tabelaarte1pviii.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/tabelaarte1pviii.html"
             }
           ],
           "elementos": [],
@@ -43535,7 +43757,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/tabelaarte1pxviii.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/tabelaarte1pxviii.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -43938,6 +44160,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "O documento não contém salto hierárquico de títulos",
         "type": "notice",
         "typeCode": 3,
@@ -44245,13 +44480,13 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/tabelaarte1pxviii.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/tabelaarte1pxviii.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/tabelaarte1pxviii.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/tabelaarte1pxviii.html"
             }
           ],
           "elementos": [],
@@ -44290,7 +44525,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/tabelaarte1pxxvi.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/tabelaarte1pxxvi.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -44693,6 +44928,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "O documento não contém salto hierárquico de títulos",
         "type": "notice",
         "typeCode": 3,
@@ -45000,13 +45248,13 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/tabelaarte1pxxvi.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/tabelaarte1pxxvi.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/tabelaarte1pxxvi.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/tabelaarte1pxxvi.html"
             }
           ],
           "elementos": [],
@@ -45045,7 +45293,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/tabelaarte1pxxviii.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/tabelaarte1pxxviii.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -45448,6 +45696,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "O documento não contém salto hierárquico de títulos",
         "type": "notice",
         "typeCode": 3,
@@ -45755,13 +46016,13 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/tabelaarte1pxxviii.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/tabelaarte1pxxviii.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/tabelaarte1pxxviii.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/tabelaarte1pxxviii.html"
             }
           ],
           "elementos": [],
@@ -45800,7 +46061,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/terceira-e-quarta-capas.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/terceira-e-quarta-capas.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -46253,6 +46514,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "Salto hierárquico de títulos",
         "type": "error",
         "typeCode": 1,
@@ -46560,13 +46834,13 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/terceira-e-quarta-capas.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/terceira-e-quarta-capas.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/content/terceira-e-quarta-capas.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/content/terceira-e-quarta-capas.html"
             }
           ],
           "elementos": [],
@@ -46607,7 +46881,7 @@ var testResults = [
   },
   {
     "documentTitle": "Buriti_Raizes_Arte_V1",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/index.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/index.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -47484,7 +47758,7 @@ var testResults = [
         "type": "notice",
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
-        "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#0b3c38e1-9647-4ea0-921a-68ea04a2edc1\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
+        "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#f2b0b760-b4cd-4a39-92df-1a6d0baa565a\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
         "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(2) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
@@ -47494,7 +47768,7 @@ var testResults = [
         "type": "notice",
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
-        "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#7d7bf09b-db20-4715-b6af-71d7e6122ece\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
+        "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#0b3c38e1-9647-4ea0-921a-68ea04a2edc1\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
         "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(3) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
@@ -47504,7 +47778,7 @@ var testResults = [
         "type": "notice",
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
-        "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#499e966d-259b-4863-a728-060d420519a4\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
+        "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#7d7bf09b-db20-4715-b6af-71d7e6122ece\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
         "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(3) > ol > li:nth-child(1) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
@@ -47514,8 +47788,18 @@ var testResults = [
         "type": "notice",
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
+        "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#499e966d-259b-4863-a728-060d420519a4\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(3) > ol > li:nth-child(1) > ol > li:nth-child(1) > a",
+        "runner": "htmlcs",
+        "runnerExtras": {}
+      },
+      {
+        "code": "WCAG2AA.Principle2.Guideline2_4.2_4_4.H77,H78,H79,H80,H81",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#7d8a06e7-7c59-487f-9f59-ca85adec49e1\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(3) > ol > li:nth-child(2) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(3) > ol > li:nth-child(1) > ol > li:nth-child(2) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47525,7 +47809,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#39cd0617-7a82-4831-ab49-a9dbce87d45c\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(4) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(3) > ol > li:nth-child(2) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47535,7 +47819,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#08cdc444-4bac-4279-bf9d-e2217972e1b6\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(5) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(3) > ol > li:nth-child(3) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47545,7 +47829,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#cecfa1d1-6ee2-41a1-badd-f651349cd20b\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(6) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(4) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47555,7 +47839,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#89611ef3-7aa0-473c-9b07-16b2c8dcbe98\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(7) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(4) > ol > li:nth-child(1) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47565,7 +47849,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#179b0112-524a-441e-b5ea-879de84ac25a\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(7) > ol > li:nth-child(1) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(4) > ol > li:nth-child(1) > ol > li:nth-child(1) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47575,7 +47859,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#10fd7760-12a8-4d1e-8fd5-518024e7b085\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(7) > ol > li:nth-child(2) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(4) > ol > li:nth-child(1) > ol > li:nth-child(2) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47585,7 +47869,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#7ddf6a41-caaf-4055-944f-a9e02cfd0257\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(7) > ol > li:nth-child(3) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(4) > ol > li:nth-child(1) > ol > li:nth-child(3) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47595,7 +47879,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#4f1bf71e-487b-4eaf-8cdc-543e1dc2c297\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(8) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(4) > ol > li:nth-child(2) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47605,7 +47889,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#ca1779b3-217c-4b37-83c4-5c366c0d6f79\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(9) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(4) > ol > li:nth-child(3) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47615,7 +47899,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#e0dcf139-cefa-479f-855c-181884ca5db1\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(9) > p > span > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(4) > ol > li:nth-child(3) > ol > li > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47625,7 +47909,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#100929ee-4d15-4d30-812b-b2fba50ca873\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(10) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(5) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47635,7 +47919,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#a74cefdb-ce0a-46d1-bd82-f939ffb4428c\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(11) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(6) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47645,7 +47929,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#a8061019-ecf0-49fb-acfa-fae8a701f0df\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(12) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(6) > ol > li:nth-child(1) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47655,7 +47939,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#a8b34bc5-c2e9-40d4-b1b7-8a40980be026\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(13) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(6) > ol > li:nth-child(2) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47665,7 +47949,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#027cddc9-a9c9-486e-b1ea-e48110a00a1d\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(14) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(7) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47675,7 +47959,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#80dd4a06-87a7-49ea-b7be-cf463415b16f\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(15) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(7) > ol > li:nth-child(1) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47685,7 +47969,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#953c8dd3-9c27-4a9e-b5ab-32efe7b08e13\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(15) > ol > li:nth-child(1) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(7) > ol > li:nth-child(1) > ol > li:nth-child(1) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47695,7 +47979,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#7df15b74-24e2-4e29-9458-be152b0e83cf\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(15) > ol > li:nth-child(2) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(7) > ol > li:nth-child(1) > ol > li:nth-child(2) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47705,7 +47989,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#5afe0ab4-54e2-4a8f-8751-a4f1245fb397\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(16) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(7) > ol > li:nth-child(2) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47715,7 +47999,7 @@ var testResults = [
         "typeCode": 3,
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27ixxxiiaba1pgmp.html#83d6c759-4057-46a2-82a6-5969d8b34e9f\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
-        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(17) > a",
+        "selector": "#toc > ol > li:nth-child(16) > ol > li:nth-child(8) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47756,6 +48040,16 @@ var testResults = [
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/lista-de-links.html\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
         "selector": "#toc > ol > li:nth-child(20) > a",
+        "runner": "htmlcs",
+        "runnerExtras": {}
+      },
+      {
+        "code": "WCAG2AA.Principle2.Guideline2_4.2_4_4.H77,H78,H79,H80,H81",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
+        "context": "<a href=\"content/g27003007aba1leiniciais.html#b1e9982e-19d6-45a2-9ba4-1e961c3710c4\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
+        "selector": "#toc > ol > li:nth-child(21) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -47826,6 +48120,16 @@ var testResults = [
         "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
         "context": "<a href=\"content/g27066079aba1u3c5le.html#3a427ff3-c7a1-4655-8d49-fc7c0477859b\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
         "selector": "#toc > ol > li:nth-child(21) > ol > li:nth-child(7) > a",
+        "runner": "htmlcs",
+        "runnerExtras": {}
+      },
+      {
+        "code": "WCAG2AA.Principle2.Guideline2_4.2_4_4.H77,H78,H79,H80,H81",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Verifique se o texto do link combinado com o contexto do link determinado programaticamente identifica o propósito do link.",
+        "context": "<a href=\"content/g27003007aba1leiniciais.html#6e5c1f86-702d-4989-84a7-3f56f6d30daa\" class=\"sumario-link s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><span class=\"sumario_titulo s_f...</a>",
+        "selector": "#toc > ol > li:nth-child(22) > a",
         "runner": "htmlcs",
         "runnerExtras": {}
       },
@@ -48326,16 +48630,29 @@ var testResults = [
         }
       },
       {
-        "code": "Não tem listas com somente um item",
+        "code": "Lista com somente um item",
+        "type": "error",
+        "typeCode": 1,
+        "message": "Encontrada lista com somente um item: <ol class=\"sumario-nivel-4 s_f0f14302-5ccc-4204-bf0c-cfc8b45cdede\"><li class=\"sumario-item nivel-4 s...",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "not passed",
+          "errorMessage": "Lista com um item encontrado",
+          "category": "Listas"
+        }
+      },
+      {
+        "code": "Listas apenas em navs permitidos",
         "type": "notice",
         "typeCode": 3,
-        "message": "Não tem listas com somente um item",
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
         "context": "",
         "selector": "",
         "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
         "runnerExtras": {
           "status": "passed",
-          "errorMessage": null,
           "category": "Listas"
         }
       },
@@ -48647,20 +48964,20 @@ var testResults = [
           "html": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/index.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/index.html"
             }
           ],
           "body": [
             {
               "valor": "pt-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/index.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/index.html"
             }
           ],
           "elementos": [
             {
               "elemento": "span",
               "valor": "en",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/index.html",
               "html": "<span lang=\"en\">links</span>"
             }
           ],
@@ -48701,7 +49018,7 @@ var testResults = [
   },
   {
     "documentTitle": "AMARELINHA",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_amarelinha/content/index.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_amarelinha/content/index.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -49354,6 +49671,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "O documento não contém salto hierárquico de títulos",
         "type": "notice",
         "typeCode": 3,
@@ -49661,32 +49991,32 @@ var testResults = [
           "html": [
             {
               "valor": "pt-br",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_amarelinha/content/index.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_amarelinha/content/index.html"
             }
           ],
           "body": [
             {
               "valor": "pt-br",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_amarelinha/content/index.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_amarelinha/content/index.html"
             }
           ],
           "elementos": [
             {
               "elemento": "span",
               "valor": "PT-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_amarelinha/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_amarelinha/content/index.html",
               "html": "<span lang=\"PT-BR\" dir=\"ltr\">​​​A AMARELINHA É UM JOGO QUE UNE DIVERSÃO, EQUILÍBRIO E COORDENAÇÃO.​​</span>"
             },
             {
               "elemento": "span",
               "valor": "PT-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_amarelinha/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_amarelinha/content/index.html",
               "html": "<span lang=\"PT-BR\" dir=\"ltr\">​​​ESTE INFOGRÁFICO MOSTRA COMO DESENHAR A BRINCADEIRA NO CHÃO E AS REGRAS PARA COMEÇAR A PULAR.\n                      DEPOIS, É SÓ CHAMAR OS AMIGOS E SE DIVERTIR.​​</span>"
             },
             {
               "elemento": "span",
               "valor": "PT-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_amarelinha/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_amarelinha/content/index.html",
               "html": "<span lang=\"PT-BR\" dir=\"ltr\">ILUSTRAÇÃO ARTÍSTICA SEM ESCALA REPRESENTANDO UM JOGO DE AMARELINHA PARA FINS DIDÁTICOS.</span>"
             }
           ],
@@ -49767,7 +50097,7 @@ var testResults = [
   },
   {
     "documentTitle": "ARTISTAS DO CIRCO",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_artistas_circo/content/index.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_artistas_circo/content/index.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -50410,6 +50740,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "O documento não contém salto hierárquico de títulos",
         "type": "notice",
         "typeCode": 3,
@@ -50717,20 +51060,20 @@ var testResults = [
           "html": [
             {
               "valor": "pt-br",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_artistas_circo/content/index.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_artistas_circo/content/index.html"
             }
           ],
           "body": [
             {
               "valor": "pt-br",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_artistas_circo/content/index.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_artistas_circo/content/index.html"
             }
           ],
           "elementos": [
             {
               "elemento": "span",
               "valor": "PT-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_artistas_circo/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_artistas_circo/content/index.html",
               "html": "<span lang=\"PT-BR\" dir=\"ltr\">O CIRCO REÚNE ARTISTAS COM DIFERENTES HABILIDADES QUE SE APRESENTAM EM ESPETÁCULOS CHEIOS DE\n                        EMOÇÃO, CORAGEM E DIVERSÃO. PALHAÇOS, ACROBATAS, MALABARISTAS E OUTROS PROFISSIONAIS TREINAM\n                        MUITO PARA SURPREENDER E ENCANTAR O PÚBLICO COM SEU TALENTO. SAIBA MAIS SOBRE ALGUNS DESSES\n                        ARTISTAS NESTE INFOGRÁFICO.</span>"
             }
           ],
@@ -50811,7 +51154,7 @@ var testResults = [
   },
   {
     "documentTitle": "TIPOS DE BRINQUEDO",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_brinquedo/content/index.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_brinquedo/content/index.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -51404,6 +51747,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "O documento não contém salto hierárquico de títulos",
         "type": "notice",
         "typeCode": 3,
@@ -51711,13 +52067,13 @@ var testResults = [
           "html": [
             {
               "valor": "pt-br",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_brinquedo/content/index.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_brinquedo/content/index.html"
             }
           ],
           "body": [
             {
               "valor": "pt-br",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_brinquedo/content/index.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_brinquedo/content/index.html"
             }
           ],
           "elementos": [],
@@ -51798,7 +52154,7 @@ var testResults = [
   },
   {
     "documentTitle": "INTERIOR DE UM CIRCO",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_circo/content/index.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_circo/content/index.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -52421,6 +52777,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "O documento não contém salto hierárquico de títulos",
         "type": "notice",
         "typeCode": 3,
@@ -52728,20 +53097,20 @@ var testResults = [
           "html": [
             {
               "valor": "pt-br",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_circo/content/index.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_circo/content/index.html"
             }
           ],
           "body": [
             {
               "valor": "pt-br",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_circo/content/index.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_circo/content/index.html"
             }
           ],
           "elementos": [
             {
               "elemento": "span",
               "valor": "PT-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_circo/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_circo/content/index.html",
               "html": "<span lang=\"PT-BR\" dir=\"ltr\">“RESPEITÁVEL PÚBLICO!”. É COM UMA SAUDAÇÃO ASSIM QUE COSTUMAMOS SER RECEBIDOS QUANDO VAMOS AO\n                        CIRCO. ENTRE LUZES, CORES E SONS, SOMOS LEVADOS A UM MUNDO INCRÍVEL. ESTE INFOGRÁFICO É UM\n                        CONVITE PARA VOCÊ CONHECER MELHOR ESTE LUGAR CHEIO DE MAGIA!</span>"
             }
           ],
@@ -52822,7 +53191,7 @@ var testResults = [
   },
   {
     "documentTitle": "KANDINSKY E OS SONS",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -53445,6 +53814,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "O documento não contém salto hierárquico de títulos",
         "type": "notice",
         "typeCode": 3,
@@ -53752,110 +54134,110 @@ var testResults = [
           "html": [
             {
               "valor": "pt-br",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html"
             }
           ],
           "body": [
             {
               "valor": "pt-br",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html"
             }
           ],
           "elementos": [
             {
               "elemento": "span",
               "valor": "ru",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
               "html": "<span lang=\"ru\" dir=\"ltr\">KANDINSKY </span>"
             },
             {
               "elemento": "span",
               "valor": "ru",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
               "html": "<span lang=\"ru\" dir=\"ltr\">WASSILY KANDINSKY</span>"
             },
             {
               "elemento": "span",
               "valor": "PT-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
               "html": "<span lang=\"PT-BR\" dir=\"ltr\">\n                        ACREDITAVA QUE AS CORES E FORMAS PODIAM DESPERTAR SENSAÇÕES PARECIDAS COM AS DA MÚSICA.</span>"
             },
             {
               "elemento": "span",
               "valor": "PT-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
               "html": "<span lang=\"PT-BR\" dir=\"ltr\">NESTE INFOGRÁFICO, EXPLORE A OBRA </span>"
             },
             {
               "elemento": "span",
               "valor": "PT-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
               "html": "<span lang=\"PT-BR\" dir=\"ltr\">AMARELO-VERMELHO-AZUL</span>"
             },
             {
               "elemento": "span",
               "valor": "PT-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
               "html": "<span lang=\"PT-BR\" dir=\"ltr\">\n                        E VEJA COMO ISSO FUNCIONA. CADA PONTO EM DESTAQUE APRESENTA UM SOM QUE COMBINA COM ALGUMA PARTE\n                        DA PINTURA, CONVIDANDO VOCÊ A APRECIAR A ARTE DE UM JEITO DIFERENTE.</span>"
             },
             {
               "elemento": "span",
               "valor": "ru",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
               "html": "<span lang=\"ru\" dir=\"ltr\">KANDINSKY, WASSILY</span>"
             },
             {
               "elemento": "span",
               "valor": "PT-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
               "html": "<span lang=\"PT-BR\" dir=\"ltr\">. </span>"
             },
             {
               "elemento": "span",
               "valor": "PT-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
               "html": "<span lang=\"PT-BR\" dir=\"ltr\">AMARELO-VERMELHO-AZUL</span>"
             },
             {
               "elemento": "span",
               "valor": "PT-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
               "html": "<span lang=\"PT-BR\" dir=\"ltr\">. </span>"
             },
             {
               "elemento": "span",
               "valor": "PT-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
               "html": "<span lang=\"PT-BR\" dir=\"ltr\" aria-hidden=\"true\">1925</span>"
             },
             {
               "elemento": "span",
               "valor": "PT-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
               "html": "<span lang=\"PT-BR\" dir=\"ltr\">. ÓLEO SOBRE TELA, 128 </span>"
             },
             {
               "elemento": "span",
               "valor": "PT-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
               "html": "<span lang=\"PT-BR\" dir=\"ltr\" aria-hidden=\"true\">X </span>"
             },
             {
               "elemento": "span",
               "valor": "PT-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
               "html": "<span lang=\"PT-BR\" dir=\"ltr\">201,5 CENTÍMETROS. CENTRO </span>"
             },
             {
               "elemento": "span",
               "valor": "fr",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
               "html": "<span lang=\"fr\" dir=\"ltr\">GEORGES POMPIDOU</span>"
             },
             {
               "elemento": "span",
               "valor": "PT-BR",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_kandinsky/content/index.html",
               "html": "<span lang=\"PT-BR\" dir=\"ltr\">, PARIS, FRANÇA.</span>"
             }
           ],
@@ -53936,7 +54318,7 @@ var testResults = [
   },
   {
     "documentTitle": "LINGUAGENS DA ARTE",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_linguagens_arte/content/index.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_linguagens_arte/content/index.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -54529,6 +54911,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "O documento não contém salto hierárquico de títulos",
         "type": "notice",
         "typeCode": 3,
@@ -54836,13 +55231,13 @@ var testResults = [
           "html": [
             {
               "valor": "pt-br",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_linguagens_arte/content/index.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_linguagens_arte/content/index.html"
             }
           ],
           "body": [
             {
               "valor": "pt-br",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_linguagens_arte/content/index.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_linguagens_arte/content/index.html"
             }
           ],
           "elementos": [],
@@ -54923,7 +55318,7 @@ var testResults = [
   },
   {
     "documentTitle": "ELEMENTOS DO TEATRO DE SOMBRAS",
-    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_teatro_sombra/content/index.html",
+    "pageUrl": "file:///Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_teatro_sombra/content/index.html",
     "issues": [
       {
         "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2",
@@ -55516,6 +55911,19 @@ var testResults = [
         }
       },
       {
+        "code": "Listas apenas em navs permitidos",
+        "type": "notice",
+        "typeCode": 3,
+        "message": "Todos os elementos ol, ul e li estão corretamente dentro de navs com classes sumario_index, sumario_aluno ou sumario_professor",
+        "context": "",
+        "selector": "",
+        "runner": "/Users/design21/validador-pnld-nao-oficial/helpers/custom-runners/index.cjs",
+        "runnerExtras": {
+          "status": "passed",
+          "category": "Listas"
+        }
+      },
+      {
         "code": "O documento não contém salto hierárquico de títulos",
         "type": "notice",
         "typeCode": 3,
@@ -55823,13 +56231,13 @@ var testResults = [
           "html": [
             {
               "valor": "pt-br",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_teatro_sombra/content/index.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_teatro_sombra/content/index.html"
             }
           ],
           "body": [
             {
               "valor": "pt-br",
-              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1770925330035/resources/interactivities/g27_aba_1_inf_teatro_sombra/content/index.html"
+              "arquivo": "/Users/design21/validador-pnld-nao-oficial/extracted/1772053822135/resources/interactivities/g27_aba_1_inf_teatro_sombra/content/index.html"
             }
           ],
           "elementos": [],
