@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { execSync } from 'child_process'
 import fetch from 'node-fetch'
 import pa11y from 'pa11y'
 import puppeteer from 'puppeteer'
@@ -270,6 +271,110 @@ const waveValidate = async (htmlContent, filename) => {
 	}
 };
 
+// Função para validar W3C Markup Validator
+const validateW3C = async (filePath, retryCount = 0) => {
+	const filename = path.basename(filePath);
+	const maxRetries = 5;
+	const baseDelay = 20000; // 20 segundos
+	
+	try {
+		sendProgress({ 
+			type: 'info', 
+			message: `Executando validação W3C para ${filename}...` 
+		});
+
+		// Ler o conteúdo do arquivo
+		const htmlContent = fs.readFileSync(filePath, 'utf8');
+		
+		// Fazer requisição para o validador W3C online
+		const response = await fetch('https://validator.w3.org/nu/?out=json', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'text/html',
+				'User-Agent': 'Mozilla/5.0 (compatible; Validator.nu/LV)'
+			},
+			body: htmlContent
+		});
+		
+		// Se receber 429 (Too Many Requests), tentar novamente com delay exponencial
+		if (response.status === 429 && retryCount < maxRetries) {
+			const delay = baseDelay * Math.pow(2, retryCount); // Backoff exponencial
+			sendProgress({ 
+				type: 'warning', 
+				message: `Rate limit atingido para ${filename}, tentando novamente em ${delay/1000}s...` 
+			});
+			await new Promise(resolve => setTimeout(resolve, delay));
+			return validateW3C(filePath, retryCount + 1);
+		}
+		
+		if (!response.ok) {
+			throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+		}
+		
+		const w3cResult = await response.json();
+		const issues = [];
+		
+		// Processa os erros e warnings
+		if (w3cResult.messages && w3cResult.messages.length > 0) {
+			w3cResult.messages.forEach(message => {
+				const issueType = message.type === 'error' ? 'error' : 
+				                 message.subtype === 'warning' ? 'warning' : 'notice';
+				
+				issues.push({
+					code: `W3C ${message.type.toUpperCase()}`,
+					message: `${message.message}${message.extract ? ` (linha ${message.lastLine}, coluna ${message.firstColumn})` : ''}`,
+					type: issueType,
+					runnerExtras: {
+						status: message.type === 'error' ? 'not passed' : 'warning',
+						errorMessage: message.message,
+						category: 'Validação W3C Markup',
+						line: message.lastLine,
+						column: message.firstColumn,
+						extract: message.extract
+					}
+				});
+			});
+		}
+		
+		// Se não há issues, adicionar sucesso
+		if (issues.length === 0) {
+			issues.push({
+				code: 'W3C Validação Aprovada',
+				message: `Arquivo ${filename} passou na validação W3C Markup Validator`,
+				type: 'notice',
+				runnerExtras: {
+					status: 'passed',
+					category: 'Validação W3C Markup'
+				}
+			});
+		}
+		
+		return {
+			documentTitle: filename,
+			pageUrl: filePath,
+			issues: issues
+		};
+		
+	} catch (error) {
+		console.log(`Erro na validação W3C para ${filename}:`, error.message);
+		
+		return {
+			documentTitle: filename,
+			pageUrl: filePath,
+			issues: [{
+				code: 'W3C Validation Error',
+				message: `Erro ao executar validação W3C: ${error.message}`,
+				type: 'error',
+				runnerExtras: {
+					status: 'error',
+					errorMessage: error.message,
+					category: 'Validação W3C Markup'
+				}
+			}]
+		};
+	}
+};
+
 const getAllFiles = (dirPath, arrayOfFiles) => {
 	try {
 		const files = fs.readdirSync(dirPath)
@@ -493,10 +598,27 @@ export const runApp = async (newFolderPath) => {
         const contentOpfValidationResult = validateContentOpfFiles(newFolderPath);
         sendProgress({ 
             type: 'info', 
-            message: 'Validação de arquivos do content.opf concluída. Gerando relatório...' 
+            message: 'Validação de arquivos do content.opf concluída. Iniciando validação W3C...' 
         });
 
-        const allResults = [errosFsResult, tocNcxValidationResult, contentOpfValidationResult, ...results, ...waveResults];
+        // Validação W3C Markup Validator
+        const w3cResults = [];
+        for (const file of htmlFiles) {
+            const w3cResult = await validateW3C(file);
+            w3cResults.push(w3cResult);
+            
+            // Adicionar delay de 5 segundos entre requisições para evitar rate limiting
+            if (htmlFiles.indexOf(file) < htmlFiles.length - 1) {
+                await new Promise(resolve => setTimeout(resolve, 5000));
+            }
+        }
+
+        sendProgress({ 
+            type: 'info', 
+            message: 'Validação W3C concluída. Gerando relatório...' 
+        });
+
+        const allResults = [errosFsResult, tocNcxValidationResult, contentOpfValidationResult, ...results, ...waveResults, ...w3cResults];
 		
 		// Traduzir mensagens dos resultados W3C
 		const translatedResults = translateResults(allResults);
