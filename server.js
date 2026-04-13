@@ -1,11 +1,13 @@
 import express from 'express';
 import multer from 'multer';
 import extract from 'extract-zip';
+import archiver from 'archiver';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import fetch from 'node-fetch';
 import { runApp } from './index.js';
+import { adjustImageDPI } from './helpers/image-validator.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -291,6 +293,315 @@ app.post('/upload-url', async (req, res) => {
             success: false, 
             error: error.message 
         });
+    }
+});
+
+app.post('/convert-dpi-zip', upload.single('zipFile'), async (req, res) => {
+    try {
+        const targetDpi = parseInt(req.body.targetDpi) || 300;
+        
+        if (!req.file) {
+            return res.status(400).json({ success: false, error: 'Nenhum arquivo ZIP foi enviado' });
+        }
+
+        sendProgress({ type: 'info', message: 'Recebido arquivo ZIP para conversão de DPI' });
+
+        // Guardar o nome original do arquivo
+        const originalFileName = req.file.originalname;
+
+        // Criar diretório temporário para processamento
+        const tempDir = path.join(__dirname, 'temp', `dpi-conversion-${Date.now()}`);
+        const extractDir = path.join(tempDir, 'extracted');
+        fs.mkdirSync(extractDir, { recursive: true });
+
+        const zipPath = req.file.path;
+
+        sendProgress({ type: 'info', message: 'Extraindo arquivo ZIP...' });
+        // Extrair o arquivo ZIP
+        await extract(zipPath, { dir: extractDir });
+
+        // Remover arquivo ZIP temporário
+        fs.unlinkSync(zipPath);
+
+        // Encontrar todas as imagens no diretório extraído
+        const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.webp'];
+        const allFiles = [];
+        const imageFiles = [];
+
+        function findFiles(dir, baseDir = '') {
+            const items = fs.readdirSync(dir);
+            for (const item of items) {
+                const itemPath = path.join(dir, item);
+                const relativePath = path.join(baseDir, item);
+                const stats = fs.statSync(itemPath);
+                
+                if (stats.isDirectory()) {
+                    findFiles(itemPath, relativePath);
+                } else {
+                    allFiles.push({
+                        fullPath: itemPath,
+                        relativePath: relativePath,
+                        isImage: imageExtensions.includes(path.extname(item).toLowerCase())
+                    });
+                    if (imageExtensions.includes(path.extname(item).toLowerCase())) {
+                        imageFiles.push(itemPath);
+                    }
+                }
+            }
+        }
+
+        findFiles(extractDir);
+
+        if (imageFiles.length === 0) {
+            return res.status(400).json({ success: false, error: 'Nenhuma imagem encontrada no arquivo ZIP' });
+        }
+
+        sendProgress({ type: 'info', message: `Encontradas ${imageFiles.length} imagens para processamento de ${allFiles.length} arquivos totais` });
+
+        const results = {
+            processed: [],
+            errors: [],
+            targetDpi: targetDpi,
+            totalImages: imageFiles.length,
+            totalFiles: allFiles.length
+        };
+
+        // Processar cada imagem no local original
+        for (const imagePath of imageFiles) {
+            try {
+                const relativePath = path.relative(extractDir, imagePath);
+                sendProgress({ type: 'info', message: `Processando: ${relativePath}` });
+                
+                // Criar arquivo temporário para processamento
+                const tempImagePath = imagePath + '.temp';
+                
+                // Usar Sharp para processar a imagem
+                const sharp = (await import('sharp')).default;
+                
+                // Ler metadados da imagem
+                const metadata = await sharp(imagePath).metadata();
+                const currentDpi = metadata.density || 72;
+                
+                if (currentDpi === targetDpi) {
+                    // Se já está no DPI correto, manter como está
+                    results.processed.push({
+                        filename: relativePath,
+                        originalDpi: currentDpi,
+                        newDpi: targetDpi,
+                        status: 'unchanged'
+                    });
+                } else {
+                    // Ajustar DPI e sobrescrever o arquivo original
+                    await sharp(imagePath)
+                        .withMetadata({ density: targetDpi })
+                        .jpeg({ quality: 95 }) // Manter boa qualidade
+                        .toFile(tempImagePath);
+                    
+                    // Substituir arquivo original
+                    fs.unlinkSync(imagePath);
+                    fs.renameSync(tempImagePath, imagePath);
+                    
+                    results.processed.push({
+                        filename: relativePath,
+                        originalDpi: currentDpi,
+                        newDpi: targetDpi,
+                        status: 'converted'
+                    });
+                }
+                
+            } catch (error) {
+                console.error(`Erro ao processar ${imagePath}:`, error);
+                const relativePath = path.relative(extractDir, imagePath);
+                results.errors.push({
+                    filename: relativePath,
+                    error: error.message
+                });
+            }
+        }
+
+        // Criar novo ZIP com a mesma estrutura, mas com imagens ajustadas
+        const outputZipPath = path.join(tempDir, originalFileName);
+        const output = fs.createWriteStream(outputZipPath);
+        const archive = archiver('zip', {
+            zlib: { level: 9 } // Melhor compressão
+        });
+
+        await new Promise((resolve, reject) => {
+            output.on('close', () => {
+                sendProgress({ type: 'success', message: 'ZIP com imagens ajustadas criado com sucesso!' });
+                resolve();
+            });
+
+            archive.on('error', (err) => {
+                reject(err);
+            });
+
+            archive.pipe(output);
+
+            // Adicionar todos os arquivos mantendo a estrutura original
+            allFiles.forEach(file => {
+                if (fs.existsSync(file.fullPath)) {
+                    archive.file(file.fullPath, { name: file.relativePath });
+                }
+            });
+
+            archive.finalize();
+        });
+
+        // Salvar informações para download
+        const downloadInfo = {
+            zipPath: outputZipPath,
+            originalFileName: originalFileName,
+            results: results
+        };
+        const infoPath = path.join(tempDir, 'download-info.json');
+        fs.writeFileSync(infoPath, JSON.stringify(downloadInfo, null, 2));
+
+        sendProgress({ type: 'success', message: `Conversão concluída! ${results.processed.length} imagens processadas.` });
+
+        res.json({ 
+            success: true,
+            results: results,
+            tempDirId: path.basename(tempDir),
+            message: `Conversão concluída! ${results.processed.length} imagens processadas, ${results.errors.length} erros.`
+        });
+
+    } catch (error) {
+        console.error('Erro na conversão de DPI:', error);
+        sendProgress({ type: 'error', message: `Erro: ${error.message}` });
+        res.status(500).json({ 
+            success: false, 
+            error: error.message 
+        });
+    }
+});
+
+app.get('/download-dpi-results/:tempDirId', async (req, res) => {
+    try {
+        const tempDirId = req.params.tempDirId;
+        const tempDir = path.join(__dirname, 'temp', tempDirId);
+        const infoPath = path.join(tempDir, 'download-info.json');
+        
+        if (!fs.existsSync(tempDir) || !fs.existsSync(infoPath)) {
+            return res.status(404).json({ error: 'Resultados não encontrados ou expirados' });
+        }
+
+        // Ler informações de download
+        const downloadInfo = JSON.parse(fs.readFileSync(infoPath, 'utf8'));
+        const zipPath = downloadInfo.zipPath;
+        const originalFileName = downloadInfo.originalFileName;
+        
+        if (!fs.existsSync(zipPath)) {
+            return res.status(404).json({ error: 'Arquivo ZIP não encontrado' });
+        }
+
+        sendProgress({ type: 'success', message: 'Iniciando download do ZIP com imagens ajustadas!' });
+
+        // Enviar o arquivo ZIP com o nome original
+        res.download(zipPath, originalFileName, (err) => {
+            if (err) {
+                console.error('Erro ao enviar arquivo:', err);
+            }
+            // Limpar arquivos temporários após download
+            setTimeout(() => {
+                try {
+                    fs.rmSync(tempDir, { recursive: true, force: true });
+                } catch (cleanupError) {
+                    console.error('Erro ao limpar arquivos temporários:', cleanupError);
+                }
+            }, 5000); // Aguardar 5 segundos para garantir que o download foi iniciado
+        });
+
+    } catch (error) {
+        console.error('Erro ao fazer download do ZIP:', error);
+        sendProgress({ type: 'error', message: `Erro: ${error.message}` });
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.get('/download-adjusted-images', async (req, res) => {
+    try {
+        // Verificar se há uma pasta extraída válida
+        const extractedPath = path.join(__dirname, 'extracted');
+        if (!fs.existsSync(extractedPath)) {
+            return res.status(404).json({ error: 'Nenhuma pasta de projeto encontrada. Faça upload de um arquivo ZIP primeiro.' });
+        }
+
+        const folders = fs.readdirSync(extractedPath).filter(item => {
+            const itemPath = path.join(extractedPath, item);
+            return fs.statSync(itemPath).isDirectory();
+        });
+
+        if (folders.length === 0) {
+            return res.status(404).json({ error: 'Nenhuma pasta de projeto encontrada. Faça upload de um arquivo ZIP primeiro.' });
+        }
+
+        // Usar a pasta mais recente
+        const projectPath = path.join(extractedPath, folders[folders.length - 1]);
+
+        sendProgress({ type: 'info', message: 'Iniciando ajuste de DPI das imagens...' });
+
+        // Criar diretório temporário para imagens ajustadas
+        const tempDir = path.join(__dirname, 'temp', Date.now().toString());
+        const adjustedImagesDir = path.join(tempDir, 'resources', 'images');
+        fs.mkdirSync(adjustedImagesDir, { recursive: true });
+
+        // Ajustar DPI das imagens
+        const adjustmentResult = await adjustImageDPI(projectPath, adjustedImagesDir);
+
+        if (adjustmentResult.errors.length > 0) {
+            sendProgress({ type: 'warning', message: `Erros no ajuste: ${adjustmentResult.errors.join(', ')}` });
+        }
+
+        sendProgress({ type: 'info', message: `Imagens processadas: ${adjustmentResult.processed.length}` });
+
+        // Criar arquivo ZIP
+        const zipFileName = `imagens-dpi-ajustado-${Date.now()}.zip`;
+        const zipPath = path.join(__dirname, 'temp', zipFileName);
+
+        const output = fs.createWriteStream(zipPath);
+        const archive = archiver('zip', {
+            zlib: { level: 9 } // Melhor compressão
+        });
+
+        output.on('close', () => {
+            sendProgress({ type: 'success', message: 'ZIP com imagens ajustadas criado com sucesso!' });
+
+            // Enviar o arquivo ZIP
+            res.download(zipPath, zipFileName, (err) => {
+                if (err) {
+                    console.error('Erro ao enviar arquivo:', err);
+                }
+                // Limpar arquivos temporários após download
+                setTimeout(() => {
+                    try {
+                        fs.rmSync(tempDir, { recursive: true, force: true });
+                    } catch (cleanupError) {
+                        console.error('Erro ao limpar arquivos temporários:', cleanupError);
+                    }
+                }, 5000); // Aguardar 5 segundos para garantir que o download foi iniciado
+            });
+        });
+
+        archive.on('error', (err) => {
+            throw err;
+        });
+
+        archive.pipe(output);
+
+        // Adicionar imagens ajustadas ao ZIP
+        archive.directory(adjustedImagesDir, 'resources/images');
+
+        // Adicionar relatório de processamento
+        const reportContent = JSON.stringify(adjustmentResult, null, 2);
+        archive.append(reportContent, { name: 'relatorio-ajuste-dpi.json' });
+
+        await archive.finalize();
+
+    } catch (error) {
+        console.error('Erro ao gerar ZIP com imagens ajustadas:', error);
+        sendProgress({ type: 'error', message: `Erro: ${error.message}` });
+        res.status(500).json({ error: error.message });
     }
 });
 

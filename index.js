@@ -8,6 +8,7 @@ import puppeteer from 'puppeteer'
 import handleFsError from './helpers/fs-validator.js'
 import { validateTocNcxIds } from './helpers/toc-ncx-validator.js'
 import { validateContentOpfFiles } from './helpers/content-opf-validator.js'
+import { validateImageDPI } from './helpers/image-validator.js'
 import { sendProgress } from './server.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -618,7 +619,10 @@ export const runApp = async (newFolderPath) => {
             message: 'Validação W3C concluída. Gerando relatório...' 
         });
 
-        const allResults = [errosFsResult, tocNcxValidationResult, contentOpfValidationResult, ...results, ...waveResults, ...w3cResults];
+        // Validação de DPI das imagens
+        const imageDpiValidationResult = await validateImageDPI(newFolderPath);
+
+        const allResults = [errosFsResult, tocNcxValidationResult, contentOpfValidationResult, imageDpiValidationResult, ...results, ...waveResults, ...w3cResults];
 		
 		// Traduzir mensagens dos resultados W3C
 		const translatedResults = translateResults(allResults);
