@@ -115,12 +115,26 @@ export async function adjustImageDPI(basePath, outputDir) {
         try {
             const metadata = await sharp(inputPath).metadata();
             const currentDensity = metadata.density || 72;
+            const ext = path.extname(imageFile).toLowerCase();
 
             if (currentDensity < 300) {
-                // Ajustar DPI para 300
-                await sharp(inputPath)
-                    .png({ density: 300 })
-                    .toFile(outputPath);
+                // Ajustar DPI para 300, preservando o formato original
+                let sharpInstance = sharp(inputPath).withMetadata({ density: 300 });
+                
+                // Preservar formato original para manter transparência em PNGs
+                if (ext === '.png') {
+                    sharpInstance = sharpInstance.png();
+                } else if (ext === '.webp') {
+                    sharpInstance = sharpInstance.webp({ quality: 95 });
+                } else if (ext === '.gif') {
+                    sharpInstance = sharpInstance.gif();
+                } else if (ext === '.tiff') {
+                    sharpInstance = sharpInstance.tiff();
+                } else {
+                    sharpInstance = sharpInstance.jpeg({ quality: 95 });
+                }
+                
+                await sharpInstance.toFile(outputPath);
 
                 results.processed.push({
                     file: imageFile,
@@ -128,9 +142,22 @@ export async function adjustImageDPI(basePath, outputDir) {
                     newDPI: 300
                 });
             } else {
-                // Copiar sem alteração
-                await sharp(inputPath)
-                    .toFile(outputPath);
+                // Copiar sem alteração, preservando formato original
+                let sharpInstance = sharp(inputPath);
+                
+                if (ext === '.png') {
+                    sharpInstance = sharpInstance.png();
+                } else if (ext === '.webp') {
+                    sharpInstance = sharpInstance.webp({ quality: 95 });
+                } else if (ext === '.gif') {
+                    sharpInstance = sharpInstance.gif();
+                } else if (ext === '.tiff') {
+                    sharpInstance = sharpInstance.tiff();
+                } else {
+                    sharpInstance = sharpInstance.jpeg({ quality: 95 });
+                }
+                
+                await sharpInstance.toFile(outputPath);
 
                 results.processed.push({
                     file: imageFile,

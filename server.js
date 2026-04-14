@@ -392,10 +392,27 @@ app.post('/convert-dpi-zip', upload.single('zipFile'), async (req, res) => {
                     });
                 } else {
                     // Ajustar DPI e sobrescrever o arquivo original
-                    await sharp(imagePath)
-                        .withMetadata({ density: targetDpi })
-                        .jpeg({ quality: 95 }) // Manter boa qualidade
-                        .toFile(tempImagePath);
+                    // Determinar o formato baseado na extensão para preservar transparência
+                    const ext = path.extname(imagePath).toLowerCase();
+                    let sharpInstance = sharp(imagePath).withMetadata({ density: targetDpi });
+                    
+                    if (ext === '.png') {
+                        // PNG: preservar transparência
+                        sharpInstance = sharpInstance.png();
+                    } else if (ext === '.webp') {
+                        // WebP: preservar transparência
+                        sharpInstance = sharpInstance.webp({ quality: 95 });
+                    } else if (ext === '.gif') {
+                        // GIF: preservar como está (sharp tem suporte limitado)
+                        sharpInstance = sharpInstance.gif();
+                    } else if (ext === '.tiff') {
+                        sharpInstance = sharpInstance.tiff();
+                    } else {
+                        // JPG, JPEG, BMP: converter para JPEG com boa qualidade
+                        sharpInstance = sharpInstance.jpeg({ quality: 95 });
+                    }
+                    
+                    await sharpInstance.toFile(tempImagePath);
                     
                     // Substituir arquivo original
                     fs.unlinkSync(imagePath);
