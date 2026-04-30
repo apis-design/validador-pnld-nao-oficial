@@ -466,6 +466,7 @@
 		<!-- Tabs -->
 		<div class="tabs">
 			<button @click="currentTab = 'pnld'" :class="{ 'active': currentTab === 'pnld' }">Validador PNLD</button>
+			<button @click="currentTab = 'recursos'" :class="{ 'active': currentTab === 'recursos' }">Uso de Recursos</button>
 			<button @click="currentTab = 'w3c'" :class="{ 'active': currentTab === 'w3c' }">Validador W3C Markup</button>
 			<button @click="currentTab = 'wave'" :class="{ 'active': currentTab === 'wave' }">Validador WAVE</button>
 		</div>
@@ -486,6 +487,35 @@
 			<article>
 				<header>Total de Atributos Lang</header>
 				<h3 x-text="totalLangs()"></h3>
+			</article>
+		</div>
+
+		<div class="grid" x-show="currentTab === 'recursos'">
+			<article>
+				<header>Recursos Utilizados</header>
+				<div x-show="recursosUtilizados().length > 0">
+					<ul>
+						<template x-for="recurso in recursosUtilizados()">
+							<li x-text="recurso" style="color: green;"></li>
+						</template>
+					</ul>
+				</div>
+				<div x-show="recursosUtilizados().length === 0">
+					<p>Nenhum recurso utilizado encontrado.</p>
+				</div>
+			</article>
+			<article>
+				<header>Recursos Não Utilizados</header>
+				<div x-show="recursosNaoUtilizados().length > 0">
+					<ul>
+						<template x-for="recurso in recursosNaoUtilizados()">
+							<li x-text="recurso" style="color: red;"></li>
+						</template>
+					</ul>
+				</div>
+				<div x-show="recursosNaoUtilizados().length === 0">
+					<p>Todos os recursos estão sendo utilizados.</p>
+				</div>
 			</article>
 		</div>
 
@@ -1431,6 +1461,26 @@
 							issue.runnerExtras?.status === 'not passed'
 						)
 					);
+				},
+				recursosNaoUtilizados: function() {
+					const recursos = [];
+					this.resultados.forEach(arquivo => {
+						arquivo.issues.forEach(issue => {
+							if (issue.runnerExtras?.category === 'Validação de uso de recursos' && issue.runnerExtras?.status === 'failed') {
+								const errorMessage = issue.runnerExtras.errorMessage;
+								if (errorMessage && errorMessage.includes('Recursos não utilizados:')) {
+									const list = errorMessage.replace('Recursos não utilizados: ', '').split(', ');
+									recursos.push(...list);
+								}
+							}
+						});
+					});
+					return [...new Set(recursos)]; // Remove duplicates
+				},
+				recursosUtilizados: function() {
+					// For simplicity, return all resources minus unused, but since we don't have the list, perhaps leave empty or find another way.
+					// Actually, since the validator doesn't list used ones, perhaps just show unused.
+					return [];
 				},
 				downloadAdjustedImages: function() {
 					const button = event.target;

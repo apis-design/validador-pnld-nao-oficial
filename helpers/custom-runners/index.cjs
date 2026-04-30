@@ -80,6 +80,23 @@ runner.run = (options, pa11y) => {
 			return 'outros';
 		}
 
+		/**
+		 * Função para testar atributos que estão em branco e não são permitidos
+		 * @param {string} selector - Seletor CSS para os elementos
+		 * @param {string} atributo - Nome do atributo a verificar
+		 * @param {string} descricao - Descrição do teste
+		 */
+		function testarAtributosEmBranco(selector, atributo, descricao) {
+			testar(descricao, () => {
+				$(selector).each(function() {
+					const val = $(this).attr(atributo);
+					if (!val || val.trim() === '') {
+						throw new Error(`Atributo '${atributo}' está em branco para elemento: ${$(this).prop('outerHTML')}`);
+					}
+				});
+			});
+		}
+
 		/*
 		 *	Teste: Todos os assets carregaram corretamente
 		 *	Descrição: Checa se imagens, scripts, arquivos CSS e outros assets foram carregados
@@ -126,7 +143,6 @@ runner.run = (options, pa11y) => {
 				}
 			});
 		})
-
 
 
 
@@ -190,6 +206,59 @@ runner.run = (options, pa11y) => {
 					status: status,
 					errorMessage: errorMessage,
 					category: getCategory('lang')
+				}
+			});
+		})
+
+		// – Verificar atributos que começam com data-
+		testar('Atributo inválido encontrado', () => {
+			let status;
+			let errorMessage = null;
+			try {
+				const standardAttributes = new Set([
+					// Global attributes
+					'id', 'class', 'style', 'title', 'lang', 'dir', 'tabindex', 'accesskey', 'contenteditable', 'draggable', 'dropzone', 'hidden', 'spellcheck', 'translate', 'role',
+					// ARIA attributes (common ones)
+					'aria-label', 'aria-describedby', 'aria-hidden', 'aria-expanded', 'aria-current', 'aria-live', 'aria-atomic', 'aria-relevant', 'aria-busy', 'aria-disabled', 'aria-readonly', 'aria-required', 'aria-invalid', 'aria-activedescendant', 'aria-autocomplete', 'aria-haspopup', 'aria-level', 'aria-multiline', 'aria-multiselectable', 'aria-orientation', 'aria-posinset', 'aria-setsize', 'aria-sort', 'aria-valuemax', 'aria-valuemin', 'aria-valuenow', 'aria-valuetext', 'aria-controls', 'aria-flowto', 'aria-labelledby', 'aria-owns',
+					// Link and navigation
+					'href', 'target', 'rel', 'download', 'type', 'hreflang',
+					// Media and images
+					'src', 'alt', 'width', 'height', 'srcset', 'sizes', 'crossorigin', 'usemap', 'ismap', 'loading', 'decoding', 'poster', 'autoplay', 'controls', 'loop', 'muted', 'preload', 'kind', 'srclang', 'label', 'default',
+					// Forms
+					'name', 'value', 'placeholder', 'required', 'disabled', 'readonly', 'checked', 'selected', 'multiple', 'size', 'maxlength', 'minlength', 'pattern', 'autocomplete', 'form', 'formaction', 'formenctype', 'formmethod', 'formnovalidate', 'formtarget', 'list', 'step', 'min', 'max', 'accept', 'accept-charset', 'novalidate',
+					// Tables
+					'colspan', 'rowspan', 'headers', 'scope', 'abbr', 'summary', 'border', 'cellpadding', 'cellspacing',
+					// Meta and head
+					'charset', 'content', 'http-equiv',
+					// Scripts and styles
+					'async', 'defer', 'src', 'type', 'media',
+					// Other common
+					'cite', 'datetime', 'start', 'reversed', 'for', 'action', 'method', 'enctype', 'cols', 'rows', 'wrap', 'manifest', 'version', 'xmlns',
+					// SVG attributes (common)
+					'viewBox', 'preserveAspectRatio', 'd', 'fill', 'stroke', 'stroke-width', 'cx', 'cy', 'r', 'x', 'y', 'x1', 'y1', 'x2', 'y2', 'points', 'transform', 'clip-path', 'mask', 'filter', 'opacity', 'visibility', 'display', 'font-family', 'font-size', 'font-weight', 'text-anchor', 'dominant-baseline', 'alignment-baseline', 'baseline-shift', 'letter-spacing', 'word-spacing', 'text-decoration', 'writing-mode', 'direction', 'unicode-bidi', 'text-orientation', 'shape-rendering', 'color-rendering', 'image-rendering', 'color-interpolation', 'color-interpolation-filters', 'fill-rule', 'clip-rule', 'stroke-linecap', 'stroke-linejoin', 'stroke-miterlimit', 'stroke-dasharray', 'stroke-dashoffset', 'marker-start', 'marker-mid', 'marker-end', 'marker', 'markerWidth', 'markerHeight', 'markerUnits', 'orient', 'refX', 'refY', 'patternUnits', 'patternContentUnits', 'patternTransform', 'maskUnits', 'maskContentUnits', 'filterUnits', 'primitiveUnits', 'rx', 'ry', 'fx', 'fy', 'fr', 'offset', 'stop-color', 'stop-opacity', 'gradientUnits', 'gradientTransform', 'spreadMethod', 'xlink:href', 'xlink:title', 'xlink:role', 'xlink:arcrole', 'xlink:show', 'xlink:actuate', 'xlink:type', 'xml:base', 'xml:lang', 'xml:space'
+				]);
+				$('*').each(function () {
+					const attrs = this.attributes;
+					for (let i = 0; i < attrs.length; i++) {
+						const attrName = attrs[i].name;
+						if (!attrName.startsWith('data-') && !standardAttributes.has(attrName)) {
+							throw new Error(`Atributo '${attrName}' não é permitido; atributos inventados devem começar com 'data-'. Elemento: ${$(this).prop('outerHTML')}`);
+						}
+					}
+				});
+				status = 'passed';
+			} catch (e) {
+				status = 'not passed';
+				errorMessage = e.message
+			}
+			results.push({
+				code: 'Atributo inválido encontrado',
+				message: status === 'passed' ? 'Atributo inválido encontrado' : errorMessage,
+				type: 'notice',
+				runnerExtras: {
+					status: status,
+					errorMessage: errorMessage,
+					category: getCategory('atributos')
 				}
 			});
 		})

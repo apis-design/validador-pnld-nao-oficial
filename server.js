@@ -12,6 +12,17 @@ import { adjustImageDPI } from './helpers/image-validator.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Utility function to process tasks with concurrency limit
+async function processWithConcurrencyLimit(tasks, concurrencyLimit) {
+    const results = [];
+    for (let i = 0; i < tasks.length; i += concurrencyLimit) {
+        const batch = tasks.slice(i, i + concurrencyLimit);
+        const batchResults = await Promise.all(batch.map(task => task()));
+        results.push(...batchResults);
+    }
+    return results;
+}
+
 // Create uploads directory if it doesn't exist
 const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
@@ -306,6 +317,27 @@ app.post('/convert-dpi-zip', upload.single('zipFile'), async (req, res) => {
 
         sendProgress({ type: 'info', message: 'Recebido arquivo ZIP para conversão de DPI' });
 
+        // Limpar pastas temporárias antigas (mais de 1 hora)
+        const tempDirPath = path.join(__dirname, 'temp');
+        if (fs.existsSync(tempDirPath)) {
+            const items = fs.readdirSync(tempDirPath);
+            const now = Date.now();
+            const oneHourAgo = now - (60 * 60 * 1000); // 1 hora em ms
+
+            for (const item of items) {
+                const itemPath = path.join(tempDirPath, item);
+                try {
+                    const stats = fs.statSync(itemPath);
+                    if (stats.isDirectory() && item.startsWith('dpi-conversion-') && stats.mtime.getTime() < oneHourAgo) {
+                        fs.rmSync(itemPath, { recursive: true, force: true });
+                        console.log(`Pasta temporária antiga removida: ${item}`);
+                    }
+                } catch (err) {
+                    console.error(`Erro ao verificar/remover ${item}:`, err);
+                }
+            }
+        }
+
         // Guardar o nome original do arquivo
         const originalFileName = req.file.originalname;
 
@@ -358,6 +390,12 @@ app.post('/convert-dpi-zip', upload.single('zipFile'), async (req, res) => {
 
         sendProgress({ type: 'info', message: `Encontradas ${imageFiles.length} imagens para processamento de ${allFiles.length} arquivos totais` });
 
+        // Enviar progresso inicial
+        sendProgress({ type: 'upload-progress', progress: 0, message: 'Iniciando processamento de imagens...' });
+
+        // Pequeno delay para garantir que o SSE esteja conectado
+        await new Promise(resolve => setTimeout(resolve, 100));
+
         const results = {
             processed: [],
             errors: [],
@@ -366,8 +404,8 @@ app.post('/convert-dpi-zip', upload.single('zipFile'), async (req, res) => {
             totalFiles: allFiles.length
         };
 
-        // Processar cada imagem no local original
-        for (const imagePath of imageFiles) {
+        // Processar cada imagem no local original com limite de concorrência
+        const imageTasks = imageFiles.map((imagePath, index) => async () => {
             try {
                 const relativePath = path.relative(extractDir, imagePath);
                 sendProgress({ type: 'info', message: `Processando: ${relativePath}` });
@@ -384,12 +422,12 @@ app.post('/convert-dpi-zip', upload.single('zipFile'), async (req, res) => {
                 
                 if (currentDpi === targetDpi) {
                     // Se já está no DPI correto, manter como está
-                    results.processed.push({
+                    return {
                         filename: relativePath,
                         originalDpi: currentDpi,
                         newDpi: targetDpi,
                         status: 'unchanged'
-                    });
+                    };
                 } else {
                     // Ajustar DPI e sobrescrever o arquivo original
                     // Determinar o formato baseado na extensão para preservar transparência
@@ -418,23 +456,57 @@ app.post('/convert-dpi-zip', upload.single('zipFile'), async (req, res) => {
                     fs.unlinkSync(imagePath);
                     fs.renameSync(tempImagePath, imagePath);
                     
-                    results.processed.push({
+                    return {
                         filename: relativePath,
                         originalDpi: currentDpi,
                         newDpi: targetDpi,
                         status: 'converted'
-                    });
+                    };
                 }
                 
             } catch (error) {
                 console.error(`Erro ao processar ${imagePath}:`, error);
                 const relativePath = path.relative(extractDir, imagePath);
-                results.errors.push({
+                return {
                     filename: relativePath,
-                    error: error.message
-                });
+                    error: error.message,
+                    isError: true
+                };
             }
+        });
+
+        // Processar com limite de concorrência de 3 imagens simultâneas
+        const taskResults = [];
+        let processedCount = 0;
+        const totalImages = imageTasks.length;
+
+        // Enviar progresso inicial novamente após delay
+        sendProgress({ type: 'upload-progress', progress: 0, message: 'Iniciando processamento...' });
+
+        // Função para processar em lotes e atualizar progresso
+        for (let i = 0; i < imageTasks.length; i += 3) {
+            const batch = imageTasks.slice(i, i + 3);
+            const batchResults = await Promise.all(batch.map(task => task()));
+            taskResults.push(...batchResults);
+            
+            processedCount += batch.length;
+            const progressPercent = Math.round((processedCount / totalImages) * 100);
+            sendProgress({ type: 'upload-progress', progress: progressPercent, message: `Processando imagens... ${processedCount}/${totalImages} (${progressPercent}%)` });
+            // Pequeno delay para permitir atualização da UI
+            await new Promise(resolve => setTimeout(resolve, 50));
         }
+
+        // Separar resultados e erros
+        taskResults.forEach(result => {
+            if (result.isError) {
+                results.errors.push(result);
+            } else {
+                results.processed.push(result);
+            }
+        });
+
+        // Enviar progresso completo
+        sendProgress({ type: 'upload-progress', progress: 100, message: 'Processamento de imagens concluído!' });
 
         // Criar novo ZIP com a mesma estrutura, mas com imagens ajustadas
         const outputZipPath = path.join(tempDir, originalFileName);

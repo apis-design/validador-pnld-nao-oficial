@@ -2,6 +2,17 @@ import sharp from 'sharp';
 import fs from 'fs';
 import path from 'path';
 
+// Utility function to process tasks with concurrency limit
+async function processWithConcurrencyLimit(tasks, concurrencyLimit) {
+    const results = [];
+    for (let i = 0; i < tasks.length; i += concurrencyLimit) {
+        const batch = tasks.slice(i, i + concurrencyLimit);
+        const batchResults = await Promise.all(batch.map(task => task()));
+        results.push(...batchResults);
+    }
+    return results;
+}
+
 /**
  * Função utilitária testar
  */
@@ -108,67 +119,89 @@ export async function adjustImageDPI(basePath, outputDir) {
         return ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.webp'].includes(ext);
     });
 
+    const tasks = [];
+
     for (const imageFile of imageFiles) {
         const inputPath = path.join(imagesDir, imageFile);
         const outputPath = path.join(outputDir, imageFile);
 
-        try {
-            const metadata = await sharp(inputPath).metadata();
-            const currentDensity = metadata.density || 72;
-            const ext = path.extname(imageFile).toLowerCase();
+        const task = async () => {
+            try {
+                const metadata = await sharp(inputPath).metadata();
+                const currentDensity = metadata.density || 72;
+                const ext = path.extname(imageFile).toLowerCase();
 
-            if (currentDensity < 300) {
-                // Ajustar DPI para 300, preservando o formato original
-                let sharpInstance = sharp(inputPath).withMetadata({ density: 300 });
-                
-                // Preservar formato original para manter transparência em PNGs
-                if (ext === '.png') {
-                    sharpInstance = sharpInstance.png();
-                } else if (ext === '.webp') {
-                    sharpInstance = sharpInstance.webp({ quality: 95 });
-                } else if (ext === '.gif') {
-                    sharpInstance = sharpInstance.gif();
-                } else if (ext === '.tiff') {
-                    sharpInstance = sharpInstance.tiff();
+                if (currentDensity < 300) {
+                    // Ajustar DPI para 300, preservando o formato original
+                    let sharpInstance = sharp(inputPath).withMetadata({ density: 300 });
+                    
+                    // Preservar formato original para manter transparência em PNGs
+                    if (ext === '.png') {
+                        sharpInstance = sharpInstance.png();
+                    } else if (ext === '.webp') {
+                        sharpInstance = sharpInstance.webp({ quality: 95 });
+                    } else if (ext === '.gif') {
+                        sharpInstance = sharpInstance.gif();
+                    } else if (ext === '.tiff') {
+                        sharpInstance = sharpInstance.tiff();
+                    } else {
+                        sharpInstance = sharpInstance.jpeg({ quality: 95 });
+                    }
+                    
+                    await sharpInstance.toFile(outputPath);
+
+                    return {
+                        file: imageFile,
+                        originalDPI: currentDensity,
+                        newDPI: 300
+                    };
                 } else {
-                    sharpInstance = sharpInstance.jpeg({ quality: 95 });
-                }
-                
-                await sharpInstance.toFile(outputPath);
+                    // Copiar sem alteração, preservando formato original
+                    let sharpInstance = sharp(inputPath);
+                    
+                    if (ext === '.png') {
+                        sharpInstance = sharpInstance.png();
+                    } else if (ext === '.webp') {
+                        sharpInstance = sharpInstance.webp({ quality: 95 });
+                    } else if (ext === '.gif') {
+                        sharpInstance = sharpInstance.gif();
+                    } else if (ext === '.tiff') {
+                        sharpInstance = sharpInstance.tiff();
+                    } else {
+                        sharpInstance = sharpInstance.jpeg({ quality: 95 });
+                    }
+                    
+                    await sharpInstance.toFile(outputPath);
 
-                results.processed.push({
-                    file: imageFile,
-                    originalDPI: currentDensity,
-                    newDPI: 300
-                });
-            } else {
-                // Copiar sem alteração, preservando formato original
-                let sharpInstance = sharp(inputPath);
-                
-                if (ext === '.png') {
-                    sharpInstance = sharpInstance.png();
-                } else if (ext === '.webp') {
-                    sharpInstance = sharpInstance.webp({ quality: 95 });
-                } else if (ext === '.gif') {
-                    sharpInstance = sharpInstance.gif();
-                } else if (ext === '.tiff') {
-                    sharpInstance = sharpInstance.tiff();
-                } else {
-                    sharpInstance = sharpInstance.jpeg({ quality: 95 });
+                    return {
+                        file: imageFile,
+                        originalDPI: currentDensity,
+                        newDPI: currentDensity
+                    };
                 }
-                
-                await sharpInstance.toFile(outputPath);
-
-                results.processed.push({
+            } catch (error) {
+                return {
                     file: imageFile,
-                    originalDPI: currentDensity,
-                    newDPI: currentDensity
-                });
+                    error: error.message,
+                    isError: true
+                };
             }
-        } catch (error) {
-            results.errors.push(`Erro ao processar ${imageFile}: ${error.message}`);
-        }
+        };
+
+        tasks.push(task);
     }
+
+    // Processar com limite de concorrência
+    const taskResults = await processWithConcurrencyLimit(tasks, 3);
+
+    // Separar resultados e erros
+    taskResults.forEach(result => {
+        if (result.isError) {
+            results.errors.push(`Erro ao processar ${result.file}: ${result.error}`);
+        } else {
+            results.processed.push(result);
+        }
+    });
 
     return results;
 }

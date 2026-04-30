@@ -9,6 +9,7 @@ import handleFsError from './helpers/fs-validator.js'
 import { validateTocNcxIds } from './helpers/toc-ncx-validator.js'
 import { validateContentOpfFiles } from './helpers/content-opf-validator.js'
 import { validateImageDPI } from './helpers/image-validator.js'
+import { validateResourceUsage } from './helpers/resource-usage-validator.js'
 import { sendProgress } from './server.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -585,7 +586,13 @@ export const runApp = async (newFolderPath) => {
         const errosFsResult = handleFsError(newFolderPath);
         sendProgress({ 
             type: 'info', 
-            message: 'Validação de estrutura de arquivos concluída. Verificando IDs do toc.ncx...' 
+            message: 'Validação de estrutura de arquivos concluída. Verificando uso de recursos...' 
+        });
+
+        const resourceUsageResult = validateResourceUsage(newFolderPath);
+        sendProgress({ 
+            type: 'info', 
+            message: 'Validação de uso de recursos concluída. Verificando IDs do toc.ncx...' 
         });
 
         // Validação específica dos IDs do toc.ncx
@@ -622,7 +629,7 @@ export const runApp = async (newFolderPath) => {
         // Validação de DPI das imagens
         const imageDpiValidationResult = await validateImageDPI(newFolderPath);
 
-        const allResults = [errosFsResult, tocNcxValidationResult, contentOpfValidationResult, imageDpiValidationResult, ...results, ...waveResults, ...w3cResults];
+        const allResults = [errosFsResult, resourceUsageResult, tocNcxValidationResult, contentOpfValidationResult, imageDpiValidationResult, ...results, ...waveResults, ...w3cResults];
 		
 		// Traduzir mensagens dos resultados W3C
 		const translatedResults = translateResults(allResults);
