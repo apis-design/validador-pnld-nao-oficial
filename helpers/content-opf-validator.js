@@ -130,19 +130,21 @@ export function validateContentOpfFiles(basePath) {
                 const resumoArquivos = arquivosNaoEncontrados.map(item =>
                     `Arquivo '${item.href}' (ID: ${item.id})`
                 ).join(', ');
+                const mensagemDetalhada = `Arquivos referenciados no content.opf que não existem: ${resumoArquivos}`;
 
                 results.issues.push({
                     code: 'Arquivos não encontrados',
-                    message: `Arquivos referenciados no content.opf que não existem: ${resumoArquivos}`,
+                    message: mensagemDetalhada,
                     type: 'error',
                     runnerExtras: {
                         status: 'not passed',
+                        errorMessage: mensagemDetalhada,
                         arquivosNaoEncontrados: arquivosNaoEncontrados,
                         totalArquivosNaoEncontrados: arquivosNaoEncontrados.length
                     }
                 });
 
-                throw new Error(`${arquivosNaoEncontrados.length} arquivos referenciados no content.opf não foram encontrados`);
+                throw new Error(mensagemDetalhada);
             }, results);
         } else {
             testar('Validação concluída com sucesso', () => {
