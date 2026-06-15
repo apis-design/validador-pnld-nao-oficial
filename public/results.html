@@ -468,7 +468,7 @@
 			<button @click="currentTab = 'pnld'" :class="{ 'active': currentTab === 'pnld' }">Validador PNLD</button>
 			<button @click="currentTab = 'recursos'" :class="{ 'active': currentTab === 'recursos' }">Uso de Recursos</button>
 			<button @click="currentTab = 'w3c'" :class="{ 'active': currentTab === 'w3c' }">Validador W3C Markup</button>
-			<button @click="currentTab = 'wave'" :class="{ 'active': currentTab === 'wave' }">Validador WAVE</button>
+			<button @click="currentTab = 'wave'" :class="{ 'active': currentTab === 'wave' }" x-show="temResultadosWAVE()">Validador WAVE</button>
 		</div>
 
 		<div class="grid" x-show="currentTab === 'pnld'">
@@ -534,7 +534,7 @@
 			</article>
 		</div>
 
-		<div class="grid" x-show="currentTab === 'wave'">
+		<div class="grid" x-show="currentTab === 'wave' && temResultadosWAVE()">
 			<article>
 				<header>Total de Testes WAVE</header>
 				<h3 x-text="testesAgrupadosWAVE().length"></h3>
@@ -798,7 +798,7 @@
 			</div>
 		</div>
 
-		<div x-show="currentTab === 'wave'">
+		<div x-show="currentTab === 'wave' && temResultadosWAVE()">
 			<!-- Sub-abas para WAVE -->
 			<div class="w3c-tabs">
 				<button @click="waveSubTab = 'errors'" :class="{ 'active': waveSubTab === 'errors' }">
@@ -1404,6 +1404,9 @@
 						});
 					});
 					return Object.values(testes);
+				},
+				temResultadosWAVE: function() {
+					return this.testesAgrupadosWAVE().length > 0;
 				},
 				testesErrosWAVE: function() {
 					return this.testesAgrupadosWAVE().filter(teste => teste.erros.length > 0);

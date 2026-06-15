@@ -167,6 +167,28 @@ function clearPreviousResults() {
     }
 }
 
+function parseBooleanFlag(value, defaultValue = true) {
+    if (value === undefined || value === null || value === '') {
+        return defaultValue;
+    }
+
+    if (typeof value === 'boolean') {
+        return value;
+    }
+
+    if (typeof value === 'string') {
+        const normalizedValue = value.trim().toLowerCase();
+        if (['true', '1', 'yes', 'on'].includes(normalizedValue)) {
+            return true;
+        }
+        if (['false', '0', 'no', 'off'].includes(normalizedValue)) {
+            return false;
+        }
+    }
+
+    return defaultValue;
+}
+
 app.post('/upload', upload.single('zipFile'), async (req, res) => {
     try {
         // Limpar cache de resultados anteriores no início do processo
@@ -194,8 +216,13 @@ app.post('/upload', upload.single('zipFile'), async (req, res) => {
         fs.unlinkSync(zipPath);
 
         sendProgress({ type: 'info', message: 'Iniciando validação...' });
+        const validationOptions = {
+            validateW3C: parseBooleanFlag(req.body?.validateW3C, true),
+            validateWAVE: parseBooleanFlag(req.body?.validateWAVE, true)
+        };
+
         // Atualizar o folderPath e executar a validação
-        await runApp(extractPath);
+        await runApp(extractPath, validationOptions);
 
         // Remove .DS_Store files
         sendProgress({ type: 'info', message: 'Removendo arquivos .DS_Store...' });
@@ -230,6 +257,11 @@ app.post('/upload-url', async (req, res) => {
         if (!url) {
             return res.status(400).json({ success: false, error: 'URL não fornecida' });
         }
+
+        const validationOptions = {
+            validateW3C: parseBooleanFlag(req.body?.validateW3C, true),
+            validateWAVE: parseBooleanFlag(req.body?.validateWAVE, true)
+        };
 
         sendProgress({ type: 'info', message: 'Baixando arquivo da URL...' });
 
@@ -281,7 +313,7 @@ app.post('/upload-url', async (req, res) => {
 
         sendProgress({ type: 'info', message: 'Iniciando validação...' });
         // Atualizar o folderPath e executar a validação
-        await runApp(extractPath);
+        await runApp(extractPath, validationOptions);
 
         // Remove .DS_Store files
         sendProgress({ type: 'info', message: 'Removendo arquivos .DS_Store...' });

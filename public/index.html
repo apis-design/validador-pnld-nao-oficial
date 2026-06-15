@@ -201,6 +201,54 @@
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
+        .validation-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .validation-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px 16px;
+            border: 1px solid #dbe4f0;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .validation-option:hover {
+            border-color: #667eea;
+            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.12);
+            transform: translateY(-1px);
+        }
+
+        .validation-option input[type="checkbox"] {
+            margin: 3px 0 0 0;
+            width: 18px;
+            height: 18px;
+            accent-color: #667eea;
+            flex-shrink: 0;
+        }
+
+        .validation-option strong {
+            display: block;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+
+        .validation-option span {
+            color: #718096;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
         .submit-button {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -653,6 +701,26 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="form-label">Validadores externos</label>
+                    <div class="validation-options">
+                        <label class="validation-option" for="validateW3C">
+                            <input type="checkbox" id="validateW3C" checked>
+                            <div>
+                                <strong>Validar W3C</strong>
+                                <span>Executa a validação de markup do W3C.</span>
+                            </div>
+                        </label>
+                        <label class="validation-option" for="validateWAVE">
+                            <input type="checkbox" id="validateWAVE" checked>
+                            <div>
+                                <strong>Validar WAVE</strong>
+                                <span>Executa a análise de acessibilidade via WAVE.</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
                 <div style="display: flex; gap: 15px; justify-content: center;">
                     <button type="button" class="submit-button" onclick="handleUpload()">🚀 Enviar e Processar</button>
                     <button type="button" class="results-button" onclick="viewResults()" style="display: none;" id="viewResultsButton">📊 Ver Resultados</button>
@@ -671,6 +739,26 @@
                     <div class="dpi-input">
                         <label for="dpiUrl">DPI mínimo das imagens:</label>
                         <input type="number" id="dpiUrl" value="150" min="72" max="600">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Validadores externos</label>
+                    <div class="validation-options">
+                        <label class="validation-option" for="validateW3CUrl">
+                            <input type="checkbox" id="validateW3CUrl" checked>
+                            <div>
+                                <strong>Validar W3C</strong>
+                                <span>Executa a validação de markup do W3C.</span>
+                            </div>
+                        </label>
+                        <label class="validation-option" for="validateWAVEUrl">
+                            <input type="checkbox" id="validateWAVEUrl" checked>
+                            <div>
+                                <strong>Validar WAVE</strong>
+                                <span>Executa a análise de acessibilidade via WAVE.</span>
+                            </div>
+                        </label>
                     </div>
                 </div>
 
@@ -1402,6 +1490,8 @@
 
             const formData = new FormData();
             formData.append('zipFile', fileInput.files[0]);
+            formData.append('validateW3C', document.getElementById('validateW3C').checked.toString());
+            formData.append('validateWAVE', document.getElementById('validateWAVE').checked.toString());
 
             try {
                 showStatus('Enviando arquivo...', 'info');
@@ -1507,7 +1597,9 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        url: urlInput.value.trim()
+                        url: urlInput.value.trim(),
+                        validateW3C: document.getElementById('validateW3CUrl').checked,
+                        validateWAVE: document.getElementById('validateWAVEUrl').checked
                     })
                 });
 
@@ -1821,6 +1913,7 @@
         function clearAll() {
             // Clear the file input
             document.getElementById('zipFile').value = '';
+            document.getElementById('zipUrl').value = '';
             
             // Reset file input visual state
             const fileInputDiv = document.getElementById('fileInput');
@@ -1851,6 +1944,13 @@
             // Hide the buttons
             document.getElementById('viewResultsButton').style.display = 'none';
             document.getElementById('clearButton').style.display = 'none';
+            document.getElementById('viewResultsButtonUrl').style.display = 'none';
+            document.getElementById('clearButtonUrl').style.display = 'none';
+
+            document.getElementById('validateW3C').checked = true;
+            document.getElementById('validateWAVE').checked = true;
+            document.getElementById('validateW3CUrl').checked = true;
+            document.getElementById('validateWAVEUrl').checked = true;
             
             // Reset Alpine.js data
             if (window.Alpine) {

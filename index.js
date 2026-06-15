@@ -541,8 +541,13 @@ const translateResults = (results) => {
     });
 };
 
-export const runApp = async (newFolderPath) => {
+export const runApp = async (newFolderPath, options = {}) => {
     try {
+		const {
+			validateW3C: shouldValidateW3C = true,
+			validateWAVE: shouldValidateWAVE = true
+		} = options;
+
         // Limpar resultados anteriores no início
         clearPreviousResults();
 
@@ -560,27 +565,33 @@ export const runApp = async (newFolderPath) => {
         const urlList = htmlFiles.map((file) => pa11y(file, pa11yOptions(path.basename(file).split('.')[0])));
 
         let results = await Promise.all(urlList);
-        sendProgress({ 
-            type: 'info', 
-            message: 'Validação HTML concluída. Iniciando validação WAVE...' 
-        });
+		sendProgress({ 
+			type: 'info', 
+			message: shouldValidateWAVE
+				? 'Validação HTML concluída. Iniciando validação WAVE...'
+				: 'Validação HTML concluída. Validação WAVE desabilitada para esta execução.' 
+		});
 
         // Validação WAVE
         const waveResults = [];
-        for (const file of htmlFiles) {
-            const htmlContent = fs.readFileSync(file, 'utf8');
-            const filename = path.basename(file);
-            sendProgress({ 
-                type: 'info', 
-                message: `Validando acessibilidade WAVE para ${filename}...` 
-            });
-            const waveResult = await waveValidate(htmlContent, filename);
-            waveResults.push(waveResult);
+		if (shouldValidateWAVE) {
+			for (const file of htmlFiles) {
+				const htmlContent = fs.readFileSync(file, 'utf8');
+				const filename = path.basename(file);
+				sendProgress({ 
+					type: 'info', 
+					message: `Validando acessibilidade WAVE para ${filename}...` 
+				});
+				const waveResult = await waveValidate(htmlContent, filename);
+				waveResults.push(waveResult);
+			}
         }
 
         sendProgress({ 
             type: 'info', 
-            message: 'Validação WAVE concluída. Verificando estrutura de arquivos...' 
+			message: shouldValidateWAVE
+				? 'Validação WAVE concluída. Verificando estrutura de arquivos...'
+				: 'Seguindo para validações internas de estrutura de arquivos...'
         });
 
         const errosFsResult = handleFsError(newFolderPath);
@@ -606,24 +617,30 @@ export const runApp = async (newFolderPath) => {
         const contentOpfValidationResult = validateContentOpfFiles(newFolderPath);
         sendProgress({ 
             type: 'info', 
-            message: 'Validação de arquivos do content.opf concluída. Iniciando validação W3C...' 
+			message: shouldValidateW3C
+				? 'Validação de arquivos do content.opf concluída. Iniciando validação W3C...'
+				: 'Validação de arquivos do content.opf concluída. Validação W3C desabilitada para esta execução.' 
         });
 
         // Validação W3C Markup Validator
         const w3cResults = [];
-        for (const file of htmlFiles) {
-            const w3cResult = await validateW3C(file);
-            w3cResults.push(w3cResult);
-            
-            // Adicionar delay de 5 segundos entre requisições para evitar rate limiting
-            if (htmlFiles.indexOf(file) < htmlFiles.length - 1) {
-                await new Promise(resolve => setTimeout(resolve, 5000));
+		if (shouldValidateW3C) {
+			for (const file of htmlFiles) {
+				const w3cResult = await validateW3C(file);
+				w3cResults.push(w3cResult);
+                
+				// Adicionar delay de 5 segundos entre requisições para evitar rate limiting
+				if (htmlFiles.indexOf(file) < htmlFiles.length - 1) {
+					await new Promise(resolve => setTimeout(resolve, 5000));
+				}
             }
         }
 
         sendProgress({ 
             type: 'info', 
-            message: 'Validação W3C concluída. Gerando relatório...' 
+			message: shouldValidateW3C
+				? 'Validação W3C concluída. Gerando relatório...'
+				: 'Gerando relatório final...'
         });
 
         // Validação de DPI das imagens
