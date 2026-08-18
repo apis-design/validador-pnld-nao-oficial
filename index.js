@@ -273,11 +273,29 @@ const waveValidate = async (htmlContent, filename) => {
 	}
 };
 
+const W3C_ENDPOINTS = (process.env.W3C_VALIDATOR_URLS ||
+	'https://validator.w3.org/nu/?out=json,https://validator.nu/?out=json')
+	.split(',')
+	.map(endpoint => endpoint.trim())
+	.filter(Boolean);
+
+const getRetryAfterMs = (response, fallbackMs) => {
+	const retryAfter = response.headers.get('retry-after');
+	if (!retryAfter) return fallbackMs;
+
+	const seconds = Number(retryAfter);
+	if (Number.isFinite(seconds)) return Math.max(0, seconds * 1000);
+
+	const retryDate = Date.parse(retryAfter);
+	return Number.isNaN(retryDate) ? fallbackMs : Math.max(0, retryDate - Date.now());
+};
+
 // Função para validar W3C Markup Validator
-const validateW3C = async (filePath, retryCount = 0) => {
+const validateW3C = async (filePath) => {
 	const filename = path.basename(filePath);
-	const maxRetries = 5;
-	const baseDelay = 20000; // 20 segundos
+	const maxRounds = 3;
+	const baseDelay = 5000;
+	const maxDelay = 30000;
 	
 	try {
 		sendProgress({ 
@@ -288,29 +306,52 @@ const validateW3C = async (filePath, retryCount = 0) => {
 		// Ler o conteúdo do arquivo
 		const htmlContent = fs.readFileSync(filePath, 'utf8');
 		
-		// Fazer requisição para o validador W3C online
-		const response = await fetch('https://validator.w3.org/nu/?out=json', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'text/html',
-				'User-Agent': 'Mozilla/5.0 (compatible; Validator.nu/LV)'
-			},
-			body: htmlContent
-		});
-		
-		// Se receber 429 (Too Many Requests), tentar novamente com delay exponencial
-		if (response.status === 429 && retryCount < maxRetries) {
-			const delay = baseDelay * Math.pow(2, retryCount); // Backoff exponencial
-			sendProgress({ 
-				type: 'warning', 
-				message: `Rate limit atingido para ${filename}, tentando novamente em ${delay/1000}s...` 
-			});
-			await new Promise(resolve => setTimeout(resolve, delay));
-			return validateW3C(filePath, retryCount + 1);
+		let response;
+		for (let round = 0; round < maxRounds && !response; round++) {
+			let retryDelay = Math.min(baseDelay * Math.pow(2, round), maxDelay);
+
+			for (const endpoint of W3C_ENDPOINTS) {
+				let candidate;
+				try {
+					candidate = await fetch(endpoint, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'text/html; charset=utf-8',
+							'Accept': 'application/json',
+							'User-Agent': 'PNLD-Validator/1.0'
+						},
+						body: htmlContent
+					});
+				} catch (error) {
+					console.warn(`Falha ao acessar ${endpoint}: ${error.message}`);
+					continue;
+				}
+
+				if (candidate.status === 429) {
+					retryDelay = Math.max(retryDelay, getRetryAfterMs(candidate, retryDelay));
+					continue; // tenta o próximo servidor antes de aguardar
+				}
+
+				if (!candidate.ok) {
+					throw new Error(`HTTP ${candidate.status}: ${candidate.statusText}`);
+				}
+
+				response = candidate;
+				break;
+			}
+
+			if (!response && round < maxRounds - 1) {
+				const delay = Math.min(retryDelay, maxDelay);
+				sendProgress({
+					type: 'warning',
+					message: `Servidores W3C ocupados para ${filename}; nova tentativa em ${Math.ceil(delay / 1000)}s...`
+				});
+				await new Promise(resolve => setTimeout(resolve, delay));
+			}
 		}
-		
-		if (!response.ok) {
-			throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+
+		if (!response) {
+			throw new Error('Os servidores públicos W3C recusaram temporariamente as requisições (HTTP 429)');
 		}
 		
 		const w3cResult = await response.json();
