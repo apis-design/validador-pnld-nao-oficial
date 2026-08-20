@@ -2026,21 +2026,14 @@ runner.run = (options, pa11y) => {
 					}
 				});
 
-				// 4. Verificar se IDs seguem padrões válidos
+				// 4. Verificar se IDs seguem os requisitos do HTML5
 				idsInternosMapeados.forEach(id => {
-					// Verifica se o ID não contém caracteres inválidos
-					if (!/^[a-zA-Z][a-zA-Z0-9_-]*$/.test(id)) {
+					// Um ID deve ter pelo menos um caractere e não pode conter
+					// whitespace ASCII: espaço, tabulação, LF, FF ou CR.
+					if (!/^[^\u0009\u000A\u000C\u000D\u0020]+$/.test(id)) {
 						problemas.push({
 							id: id,
-							problema: 'ID contém caracteres inválidos ou não começa com letra'
-						});
-					}
-
-					// Verifica se o ID não é muito curto
-					if (id.length < 2) {
-						problemas.push({
-							id: id,
-							problema: 'ID muito curto (menos de 2 caracteres)'
+							problema: 'ID vazio ou contém whitespace ASCII'
 						});
 					}
 				});
