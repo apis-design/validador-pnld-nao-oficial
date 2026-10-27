@@ -10,6 +10,9 @@ import { validateTocNcxIds } from './helpers/toc-ncx-validator.js'
 import { validateContentOpfFiles } from './helpers/content-opf-validator.js'
 import { validateImageDPI } from './helpers/image-validator.js'
 import { validateResourceUsage } from './helpers/resource-usage-validator.js'
+import { validateIframeSvgFavicon } from './helpers/iframe-favicon-validator.js'
+import { validateFolderHyphens } from './helpers/folder-hyphen-validator.js'
+import { validateAssetNamesStartingWithNumber } from './helpers/asset-name-validator.js'
 import { sendProgress } from './server.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -642,6 +645,9 @@ export const runApp = async (newFolderPath, options = {}) => {
         });
 
         const resourceUsageResult = validateResourceUsage(newFolderPath);
+        const iframeFaviconResult = validateIframeSvgFavicon(newFolderPath);
+        const folderHyphenResult = validateFolderHyphens(newFolderPath);
+        const assetNameResult = validateAssetNamesStartingWithNumber(newFolderPath);
         sendProgress({ 
             type: 'info', 
             message: 'Validação de uso de recursos concluída. Verificando IDs do toc.ncx...' 
@@ -687,7 +693,7 @@ export const runApp = async (newFolderPath, options = {}) => {
         // Validação de DPI das imagens
         const imageDpiValidationResult = await validateImageDPI(newFolderPath);
 
-        const allResults = [errosFsResult, resourceUsageResult, tocNcxValidationResult, contentOpfValidationResult, imageDpiValidationResult, ...results, ...waveResults, ...w3cResults];
+        const allResults = [errosFsResult, resourceUsageResult, iframeFaviconResult, folderHyphenResult, assetNameResult, tocNcxValidationResult, contentOpfValidationResult, imageDpiValidationResult, ...results, ...waveResults, ...w3cResults];
 		
 		// Traduzir mensagens dos resultados W3C
 		const translatedResults = translateResults(allResults);
