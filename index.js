@@ -14,6 +14,8 @@ import { validateIframeSvgFavicon } from './helpers/iframe-favicon-validator.js'
 import { validateFolderHyphens } from './helpers/folder-hyphen-validator.js'
 import { validateAssetNamesStartingWithNumber } from './helpers/asset-name-validator.js'
 import { validateSpacesInNames } from './helpers/space-name-validator.js'
+import { validateCommasInNames } from './helpers/comma-name-validator.js'
+import { validateSpecialCharactersInNames } from './helpers/special-character-name-validator.js'
 import { sendProgress } from './server.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -650,6 +652,8 @@ export const runApp = async (newFolderPath, options = {}) => {
         const folderHyphenResult = validateFolderHyphens(newFolderPath);
         const assetNameResult = validateAssetNamesStartingWithNumber(newFolderPath);
         const spaceNameResult = validateSpacesInNames(newFolderPath);
+        const commaNameResult = validateCommasInNames(newFolderPath);
+        const specialCharacterNameResult = validateSpecialCharactersInNames(newFolderPath);
         sendProgress({ 
             type: 'info', 
             message: 'Validação de uso de recursos concluída. Verificando IDs do toc.ncx...' 
@@ -695,7 +699,7 @@ export const runApp = async (newFolderPath, options = {}) => {
         // Validação de DPI das imagens
         const imageDpiValidationResult = await validateImageDPI(newFolderPath);
 
-        const allResults = [errosFsResult, resourceUsageResult, iframeFaviconResult, folderHyphenResult, assetNameResult, spaceNameResult, tocNcxValidationResult, contentOpfValidationResult, imageDpiValidationResult, ...results, ...waveResults, ...w3cResults];
+        const allResults = [errosFsResult, resourceUsageResult, iframeFaviconResult, folderHyphenResult, assetNameResult, spaceNameResult, commaNameResult, specialCharacterNameResult, tocNcxValidationResult, contentOpfValidationResult, imageDpiValidationResult, ...results, ...waveResults, ...w3cResults];
 		
 		// Traduzir mensagens dos resultados W3C
 		const translatedResults = translateResults(allResults);
